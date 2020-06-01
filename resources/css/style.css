@@ -1,0 +1,164 @@
+body {
+font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+h2{
+	
+	top:10px;
+
+	right:110px;
+}
+
+.wrapper{
+ width:1050px;
+ margin:0 auto;
+ position: relative;
+}
+#image_preview{
+display: none;
+width:250px;
+height: 250px;
+text-align: center;
+line-height: 180px;
+font-weight: bold;
+color: #C0C0C0;
+background-color: #FFFFFF;
+overflow: auto;
+
+
+
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+.modal{
+  background-color: rgba(0,0,0,0.4);
+
+}
+
+.modal-content{
+
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.modal-header{
+
+ border-top-left-radius:6px;
+ border-top-right-radius:6px;
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.fade.in {
+    opacity: 1;
+}
+#myBtn{
+
+
+
+margin: 20px 0 0 120px;
+
+}
+
+.picture{
+position: absolute;
+  width: 1050px;
+   
+  margin: 0 auto;
+}
+.main{
+margin: 0 auto;
+position: relative;
+
+top:50px ;
+ left:00px;
+border: 2px solid #73AD21;
+padding:50px 60px;
+ /* background: #87bdd8;*/
+background: #fff;
+opacity: 0.7;
+width: 450px;
+height:500px;
+border-radius: 60px;
+  
+/*position: absolute;
+*/
+
+   box-shadow: 5px 5px 8px #888888;
+}
+
+
+#myCarousel{
+  position: absolute;
+   width: 100%;
+ 
+}
+.carousel-inner img.black {
+      -webkit-filter: grayscale(90%);
+      filter: grayscale(90%);  make all photos black and white 
+      width: 100%; /* Set width to 100% */
+
+      margin: auto;
+  }
+
+
+
+#message{
+position: relative;
+width:300px;
+top:-20px;
+left:450px;
+
+}
+#success
+{
+color:green;
+}
+#invalid
+{
+color:red;
+margin: 0 -15px 0;
+}
+#line
+{
+margin-top: 274px;
+}
+#error
+{
+color:red;
+}
+#error_message
+{
+color:blue;
+}
+#loading
+{
+display:none;
+position:relative;
+
+font-size:25px;
+top:-20px;
+left:480px;
+}
+.form-container{
+  position: absolute !important;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  margin-top: 20%;
+  text-align: center;
+}
