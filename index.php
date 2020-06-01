@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="resources\css\style.css">
 <link rel="stylesheet" href="resources\css\reset.css">
 <script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -105,7 +105,7 @@
    
 
    <div style="height:25px;color:red"><label for="email" class="error" style="position:relative;top:-8px"> </label></div>
-    <div class="g-recaptcha" data-sitekey="6LdOdSkTAAAAAI7G2SwiILJvEdDFSrYJl47o9TSz" > <!-- data-type co the thay bang audio --></div>
+    <div class="g-recaptcha" data-sitekey="6Lcg4P4UAAAAAHY3tZd7bjmrzPuk4fHW8OGZekO8" > <!-- data-type co the thay bang audio --></div>
       <input type="submit" id="myBtn"  name="submit" class="btn btn-success">
      <?php 
      
@@ -141,7 +141,7 @@ $me2 = (isset($_GET['email']) ? $_GET['email'] : null);
  //   }
       if($me2==" " || $me2 !=null)
       {
-        $me="Bạn chưa xác nhận hoặc file ko hợp lệ!";?>
+        $me="Bạn chưa xác nhận hoặc file ko hợp lềE";?>
 <div id="delete">
  <!--    <div class="alert alert-danger fade in" style="margin-top:40px"> -->
    <div class="err" style="height:5px; position:relative; top:10px;color:red">   <strong>Error</strong>
@@ -195,7 +195,7 @@ $me2 = (isset($_GET['email']) ? $_GET['email'] : null);
     return this.optional( element ) || ( /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test( value ) && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test( value ) );
 }, 'Please enter valid email address.');
 
-     $.validator.messages.required = "Bạn không được bỏ trống!";
+     $.validator.messages.required = "Bạn không được bềEtrống!";
     </script>
       </div><!-- end div form -->
       
