@@ -75,3 +75,6 @@ defined('EXIT_USER_INPUT')     || define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+defined('DATA_SITEKEY')       ||define('DATA_SITEKEY','6Lcg4P4UAAAAAHY3tZd7bjmrzPuk4fHW8OGZekO8');
+defined('SECRETKEY')       ||define('SECRETKEY','6Lcg4P4UAAAAAInuFJ62gjbMEMG-nH6WR29k_8IN');
+

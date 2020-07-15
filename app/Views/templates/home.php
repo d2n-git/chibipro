@@ -1,53 +1,52 @@
-<!-- feature_part start-->
-<section class="feature_part pt-4">
-        <div class="container-fluid p-lg-0 overflow-hidden">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <img src="<?php echo base_url();?>/assets/img/feature_1.png" alt="#">
-                        <div class="hover_text">
-                            <a href="single-product.html" class="btn_2">shop for male</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <img src="<?php echo base_url();?>/assets/img/feature_2.png" alt="#">
-                        <div class="hover_text">
-                            <a href="single-product.html" class="btn_2">shop for male</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <img src="<?php echo base_url();?>/assets/img/feature_3.png" alt="#">
-                        <div class="hover_text">
-                            <a href="single-product.html" class="btn_2">shop for male</a>
-                        </div>
+<section class="banner_part">
+<div class="container-fluid">
+          <div class="container">
+            <div class="row align-items-center" id="form-upload">
+                    <div class="banner_slider">
+                        <div class="single_banner_slider">
+                            <div class="banner_text">
+                                    <h1>Welcome to Chibipro</h1>
+                                    <a href="#submit" class="genric-btn primary circle">Upload now</a>
+                            </div>
                     </div>
                 </div>
             </div>
+        </div> 
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="<?php echo base_url();?>/assets/img/banner_img.png">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url();?>/assets/img/banner_img.png">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?php echo base_url();?>/assets/img/banner_img.png">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-    </section>
-    <!-- upcoming_event part start-->
-
+    </div>
+</section>
     <!-- new arrival part here -->
     <section class="new_arrival section_padding">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <div class="arrival_tittle">
-                        <h2>new arrival</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="arrival_filter_item filters">
-                        <ul>
-                            <li class="active controls" data-filter="*">all</li>
-                            <li class="controls" data-toggle=".men">men</li>
-                            <li class="controls" data-toggle=".women">women</li>
-                            <li class="controls" data-toggle=".shoes">shoes</li>
-                        </ul>
+                        <h2>New</h2>
                     </div>
                 </div>
             </div>
@@ -56,8 +55,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="new_arrival_iner filter-container">
-                        <div class="single_arrivel_item weidth_1 mix shoes">
-                            <img src="<?php echo base_url();?>/assets/img/arrivel/arrivel_5.png" alt="#">
+                        <div class="single_arrivel_item col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                             <div class="hover_text">
                                 <p>Canvas</p>
                                 <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -75,8 +74,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_arrivel_item weidth_2 mix women">
-                            <img src="<?php echo base_url();?>/assets/img/arrivel/arrivel_2.png" alt="#">
+                        <div class="single_arrivel_item col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                             <div class="hover_text">
                                 <p>Canvas</p>
                                 <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -94,8 +93,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_arrivel_item weidth_3 mix shoes women" >
-                            <img src="<?php echo base_url();?>/assets/img/arrivel/arrivel_3.png" alt="#">
+                        <div class="single_arrivel_item  col-md-3" >
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                             <div class="hover_text">
                                 <p>Canvas</p>
                                 <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -113,8 +112,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_arrivel_item weidth_3 mix women men">
-                            <img src="<?php echo base_url();?>/assets/img/arrivel/arrivel_4.png" alt="#">
+                        <div class="single_arrivel_item  col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                             <div class="hover_text">
                                 <p>Canvas</p>
                                 <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -132,8 +131,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_arrivel_item weidth_2 mix men women">
-                            <img src="<?php echo base_url();?>/assets/img/arrivel/arrivel_1.png" alt="#">
+                        <div class="single_arrivel_item  col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                             <div class="hover_text">
                                 <p>Canvas</p>
                                 <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -151,8 +150,46 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="single_arrivel_item weidth_1 mix shoes men">
-                            <img src="<?php echo base_url();?>/assets/img/arrivel/arrivel_6.png" alt="#">
+                        <div class="single_arrivel_item  col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
+                            <div class="hover_text">
+                                <p>Canvas</p>
+                                <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
+                                <div class="rate_icon">
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                </div>
+                                <h5>$150</h5>
+                                <div class="social_icon">
+                                    <a href="#"><i class="ti-heart"></i></a>
+                                    <a href="#"><i class="ti-bag"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_arrivel_item  col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
+                            <div class="hover_text">
+                                <p>Canvas</p>
+                                <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
+                                <div class="rate_icon">
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                    <a href="#"> <i class="fas fa-star"></i> </a>
+                                </div>
+                                <h5>$150</h5>
+                                <div class="social_icon">
+                                    <a href="#"><i class="ti-heart"></i></a>
+                                    <a href="#"><i class="ti-bag"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_arrivel_item  col-md-3">
+                            <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                             <div class="hover_text">
                                 <p>Canvas</p>
                                 <a href="single-product.html"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -174,70 +211,90 @@
                 </div> 
             </div>
         </div>
+        <div class="container-fluid">
+        <div class="row justify-content-end">
+        <nav aria-label="Page navigation" >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+        </nav>
+        </div>
+        </div>
     </section>
     <!-- new arrival part end -->
 
     <!-- free shipping here -->
     <section class="shipping_details section_padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_shopping_details">
-                        <img src="<?php echo base_url();?>/assets/img/icon/icon_1.png" alt="">
-                        <h4>Free shipping</h4>
-                        <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_shopping_details">
-                        <img src="<?php echo base_url();?>/assets/img/icon/icon_2.png" alt="">
-                        <h4>Free shipping</h4>
-                        <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_shopping_details">
-                        <img src="<?php echo base_url();?>/assets/img/icon/icon_3.png" alt="">
-                        <h4>Free shipping</h4>
-                        <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single_shopping_details">
-                        <img src="<?php echo base_url();?>/assets/img/icon/icon_4.png" alt="">
-                        <h4>Free shipping</h4>
-                        <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
+        <div class="row align-items-center">
+            <div class="col-lg-8" id="submit">
+                    <div class="arrival_tittle">
+                        <h2>Upload File</h2>
                     </div>
                 </div>
             </div>
+        <Form id="form1" action="<?php echo base_url();?>/Home/Upload" method="POST" enctype="multipart/form-data">
+            <div class="mt-10 col-12 col-md-6">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01" class="single-input">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
+            <div class="mt-10 col-12 col-md-6">
+                <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Email address'" required class="single-input">
+            </div>
+
+            <div class="mt-10 col-12 col-md-6">
+                <div class="g-recaptcha" data-sitekey="<?php echo DATA_SITEKEY;?>" > <!-- data-type co the thay bang audio --></div>
+            </div>
+            <div class="mt-10 col-12 col-md-6 align-items-center" >
+            <input type="submit" class="btn btn-primary" value="Submit"/>
+            </div>
+        </Form>
         </div>
     </section>
     <!-- free shipping end -->
 
     <!-- subscribe_area part start-->
     <section class="instagram_photo">
-        <div class="container-fluid>
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="instagram_photo_iner">
                         <div class="single_instgram_photo">
-                            <img src="<?php echo base_url();?>/assets/img/instagram/inst_1.png" alt="">
+                            <img src="<?php echo base_url();?>/assets/img/1.jpg" alt="">
                             <a href="#"><i class="ti-instagram"></i></a> 
                         </div>
                         <div class="single_instgram_photo">
-                            <img src="<?php echo base_url();?>/assets/img/instagram/inst_2.png" alt="">
+                            <img src="<?php echo base_url();?>/assets/img/1.jpg" alt="">
                             <a href="#"><i class="ti-instagram"></i></a> 
                         </div>
                         <div class="single_instgram_photo">
-                            <img src="<?php echo base_url();?>/assets/img/instagram/inst_3.png" alt="">
+                            <img src="<?php echo base_url();?>/assets/img/1.jpg" alt="">
                             <a href="#"><i class="ti-instagram"></i></a> 
                         </div>
                         <div class="single_instgram_photo">
-                            <img src="<?php echo base_url();?>/assets/img/instagram/inst_4.png" alt="">
+                            <img src="<?php echo base_url();?>/assets/img/1.jpg" alt="">
                             <a href="#"><i class="ti-instagram"></i></a> 
                         </div>
                         <div class="single_instgram_photo">
-                            <img src="<?php echo base_url();?>/assets/img/instagram/inst_5.png" alt="">
+                            <img src="<?php echo base_url();?>/assets/img/1.jpg" alt="">
                             <a href="#"><i class="ti-instagram"></i></a> 
                         </div>
                     </div>

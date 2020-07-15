@@ -17,3 +17,4 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/slick.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/style.css">
+    <script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
