@@ -18,3 +18,6 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/style.css">
     <script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
+    <!-- registration css -->
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/registration.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/bootstrap4.1.1/bootstrap.min.css">
