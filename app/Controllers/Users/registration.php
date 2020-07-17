@@ -4,7 +4,7 @@ namespace App\Controllers\Users;
 
 use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
-use Config\Encryption;
+use App\Libraries\alert;
 
 class registration extends Controller
 {
@@ -18,6 +18,7 @@ class registration extends Controller
     public function InSertUser()
     {
         $something = $this->request->getVar();
+        $alert=new alert();
         if ($something != NULL) {
             $this->CheckValidate();
             if (!$this->validate([])) {
@@ -27,16 +28,16 @@ class registration extends Controller
                         $model = new InSertUserModel();
                         $result = $model->InSertUsers($something);
                         if ($result)
-                            echo "User saved Success";
+                         {
+                            $alert->alert("User saved Success");
+                        }
                     } else
-                        echo 'The two passwords not match';
+                        $alert->alert('The two passwords not match');
                 } else {
                     $data['viewchild'] = './registration/content';
                     $data['validation'] = $error;
                     return view('templates/base_view', $data);
                 }
-            } else {
-                echo view('Success');
             }
         } else {
             $data['viewchild'] = './registration/content';
