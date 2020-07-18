@@ -25,7 +25,8 @@ class InSertUserModel extends Model
     private function GetData()
     {
       
-        $encrypter = \Config\Services::encrypter();
+        $encrypter = new Encryption();
+        $Password=$this->Password.''.$encrypter->key;
         $data=
         [
             'Name'=>$this->Name,
@@ -33,7 +34,7 @@ class InSertUserModel extends Model
             'Email'=>$this->Email,
             'Phone'=>$this->Phone,
             'Address'=>$this->Address,
-            'Password'=> base64_encode($encrypter->encrypt($this->Password))
+            'Password'=> md5($Password)
 
         ];
         return $data;

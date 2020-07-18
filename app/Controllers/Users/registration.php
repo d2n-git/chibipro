@@ -30,6 +30,8 @@ class registration extends Controller
                         if ($result)
                          {
                             $alert->alert("User saved Success");
+                            $data['viewchild'] = 'templates/home';
+                            return view('templates/base_view',$data);
                         }
                     } else
                         $alert->alert('The two passwords not match');
