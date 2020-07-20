@@ -2,7 +2,6 @@
 namespace App\Controllers\Users;
 use CodeIgniter\Controller;
 use App\Models\Users\CheckUser;
-use Config\Encryption;
 
 class login extends Controller
 {
@@ -20,7 +19,6 @@ class login extends Controller
             $result=$checkUser->GetUser($dataSubmit);
             if(!empty($result))
             {
-                $encrypter = new Encryption();
                 $session = \Config\Services::session();
                 $newdata = [
                     'password'  => $result['Password'],
@@ -31,7 +29,13 @@ class login extends Controller
             }
             else
             {
-
+                $session = \Config\Services::session();
+                $newdata = [
+                    'password'  => '',
+                    'email'     => '',
+                    'logged_in' => FALSE
+            ];
+            $session->set($newdata);
             }
         }
         else

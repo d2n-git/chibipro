@@ -16,7 +16,7 @@ class registration extends Controller
     }
 
     public function InSertUser()
-    {
+    { 
         $something = $this->request->getVar();
         $alert=new alert();
         if ($something != NULL) {
