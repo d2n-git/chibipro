@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
-//use APP\Libraries\ReCaptcha;
 use App\Models\ReCaptcha;
+use App\Models\PictureModel;
 
 class Home extends BaseController
 {
@@ -8,19 +8,27 @@ class Home extends BaseController
 	}
 	public function index()
 	{
+		$pager = \Config\Services::pager();
+		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
+		$offset = $page * LIMITPICTURE;
+		$pictureModel = new PictureModel();
+		$pictures = $pictureModel->orderBy('NumberLike', 'desc')->findAll(LIMITPICTURE,$offset);
+		$data['page'] = $page + 1;
+		$data['total'] = count($pictureModel->orderBy('NumberLike', 'desc')->findAll());
+		$data['pager'] = $pager;
 		$data['viewchild'] = 'templates/home';
+		$data['pictures'] = $pictures;
 		return view('templates/base_view',$data);
 	}
 
 	public function Upload()
 	{
-		//$this->ReCaptcha->
 		$reCaptcha = new ReCaptcha();
 		$response = null;
-		if ($_POST['g-recaptcha-response']) {
+		if ($this->request->getPost('g-recaptcha-response')) {
 			$response = $reCaptcha->verifyResponse(
-				$_SERVER['REMOTE_ADDR'],
-				$_POST['g-recaptcha-response']
+				$this->request->getServer('REMOTE_ADDR'),
+				$this->request->getPost('g-recaptcha-response')
 			);
 
 			if ($response != null && $response->success) {

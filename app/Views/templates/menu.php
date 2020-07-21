@@ -13,7 +13,7 @@
                         <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Home</a>
+                                    <a class="nav-link" href="<?php echo base_url();?>">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">News</a>
@@ -25,14 +25,9 @@
                         </div>
                         <div class="hearer_icon d-flex">
                             
-                                <a  href="/Users/Login"  role="button" aria-haspopup="true" aria-expanded="false">
+                                <a  href="<?php echo base_url();?>/Users/Login"  role="button" aria-haspopup="true" aria-expanded="false">
                                     <i class="ti-user"></i>
                                 </a>
-                                <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <div class="single_product">
-    
-                                    </div>
-                                </div> -->
                             
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                         </div>

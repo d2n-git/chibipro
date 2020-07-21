@@ -9,22 +9,11 @@
                 <div class="col-sm-6 col-lg-2">
                     <div class="single_footer_part">
                         <h4>Company</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="">About</a></li>
-                            <li><a href="">News</a></li>
-                            <li><a href="">FAQ</a></li>
-                            <li><a href="">Contact</a></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="single_footer_part">
                         <h4>Address</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="#">200, Green block, NewYork</a></li>
-                            <li><a href="#">+10 456 267 1678</a></li>
-                            <li><span>contact89@winter.com</span></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
