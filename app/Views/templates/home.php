@@ -104,10 +104,10 @@
                 </div>
             </div>
         </div>
-        <Form id="form1" action="<?php echo base_url(); ?>/Home/Upload" method="POST" enctype="multipart/form-data">
+        <Form id="form1" action="/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data">
             <div class="mt-10 col-12 col-md-6">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
                     aria-describedby="inputGroupFileAddon01" class="single-input" onchange="readURL(this);">
                     <label class="custom-file-label" for="inputGroupFile01" >Choose file</label>
 
@@ -117,7 +117,7 @@
                     <img id="blah" src="<?php echo base_url();?>/assets/img/addiamge.PNG" />
             </div>
             <div class="mt-10 col-12 col-md-6">
-                <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
+                <input type="email" name="email" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
             </div>
 
             <div class="mt-10 col-12 col-md-6">

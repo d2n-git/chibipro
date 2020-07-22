@@ -13,7 +13,7 @@ class InSertUserModel extends Model
         $results = $db->table('users')->insert($this->GetData());
         return $results;
     }
-    public function SetData($data)
+    private function SetData($data)
     {
         $this->Name=$data['firstName'] ." ". $data['lastName'];
         $this->Permission=2;
@@ -38,5 +38,19 @@ class InSertUserModel extends Model
 
         ];
         return $data;
+    }
+    public function GetMaxIdUser()
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT IFNULL(MAX(idPictures), 0) AS MaxId FROM pictures' ;
+        $results = $db->query($sql)->getRowArray();
+        return $results['MaxId'] + 1;
+    }
+    public function GetUser($mail)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT * FROM users WHERE Email = ?' ;
+        $results = $db->query($sql,$mail)->getRowArray();
+        return $results;
     }
 }
