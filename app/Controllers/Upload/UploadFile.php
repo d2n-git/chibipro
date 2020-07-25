@@ -82,6 +82,17 @@ class UploadFile extends Controller
                     }
                     
                 }
+                else
+                {
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $modelPicture['idUser'] = (int)$resultUser['idUser'];
+                    $modelPicture['idStatusPicture'] = 1;
+                    $modelPicture['Name'] = $nameNewPicture;
+                    $modelPicture['NumberLike'] = 0;
+                    $modelPicture['DateUp'] = date('Y-m-d h:m:s');
+                    $modelPicture['StatusSendEmail'] = 0;
+                    $resultInsertPicture=$insertPicture->InSertPicture($modelPicture); 
+                }
             }
         }else{
             $alert->alert($MesError);
