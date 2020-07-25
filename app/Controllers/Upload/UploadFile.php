@@ -1,18 +1,18 @@
 <?php
-
 namespace App\Controllers\Upload;
 
 use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
+use App\Models\Pictures\InSertPictureModel;
 
 class UploadFile extends Controller
 {
-    // function index()
-    // {
-    //     $data['viewchild'] = './templates/TestUp';
-    //     return view('templates/base_view', $data);  
-    // }
+    function index()
+    {
+        // $data['viewchild'] = './templates/TestUp';
+        // return view('templates/base_view', $data);  
+    }
     function UpImagine()
     {
         $alert = new alert();
@@ -50,13 +50,37 @@ class UploadFile extends Controller
         }
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 1) {
-            $modelInsert = new InSertUserModel();
-            $result = $modelInsert->GetMaxIdUser();
-            if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $result . '_' . basename($_FILES["fileToUpload"]["name"]))) {
+            $modelInsertUser = new InSertUserModel();
+            $insertPicture=new InSertPictureModel();
+            $result = $insertPicture->GetMaxIdPictures();
+            $nameNewPicture =  $result . '_' . basename($_FILES["fileToUpload"]["name"]);
+            if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir .$nameNewPicture)) {
+                
                 $something = $this->request->getVar();
-                $resultUser = $modelInsert->GetUser($something['email']);
-                if (empty($resultUser)) {
-                    $modelInsert->InSertUsers($something);
+                $resultUser = $modelInsertUser->GetUser($something['email']);
+                if (empty($resultUser)) 
+                {
+                    helper('text');
+                    $passWord=random_string('alnum', 16);
+                    $something['firstName'] = '';
+                    $something['lastName'] = '';
+                    $something['txtEmpPhone'] = '';
+                    $something['txtAddress'] = '';
+                    $something['password']=$passWord;
+                    $something['Permission'] = 2;
+                    $resultInsertUser=$modelInsertUser->InSertUsers($something);
+                    if($resultInsertUser)
+                    {
+                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+                        $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
+                        $modelPicture['idStatusPicture'] = 1;
+                        $modelPicture['Name'] = $nameNewPicture;
+                        $modelPicture['NumberLike'] = 0;
+                        $modelPicture['DateUp'] = date('Y-m-d h:m:s');
+                        $modelPicture['StatusSendEmail'] = 0;
+                        $resultInsertPicture=$insertPicture->InSertPicture($modelPicture);
+                    }
+                    
                 }
             }
         }else{
