@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
 use App\Models\Pictures\InSertPictureModel;
+use App\Models\ReCaptcha;
 
 class UploadFile extends Controller
 {
@@ -21,6 +22,22 @@ class UploadFile extends Controller
         $uploadOk = 1;
         $MesError = '';
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        $reCaptcha = new ReCaptcha();
+		$response = null;
+		if ($this->request->getPost('g-recaptcha-response')) {
+			$response = $reCaptcha->verifyResponse(
+				$this->request->getServer('REMOTE_ADDR'),
+				$this->request->getPost('g-recaptcha-response')
+			);
+
+			if ($response != null && $response->success) {
+				$uploadOk = 1;
+			} else {
+                $MesError = "Click checkbox robot .";
+                $uploadOk = 0;
+			}
+		}
 
         // Check if image file is a actual image or fake image
         if (isset($_POST["submit"])) {
@@ -96,6 +113,7 @@ class UploadFile extends Controller
             }
         }else{
             $alert->alert($MesError);
+            return redirect()->to(base_url());
         }
     }
 }

@@ -23,3 +23,4 @@
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/bootstrap4.1.1/bootstrap.min.css">
     <!-- login css -->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/login.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/rating.min.css">

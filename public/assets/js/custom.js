@@ -271,34 +271,7 @@ inputNumber($('.input-number'));
   //   console.log(  $(this).innerHTML='Product Count: '+ a++ );
   // });
 
- var product_overview = $('#vertical');
- if(product_overview.length){
-  product_overview.lightSlider({
-    gallery:true,
-    item:1,
-    verticalHeight:450,
-    thumbItem:4,
-    slideMargin:0,
-    speed:600,
-    autoplay: true,
-    responsive : [
-      {
-          breakpoint:991,
-          settings: {
-              item:1,
-            }
-      },
-      {
-          breakpoint:576,
-          settings: {
-              item:1,
-              slideMove:1,
-              verticalHeight:350,
-            }
-      }
-  ]
-  });
- }
+ 
 
  
 

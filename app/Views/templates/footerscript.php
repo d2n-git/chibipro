@@ -23,6 +23,8 @@
     <script src="<?php echo base_url();?>/assets/js/mail-script.js"></script>
     <!-- custom js -->
     <script src="<?php echo base_url();?>/assets/js/custom.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/zoom.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/rating.min.js"></script>
     <script>
         function readURL(input) {
         if (input.files && input.files[0]) {
@@ -36,6 +38,10 @@
             };
 
             reader.readAsDataURL(input.files[0]);
+            }
         }
-    }
+    $(document).ready(function() {
+        $('#rateMe1').mdbRate();
+    });
+
     </script>

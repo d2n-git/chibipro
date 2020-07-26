@@ -20,9 +20,10 @@
       <div class="row s_product_inner">
         <div class="col-lg-5">
           <div class="product_slider_img">
+          <div id="overlay"></div>
             <div id="vertical">
               <div data-thumb="<?php echo base_url();?>/assets/img/3.jpg">
-                <img src="<?php echo base_url();?>/assets/img/3.jpg" />
+                <img src="<?php echo base_url();?>/assets/img/3.jpg" data-action="zoom">
               </div>
             </div>
           </div>
@@ -37,18 +38,13 @@
                   <span>Category</span> : Household</a>
               </li>
               <li>
-                <a href="#"> <span>Availibility</span> : In Stock</a>
+                <a href="#"> <span>Artist</span> : In Stock</a>
               </li>
             </ul>
             <p>
                 Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time.
             </p>
             <div class="card_area">
-              <div class="product_count d-inline-block">
-                <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                <input class="input-number" type="text" value="1" min="0" max="10">
-                <span class="number-increment"> <i class="ti-plus"></i></span>
-              </div>
               <div class="add_to_cart">
                   <a href="#" class="btn_3">BUY</a>
                   <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
@@ -199,51 +195,7 @@
                   </div>
                 </div>
                 <div class="col-6">
-                  <div class="rating_list">
-                    <h3>Based on 3 Reviews</h3>
-                    <ul class="list">
-                      <li>
-                        <a href="#">5 Star
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a>
-                      </li>
-                      <li>
-                        <a href="#">4 Star
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a>
-                      </li>
-                      <li>
-                        <a href="#">3 Star
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a>
-                      </li>
-                      <li>
-                        <a href="#">2 Star
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a>
-                      </li>
-                      <li>
-                        <a href="#">1 Star
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i> 01</a>
-                      </li>
-                    </ul>
-                  </div>
+                  
                 </div>
               </div>
               <div class="review_list">
@@ -310,39 +262,34 @@
                     ullamco laboris nisi ut aliquip ex ea commodo
                   </p>
                 </div>
+                <div class="review_item">
+                  <div class="media">
+                    <div class="d-flex">
+                      <img src="img/product/single-product/review-3.png" alt="" />
+                    </div>
+                    <div class="media-body">
+                      <h4>Blake Ruiz</h4>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo
+                  </p>
+                </div>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="review_box">
                 <h4>Add a Review</h4>
                 <p>Your Rating:</p>
-                <ul class="list">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-star"></i>
-                    </a>
-                  </li>
-                </ul>
+                <span id="rateMe1"></span>
                 <p>Outstanding</p>
                 <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate">
                   <div class="col-md-12">

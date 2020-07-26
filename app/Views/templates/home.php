@@ -62,18 +62,18 @@
                                 <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                                 <div class="hover_text">
                                     <p>Canvas</p>
-                                    <a href="<?php echo base_url();?>/detail"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
+                                    <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPicture']?>"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
                                     <div class="rate_icon">
-                                        <a href="#"> <i class="fas fa-star"></i> </a>
-                                        <a href="#"> <i class="fas fa-star"></i> </a>
-                                        <a href="#"> <i class="fas fa-star"></i> </a>
-                                        <a href="#"> <i class="fas fa-star"></i> </a>
-                                        <a href="#"> <i class="fas fa-star"></i> </a>
+                                        <a> <i class="fas fa-star"></i> </a>
+                                        <a> <i class="fas fa-star"></i> </a>
+                                        <a> <i class="fas fa-star"></i> </a>
+                                        <a> <i class="fas fa-star"></i> </a>
+                                        <a> <i class="fas fa-star"></i> </a>
                                     </div>
                                     <h5>$150</h5>
                                     <div class="social_icon">
                                         <a href="#"><i class="ti-heart"></i></a>
-                                        <a href="#"><i class="ti-bag"></i></a>
+                                        <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPicture']?>"><i class="ti-bag"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                 </div>
             </div>
         </div>
-        <Form id="form1" action="/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data">
+        <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data">
             <div class="mt-10 col-12 col-md-6">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
