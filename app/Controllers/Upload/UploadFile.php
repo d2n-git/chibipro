@@ -7,6 +7,7 @@ use App\Libraries\alert;
 use App\Libraries\ConfigEmail;
 use App\Models\Pictures\InSertPictureModel;
 use App\Models\ReCaptcha;
+use Exception;
 
 class UploadFile extends Controller
 {
@@ -67,11 +68,14 @@ class UploadFile extends Controller
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 1) {
+        if ($uploadOk == 1) 
+        {
             $modelInsertUser = new InSertUserModel();
             $insertPicture=new InSertPictureModel();
             $result = $insertPicture->GetMaxIdPictures();
             $nameNewPicture =  $result . '_' . basename($_FILES["fileToUpload"]["name"]);
+            try
+            {
             if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir .$nameNewPicture)) {
                 
                 $something = $this->request->getVar();
@@ -112,6 +116,11 @@ class UploadFile extends Controller
                     $resultInsertPicture=$insertPicture->InSertPicture($modelPicture); 
                 }
             }
+            }catch(Exception $e)
+             {
+                 $alert->alert( $e->getMessage());
+                return redirect()->to(base_url());
+             }
         }else{
             $alert->alert($MesError);
             return redirect()->to(base_url());
