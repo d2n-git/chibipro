@@ -13,6 +13,7 @@ class CheckUser extends Model
         $db = \Config\Database::connect();
         $sql = 'SELECT * FROM users WHERE Email = ? AND Password = ?';
         $result = $db->query($sql, [$data['Email'],md5($Password)])->getRowArray();
+        $db->close();
         return $result;
     }
 }
