@@ -62,7 +62,7 @@
                                 <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
                                 <div class="hover_text">
                                     <p>Canvas</p>
-                                    <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPicture']?>"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
+                                    <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
                                     <div class="rate_icon">
                                         <a> <i class="fas fa-star"></i> </a>
                                         <a> <i class="fas fa-star"></i> </a>
@@ -73,7 +73,7 @@
                                     <h5>$150</h5>
                                     <div class="social_icon">
                                         <a href="#"><i class="ti-heart"></i></a>
-                                        <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPicture']?>"><i class="ti-bag"></i></a>
+                                        <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
                                     </div>
                                 </div>
                             </div>

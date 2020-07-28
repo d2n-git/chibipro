@@ -14,7 +14,7 @@ use CodeIgniter\Model;
 
         public function getAllPicture($offset){
             $db = \Config\Database::connect();
-            $sql="SELECT pictures.idPicture, pictures.Name,pictures.NumberLike, users.Name AS userName FROM pictures INNER JOIN users ON pictures.idUser = users.idUsers ORDER BY NumberLike LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
+            $sql="SELECT pictures.idPictures, pictures.Name,pictures.NumberLike, users.Name AS userName FROM pictures INNER JOIN users ON pictures.idUser = users.idUser ORDER BY NumberLike LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;
@@ -22,7 +22,7 @@ use CodeIgniter\Model;
 
         public function getAllPictureCount(){
             $db = \Config\Database::connect();
-            $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUsers ORDER BY NumberLike';
+            $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser ORDER BY NumberLike';
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;
