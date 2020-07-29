@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="mt-10 col-12 col-md-6 align-items-center">
-                <input type="submit" class="btn btn-primary" value="Submit" />
+                <input type="button" class="btn btn-primary" value="Submit" onclick="submitUpload();"/>
             </div>
         </Form>
     </div>
@@ -164,4 +164,46 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <span id="message-error"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!--::subscribe_area part end::-->
+<script>
+    function submitUpload(){
+        var form = $('#form1');
+        $.ajax({
+            url: '<?php echo base_url();?>/Upload/UploadFile/UpImagine',
+            data: form,
+            type: 'POST',
+            contentType: false,
+            processData: false, 
+            success : function(data){
+                let response = JSON.parse(data);
+                $('#message-error').html(response.message);
+                $('#messageModal').modal('show');
+                grecaptcha.reset();
+                if(response.status == 1){
+                    $('#form1').trigger("reset");
+                    $('#areaupload').attr('hidden',true);
+
+                }
+            }
+        });
+    }
+</script>
