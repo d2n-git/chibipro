@@ -4,8 +4,10 @@ namespace App\Controllers\Upload;
 use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
+use App\Libraries\ConfigEmail;
 use App\Models\Pictures\InSertPictureModel;
 use App\Models\ReCaptcha;
+use Exception;
 
 class UploadFile extends Controller
 {
@@ -66,11 +68,14 @@ class UploadFile extends Controller
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 1) {
+        if ($uploadOk == 1) 
+        {
             $modelInsertUser = new InSertUserModel();
             $insertPicture=new InSertPictureModel();
             $result = $insertPicture->GetMaxIdPictures();
             $nameNewPicture =  $result . '_' . basename($_FILES["fileToUpload"]["name"]);
+            try
+            {
             if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir .$nameNewPicture)) {
                 
                 $something = $this->request->getVar();
@@ -88,7 +93,8 @@ class UploadFile extends Controller
                     $resultInsertUser=$modelInsertUser->InSertUsers($something);
                     if($resultInsertUser)
                     {
-                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+                        $sendMail=new ConfigEmail();
+                        $sendMail->SendEmail('Password login :'.$passWord.'\r\n Lest go link : https://www.google.com/','Send Password',$something['email']);
                         $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;
@@ -101,7 +107,6 @@ class UploadFile extends Controller
                 }
                 else
                 {
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
                     $modelPicture['idUser'] = (int)$resultUser['idUser'];
                     $modelPicture['idStatusPicture'] = 1;
                     $modelPicture['Name'] = $nameNewPicture;
@@ -111,8 +116,15 @@ class UploadFile extends Controller
                     $resultInsertPicture=$insertPicture->InSertPicture($modelPicture); 
                 }
             }
+            }catch(Exception $e)
+             {
+                $json = ["message"=>$MesError , "status" => $uploadOk];
+                echo json_encode($json);
+             }
+        }else{
+            $json = ["message"=>$MesError , "status" => $uploadOk];
+             echo json_encode($json);
         }
-        $json = ["message"=>$MesError , "status" => $uploadOk];
-        echo json_encode($json);
+        
     }
 }
