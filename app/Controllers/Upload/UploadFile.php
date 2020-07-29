@@ -111,9 +111,8 @@ class UploadFile extends Controller
                     $resultInsertPicture=$insertPicture->InSertPicture($modelPicture); 
                 }
             }
-        }else{
-            $alert->alert($MesError);
-            return redirect()->to(base_url());
         }
+        $json = ["message"=>$MesError , "status" => $uploadOk];
+        echo json_encode($json);
     }
 }
