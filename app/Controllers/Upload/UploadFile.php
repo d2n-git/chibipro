@@ -94,7 +94,7 @@ class UploadFile extends Controller
                     if($resultInsertUser)
                     {
                         $sendMail=new ConfigEmail();
-                        $sendMail->SendEmail('Password login :'.$passWord.'\r\n Lest go link : https://www.google.com/','Send Password',$something['email']);
+                        $sendMail->SendEmail('Password login :'.$passWord. ' Lest go link : https://www.google.com/','Send Password',$something['email']);
                         $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;
