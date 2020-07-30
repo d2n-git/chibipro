@@ -21,13 +21,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/banner_img.png">
+                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/1.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/banner_img.png">
+                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/4.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/banner_img.png">
+                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/3.jpg">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -59,7 +59,7 @@
                         <?php foreach($pictures as $value){
                         ?>
                             <div class="single_arrivel_item col-md-3">
-                                <img src="<?php echo base_url();?>/assets/img/3.jpg" alt="#">
+                                <img src="<?php echo base_url();?>/assets/img/picture/4.jpg" alt="#">
                                 <div class="hover_text">
                                     <p>Canvas</p>
                                     <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
@@ -104,7 +104,7 @@
                 </div>
             </div>
         </div>
-        <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data">
+        <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data" onsubmit="submitUpload(this);">
             <div class="mt-10 col-12 col-md-6">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
@@ -114,10 +114,10 @@
                 </div>
             </div>
             <div class=" col-12 col-md-6" style="margin-top: 10px;" hidden id="areaupload">
-                    <img id="blah" src="<?php echo base_url();?>/assets/img/addiamge.PNG" />
+                    <img id="blah" />
             </div>
             <div class="mt-10 col-12 col-md-6">
-                <input type="email" name="email" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
+                <input id="email" type="email" name="email" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
             </div>
 
             <div class="mt-10 col-12 col-md-6">
@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="mt-10 col-12 col-md-6 align-items-center">
-                <input type="button" class="btn btn-primary" value="Submit" onclick="submitUpload();"/>
+                <input type="submit" class="btn btn-primary" value="Submit" />
             </div>
         </Form>
     </div>
@@ -140,23 +140,23 @@
             <div class="col-lg-12">
                 <div class="instagram_photo_iner">
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                 </div>
@@ -185,12 +185,13 @@
 </div>
 <!--::subscribe_area part end::-->
 <script>
-    function submitUpload(){
-        var form = $('#form1');
+    function submitUpload(e){
+            event.preventDefault();
+            var formData = new FormData(e);
         $.ajax({
             url: '<?php echo base_url();?>/Upload/UploadFile/UpImagine',
-            data: form,
-            type: 'POST',
+            data: formData,
+            type: "POST",
             contentType: false,
             processData: false, 
             success : function(data){
@@ -205,5 +206,6 @@
                 }
             }
         });
+            return false;
     }
 </script>
