@@ -14,7 +14,7 @@ use CodeIgniter\Model;
 
         public function getAllPicture($offset){
             $db = \Config\Database::connect();
-            $sql="SELECT pictures.idPictures, pictures.Name,pictures.NumberLike, users.Name AS userName FROM pictures INNER JOIN users ON pictures.idUser = users.idUser ORDER BY NumberLike LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
+            $sql="SELECT pictures.idPictures, pictures.Name,pictures.NumberLike, users.Name AS userName FROM pictures INNER JOIN users ON pictures.idUser = users.idUser ORDER BY NumberLike DESC LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;

@@ -59,7 +59,7 @@
                         <?php foreach($pictures as $value){
                         ?>
                             <div class="single_arrivel_item col-md-3">
-                                <img src="<?php echo base_url();?>/assets/img/picture/4.jpg" alt="#">
+                                <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
                                 <div class="hover_text">
                                     <p>Canvas</p>
                                     <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><h3>Lorem Canvas Low-Top Sneaker</h3></a>

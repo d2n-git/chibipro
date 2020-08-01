@@ -8365,3 +8365,9 @@ img.zoom-img {
 }
 
 .amber-text{color:#ffc107}
+
+.new_arrival .single_arrivel_item:hover .hover_text {
+  top: 10% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
