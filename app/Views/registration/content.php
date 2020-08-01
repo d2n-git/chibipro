@@ -48,7 +48,7 @@
                                            <div class="form-group">
                                                <input type="text" minlength="10" maxlength="10" name="txtAddress" class="form-control" placeholder="Your Address " value="" />
                                            </div>
-                                           <input id="btn_Register" type="button" class="btnRegister" value="Register" name="btnSubmit" />
+                                           <input id="btn_Register" type="submit" class="btnRegister" value="Register" name="btnSubmit" />
                                        </div>
                                    </div>
                                </form>
