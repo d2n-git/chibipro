@@ -16,9 +16,9 @@ class registration extends Controller
     }
 
     public function InSertUser()
-    { 
+    {
         $something = $this->request->getVar();
-        $alert=new alert();
+        $alert = new alert();
         if ($something != NULL) {
             $this->CheckValidate();
             if (!$this->validate([])) {
@@ -27,14 +27,16 @@ class registration extends Controller
                     if ($something['password'] == $something['confirmPassword']) {
                         $model = new InSertUserModel();
                         $result = $model->InSertUsers($something);
-                        if ($result)
-                         {
+                        if ($result) {
                             $alert->alert("User saved Success");
                             $data['viewchild'] = 'templates/home';
-                            return view('templates/base_view',$data);
+                            return view('templates/base_view', $data);
                         }
-                    } else
+                    } else {
                         $alert->alert('The two passwords not match');
+                        $data['viewchild'] = './registration/content';
+                        return view('templates/base_view', $data);
+                    }
                 } else {
                     $data['viewchild'] = './registration/content';
                     $data['validation'] = $error;

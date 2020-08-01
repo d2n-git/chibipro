@@ -24,3 +24,5 @@
     <!-- login css -->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/login.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/rating.min.css">
+     <!-- Query js -->
+    <script src="<?php echo base_url();?>/assets/js/jquery.min.js"></script>
