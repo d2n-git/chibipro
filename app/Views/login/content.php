@@ -14,6 +14,9 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
         </form><!-- /form -->
+        <a href="<?php echo base_url();?>/Users/registration" >
+        <button  class="btn btn-lg btn-primary btn-block btn-signin" type="button">Registration</button>
+        </a>
         <a href="#" class="forgot-password">
             Forgot the password?
         </a>
