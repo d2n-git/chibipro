@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="<?php echo base_url();?>/painter/painter">News</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
+                                    <a class="nav-link" href="<?php echo base_url();?>/Contact">Contact</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo base_url();?>/#submit">ChipiPro +</a>
