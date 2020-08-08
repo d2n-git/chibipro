@@ -4,5 +4,9 @@ class Detail extends BaseController{
         $data['viewchild'] = 'detail/detail';
 		return view('templates/base_view',$data);
     }
+
+    public function review(){
+        $this->request->getPost();
+    }
 }
 ?>

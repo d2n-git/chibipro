@@ -4,7 +4,7 @@ use CodeIgniter\Model;
     class PictureModel extends Model{
         
         protected $table      = 'pictures';
-        protected $primaryKey = 'idPicture';
+        protected $primaryKey = 'idPictures';
 
         protected $returnType     = 'array';
 
@@ -26,6 +26,14 @@ use CodeIgniter\Model;
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;
+        }
+
+        public function updateNumberLike($idPicture){
+            $db = \Config\Database::connect();
+            $sql='UPDATE pictures SET NumberLike = NumberLike + 1 WHERE idPictures = ' . $idPicture;
+            $result = $db->query($sql)->connID->affected_rows;
+            $db->close();
+            return $result > 0;
         }
     }
 ?>

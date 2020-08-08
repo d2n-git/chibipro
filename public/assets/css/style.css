@@ -8371,3 +8371,17 @@ img.zoom-img {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+.area-radio{
+    height: 50px;
+    width: 100px;
+    background-color: #f5f5f5;
+}
+.mar-5{
+  margin-left: 5px;
+}
+.text-contact{
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;;
+}
