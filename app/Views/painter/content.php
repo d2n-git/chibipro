@@ -26,9 +26,11 @@
                                              </td>
                                              <td style="width: 90%;">
                                                  <div>
-                                                     Chủ nhân : HLV Park
-                                                     <br>
-                                                     Update : 05/05/2020
+                                                     <h6>
+                                                         Chủ nhân : HLV Park
+                                                         <br>
+                                                         Update : 05/05/2020
+                                                     </h6>
                                                  </div>
 
                                              </td>
@@ -102,9 +104,11 @@
                                              </td>
                                              <td style="width: 90%;">
                                                  <div>
-                                                     Chủ nhân : HLV Park
-                                                     <br>
-                                                     Update : 05/05/2020
+                                                     <h6>
+                                                         Chủ nhân : HLV Park
+                                                         <br>
+                                                         Update : 05/05/2020
+                                                     </h6>
                                                  </div>
 
                                              </td>
