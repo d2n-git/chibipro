@@ -22,8 +22,8 @@
           <div class="product_slider_img">
           <div id="overlay"></div>
             <div id="vertical">
-              <div data-thumb="<?php echo base_url();?>/assets/img/3.jpg">
-                <img src="<?php echo base_url();?>/assets/img/3.jpg" data-action="zoom">
+              <div data-thumb="<?php echo base_url();?>/assets/img/image4.jpg">
+                <img src="<?php echo base_url();?>/assets/img/image4.jpg" data-action="zoom">
               </div>
             </div>
           </div>
@@ -291,29 +291,29 @@
                 <p>Your Rating:</p>
                 <span id="rateMe1"></span>
                 <p>Outstanding</p>
-                <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate">
+                <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate" id="form-review">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="name" placeholder="Your Full name" />
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name" />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="email" class="form-control" name="email" placeholder="Email Address" />
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="number" placeholder="Phone Number" />
+                      <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number" />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <textarea class="form-control" name="message" rows="1" placeholder="Review"></textarea>
+                      <textarea class="form-control" id="review-content" name="message" rows="1" placeholder="Review"></textarea>
                     </div>
                   </div>
                   <div class="col-md-12 text-right">
-                    <button type="submit" value="submit" class="btn_3">
+                    <button type="button" value="submit" class="btn_3" onclick="sendReview();">
                       Submit Now
                     </button>
                   </div>
@@ -325,3 +325,29 @@
       </div>
     </div>
   </section>
+
+  <script>
+    function sendReview(){
+      let rate = $('#rateMe1').find('.amber-text');
+      let name = $('#name').val();
+      let email = $('#email').val();
+      let number = $('#number').val();
+      let review = $('#review-content').val();
+      const data = {
+        rate : rate.length,name,email,number,review
+      };
+      $.ajax({
+            url: '<?php echo base_url();?>/Detail/review',
+            type : "post",
+            dataType:'json',
+            data : data,
+            success : function(data) {
+                alert(data.message);
+            },
+            error : function(data) {
+                // do something
+            }
+        });
+
+    }
+  </script>

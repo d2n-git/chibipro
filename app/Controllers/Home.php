@@ -19,6 +19,13 @@ class Home extends BaseController
 		$data['pictures'] = $pictures;
 		return view('templates/base_view',$data);
 	}
-	//--------------------------------------------------------------------
+
+	public function likeImage(){
+		$pictureModel = new PictureModel();
+		$id = $this->request->getPost('idPicture');
+		$result = $pictureModel->updateNumberLike($id);
+		$json = ["message" => $result ? "Thank you!" : "error"];
+		echo json_encode($json);
+	}
 
 }

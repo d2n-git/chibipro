@@ -44,4 +44,22 @@
         $('#rateMe1').mdbRate();
     });
 
+    function likeImage(idPicture){
+        let data = {
+            idPicture : idPicture
+        }
+        $.ajax({
+            url : "<?php echo base_url(); ?>/Home/likeImage",
+            type : "post",
+            dataType:'json',
+            data : data,
+            success : function(data) {
+                alert(data.message);
+            },
+            error : function(data) {
+                // do something
+        }
+    });
+    }
+
     </script>

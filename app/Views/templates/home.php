@@ -61,8 +61,7 @@
                             <div class="single_arrivel_item col-md-3">
                                 <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
                                 <div class="hover_text">
-                                    <p>Canvas</p>
-                                    <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><h3>Lorem Canvas Low-Top Sneaker</h3></a>
+                                    <a href="#"><h3><?php echo $value['userName']?></h3></a>
                                     <div class="rate_icon">
                                         <a> <i class="fas fa-star"></i> </a>
                                         <a> <i class="fas fa-star"></i> </a>
@@ -72,7 +71,7 @@
                                     </div>
                                     <h5>$150</h5>
                                     <div class="social_icon">
-                                        <a href="#"><i class="ti-heart"></i></a>
+                                        <a  onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
                                         <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
                                     </div>
                                 </div>
@@ -132,6 +131,30 @@
     </div>
 </section>
 <!-- free shipping end -->
+
+<!-- Contact-->
+<section class="new_arrival section_padding" style="background-color: #f4f4f4;">
+    <div class="container">
+        <div class="arrival_tittle">
+            <h2>Contact</h2>
+        </div>
+        <div class="row">
+        <div class="col-lg-6 ">
+            <div class="text-contact">
+          <h2>Something's wrong here...</h2>
+          <p>We can't find the page you're looking for. Check out our <br> Help Center or head back to home.</p>
+          <a href="<?php echo base_url();?>/Contact" class="genric-btn primary">Help</a>
+          <a href="<?php echo base_url();?>" class="genric-btn primary-border">Home</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+        <img class="d-block w-100 h-60" src="<?php echo base_url(); ?>/assets/img/contact.jpg" >
+        </div>
+        </div>
+    </div>
+</section>
+<br>
+<!--End Contact-->
 
 <!-- subscribe_area part start-->
 <section class="instagram_photo">
