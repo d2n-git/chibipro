@@ -37,10 +37,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/5.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/5.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
@@ -105,10 +105,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
@@ -173,10 +173,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
@@ -241,10 +241,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
@@ -309,10 +309,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
@@ -377,10 +377,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
@@ -445,10 +445,10 @@
                          </tr>
                          <tr>
                              <td style="width: 70%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:300px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                              <td style="width: 30%;">
-                                 <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
+                                 <img style="width: 100%;height:150px;" src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="#">
                              </td>
                          </tr>
                          <tr>
