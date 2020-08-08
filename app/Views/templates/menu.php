@@ -21,6 +21,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Contact</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo base_url();?>/#submit">ChipiPro +</a>
+                                </li>
                             </ul>
                         </div>
                         <div class="hearer_icon d-flex">

@@ -48,6 +48,18 @@
                                            <div class="form-group">
                                                <input type="text" minlength="10" maxlength="10" name="txtAddress" class="form-control" placeholder="Your Address " value="" />
                                            </div>
+                                           <div class="form-group">
+                                               <div class="maxl">
+                                                   <label class="radio inline">
+                                                       <input type="radio" name="user" value="user" checked>
+                                                       <span> User </span>
+                                                   </label>
+                                                   <label class="radio inline">
+                                                       <input type="radio" name="painter" value="painter">
+                                                       <span>Painter </span>
+                                                   </label>
+                                               </div>
+                                           </div>
                                            <input id="btn_Register" type="submit" class="btnRegister" value="Register" name="btnSubmit" />
                                        </div>
                                    </div>
