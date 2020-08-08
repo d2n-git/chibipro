@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="#">News</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
+                                    <a class="nav-link" href="<?php echo base_url();?>/Contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
