@@ -28,3 +28,5 @@
     <script src="<?php echo base_url();?>/assets/js/jquery.min.js"></script>
      <!-- painter css -->
      <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/painter.css">
+    <!-- detail css -->
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/Detail.css">

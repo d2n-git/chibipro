@@ -14,8 +14,8 @@ class UploadFile extends Controller
 {
     function index()
     {
-        // $data['viewchild'] = './templates/TestUp';
-        // return view('templates/base_view', $data);  
+         $data['viewchild'] = './templates/detailFile';
+         return view('templates/base_view', $data);  
     }
     function UpImagine()
     {
