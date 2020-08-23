@@ -1,12 +1,12 @@
-.detail{
+.confirm{
     /* background: -webkit-linear-gradient(left, #3931af, #00c6ff); */
     margin-top: 3%;
     padding: 3%;
 }
-.detail-left{
+.confirm-left{
     text-align: center;
 }
-.detail-left input{
+.confirm-left input{
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
@@ -18,10 +18,10 @@
     margin-bottom: 3%;
     cursor: pointer;
 }
-.detail-right{
+.confirm-right{
     background: #f8f9fa;
 }
-.detail-left img{
+.confirm-left img{
     margin-top: 5%;
     margin-bottom: 5%;
     width: 100%;
@@ -37,16 +37,16 @@
     0% { transform: translateY(0); }
     100% { transform: translateY(-20px); }
 }
-.detail-left p{
+.confirm-left p{
     font-weight: lighter;
     padding: 12%;
     margin-top: -9%;
 }
-.detail .detail-form{
+.confirm .confirm-form{
     padding: 10%;
     margin-top: 10%;
 }
-.btndetail{
+.btnconfirm{
     float: right;
     margin-top: 10%;
     border: none;
@@ -58,7 +58,7 @@
     width: 50%;
     cursor: pointer;
 }
-.detail .nav-tabs{
+.confirm .nav-tabs{
     margin-top: 3%;
     border: none;
     background: #0062cc;
@@ -66,7 +66,7 @@
     width: 28%;
     float: right;
 }
-.detail .nav-tabs .nav-link{
+.confirm .nav-tabs .nav-link{
     padding: 2%;
     height: 34px;
     font-weight: 600;
@@ -74,17 +74,17 @@
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
 }
-.detail .nav-tabs .nav-link:hover{
+.confirm .nav-tabs .nav-link:hover{
     border: none;
 }
-.detail .nav-tabs .nav-link.active{
+.confirm .nav-tabs .nav-link.active{
     width: 100px;
     color: #0062cc;
     border: 2px solid #0062cc;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
 }
-.detail-heading{
+.confirm-heading{
     text-align: center;
     margin-top: 8%;
     margin-bottom: -15%;
@@ -103,7 +103,7 @@
     height: 70px;
     width: 140px;
 }
-.btnDetail{
+.btnFinish{
     float: left;
     margin-top: 10%;
     border: none;
@@ -114,4 +114,20 @@
     font-weight: 600;
     width: 50%;
     cursor: pointer;
+}
+.btnDownload{
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.textAreaStyle{
+    align-content:center; 
+    overflow:auto; 
+    border:1px outset #000000;
 }
