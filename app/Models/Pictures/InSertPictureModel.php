@@ -46,4 +46,12 @@ class InSertPictureModel extends Model
         $db->close();
         return $results['MaxId'] + 1;
     }
+    public function GetPictureById($id)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT * FROM pictures WHERE idPictures = ?';
+        $results = $db->query($sql,[$id])->getRowArray();
+        $db->close();
+        return $results; 
+    }
 }
