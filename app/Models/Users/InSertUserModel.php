@@ -56,4 +56,12 @@ class InSertUserModel extends Model
         $db->close();
         return $results;
     }
+    public function GetUserById($id)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT * FROM users WHERE idUser = ?' ;
+        $results = $db->query($sql,$id)->getRowArray();
+        $db->close();
+        return $results;
+    }
 }

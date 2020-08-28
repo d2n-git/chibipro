@@ -40,7 +40,7 @@
                                        </div>
                                        <div class="col-md-6">
                                            <div class="form-group">
-                                               <input type="email" class="form-control" required name="email" placeholder="Your Email *" value="" />
+                                               <input type="email" class="form-control" required name="email" placeholder="Your Email *" value=<?php echo $user['Email'] ?> />
                                            </div>
                                            <div class="form-group">
                                                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="" />

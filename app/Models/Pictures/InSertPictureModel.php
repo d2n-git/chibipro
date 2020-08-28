@@ -54,4 +54,12 @@ class InSertPictureModel extends Model
         $db->close();
         return $results; 
     }
+    public function GetIdUser($id)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT * FROM pictures WHERE idPictures = ?';
+        $results = $db->query($sql,[$id])->getRowArray();
+        $db->close();
+        return $results['idUser']; 
+    }
 }

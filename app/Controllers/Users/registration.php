@@ -5,12 +5,21 @@ namespace App\Controllers\Users;
 use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
+use App\Models\Pictures\InSertPictureModel;
 
 class registration extends Controller
 {
 
     public function index()
     {
+        $id = $this->request->getGet('id');
+        if(!empty($id))
+        {
+            $modePicture = new InSertPictureModel();
+            $modeUser = new InSertUserModel();
+            $idUser = $modePicture->GetIdUser($id);
+            $data['user'] = $modeUser->GetUserById( $idUser);
+        }else  $data['user'] = ['Email'=> null];
         $data['viewchild'] = './registration/content';
         return view('templates/base_view', $data);
     }

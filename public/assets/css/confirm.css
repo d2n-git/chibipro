@@ -25,7 +25,7 @@
     margin-top: 5%;
     margin-bottom: 5%;
     width: 100%;
-    height: 70%;
+    height: 60%;
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 1s infinite  alternate;
 }

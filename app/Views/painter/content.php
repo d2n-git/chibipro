@@ -100,7 +100,7 @@
                  window.location.href = "confirm?id=" + id[0] + "";
                  break;
              case 'edit':
-                 // code block
+                window.location.assign("/Users/registration?id=" + id[0] + "")
                  break;
              default:
                  // code block
