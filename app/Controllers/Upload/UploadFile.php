@@ -25,6 +25,9 @@ class UploadFile extends Controller
         $uploadOk = 1;
         $MesError = '';
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $insertPicture = new InSertPictureModel();
+        $result = $insertPicture->GetMaxIdPictures();
+        $nameNewPicture =  $result . '_' . basename($_FILES["fileToUpload"]["name"]);
 
         $reCaptcha = new ReCaptcha();
         $response = null;
@@ -51,7 +54,7 @@ class UploadFile extends Controller
             }
         }
         // Check if file already exists
-        if (file_exists($target_file)) {
+        if (file_exists($nameNewPicture)) {
             $MesError = $MesError . "File already exists.";
             $uploadOk = 0;
         }
@@ -71,9 +74,6 @@ class UploadFile extends Controller
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 1) {
             $modelInsertUser = new InSertUserModel();
-            $insertPicture = new InSertPictureModel();
-            $result = $insertPicture->GetMaxIdPictures();
-            $nameNewPicture =  $result . '_' . basename($_FILES["fileToUpload"]["name"]);
             try {
                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture)) {
                     $something = $this->request->getVar();
