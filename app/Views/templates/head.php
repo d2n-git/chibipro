@@ -29,6 +29,6 @@
      <!-- painter css -->
      <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/painter.css">
     <!-- detail css -->
-    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/Detail.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/detail.css">
      <!-- confirm css -->
      <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/confirm.css">
