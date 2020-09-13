@@ -19,7 +19,7 @@ class registration extends Controller
             $modeUser = new InSertUserModel();
             $idUser = $modePicture->GetIdUser($id);
             $data['user'] = $modeUser->GetUserById( $idUser);
-        }else  $data['user'] = ['Email'=> null];
+        }else  $data['user'] = ['Email'=> null,'Permission'=> null];
         $data['viewchild'] = './registration/content';
         return view('templates/base_view', $data);
     }
@@ -34,8 +34,16 @@ class registration extends Controller
                 $error = $this->validator;
                 if ($error->getErrors() == null) {
                     if ($something['password'] == $something['confirmPassword']) {
+                        $something['user'] == 'painter' ? $something['Permission'] = 1 : $something['Permission'] = 2;
                         $model = new InSertUserModel();
-                        $result = $model->InSertUsers($something);
+                        if($something['btnSubmit'] == 'Modify')
+                        {
+                            $result=false;
+                        }
+                        else
+                        {
+                            $result = $model->InSertUsers($something);
+                        }
                         if ($result) {
                             $alert->alert("User saved Success");
                             $data['viewchild'] = 'templates/home';

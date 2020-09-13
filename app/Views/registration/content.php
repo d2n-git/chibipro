@@ -40,7 +40,12 @@
                                        </div>
                                        <div class="col-md-6">
                                            <div class="form-group">
-                                               <input type="email" class="form-control" required name="email" placeholder="Your Email *" value=<?php echo $user['Email'] ?> />
+                                               <?php
+                                                if (empty($user['Email']))
+                                                    echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '' />";
+                                                else
+                                                    echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '" . $user["Email"] . "' />";
+                                                ?>
                                            </div>
                                            <div class="form-group">
                                                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="" />
@@ -51,16 +56,21 @@
                                            <div class="form-group">
                                                <div class="maxl">
                                                    <label class="radio inline">
-                                                       <input type="radio" name="user" value="user" checked>
+                                                       <input type="radio" name="user" value="user" <?php $user["Permission"] != 1  ? print "checked" : null ?>>
                                                        <span> User </span>
                                                    </label>
                                                    <label class="radio inline">
-                                                       <input type="radio" name="painter" value="painter">
+                                                       <input type="radio" name="user" value="painter" <?php $user["Permission"] == 1  ? print "checked" : null ?>>
                                                        <span>Painter </span>
                                                    </label>
                                                </div>
                                            </div>
-                                           <input id="btn_Register" type="submit" class="btnRegister" value="Register" name="btnSubmit" />
+                                           <?php
+                                            if (empty($user['Email']))
+                                                echo  " <input id='btn_Register' type='submit' class='btnRegister' value='Register' name='btnSubmit' />";
+                                            else
+                                                echo  " <input id='btn_Register' type='submit' class='btnRegister' value='Modify' name='btnSubmit' />";
+                                            ?>
                                        </div>
                                    </div>
                                </form>
