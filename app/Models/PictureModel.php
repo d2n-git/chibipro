@@ -20,6 +20,14 @@ use CodeIgniter\Model;
             return $result;
         }
 
+        public function getPictureById($id){
+            $db = \Config\Database::connect();
+            $sql="SELECT pictures.idPictures, pictures.Name, users.Name AS userName, pictures.MaxPrice, pictures.Title FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE pictures.idPictures = " . $id;
+            $result =  $db->query($sql)->getFirstRow();
+            $db->close();
+            return $result;
+        }
+
         public function getAllPictureCount(){
             $db = \Config\Database::connect();
             $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser ORDER BY NumberLike';
