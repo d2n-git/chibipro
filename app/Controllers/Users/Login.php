@@ -23,6 +23,7 @@ class login extends Controller
                 $newdata = [
                     'password'  => $result['Password'],
                     'email'     => $result['Email'],
+                    'idUser'    => $result['idUser'],
                     'logged_in' => TRUE
             ];
             $session->set($newdata);
@@ -33,6 +34,7 @@ class login extends Controller
                 $newdata = [
                     'password'  => '',
                     'email'     => '',
+                    'idUser'    => '',
                     'logged_in' => FALSE
             ];
             $session->set($newdata);

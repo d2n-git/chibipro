@@ -8,7 +8,7 @@
         <div class=" col-lg-9 col-md-9 confirm-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="/Users/registration/InSertUser" method="post" style="margin-top: 10px;">
+                    <form action="/Painter/confirm/confirmPainter?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px;">
                         <div class="row register-form">
                             <div class="col-md-3">
                                 <h6>Giá tiêu chuẩn</h6>
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                   <h6>150</h6>
+                                    <h6>150</h6>
                                 </div>
                             </div>
                         </div>
@@ -50,39 +50,38 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row register-form margin-10px" >
+                        <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Ngày hoàn thành</h6>
 
                             </div>
                             <div class="col-md-9">
-                                <h6>20/10/2020</h6>
-
+                                <input type="date" id="start" name="dateExpiry" value="2020-07-22" min="2020-01-01" max="2030-12-31">
                             </div>
                         </div>
-                        <div class="row register-form margin-10px" >
+                        <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Chi tiết phụ</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea  name="form-control" id="" cols="60" rows="2" class="textAreaStyle" readonly>Đang tắm biển
+                                <textarea name="form-control" id="" cols="60" rows="2" class="textAreaStyle" readonly>Đang tắm biển
 Hình nền theo yêu cầu
                                 </textarea>
                             </div>
                         </div>
-                        <div class="row register-form margin-10px" >
+                        <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="form-control" id="" cols="60" rows="5" class="textAreaStyle" ></textarea>
+                                <textarea name="note" id="" cols="60" rows="5" class="textAreaStyle"></textarea>
                             </div>
                         </div>
-                        <div class="row register-form margin-10px" >
+                        <div class="row register-form margin-10px">
                             <div class="col-md-6">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                            <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" />
+                                <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" />
                             </div>
                         </div>
                     </form>

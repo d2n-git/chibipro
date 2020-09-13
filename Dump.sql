@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `chibipro` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `chibipro`;
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
 -- Host: localhost    Database: chibipro
@@ -34,29 +32,10 @@ CREATE TABLE `confirmofpainter` (
   `Note` varchar(355) DEFAULT NULL,
   PRIMARY KEY (`idConfirmOfPainter`),
   KEY `idPicture_1` (`idPicture`),
-  CONSTRAINT `idPainter` FOREIGN KEY (`idConfirmOfPainter`) REFERENCES `painter` (`idpainter`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `idPainter_3` (`idPainter`),
+  CONSTRAINT `idPainter_3` FOREIGN KEY (`idPainter`) REFERENCES `users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idPicture_1` FOREIGN KEY (`idPicture`) REFERENCES `pictures` (`idPictures`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `painter`
---
-
-DROP TABLE IF EXISTS `painter`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `painter` (
-  `idpainter` int(11) NOT NULL,
-  `Name` varchar(45) CHARACTER SET utf8mb4 NOT NULL,
-  `DateOfBirth` date DEFAULT NULL,
-  `Address` varchar(60) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Password` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `Description` varchar(335) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `IDConfirmOfPainter` int(11) NOT NULL,
-  `Email` varchar(45) CHARACTER SET utf8mb4 NOT NULL,
-  PRIMARY KEY (`idpainter`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,4 +132,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-30 16:11:28
+-- Dump completed on 2020-09-13 17:37:39
