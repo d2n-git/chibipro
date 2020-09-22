@@ -38,7 +38,7 @@ class registration extends Controller
                         $model = new InSertUserModel();
                         if($something['btnSubmit'] == 'Modify')
                         {
-                            $result=false;
+                            $result = $model->UpdateUsers($something);
                         }
                         else
                         {
@@ -46,23 +46,19 @@ class registration extends Controller
                         }
                         if ($result) {
                             $alert->alert("User saved Success");
-                            $data['viewchild'] = 'templates/home';
-                            return view('templates/base_view', $data);
+                            return redirect()->to('/');
                         }
                     } else {
                         $alert->alert('The two passwords not match');
-                        $data['viewchild'] = './registration/content';
-                        return view('templates/base_view', $data);
+                        return redirect()->to('/Users/registration');
                     }
                 } else {
-                    $data['viewchild'] = './registration/content';
                     $data['validation'] = $error;
-                    return view('templates/base_view', $data);
+                    return redirect()->to('/Users/registration');
                 }
             }
         } else {
-            $data['viewchild'] = './registration/content';
-            return view('templates/base_view', $data);
+            return redirect()->to('/Users/registration');
         }
     }
     private function CheckValidate()

@@ -64,4 +64,13 @@ class InSertUserModel extends Model
         $db->close();
         return $results;
     }
+    public function UpdateUsers($data)
+    {
+        $this->SetData($data);
+        $db = \Config\Database::connect(); 
+        $value = $this->GetData();
+        $results = $db->table('users')->where('Email',$value['Email'])->update($this->GetData());
+        $db->close();
+        return $results;
+    }
 }
