@@ -148,6 +148,26 @@ class UploadFile extends Controller
 		$modePicture = new InSertPictureModel();
 		$data['Picture'] = $modePicture->GetPictureById($id);
 		$data['viewchild'] = '/upload/detail';
-		return view('templates/base_view', $data);
+        return view('templates/base_view', $data);
+    }
+    function LikeImagine()
+    {
+        $modePicture = new InSertPictureModel();
+        $id = $this->request->getBody();
+        $data = $modePicture->GetPictureById($id);
+        $value['NumberLike'] = $data['NumberLike'] + 1;
+        $value['idPictures'] = $data['idPictures'];
+        $result = $modePicture->UpdatePicture($value);
+        if($result)
+        {
+            $MesError = 'success';
+            $json = ["message" => $MesError, "response" => $value];
+            echo json_encode($json); 
+        }else
+        {
+            $MesError = 'fail';
+            $json = ["message" => $MesError];
+            echo json_encode($json); 
+        }
     }
 }

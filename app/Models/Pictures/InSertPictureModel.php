@@ -62,4 +62,11 @@ class InSertPictureModel extends Model
         $db->close();
         return $results['idUser']; 
     }
+    public function UpdatePicture($data)
+    {
+        $db = \Config\Database::connect(); 
+        $results = $db->table('pictures')->where('idPictures',$data['idPictures'])->update($data);
+        $db->close();
+        return $results;
+    }
 }

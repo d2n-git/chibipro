@@ -55,10 +55,12 @@
                                          <body>
                                              <tr>
                                                  <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png">5
+                                                     <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png">
+                                                     <span id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
                                                  </td>
                                                  <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png">5
+                                                     <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png">
+                                                     <span>5</span>
                                                  </td>
                                                  <td style="width: 20%;">
                                                      <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png">
@@ -88,7 +90,21 @@
          var id = $data.split('_');
          switch (id[1]) {
              case 'like':
-                 // code block
+                 $.ajax({
+                     url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
+                     type: "POST",
+                     data:id[0],
+                     contentType: false,
+                     processData: false,
+                     success: function(data) 
+                     {
+                        let response = JSON.parse(data);
+                        if(response.message == 'success')
+                        {
+                            document.getElementById(response.response.idPictures +'_Numberlike').innerText = response.response.NumberLike;
+                        } 
+                     }
+                 });
                  break;
              case 'comment':
                  // code block
