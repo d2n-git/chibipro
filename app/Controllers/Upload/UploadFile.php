@@ -143,4 +143,11 @@ class UploadFile extends Controller
             echo json_encode($json);
         }
     }
+    function detail(){
+        $id = $this->request->getGet('id');
+		$modePicture = new InSertPictureModel();
+		$data['Picture'] = $modePicture->GetPictureById($id);
+		$data['viewchild'] = '/upload/detail';
+		return view('templates/base_view', $data);
+    }
 }
