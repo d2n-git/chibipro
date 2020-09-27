@@ -24,9 +24,11 @@ class login extends Controller
                     'password'  => $result['Password'],
                     'email'     => $result['Email'],
                     'idUser'    => $result['idUser'],
+                    'Permission'=> $result['Permission'],
                     'logged_in' => TRUE
             ];
             $session->set($newdata);
+            return redirect()->to('/');
             }
             else
             {
@@ -35,9 +37,11 @@ class login extends Controller
                     'password'  => '',
                     'email'     => '',
                     'idUser'    => '',
+                    'Permission'=> '',
                     'logged_in' => FALSE
             ];
             $session->set($newdata);
+            return redirect()->to('/Users/Login');
             }
         }
         else
