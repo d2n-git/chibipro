@@ -8,7 +8,13 @@ class login extends Controller
     function index()
     {
         $data['viewchild'] = './login/content';
-        return view('templates/base_view', $data);
+        $session = \Config\Services::session();
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
+        {
+            $session->destroy();
+            return redirect()->to('/');
+        }
+        else return view('templates/base_view', $data);
     }
     function login()
     {
