@@ -57,7 +57,6 @@ p{
         width: 30px;
         height: 30px;
         padding-top: 10px;
-        padding-left: 10px;
     }
     .iconTitle{
         width: 50px;
@@ -65,5 +64,8 @@ p{
     }
     h6{
         font-size: 8px;
+    }
+    .iconFooterNumber{
+       font-size: 11px;
     }
   }

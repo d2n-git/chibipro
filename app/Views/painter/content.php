@@ -11,7 +11,7 @@
                              <tr>
                                  <td>
                                      <h1>
-                                         Title : Bên nào cung chất
+                                         Title : <?php echo $value['Title']; ?>
                                      </h1>
                                  </td>
                              </tr>
@@ -28,9 +28,9 @@
                                                  <td style="width: 90%;">
                                                      <div>
                                                          <h6>
-                                                             Chủ nhân : HLV Park
+                                                             Chủ nhân : <?php echo $value['userName']; ?>
                                                              <br>
-                                                             Update : 05/05/2020
+                                                             Update : <?php echo $value['DateUp']; ?>
                                                          </h6>
                                                      </div>
 
@@ -56,11 +56,11 @@
                                              <tr>
                                                  <td style="width: 20%;">
                                                      <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png">
-                                                     <span id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
+                                                     <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
                                                  </td>
                                                  <td style="width: 20%;">
                                                      <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png">
-                                                     <span>5</span>
+                                                     <span class="iconFooterNumber">5</span>
                                                  </td>
                                                  <td style="width: 20%;">
                                                      <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png">
