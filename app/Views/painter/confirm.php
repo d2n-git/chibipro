@@ -14,7 +14,7 @@
                                 <h6>Giá tiêu chuẩn</h6>
                             </div>
                             <div class="col-md-3">
-                                <h6>200</h6>
+                                <h6><?php echo $Picture['StandarPrice']; ?></h6>
                             </div>
                             <div class="col-md-6" style="text-align: right;">
                                 <h6>Đơn vị:Nghìn Đồng</h6>
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <h6>150</h6>
+                                    <h6><?php echo $Picture['PriceOfUser']; ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <h6>200</h6>
+                                    <h6><?php echo $Picture['MaxPrice']; ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <input size="10" type="number" id="firstName" class="form-control " name="price" placeholder="Price" value="" />
+                                    <input size="10" type="number" id="firstName" class="form-control " name="price" placeholder="Price" value="<?php echo $Picture['Price']; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
 
                             </div>
                             <div class="col-md-9">
-                                <input type="date" id="start" name="dateExpiry" value="2020-07-22" min="2020-01-01" max="2030-12-31">
+                                <input type="date" id="start" name="dateExpiry" value="<?php echo $Picture['DateExpiry']; ?>" min="2020-01-01" max="2030-12-31">
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -64,8 +64,7 @@
                                 <h6>Chi tiết phụ</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="form-control" id="" cols="60" rows="2" class="textAreaStyle" readonly>Đang tắm biển
-Hình nền theo yêu cầu
+                                <textarea name="form-control" id="" cols="60" rows="2" class="textAreaStyle" readonly><?php echo $Picture['ExtraDetail']; ?>
                                 </textarea>
                             </div>
                         </div>
@@ -74,7 +73,7 @@ Hình nền theo yêu cầu
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="note" id="" cols="60" rows="5" class="textAreaStyle"></textarea>
+                                <textarea name="note" id="" cols="60" rows="5" class="textAreaStyle"><?php echo $Picture['Note']; ?></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
