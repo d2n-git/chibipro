@@ -35,7 +35,7 @@ CREATE TABLE `confirmofpainter` (
   KEY `idPainter_3` (`idPainter`),
   CONSTRAINT `idPainter_3` FOREIGN KEY (`idPainter`) REFERENCES `users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idPicture_1` FOREIGN KEY (`idPicture`) REFERENCES `pictures` (`idPictures`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,7 +53,7 @@ CREATE TABLE `pictures` (
   `NumberLike` int(10) unsigned DEFAULT 0,
   `DateUp` datetime NOT NULL,
   `StatusSendEmail` tinyint(4) DEFAULT 0,
-  `Standar Price` decimal(10,2) DEFAULT NULL,
+  `StandarPrice` decimal(10,2) DEFAULT NULL,
   `PriceOfUser` decimal(10,2) DEFAULT NULL,
   `BackgroundPicture` varchar(255) DEFAULT NULL,
   `Note` varchar(355) DEFAULT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE `pictures` (
   KEY `idstatusPicture_1` (`idStatusPicture`),
   CONSTRAINT `idUser_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idstatusPicture_1` FOREIGN KEY (`idStatusPicture`) REFERENCES `statuspicture` (`idStatusPicture`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `users` (
   `Address` varchar(65) DEFAULT NULL,
   `Password` varchar(555) NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -132,4 +132,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-13 17:37:39
+-- Dump completed on 2020-09-29 22:27:04
