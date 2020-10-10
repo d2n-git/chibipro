@@ -7,6 +7,7 @@ use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
 use App\Libraries\ConfigEmail;
 use App\Models\Pictures\InSertPictureModel;
+use App\Models\LikeModel\likeModel;
 use App\Models\ReCaptcha;
 use Exception;
 
@@ -152,11 +153,25 @@ class UploadFile extends Controller
     }
     function LikeImagine()
     {
+        $session = \Config\Services::session();
         $modePicture = new InSertPictureModel();
+        $modeLike = new likeModel();
         $id = $this->request->getBody();
-        $data = $modePicture->GetPictureById($id);
-        $value['NumberLike'] = $data['NumberLike'] + 1;
-        $value['idPictures'] = $data['idPictures'];
+        $dataPicture = $modePicture->GetPictureById($id);
+        $idUser = $_SESSION['idUser'];
+        $dataLike['idUser'] = $idUser;
+        $dataLike['idPicture'] = $dataPicture['idPictures'];
+        $resultLike = $modeLike -> GetLikeByUserId($dataLike);
+        if($resultLike)
+        {
+            $value['NumberLike'] = $dataPicture['NumberLike'] - 1;
+            $modeLike -> DeleteLike($dataLike);
+        }else 
+        {
+            $value['NumberLike'] = $dataPicture['NumberLike'] + 1;
+            $modeLike -> InSertLike($dataLike);
+        }
+        $value['idPictures'] = $dataPicture['idPictures'];
         $result = $modePicture->UpdatePicture($value);
         if($result)
         {
