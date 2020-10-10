@@ -39,6 +39,21 @@ CREATE TABLE `confirmofpainter` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `likes`
+--
+
+DROP TABLE IF EXISTS `likes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `likes` (
+  `idlikes` int(11) NOT NULL,
+  `idPicture` varchar(45) DEFAULT NULL,
+  `idUser` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idlikes`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `pictures`
 --
 
@@ -132,4 +147,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-29 22:27:04
+-- Dump completed on 2020-10-10 18:20:03
