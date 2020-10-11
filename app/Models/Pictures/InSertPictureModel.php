@@ -12,7 +12,7 @@ class InSertPictureModel extends Model
     {
         $this->SetData($data);
         $db = \Config\Database::connect();
-        $results = $db->table('pictures')->insert($this->GetData());
+        $results = $db->table('pictures')->insert($this->GetData())->connID->insert_id;
         $db->close();
         return $results;
     }

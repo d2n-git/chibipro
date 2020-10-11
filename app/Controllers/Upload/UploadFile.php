@@ -9,6 +9,8 @@ use App\Libraries\ConfigEmail;
 use App\Models\Pictures\InSertPictureModel;
 use App\Models\ReCaptcha;
 use Exception;
+use App\Models\PictureModel;
+use App\Controllers\Home;
 
 class UploadFile extends Controller
 {
@@ -100,9 +102,10 @@ class UploadFile extends Controller
                             $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                             if ($resultInsertPicture) {
                                 $MesError = 'uploaded success';
-                                $json = ["message" => $MesError, "status" => $uploadOk];
+                                $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
                                 echo json_encode($json);
                             } else {
+                                $uploadOk = 0;
                                 $MesError = 'uploaded Failed';
                                 unlink($target_dir . $nameNewPicture);
                                 $json = ["message" => $MesError, "status" => $uploadOk];
@@ -124,9 +127,10 @@ class UploadFile extends Controller
                         $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                         if ($resultInsertPicture) {
                             $MesError = 'uploaded success';
-                            $json = ["message" => $MesError, "status" => $uploadOk];
+                            $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
                             echo json_encode($json);
                         } else {
+                            $uploadOk = 0;
                             $MesError = 'uploaded Failed';
                             unlink($target_dir . $nameNewPicture);
                             $json = ["message" => $MesError, "status" => $uploadOk];
@@ -169,5 +173,16 @@ class UploadFile extends Controller
             $json = ["message" => $MesError];
             echo json_encode($json); 
         }
+    }
+    function updatePictures(){
+        $param = array();
+        $param['idPicture']=$this->request->getGet('id');
+        $param['priceofuser'] = $this->request->getPost('priceofuser');
+        $param['dateExpiry'] = $this->request->getPost('dateExpiry');
+        $param['backgroundid'] = $this->request->getPost('ch1');
+        $param['message'] = $this->request->getPost('message');
+        $modePicture = new PictureModel();
+        $result = $modePicture->updatePictures($param);
+        return redirect()->to(base_url());
     }
 }

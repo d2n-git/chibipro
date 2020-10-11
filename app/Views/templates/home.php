@@ -109,7 +109,6 @@
                     <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
                     aria-describedby="inputGroupFileAddon01" class="single-input" onchange="readURL(this);">
                     <label class="custom-file-label" for="inputGroupFile01" >Choose file</label>
-
                 </div>
             </div>
             <div class=" col-12 col-md-6" style="margin-top: 10px;" hidden id="areaupload">
@@ -225,7 +224,7 @@
                 if(response.status == 1){
                     $('#form1').trigger("reset");
                     $('#areaupload').attr('hidden',true);
-
+                    window.location.href = window.location.href + '/Upload/UploadFile/detail?id='+ response.id;
                 }
             }
         });
