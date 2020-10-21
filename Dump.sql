@@ -75,6 +75,7 @@ CREATE TABLE `pictures` (
   `Title` varchar(45) DEFAULT NULL,
   `ExtraDetail` varchar(45) DEFAULT NULL,
   `MaxPrice` decimal(10,2) DEFAULT NULL,
+  `DateExpiry` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`idPictures`),
   KEY `idUser_1` (`idUser`),
   KEY `idstatusPicture_1` (`idStatusPicture`),

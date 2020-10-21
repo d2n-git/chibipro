@@ -191,10 +191,18 @@ class UploadFile extends Controller
     }
     function updatePictures(){
         $param = array();
+        if($_FILES["fileToUpload"]["tmp_name"]!=""){
+            $target_dir = "assets/img/";
+            $nameNewPicture =  $this->request->getGet('id'). '_' . basename($_FILES["fileToUpload"]["name"]);
+            if (file_exists($nameNewPicture)) {
+                $nameNewPicture =  $this->request->getGet('id'). '_' . $nameNewPicture;
+            }
+            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture);
+        }
         $param['idPicture']=$this->request->getGet('id');
         $param['priceofuser'] = $this->request->getPost('priceofuser');
         $param['dateExpiry'] = $this->request->getPost('dateExpiry');
-        $param['backgroundid'] = $this->request->getPost('ch1');
+        $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"]!="" ? $nameNewPicture : $this->request->getPost('ch1');
         $param['message'] = $this->request->getPost('message');
         $modePicture = new PictureModel();
         $result = $modePicture->updatePictures($param);

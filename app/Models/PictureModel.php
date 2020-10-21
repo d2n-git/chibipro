@@ -46,7 +46,7 @@ use CodeIgniter\Model;
 
         public function updatePictures($param){
             $db = \Config\Database::connect();
-            $sql='UPDATE pictures SET PriceOfUser = '.$param['priceofuser'].', Note = \''.$param['message'].'\' WHERE idPictures = '.$param['idPicture'] ;
+            $sql='UPDATE pictures SET PriceOfUser = '.$param['priceofuser'].', Note = \''.$param['message'].'\', BackgroundPicture = \''.$param['backgroundid'].'\' , DateExpiry = \''.$param['dateExpiry'].'\' WHERE idPictures = '.$param['idPicture'] ;
             $result = $db->query($sql)->connID->affected_rows;
             $db->close();
             return $result > 0;
