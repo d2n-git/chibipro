@@ -1,7 +1,7 @@
 
 <section class="banner_part">
     <div class="container-fluid">
-        <div class="container">
+        <!-- <div class="container">
             <div class="row align-items-center" id="form-upload">
                 <div class="banner_slider">
                     <div class="single_banner_slider">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

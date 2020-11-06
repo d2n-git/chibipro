@@ -62,7 +62,7 @@ class UploadFile extends Controller
             $uploadOk = 0;
         }
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
+        if ($_FILES["fileToUpload"]["size"] > 5000000) {
             $MesError = $MesError . "Your file is too large.";
             $uploadOk = 0;
         }
@@ -83,7 +83,7 @@ class UploadFile extends Controller
                     $resultUser = $modelInsertUser->GetUser($something['email']);
                     if (empty($resultUser)) {
                         helper('text');
-                        $passWord = random_string('alnum', 16);
+                        $passWord = random_string('alnum', 6);
                         $something['firstName'] = '';
                         $something['lastName'] = '';
                         $something['txtEmpPhone'] = '';
@@ -93,7 +93,7 @@ class UploadFile extends Controller
                         $resultInsertUser = $modelInsertUser->InSertUsers($something);
                         if ($resultInsertUser) {
                             $sendMail = new ConfigEmail();
-                            $sendMail->SendEmail('Password login :' . $passWord . ' Lest go link : https://www.google.com/', 'Send Password', $something['email']);
+                            $sendMail->SendEmail('Password login for Upload Page is below:'.'<br>'.'<br>'.$passWord.'<br>'.'<br>'.'Lest go link : http://chibipro.top/', 'Send Password', $something['email']);
                             $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                             $modelPicture['idStatusPicture'] = 1;
                             $modelPicture['Name'] = $nameNewPicture;
