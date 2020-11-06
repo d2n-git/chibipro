@@ -22,7 +22,7 @@ class UploadFile extends Controller
     }
     function UpImagine()
     {
-        $alert = new alert();
+        // $alert = new alert();
         $target_dir = "assets/img/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
@@ -34,19 +34,22 @@ class UploadFile extends Controller
 
         $reCaptcha = new ReCaptcha();
         $response = null;
-        if ($this->request->getPost('g-recaptcha-response')) {
-            $response = $reCaptcha->verifyResponse(
-                $this->request->getServer('REMOTE_ADDR'),
-                $this->request->getPost('g-recaptcha-response')
-            );
+        // if ($this->request->getPost('g-recaptcha-response')) {
+        //     $response = $reCaptcha->verifyResponse(
+        //         $this->request->getServer('REMOTE_ADDR'),
+        //         $this->request->getPost('g-recaptcha-response')
+        //     );
 
-            if ($response != null && $response->success) {
-                $uploadOk = 1;
-            } else {
-                $MesError = "Click checkbox robot .";
-                $uploadOk = 0;
-            }
-        }
+        //     if ($response != null && $response->success) {
+        //         $uploadOk = 1;
+        //     } else {
+        //         $MesError = "Click checkbox robot .";
+        //         $uploadOk = 0;
+        //     }
+        // }
+
+        // var_dump($_FILES);
+        // exit;
 
         // Check if image file is a actual image or fake image
         if (isset($_POST["submit"])) {
@@ -83,7 +86,7 @@ class UploadFile extends Controller
                     $resultUser = $modelInsertUser->GetUser($something['email']);
                     if (empty($resultUser)) {
                         helper('text');
-                        $passWord = random_string('alnum', 16);
+                        $passWord = random_string('alnum', 6);
                         $something['firstName'] = '';
                         $something['lastName'] = '';
                         $something['txtEmpPhone'] = '';
@@ -92,8 +95,8 @@ class UploadFile extends Controller
                         $something['Permission'] = 2;
                         $resultInsertUser = $modelInsertUser->InSertUsers($something);
                         if ($resultInsertUser) {
-                            $sendMail = new ConfigEmail();
-                            $sendMail->SendEmail('Password login :' . $passWord . ' Lest go link : https://www.google.com/', 'Send Password', $something['email']);
+                            // $sendMail = new ConfigEmail();
+                            // $sendMail->SendEmail('Password login for Upload Page is below:'.'<br>'.'<br>'.$passWord.'<br>'.'<br>'.'Lest go link : https://www.google.com/', 'Send Password', $something['email']);
                             $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                             $modelPicture['idStatusPicture'] = 1;
                             $modelPicture['Name'] = $nameNewPicture;

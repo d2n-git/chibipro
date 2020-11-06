@@ -1,43 +1,75 @@
-
 <section class="banner_part">
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row align-items-center" id="form-upload">
-                <div class="banner_slider">
-                    <div class="single_banner_slider">
-                        <div class="banner_text">
-                            <h1>Welcome to Chibipro</h1>
-                            <a href="#submit" class="genric-btn primary circle">Upload now</a>
-                        </div>
-                    </div>
+    <div class="row" style="margin-left: 0px;margin-right: 0px;">
+        <div class="col-lg-2 container-fluid">
+            <div class="card bg-gradient-primary">
+                <div class="">
+                </div>
+            </div>
+
+            <div class="card bg-gradient-primary">
+                <div class="">
+                </div>
+            </div>
+
+            <div class="card bg-gradient-primary">
+                <div class="">
                 </div>
             </div>
         </div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/1.jpg">
+        <div class="col-lg-8 container-fluid">
+            <!-- <div class="container">
+                <div class="row align-items-center" id="form-upload">
+                    <div class="banner_slider">
+                        <div class="single_banner_slider">
+                            <div class="banner_text">
+                                <a href="#submit" class="genric-btn primary circle">Upload now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/4.jpg">
+            </div> -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/picture/1.jpg">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/picture/4.jpg">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/picture/3.jpg">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="<?php echo base_url(); ?>/assets/img/3.jpg">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-2 container-fluid">
+            <div class="card bg-gradient-primary">
+                <div class="">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+
+            <div class="card bg-gradient-primary">
+                <div class="">
+                </div>
+            </div>
+
+            <div class="card bg-gradient-primary">
+                <div class="">
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -210,6 +242,7 @@
     function submitUpload(e){
             event.preventDefault();
             var formData = new FormData(e);
+            console.log(formData);
         $.ajax({
             url: '<?php echo base_url();?>/Upload/UploadFile/UpImagine',
             data: formData,
