@@ -1,6 +1,6 @@
 <section class="banner_part">
     <div class="row" style="margin-left: 0px;margin-right: 0px;">
-        <div class="col-lg-2 container-fluid">
+        <div class="col-lg-3 container-fluid">
             <div class="card bg-gradient-primary">
                 <div class="">
                 </div>
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8 container-fluid">
+        <div class="col-lg-6 container-fluid">
             <!-- <div class="container">
                 <div class="row align-items-center" id="form-upload">
                     <div class="banner_slider">
@@ -55,19 +55,23 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-2 container-fluid">
+        <div class="col-lg-3 container-fluid">
             <div class="card bg-gradient-primary">
-                <div class="">
+                <div class="elementor-container elementor-column-gap-no">
+                    <div class="row">
+                        <div class="col-lg-7 elementor-widget-container">
+                            <h2 class="elementor-heading-title elementor-size-default">Facebook</h2>
+                        </div>
+                        <div class="col-lg-5 elementor-widget-container">
+                            <a href="https://www.facebook.com/cubesystemvietnam/">Xem thêm</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card bg-gradient-primary">
-                <div class="">
+                <div class="elementor-widget-container">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCube-System-Vietnam-COLTD-226214934250765%2F&amp;tabs=timeline&amp;width=400&amp;height=500&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="400" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
-            </div>
-
-            <div class="card bg-gradient-primary">
-                <div class="">
+                <div class="elementor-widget-container" style="padding-top: 10px;">
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fcubesystemvietnam%2F&amp;width=300&amp;layout=button_count&amp;action=like&amp;size=large&amp;show_faces=true&amp;share=true&amp;height=30&amp;appId" width="300" height="30" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
             </div>
         </div>
