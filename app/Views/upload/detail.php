@@ -90,7 +90,7 @@ label img {
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                <input class="form-control single-input" name="priceofuser" id="phone" type="text">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off">
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@ label img {
 
                             </div>
                             <div class="col-md-9">
-                                <input type="date" id="start" name="dateExpiry" value="2020-07-22" min="2020-01-01" max="2030-12-31">
+                                <input type="date" id="start" name="dateExpiry" value="<?php echo date('Y-m-d') ?>" min="2020-01-01" max="2030-12-31">
                             </div>
                         </div>
                         
@@ -112,22 +112,22 @@ label img {
                             <div class="col-md-9">
                             <ul>
                                 <li><input type="radio" id="cb1" name="ch1" value="bg1"/>
-                                    <label for="cb1"><img src="<?php echo base_url(); ?>/assets/img/bg1.jpg" /></label>
+                                    <label for="cb1"><img src="<?php echo base_url(); ?>/assets/img/bg_def/1_cau-vang.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb2" name="ch1" value="bg2"/>
-                                    <label for="cb2"><img src="<?php echo base_url(); ?>/assets/img/bg2.jpg" /></label>
+                                    <label for="cb2"><img src="<?php echo base_url(); ?>/assets/img/bg_def/2_sea.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb3" name="ch1" value="bg3"/>
-                                    <label for="cb3"><img src="<?php echo base_url(); ?>/assets/img/bg3.jpg" /></label>
+                                    <label for="cb3"><img src="<?php echo base_url(); ?>/assets/img/bg_def/3_chua.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb4" name="ch1" value="bg4"/>
-                                    <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg4.jpg" /></label>
+                                    <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg_def/4_city.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb5" name="ch1" value="bg5"/>
-                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg5.jpg" /></label>
+                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/bg5.jpg" /></label>
                                 </li>
                                 <li><input type="radio" id="cb6" name="ch1" value="bg6"/>
-                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg6.jpg" /></label>
+                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/bg6.jpg" /></label>
                                 </li>
                                 </ul>
                             </div>
@@ -185,6 +185,13 @@ label img {
             if (valuePassword !== valueConfirmPassword) {
                 window.alert("The two passwords not match");
             }
+        });
+        
+        $('#priceofuser').on('keyup', function(event) {
+            event.preventDefault();
+            /* Act on the event */
+            let result = formatMoney($(this).val());
+            $(this).val(result == 0 ? '' : result);
         });
     });
 </script>

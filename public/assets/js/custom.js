@@ -260,21 +260,6 @@ inputNumber($('.input-number'));
     makeTimer();
   }, 1000);
 
-  // click counter js
-
-
-  // var a = 0;
-  // $('.increase').on('click', function(){
-     
-    
-
-  //   console.log(  $(this).innerHTML='Product Count: '+ a++ );
-  // });
-
- 
-
- 
-
  $('.sub-menu ul').hide();
  $(".sub-menu a").click(function () {
    $(this).parent(".sub-menu").children("ul").slideToggle("100");
@@ -295,4 +280,38 @@ inputNumber($('.input-number'));
  }); 
 
 
+
 }(jQuery));
+
+  //* Format number
+  //* @param  {string} amount       : input number
+  //* @param  {number} decimalCount : decimal
+  //* @param  {string} decimal      : icon separator
+  //* @param  {string} thousands    : step bettwen icon separator
+  //* @return {string} number format
+  // 
+  function formatMoney(amount, decimalCount , decimal , thousands ) { 
+    try {
+        if(isBlank(decimal)){
+            decimal = ".";
+        }
+        if(isBlank(thousands)){
+            thousands = ",";
+        }
+        amount = (amount + '').replace(/[^0-9+\-Ee.]/g, '');
+        decimalCount = Math.abs(decimalCount);
+        decimalCount = isNaN(decimalCount) ? 0 : decimalCount;
+
+        const negativeSign = amount < 0 ? "-" : "";
+
+        let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+        let j = (i.length > 3) ? i.length % 3 : 0;
+
+        return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+    } catch (e) {
+        return amount;
+    }
+  }
+  function isBlank(str) {
+      return !str || /^\s*$/.test(str);
+  }
