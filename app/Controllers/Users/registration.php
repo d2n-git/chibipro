@@ -46,7 +46,7 @@ class registration extends Controller
                         }
                         if ($result) {
                             $alert->alert("User saved Success");
-                            return redirect()->to('/');
+                            return redirect()->to(base_url());
                         }
                     } else {
                         $alert->alert('The two passwords not match');

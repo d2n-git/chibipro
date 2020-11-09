@@ -10,7 +10,7 @@
                    <div class="col-md-9 register-right">
                        <div class="tab-content" id="myTabContent">
                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                               <form action="/Users/registration/InSertUser" method="post">
+                               <form action="<?php echo base_url(); ?>/Users/registration/InSertUser" method="post">
                                    <div class="row register-form">
                                        <div class="col-md-6">
                                            <div class="form-group">

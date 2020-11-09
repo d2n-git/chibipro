@@ -12,7 +12,7 @@ class login extends Controller
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
         {
             $session->destroy();
-            return redirect()->to('/');
+            return redirect()->to(base_url());
         }
         else return view('templates/base_view', $data);
     }
@@ -34,7 +34,7 @@ class login extends Controller
                     'logged_in' => TRUE
             ];
             $session->set($newdata);
-            return redirect()->to('/');
+            return redirect()->to(base_url());
             }
             else
             {
@@ -47,12 +47,12 @@ class login extends Controller
                     'logged_in' => FALSE
             ];
             $session->set($newdata);
-            return redirect()->to('/Users/Login');
+            return redirect()->to(base_url('/Users/Login'));
             }
         }
         else
         {
-            return redirect()->to('/Users/Login');
+            return redirect()->to(base_url('/Users/Login'));
         }
     }
 }
