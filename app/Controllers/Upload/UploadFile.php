@@ -151,15 +151,16 @@ class UploadFile extends Controller
             echo json_encode($json);
         }
     }
+
     function detail(){
         $id = $this->request->getGet('id');
-		$modePicture = new InSertPictureModel();
-		$data['Picture'] = $modePicture->GetPictureById($id);
-		$data['viewchild'] = '/upload/detail';
+        $modePicture = new InSertPictureModel();
+        $data['Picture'] = $modePicture->GetPictureById($id);
+        $data['viewchild'] = '/upload/detail';
         return view('templates/base_view', $data);
     }
-    function LikeImagine()
-    {
+
+    function LikeImagine(){
         $session = \Config\Services::session();
         $modePicture = new InSertPictureModel();
         $modeLike = new likeModel();
@@ -192,6 +193,7 @@ class UploadFile extends Controller
             echo json_encode($json); 
         }
     }
+
     function updatePictures(){
         $param = array();
         if($_FILES["fileToUpload"]["tmp_name"]!=""){
@@ -203,9 +205,10 @@ class UploadFile extends Controller
             move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture);
         }
         $param['idPicture']=$this->request->getGet('id');
-        $param['priceofuser'] = $this->request->getPost('priceofuser');
+        $param['standarprice'] = $this->request->getPost('standarprice');
+        $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : $this->request->getPost('priceofuser');
         $param['dateExpiry'] = $this->request->getPost('dateExpiry');
-        $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"]!="" ? $nameNewPicture : $this->request->getPost('ch1');
+        $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"] != "" ? $nameNewPicture : $this->request->getPost('ch1');
         $param['message'] = $this->request->getPost('message');
         $modePicture = new PictureModel();
         $result = $modePicture->updatePictures($param);
