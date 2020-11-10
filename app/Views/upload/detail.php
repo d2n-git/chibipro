@@ -91,7 +91,7 @@ label img {
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10">
                                 </div>
                             </div>
                         </div>

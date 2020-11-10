@@ -207,9 +207,19 @@
 </div>
 <!--::subscribe_area part end::-->
 <script>
+var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+    $(document).ready(function() {
+        if (email == ""){
+            $('#email').prop('readonly', false);
+            $('#email').attr('required', true);
+        }else{
+            $('#email').val(email);
+            $('#email').prop('readonly', true);
+        }
+    });
     function submitUpload(e){
-            event.preventDefault();
-            var formData = new FormData(e);
+        event.preventDefault();
+        var formData = new FormData(e);
         $.ajax({
             url: '<?php echo base_url();?>/Upload/UploadFile/UpImagine',
             data: formData,
