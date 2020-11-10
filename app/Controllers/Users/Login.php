@@ -31,6 +31,7 @@ class login extends Controller
                     'email'     => $result['Email'],
                     'idUser'    => $result['idUser'],
                     'Permission'=> $result['Permission'],
+                    'Gender'=> $result['Gender'],
                     'logged_in' => TRUE
             ];
             $session->set($newdata);
@@ -44,6 +45,7 @@ class login extends Controller
                     'email'     => '',
                     'idUser'    => '',
                     'Permission'=> '',
+                    'Gender'=> '',
                     'logged_in' => FALSE
             ];
             $session->set($newdata);

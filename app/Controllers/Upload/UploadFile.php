@@ -93,6 +93,7 @@ class UploadFile extends Controller
                         $something['txtAddress'] = '';
                         $something['password'] = $passWord;
                         $something['Permission'] = 2;
+                        $something['Gender'] = 1;
                         $resultInsertUser = $modelInsertUser->InSertUsers($something);
                         if ($resultInsertUser) {
                             // $sendMail = new ConfigEmail();
@@ -105,18 +106,18 @@ class UploadFile extends Controller
                             $modelPicture['StatusSendEmail'] = 0;
                             $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                             if ($resultInsertPicture) {
-                                $MesError = 'uploaded success';
+                                $MesError = 'Uploaded Success';
                                 $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
                                 echo json_encode($json);
                             } else {
                                 $uploadOk = 0;
-                                $MesError = 'uploaded Failed';
+                                $MesError = 'Uploaded Failed';
                                 unlink($target_dir . $nameNewPicture);
                                 $json = ["message" => $MesError, "status" => $uploadOk];
                                 echo json_encode($json);
                             }
                         } else {
-                            $MesError = 'uploaded Failed';
+                            $MesError = 'Uploaded Failed';
                             unlink($target_dir . $nameNewPicture);
                             $json = ["message" => $MesError, "status" => $uploadOk];
                             echo json_encode($json);
@@ -130,12 +131,12 @@ class UploadFile extends Controller
                         $modelPicture['StatusSendEmail'] = 0;
                         $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                         if ($resultInsertPicture) {
-                            $MesError = 'uploaded success';
+                            $MesError = 'Uploaded Success';
                             $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
                             echo json_encode($json);
                         } else {
                             $uploadOk = 0;
-                            $MesError = 'uploaded Failed';
+                            $MesError = 'Uploaded Failed';
                             unlink($target_dir . $nameNewPicture);
                             $json = ["message" => $MesError, "status" => $uploadOk];
                             echo json_encode($json);
@@ -206,7 +207,7 @@ class UploadFile extends Controller
         }
         $param['idPicture']=$this->request->getGet('id');
         $param['standarprice'] = $this->request->getPost('standarprice');
-        $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : $this->request->getPost('priceofuser');
+        $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : str_replace(",", "", $this->request->getPost('priceofuser'));
         $param['dateExpiry'] = $this->request->getPost('dateExpiry');
         $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"] != "" ? $nameNewPicture : $this->request->getPost('ch1');
         $param['message'] = $this->request->getPost('message');
