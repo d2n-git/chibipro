@@ -51,7 +51,7 @@
                                     if (empty($user['Email']))
                                         echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '' />";
                                     else
-                                        echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '" . $user["Email"] . "' />";
+                                        echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '" . $user["Email"] . "' readonly />";
                                     ?>
                                 </div>
                                 <div class="form-group">

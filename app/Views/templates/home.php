@@ -94,7 +94,7 @@
                     <div class="new_arrival_iner filter-container">
                         <?php foreach($pictures as $value){
                         ?>
-                            <div class="single_arrivel_item col-md-3">
+                            <div class="single_arrivel_item col-md-3" style="height:400px;">
                                 <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
                                 <div class="hover_text">
                                     <a href="#"><h3><?php echo $value['userName']?></h3></a>
@@ -107,7 +107,7 @@
                                     </div>
                                     <h5>$150</h5>
                                     <div class="social_icon">
-                                        <a  onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
+                                        <a onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
                                         <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
                                     </div>
                                 </div>
@@ -263,6 +263,7 @@ var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
             contentType: false,
             processData: false, 
             success : function(data){
+                console.log(data);
                 let response = JSON.parse(data);
                 $('#message-error').html(response.message);
                 $('#messageModal').modal('show');
