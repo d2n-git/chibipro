@@ -65,21 +65,13 @@
                                                  <td style="width: 20%;">
                                                      <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png">
                                                  </td>
-                                                 <?php
-                                                 $session = \Config\Services::session();
-                                                 if($_SESSION['Permission'] == 1)
-                                                 {
-                                                  echo " <td style='width: 20%;'>
-                                                         <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png'>
-                                                         </td>";
-                                                 }
-                                                 if($_SESSION['logged_in'])
-                                                 {
-                                                     echo " <td style='width: 20%;'>
-                                                             <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png'>
-                                                            </td>";
-                                                 }
-                                                 ?>
+                                                 <td style="width: 20%;">
+                                                     <input id="<?php echo $value['idPictures'] ?>_check" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url() ?>/assets/img/check-in.png">
+                                                 </td>
+                                                 <td style="width: 20%;">
+                                                     <input id="<?php echo $value['idPictures'] ?>_edit" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url() ?>/assets/img/edit.png">
+                                                 </td>
+
                                              </tr>
                                          </body>
                                      </table>
@@ -99,21 +91,24 @@
          var id = $data.split('_');
          switch (id[1]) {
              case 'like':
-                 $.ajax({
-                     url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
-                     type: "POST",
-                     data:id[0],
-                     contentType: false,
-                     processData: false,
-                     success: function(data) 
-                     {
-                        let response = JSON.parse(data);
-                        if(response.message == 'success')
-                        {
-                            document.getElementById(response.response.idPictures +'_Numberlike').innerText = response.response.NumberLike;
-                        } 
-                     }
-                 });
+                 var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
+                 if (log_in == 1) {
+                     $.ajax({
+                         url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
+                         type: "POST",
+                         data: id[0],
+                         contentType: false,
+                         processData: false,
+                         success: function(data) {
+                             let response = JSON.parse(data);
+                             if (response.message == 'success') {
+                                 document.getElementById(response.response.idPictures + '_Numberlike').innerText = response.response.NumberLike;
+                             }
+                         }
+                     });
+                 } else {
+                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                 }
                  break;
              case 'comment':
                  // code block
@@ -122,10 +117,20 @@
                  // code block
                  break;
              case 'check':
-                 window.location.href = "confirm?id=" + id[0] + "";
+                 var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
+                 if (log_in == 1) {
+                     window.location.href = "<?php echo base_url(); ?>/Painter/confirm?id=" + id[0] + "";
+                 } else {
+                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                 }
                  break;
              case 'edit':
-                window.location.assign("/Users/registration?id=" + id[0] + "")
+                 var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
+                 if (log_in == 1) {
+                     window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
+                 } else {
+                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                 }
                  break;
              default:
                  // code block

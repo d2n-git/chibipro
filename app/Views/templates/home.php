@@ -207,7 +207,7 @@
 </div>
 <!--::subscribe_area part end::-->
 <script>
-var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
     $(document).ready(function() {
         if (email == ""){
             $('#email').prop('readonly', false);

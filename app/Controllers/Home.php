@@ -17,6 +17,18 @@ class Home extends BaseController
 		$data['pager'] = $pager;
 		$data['viewchild'] = 'templates/home';
 		$data['pictures'] = $pictures;
+		$session = \Config\Services::session();
+		if (!isset($_SESSION['logged_in'])) {
+			$newdata = [
+				'password'  => '',
+				'email'     => '',
+				'idUser'    => '',
+				'Permission' => '',
+				'Gender' => '',
+				'logged_in' => FALSE
+			];
+			$session->set($newdata);
+		}
 		return view('templates/base_view',$data);
 	}
 
