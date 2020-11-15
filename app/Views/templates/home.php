@@ -241,9 +241,16 @@
     </div>
   </div>
 </div>
+<!-- Hiệu ứng load -->
+<div class="load" >
+	<img src="<?php echo base_url(); ?>/assets/img/loading.gif">
+</div>
 <!--::subscribe_area part end::-->
 <script>
-var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+    $(document).ready(() => {
+        $('.load').delay(1000).fadeOut('fast'); 
+    })
+var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
     $(document).ready(function() {
         if (email == ""){
             $('#email').prop('readonly', false);
@@ -254,6 +261,7 @@ var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
         }
     });
     function submitUpload(e){
+        $('.load').fadeIn('fast');
         event.preventDefault();
         var formData = new FormData(e);
         $.ajax({
@@ -265,6 +273,7 @@ var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
             success : function(data){
                 console.log(data);
                 let response = JSON.parse(data);
+                $('.load').fadeOut('fast');
                 $('#message-error').html(response.message);
                 $('#messageModal').modal('show');
                 grecaptcha.reset();
@@ -275,6 +284,6 @@ var email = '<?php echo ($_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
                 }
             }
         });
-            return false;
+        return false;
     }
 </script>

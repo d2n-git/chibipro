@@ -11,7 +11,7 @@ class InSertUserModel extends Model
         $this->SetData($data);
         $db = \Config\Database::connect(); 
         $results = $db->table('users')->insert($this->GetData());
-        // $db->close();
+        $db->close();
         return $results;
     }
     private function SetData($data)

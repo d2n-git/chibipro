@@ -8,7 +8,7 @@
         <div class=" col-lg-9 col-md-9 confirm-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="/Painter/confirm/confirmPainter?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px;">
+                    <form action="<?php echo base_url(); ?>/Painter/confirm/confirmPainter?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px;">
                         <div class="row register-form">
                             <div class="col-md-3">
                                 <h6>Giá tiêu chuẩn</h6>
@@ -56,7 +56,7 @@
 
                             </div>
                             <div class="col-md-9">
-                                <input type="date" id="start" name="dateExpiry" value="<?php echo $Picture['DateExpiry']; ?>" min="2020-01-01" max="2030-12-31">
+                                <input type="date" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" min="2020-01-01" max="2030-12-31">
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
