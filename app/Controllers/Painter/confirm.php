@@ -10,6 +10,12 @@ class confirm extends Controller
 {
 	function Index()
 	{
+		$session = \Config\Services::session();
+		if(!isset($_SESSION['logged_in']))
+		{
+			return redirect() -> to(base_url('/Users/Login'));
+		}
+		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
 		$id = $this->request->getGet('id');
 		$modePicture = new InSertPictureModel();
 		$data['Picture'] = $modePicture->GetPictureById($id);
@@ -31,7 +37,7 @@ class confirm extends Controller
 		$resultInsertPicture = $insertConfirm->InSertConfirm($modelConfirm);
 		if ($resultInsertPicture)
 		{
-			return redirect()->to('/Painter/Painter');
+			return redirect()->to(base_url("/Painter/Painter"));
 		}
 	}
 }

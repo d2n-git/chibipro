@@ -5,7 +5,7 @@ use Config\Encryption;
 class InSertUserModel extends Model
 {
 
-    private  $Name,$Permission,$Email,$Phone,$Address,$Password;
+    private  $Name, $Permission, $Gender, $Email, $Phone, $Address, $Password;
     public function InSertUsers($data)
     {
         $this->SetData($data);
@@ -16,8 +16,9 @@ class InSertUserModel extends Model
     }
     private function SetData($data)
     {
-        $this->Name=$data['firstName'] ." ". $data['lastName'];
+        $this->Name=$data['firstName'] ."*-*-". $data['lastName'];
         $this->Permission=$data['Permission'];
+        $this->Gender=$data['Gender'];
         $this->Email=$data['email'];
         $this->Phone=$data['txtEmpPhone'];
         $this->Address=$data['txtAddress'];
@@ -32,6 +33,7 @@ class InSertUserModel extends Model
         [
             'Name'=>$this->Name,
             'Permission'=>$this->Permission,
+            'Gender'=>$this->Gender,
             'Email'=>$this->Email,
             'Phone'=>$this->Phone,
             'Address'=>$this->Address,

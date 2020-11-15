@@ -58,7 +58,7 @@
                     <div class="new_arrival_iner filter-container">
                         <?php foreach($pictures as $value){
                         ?>
-                            <div class="single_arrivel_item col-md-3">
+                            <div class="single_arrivel_item col-md-3" style="height:400px;">
                                 <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
                                 <div class="hover_text">
                                     <a href="#"><h3><?php echo $value['userName']?></h3></a>
@@ -71,7 +71,7 @@
                                     </div>
                                     <h5>$150</h5>
                                     <div class="social_icon">
-                                        <a  onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
+                                        <a onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
                                         <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
                                     </div>
                                 </div>
@@ -205,11 +205,29 @@
     </div>
   </div>
 </div>
+<!-- Hiệu ứng load -->
+<div class="load" >
+	<img src="<?php echo base_url(); ?>/assets/img/loading.gif">
+</div>
 <!--::subscribe_area part end::-->
 <script>
+    $(document).ready(() => {
+        $('.load').delay(1000).fadeOut('fast'); 
+    })
+var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+    $(document).ready(function() {
+        if (email == ""){
+            $('#email').prop('readonly', false);
+            $('#email').attr('required', true);
+        }else{
+            $('#email').val(email);
+            $('#email').prop('readonly', true);
+        }
+    });
     function submitUpload(e){
-            event.preventDefault();
-            var formData = new FormData(e);
+        $('.load').fadeIn('fast');
+        event.preventDefault();
+        var formData = new FormData(e);
         $.ajax({
             url: '<?php echo base_url();?>/Upload/UploadFile/UpImagine',
             data: formData,
@@ -218,6 +236,7 @@
             processData: false, 
             success : function(data){
                 let response = JSON.parse(data);
+                $('.load').fadeOut('fast');
                 $('#message-error').html(response.message);
                 $('#messageModal').modal('show');
                 grecaptcha.reset();
@@ -228,6 +247,6 @@
                 }
             }
         });
-            return false;
+        return false;
     }
 </script>

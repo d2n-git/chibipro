@@ -79,6 +79,7 @@ label img {
                             </div>
                             <div class="col-md-3">
                                 <h6>200</h6>
+                                <input type="hidden" name="standarprice" id="standarprice" value="200">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
                                 <h6>Đơn vị:Nghìn Đồng</h6>
@@ -90,7 +91,7 @@ label img {
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10">
                                 </div>
                             </div>
                         </div>

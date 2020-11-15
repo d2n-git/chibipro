@@ -7,7 +7,7 @@ use Config\Encryption;
 
 class InSertPictureModel extends Model
 {
-    private  $idUser, $idStatusPicture, $Name,$NumberLike,$DateUp, $StatusSendEmail;
+    private  $idUser, $idStatusPicture, $Name, $NumberLike, $DateUp, $StatusSendEmail;
     public function InSertPicture($data)
     {
         $this->SetData($data);

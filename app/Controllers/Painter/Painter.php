@@ -19,13 +19,6 @@ class Painter extends Controller
 		$data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['viewchild'] = './painter/content';
-		$session = \Config\Services::session();
-		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) return view('templates/base_view', $data);
-		else 
-		{
-			$aler = new alert();
-			$aler->alert('Please login user!');
-			return redirect()->to('/Users/Login');
-		}
+		return view('templates/base_view', $data);
     }
 }

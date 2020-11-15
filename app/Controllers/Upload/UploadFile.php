@@ -9,6 +9,7 @@ use App\Libraries\ConfigEmail;
 use App\Models\Pictures\InSertPictureModel;
 use App\Models\LikeModel\likeModel;
 use App\Models\ReCaptcha;
+use Config\Encryption;
 use Exception;
 use App\Models\PictureModel;
 use App\Controllers\Home;
@@ -90,6 +91,7 @@ class UploadFile extends Controller
                         $something['txtAddress'] = '';
                         $something['password'] = $passWord;
                         $something['Permission'] = 2;
+                        $something['Gender'] = 1;
                         $resultInsertUser = $modelInsertUser->InSertUsers($something);
                         if ($resultInsertUser) {
                             $sendMail = new ConfigEmail();
@@ -102,18 +104,29 @@ class UploadFile extends Controller
                             $modelPicture['StatusSendEmail'] = 0;
                             $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                             if ($resultInsertPicture) {
-                                $MesError = 'uploaded success';
+                                $MesError = 'Uploaded Success';
                                 $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
+                                $session = \Config\Services::session();
+                                $encrypter = new Encryption();
+                                $newdata = [
+                                    'password'  => md5($something['Password'].''.$encrypter->key),
+                                    'email'     => $something['email'],
+                                    'idUser'    => '',
+                                    'Permission' => 2,
+                                    'Gender' => 1,
+                                    'logged_in' => TRUE
+                                ];
+                                $session->set($newdata);
                                 echo json_encode($json);
                             } else {
                                 $uploadOk = 0;
-                                $MesError = 'uploaded Failed';
+                                $MesError = 'Uploaded Failed';
                                 unlink($target_dir . $nameNewPicture);
                                 $json = ["message" => $MesError, "status" => $uploadOk];
                                 echo json_encode($json);
                             }
                         } else {
-                            $MesError = 'uploaded Failed';
+                            $MesError = 'Uploaded Failed';
                             unlink($target_dir . $nameNewPicture);
                             $json = ["message" => $MesError, "status" => $uploadOk];
                             echo json_encode($json);
@@ -127,12 +140,22 @@ class UploadFile extends Controller
                         $modelPicture['StatusSendEmail'] = 0;
                         $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                         if ($resultInsertPicture) {
-                            $MesError = 'uploaded success';
-                            $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
+                            $MesError = 'Uploaded Success';
+                            $json = ["message" => $MesError, "status" => $uploadOk, "id" => $resultInsertPicture];
+                            $session = \Config\Services::session();
+                            $newdata = [
+                                'password'  => $resultUser['Password'],
+                                'email'     => $resultUser['Email'],
+                                'idUser'    => $resultUser['idUser'],
+                                'Permission' => $resultUser['Permission'],
+                                'Gender' => $resultUser['Gender'],
+                                'logged_in' => TRUE
+                            ];
+                            $session->set($newdata);
                             echo json_encode($json);
                         } else {
                             $uploadOk = 0;
-                            $MesError = 'uploaded Failed';
+                            $MesError = 'Uploaded Failed';
                             unlink($target_dir . $nameNewPicture);
                             $json = ["message" => $MesError, "status" => $uploadOk];
                             echo json_encode($json);
@@ -148,15 +171,22 @@ class UploadFile extends Controller
             echo json_encode($json);
         }
     }
+
     function detail(){
+        $session = \Config\Services::session();
+		if(!isset($_SESSION['logged_in']))
+		{
+			return redirect() -> to(base_url('/Users/Login'));
+		}
+		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
         $id = $this->request->getGet('id');
-		$modePicture = new InSertPictureModel();
-		$data['Picture'] = $modePicture->GetPictureById($id);
-		$data['viewchild'] = '/upload/detail';
+        $modePicture = new InSertPictureModel();
+        $data['Picture'] = $modePicture->GetPictureById($id);
+        $data['viewchild'] = '/upload/detail';
         return view('templates/base_view', $data);
     }
-    function LikeImagine()
-    {
+
+    function LikeImagine(){
         $session = \Config\Services::session();
         $modePicture = new InSertPictureModel();
         $modeLike = new likeModel();
@@ -189,6 +219,7 @@ class UploadFile extends Controller
             echo json_encode($json); 
         }
     }
+
     function updatePictures(){
         $param = array();
         if($_FILES["fileToUpload"]["tmp_name"]!=""){
@@ -200,9 +231,10 @@ class UploadFile extends Controller
             move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture);
         }
         $param['idPicture']=$this->request->getGet('id');
-        $param['priceofuser'] = $this->request->getPost('priceofuser');
+        $param['standarprice'] = $this->request->getPost('standarprice');
+        $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : str_replace(",", "", $this->request->getPost('priceofuser'));
         $param['dateExpiry'] = $this->request->getPost('dateExpiry');
-        $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"]!="" ? $nameNewPicture : $this->request->getPost('ch1');
+        $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"] != "" ? $nameNewPicture : $this->request->getPost('ch1');
         $param['message'] = $this->request->getPost('message');
         $modePicture = new PictureModel();
         $result = $modePicture->updatePictures($param);
