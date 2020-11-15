@@ -9,6 +9,7 @@ use App\Libraries\ConfigEmail;
 use App\Models\Pictures\InSertPictureModel;
 use App\Models\LikeModel\likeModel;
 use App\Models\ReCaptcha;
+use Config\Encryption;
 use Exception;
 use App\Models\PictureModel;
 use App\Controllers\Home;
@@ -105,6 +106,17 @@ class UploadFile extends Controller
                             if ($resultInsertPicture) {
                                 $MesError = 'Uploaded Success';
                                 $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
+                                $session = \Config\Services::session();
+                                $encrypter = new Encryption();
+                                $newdata = [
+                                    'password'  => md5($something['Password'].''.$encrypter->key),
+                                    'email'     => $something['email'],
+                                    'idUser'    => '',
+                                    'Permission' => 2,
+                                    'Gender' => 1,
+                                    'logged_in' => TRUE
+                                ];
+                                $session->set($newdata);
                                 echo json_encode($json);
                             } else {
                                 $uploadOk = 0;
@@ -129,7 +141,17 @@ class UploadFile extends Controller
                         $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                         if ($resultInsertPicture) {
                             $MesError = 'Uploaded Success';
-                            $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
+                            $json = ["message" => $MesError, "status" => $uploadOk, "id" => $resultInsertPicture];
+                            $session = \Config\Services::session();
+                            $newdata = [
+                                'password'  => $resultUser['Password'],
+                                'email'     => $resultUser['Email'],
+                                'idUser'    => $resultUser['idUser'],
+                                'Permission' => $resultUser['Permission'],
+                                'Gender' => $resultUser['Gender'],
+                                'logged_in' => TRUE
+                            ];
+                            $session->set($newdata);
                             echo json_encode($json);
                         } else {
                             $uploadOk = 0;
