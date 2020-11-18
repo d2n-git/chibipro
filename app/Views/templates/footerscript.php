@@ -25,6 +25,7 @@
     <script src="<?php echo base_url();?>/assets/js/custom.js"></script>
     <script src="<?php echo base_url();?>/assets/js/zoom.js"></script>
     <script src="<?php echo base_url();?>/assets/js/rating.min.js"></script>
+    <script src="<?php echo base_url();?>/assets/js/image-uploader.js"></script>
     <script>
         function readURL(input) {
         if (input.files && input.files[0]) {

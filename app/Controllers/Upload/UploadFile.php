@@ -25,13 +25,13 @@ class UploadFile extends Controller
     {
         $alert = new alert();
         $target_dir = "assets/img/";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_file = $target_dir . basename($_FILES["images"]["name"]);
         $uploadOk = 1;
         $MesError = '';
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $insertPicture = new InSertPictureModel();
         $result = $insertPicture->GetMaxIdPictures();
-        $nameNewPicture =  $result . '_' . basename($_FILES["fileToUpload"]["name"]);
+        $nameNewPicture =  $result . '_' . basename($_FILES["images"]["name"]);
 
         $reCaptcha = new ReCaptcha();
         $response = null;
@@ -51,7 +51,7 @@ class UploadFile extends Controller
 
         // Check if image file is a actual image or fake image
         if (isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            $check = getimagesize($_FILES["images"]["tmp_name"]);
             if ($check === false) {
                 $MesError = "File is not an image.";
                 $uploadOk = 0;
@@ -63,7 +63,7 @@ class UploadFile extends Controller
             $uploadOk = 0;
         }
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 5000000) {
+        if ($_FILES["images"]["size"] > 5000000) {
             $MesError = $MesError . "Your file is too large.";
             $uploadOk = 0;
         }
@@ -79,7 +79,7 @@ class UploadFile extends Controller
         if ($uploadOk == 1) {
             $modelInsertUser = new InSertUserModel();
             try {
-                if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture)) {
+                if (move_uploaded_file($_FILES['images']['tmp_name'], $target_dir . $nameNewPicture)) {
                     $something = $this->request->getVar();
                     $resultUser = $modelInsertUser->GetUser($something['email']);
                     if (empty($resultUser)) {
