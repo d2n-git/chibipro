@@ -16,7 +16,9 @@ class Admin extends Controller
 			return redirect() -> to(base_url('/Users/Login'));
 		}
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
-
+		if(isset($_SESSION['Permission']) && $_SESSION['Permission'] != '0'){
+			return redirect() -> to(base_url('/Users/Login'));
+		}
 		//data search
 		if(isset($_POST['username'])){
 			$username = htmlspecialchars($_POST['username']);
@@ -51,7 +53,9 @@ class Admin extends Controller
 			return redirect() -> to(base_url('/Users/Login'));
 		}
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
-
+		if(isset($_SESSION['Permission']) && $_SESSION['Permission'] != '0'){
+			return redirect() -> to(base_url('/Users/Login'));
+		}
 		$requestDt = $this->request->getPost();
 		if(!empty($requestDt)){
 			$adminModel = new AdminModel();
@@ -69,7 +73,9 @@ class Admin extends Controller
 			return redirect() -> to(base_url('/Users/Login'));
 		}
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
-
+		if(isset($_SESSION['Permission']) && $_SESSION['Permission'] != '0'){
+			return redirect() -> to(base_url('/Users/Login'));
+		}
 		$id = $this->request->getGet('id');
 		$modePicture = new InSertPictureModel();
 		$data['Picture'] = $modePicture->GetPictureById($id);
