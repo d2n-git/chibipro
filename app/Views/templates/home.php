@@ -141,11 +141,7 @@
         </div>
         <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data" onsubmit="submitUpload(this);">
             <div class="mt-10 col-12 col-md-6">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
-                    aria-describedby="inputGroupFileAddon01" class="single-input" onchange="readURL(this);">
-                    <label class="custom-file-label" for="inputGroupFile01" >Choose file</label>
-                </div>
+                <div class="input-images"></div>
             </div>
             <div class=" col-12 col-md-6" style="margin-top: 10px;" hidden id="areaupload">
                     <img id="blah" />
@@ -249,8 +245,26 @@
 <script>
     $(document).ready(() => {
         $('.load').delay(1000).fadeOut('fast'); 
+        $(function(){
+            $('.input-images').imageUploader();
+        });
+
     })
-var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+
+    $('.input-images').imageUploader({
+        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+        maxSize: undefined,
+        maxFiles: undefined,
+    });
+
+    $('.input-images').imageUploader({
+        imagesInputName: 'images',
+        preloadedInputName: 'preloaded',
+        label: ''
+    });
+
+    var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
     $(document).ready(function() {
         if (email == ""){
             $('#email').prop('readonly', false);
@@ -280,7 +294,7 @@ var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in'
                 if(response.status == 1){
                     $('#form1').trigger("reset");
                     $('#areaupload').attr('hidden',true);
-                    window.location.href = window.location.href + '/Upload/UploadFile/detail?id='+ response.id;
+                    window.location.href = '<?php echo base_url();?>' + '/Upload/UploadFile/detail?id='+ response.id;
                 }
             }
         });
