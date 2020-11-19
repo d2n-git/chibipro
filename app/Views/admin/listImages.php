@@ -2,27 +2,27 @@
   <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">List Upload Image</h1>
+                    <h1 class="page-header">List Upload</h1>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="#">
+                    <form action="/Admin/admin" method="POST">
                         <div class="row">
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-3">
                                 <label class="sr-only" for="username">Username</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
-                                    <input type="text" class="form-control" id="username" placeholder="Username">
+                                    <div class=""><i class="fa fa-user fa-fw"></i></div>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $username ?>">
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="sr-only" for="email">Email</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
-                                    <input type="text" class="form-control" id="email" placeholder="Email">
+                                    <div class=""><i class="fa fa-envelope fa-fw"></i></div>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email ?>">
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
@@ -80,14 +80,14 @@
                                                 <td><?php echo $data['StandarPrice']?></td>
                                                 <td><?php echo $data['PriceOfUser']?></td>
                                                 <td class="text-center">
-                                                <button class="btn btn-sm btn-outline-info border-0" data-idPictures="<?php echo $data['idPictures']?>" data-target="" type="button" value="submit" onclick="onclickEdit(this);"
-                                                        data-href="#" title="Edit"><i class="fa fa-edit fa-fw"></i>
+                                                <button class="btn btn-sm btn-outline-info border-0" data-idPictures="<?php echo $data['idPictures']?>" type="button" value="submit" onclick="onclickEdit(this);"
+                                                        title="Edit"><i class="fa fa-edit fa-fw"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                        data-href="#" title="Lock"><i class="fa fa-lock fa-fw"></i>
+                                                        title="Lock"><i class="fa fa-lock fa-fw"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                        data-href="#" title="Delete"><i class="fa fa-trash fa-fw"></i>
+                                                        title="Delete"><i class="fa fa-trash fa-fw"></i>
                                                 </button>
                                                 </td>
                                             </tr>

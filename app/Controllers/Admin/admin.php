@@ -17,16 +17,30 @@ class Admin extends Controller
 		}
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
 
+		//data search
+		if(isset($_POST['username'])){
+			$username = htmlspecialchars($_POST['username']);
+		}else{
+			$username = '';
+		}
+		if(isset($_POST['email'])){
+			$email = htmlspecialchars($_POST['email']);
+		}else{
+			$email = '';
+		}
+
 		$pager = \Config\Services::pager();
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
 		$offset = $page * LIMITPICTURE;
 		$adminModel = new AdminModel();
-		$pictures = $adminModel->getPictureForAdmin($offset);
+		$pictures = $adminModel->getPictureForAdmin($offset, $username, $email);
 		$data['page'] = $page + 1;
-		$data['total'] = count($adminModel->getAllPictureCountAdmin());
+		$data['total'] = count($adminModel->getAllPictureCountAdmin($username, $email));
 		$data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['viewchild'] = './admin/listImages';
+		$data['username'] = $username;
+		$data['email'] = $email;
 		return view('templates/base_view', $data);
 	}
 

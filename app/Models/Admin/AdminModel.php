@@ -12,14 +12,16 @@ use CodeIgniter\Model;
         protected $validationMessages = [];
         protected $skipValidation     = false;
 
-        public function getPictureForAdmin($offset){
+        public function getPictureForAdmin($offset, $username, $email){
             $db = \Config\Database::connect();
             $sql="SELECT users.idUser, users.Name as UserName, users.Email, 
                          pictures.idPictures, pictures.Name as PicturesName, pictures.Title, pictures.DateUp, pictures.NumberLike, pictures.idStatusPicture as Status, StandarPrice, PriceOfUser
                     FROM pictures 
                     INNER JOIN users 
                     ON pictures.idUser = users.idUser 
-                    ORDER BY idUser DESC LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
+                    WHERE users.Name like '%$username%' AND users.Email like '%$email%' 
+                    ORDER BY idUser DESC 
+                    LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
             $result = $db->query($sql)->getResultArray();
             $db->close();
             return $result;
@@ -33,9 +35,10 @@ use CodeIgniter\Model;
             return $result;
         }
 
-        public function getAllPictureCountAdmin(){
+        public function getAllPictureCountAdmin($username, $email){
             $db = \Config\Database::connect();
-            $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser ORDER BY NumberLike';
+            $sql="SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser
+                    WHERE users.Name like '%$username%' AND users.Email like '%$email%' ";
             $result = $db->query($sql)->getResultArray();
             $db->close();
             return $result;
