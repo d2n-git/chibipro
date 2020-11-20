@@ -22,6 +22,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url(); ?>/#submit">ChipiPro +</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo base_url(); ?>/Users/userpage">Nguyen User</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="hearer_icon d-flex">

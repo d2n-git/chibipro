@@ -2,7 +2,7 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 <!-- Left navbar links -->
 <ul class="navbar-nav">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
@@ -114,13 +114,13 @@
   <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">List Upload</h1>
+                    <h1 class="page-header">User List</h1>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="/Admin/listimages" method="POST">
+                    <form action="/Admin/listusers" method="POST">
                         <div class="row">
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-3">
@@ -158,20 +158,15 @@
                                     <thead style="background-color:#d0f3fb;">
                                         <tr>
                                             <th>#</th>
-                                            <th>
-                                                <input type="checkbox" id="select_all" />
-                                            </th>
                                             <th>UserID</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>PicturesID</th>
-                                            <th>Pictures Name</th>
-                                            <th>Title</th>
+                                            <th>Password Change</th>
+                                            <th>Type</th>
                                             <th>DateUp</th>
-                                            <th>NumberLike</th>
-                                            <th>Status</th>
-                                            <th>StandarPrice</th>
-                                            <th>PriceOfUser</th>
+                                            <th>Rank</th>
+                                            <th>Total images</th>
+                                            <th>Amount</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -179,7 +174,6 @@
                                         <?php foreach ($pictures as $iKey => $data): ?>
                                             <tr>
                                                 <th scope="row" class="sz-col-50 text-center"><?php echo $iKey?></th>
-                                                <td> <input type="checkbox"/></td>
                                                 <td id="idUser" class="text-info"><?php echo $data['idUser']?></td>
                                                 <td><?php echo $data['UserName']?></td>
                                                 <td><?php echo $data['Email']?></td>
@@ -241,7 +235,7 @@
             idUser, idPictures, Status
         };
         $.ajax({
-                url: '<?php echo base_url();?>/Admin/listimages/UpdateStatusPictureAdmin',
+                url: '<?php echo base_url();?>/Admin/listUsers/UpdateStatusUserAdmin',
                 type : "post",
                 dataType:'json',
                 data : data,
@@ -258,7 +252,7 @@
         let idPictures = $($_this).attr('data-idPictures');
         var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
         if (log_in == 1) {
-            window.location.assign("<?php echo base_url(); ?>/Admin/listimages/detailAdmin?id=" + idPictures + "");
+            window.location.assign("<?php echo base_url(); ?>/Admin/listUsers/detailAdmin?id=" + idPictures + "");
         } else {
             window.location.assign("<?php echo base_url(); ?>/Users/Login")
         }

@@ -249,6 +249,15 @@
             $('.input-images').imageUploader();
         });
 
+        //Set email nếu đang Login
+        var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+        if (email == ""){
+            $('#email').prop('readonly', false);
+            $('#email').attr('required', true);
+        }else{
+            $('#email').val(email);
+            $('#email').prop('readonly', true);
+        }
     })
 
     $('.input-images').imageUploader({
@@ -264,16 +273,6 @@
         label: ''
     });
 
-    var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
-    $(document).ready(function() {
-        if (email == ""){
-            $('#email').prop('readonly', false);
-            $('#email').attr('required', true);
-        }else{
-            $('#email').val(email);
-            $('#email').prop('readonly', true);
-        }
-    });
     function submitUpload(e){
         $('.load').fadeIn('fast');
         event.preventDefault();
