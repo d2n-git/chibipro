@@ -68,10 +68,15 @@
                                                  <td style="width: 20%;">
                                                      <input id="<?php echo $value['idPictures'] ?>_check" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url() ?>/assets/img/check-in.png">
                                                  </td>
-                                                 <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_edit" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url() ?>/assets/img/edit.png">
-                                                 </td>
-
+                                                 <?php
+                                                 $session = \Config\Services::session();
+                                                 if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
+                                                 {
+                                                     echo " <td style='width: 20%;'>
+                                                             <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png'>
+                                                            </td>";
+                                                 }
+                                                 ?>
                                              </tr>
                                          </body>
                                      </table>

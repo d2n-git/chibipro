@@ -14,7 +14,7 @@
                                 <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/painter/painter">News</a>
+                                <a class="nav-link" href="<?php echo base_url(); ?>/News">News</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url(); ?>/Contact">Contact</a>

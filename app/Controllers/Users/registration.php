@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
 use App\Models\Pictures\InSertPictureModel;
+use Config\Encryption;
 
 class registration extends Controller
 {
@@ -47,6 +48,17 @@ class registration extends Controller
                         }
                         if ($result) {
                             $alert->alert("User saved Success");
+                            $session = \Config\Services::session();
+                            $encrypter = new Encryption();
+                            $PasswordUpdate=$something['password'].''.$encrypter->key;
+                            $newdata = [
+                                'password'  => md5($PasswordUpdate),
+                                'email'     => $something['email'],
+                                'Permission' => $something['Permission'],
+                                'Gender' => $something['Gender'],
+                                'logged_in' => TRUE
+                            ];
+                            $session->set($newdata);
                             return redirect()->to(base_url());
                         }
                     } else {
@@ -74,5 +86,18 @@ class registration extends Controller
         ]);
         $validation->withRequest($this->request)
             ->run();
+    }
+    public function CheckEmailValidate()
+    {
+        $model = new InSertUserModel();
+        $something = $this->request->getBody();
+        $result = $model->GetUser($something);
+        if(!empty($result)){
+            $json = ["message" => "User already exist ", "status" => false];
+            echo json_encode($json);
+        } else{
+            $json = ["message" => "", "status" => true];
+            echo json_encode($json);
+        }
     }
 }

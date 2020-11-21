@@ -49,16 +49,16 @@
                                 <div class="form-group">
                                     <?php
                                     if (empty($user['Email']))
-                                        echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '' />";
+                                        echo  "<input id = 'Email' type='email' class='form-control' required name='email' placeholder='Your Email *' value= '' />";
                                     else
-                                        echo  "<input type='email' class='form-control' required name='email' placeholder='Your Email *' value= '" . $user["Email"] . "' readonly />";
+                                        echo  "<input id = 'Email' type='email' class='form-control' required name='email' placeholder='Your Email *' value= '" . $user["Email"] . "' readonly />";
                                     ?>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" minlength="10" maxlength="15" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="<?php echo empty($user['Phone']) ? '': $user['Phone'] ?>" />
+                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" minlength="10" maxlength="15" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="<?php echo empty($user['Phone']) ? '' : $user['Phone'] ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" maxlength="200" name="txtAddress" class="form-control" placeholder="Your Address " value="<?php echo empty($user['Address']) ? '': $user['Address'] ?>" />
+                                    <input type="text" maxlength="200" name="txtAddress" class="form-control" placeholder="Your Address " value="<?php echo empty($user['Address']) ? '' : $user['Address'] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <div class="maxl">
@@ -95,6 +95,22 @@
             if (valuePassword !== valueConfirmPassword) {
                 window.alert("The two passwords not match");
             }
+        });
+        $('#Email').focusout(function() {
+            $.ajax({
+                url: '<?php echo base_url(); ?>/Users/registration/CheckEmailValidate',
+                type: "POST",
+                data: document.getElementById('Email').value,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    let response = JSON.parse(data);
+                    if (!response.status) {
+                        window.alert("Email already exist");
+                        document.getElementById('Email').value = "";
+                    }
+                }
+            });
         });
     });
 </script>
