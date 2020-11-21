@@ -31,7 +31,7 @@ class InSertUserModel extends Model
             $Password=$this->Password;
         } else {
             $encrypter = new Encryption();
-            $Password=$this->Password.''.$encrypter->key;
+            $Password = md5($this->Password.''.$encrypter->key);
         } 
         $data=
         [
