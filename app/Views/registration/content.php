@@ -97,6 +97,7 @@
             }
         });
         $('#Email').focusout(function() {
+            document.getElementById('btn_Register').disabled = true;
             $.ajax({
                 url: '<?php echo base_url(); ?>/Users/registration/CheckEmailValidate',
                 type: "POST",
@@ -108,6 +109,9 @@
                     if (!response.status) {
                         window.alert("Email already exist");
                         document.getElementById('Email').value = "";
+                        document.getElementById('Email').focus();
+                    } else {
+                        document.getElementById('btn_Register').disabled = false;
                     }
                 }
             });
