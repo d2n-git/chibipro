@@ -260,18 +260,6 @@
         }
     })
 
-    $('.input-images').imageUploader({
-        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
-        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
-        maxSize: undefined,
-        maxFiles: undefined,
-    });
-
-    $('.input-images').imageUploader({
-        imagesInputName: 'images',
-        preloadedInputName: 'preloaded',
-        label: ''
-    });
 
     function submitUpload(e){
         $('.load').fadeIn('fast');

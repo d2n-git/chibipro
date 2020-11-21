@@ -14,7 +14,7 @@
                                 <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/painter/painter">News</a>
+                                <a class="nav-link" href="<?php echo base_url(); ?>/News">News</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url(); ?>/Contact">Contact</a>
@@ -29,17 +29,23 @@
                     </div>
                     <div class="hearer_icon d-flex">
 
-                        <a href="<?php echo base_url(); ?>/Users/Login" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="ti-user"></i>
-                        </a>
-                        <h6 style="padding: 2px 0px 0px 5px;">
-                            <?php
+
+                        
+                            <?php 
                             $session = \Config\Services::session();
-                            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'])
-                                echo 'Logout';
-                            else echo 'Login';
                             ?>
-                        </h6>
+                            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
+                                <a href="<?php echo base_url(); ?>/User/profile" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-user"></i>
+                                </a>
+                                <a href="<?php echo base_url(); ?>/Users/Login" style="padding: 2px 0px 0px 5px;">Logout</a>
+                            <?php else : ?>
+                                <a href="<?php echo base_url(); ?>/Users/Login" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="ti-user"></i>
+                                </a>
+                                <h6 style="padding: 2px 0px 0px 5px;">Login</h6>
+                            <?php endif;?>
+                            
                         <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                     </div>
                 </nav>

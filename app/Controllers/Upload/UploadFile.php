@@ -135,6 +135,14 @@ class UploadFile extends Controller
                             echo json_encode($json);
                         }
                     } else {
+                        if(!isset($_SESSION['logged_in']))
+                        {
+                            $MesError = 'Mail đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
+                            unlink($target_dir . $nameNewPicture);
+                            $json = ["message" => $MesError, "status" => 0];
+                            echo json_encode($json);
+                            return;
+                        }
                         $modelPicture['idUser'] = (int)$resultUser['idUser'];
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;

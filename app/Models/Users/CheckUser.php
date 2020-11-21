@@ -16,4 +16,13 @@ class CheckUser extends Model
         $db->close();
         return $result;
     }
+
+    public function getUserByEmail($param)
+    {
+        $db = \Config\Database::connect();
+        $sql = 'SELECT * FROM users WHERE Email = ?';
+        $result = $db->query($sql, $param)->getRowArray();
+        $db->close();
+        return $result;
+    }
 }

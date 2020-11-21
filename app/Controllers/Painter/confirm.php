@@ -37,7 +37,7 @@ class confirm extends Controller
 		$resultInsertPicture = $insertConfirm->InSertConfirm($modelConfirm);
 		if ($resultInsertPicture)
 		{
-			return redirect()->to(base_url("/Painter/Painter"));
+			return redirect()->to(base_url("/News"));
 		}
 	}
 }
