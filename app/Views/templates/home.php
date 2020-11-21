@@ -215,18 +215,6 @@
 
     })
 
-    $('.input-images').imageUploader({
-        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
-        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
-        maxSize: undefined,
-        maxFiles: undefined,
-    });
-
-    $('.input-images').imageUploader({
-        imagesInputName: 'images',
-        preloadedInputName: 'preloaded',
-        label: ''
-    });
 
     var email = '<?php echo (isset( $_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
     $(document).ready(function() {
