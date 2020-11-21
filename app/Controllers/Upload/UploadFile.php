@@ -88,13 +88,13 @@ class UploadFile extends Controller
                     if (empty($resultUser)) {
                         helper('text');
                         $passWord = random_string('alnum', 6);
-                        $something['firstName'] = '';
-                        $something['lastName'] = '';
-                        $something['txtEmpPhone'] = '';
+                        $something['firstName'] = 'Chủ';
+                        $something['lastName'] = 'Nhân';
+                        $something['txtEmpPhone'] = '09-0000-0000';
                         $something['txtAddress'] = '';
                         $something['password'] = $passWord;
                         $something['Permission'] = 2;
-                        $something['Gender'] = 1;
+                        $something['Gender'] = '';
                         $resultInsertUser = $modelInsertUser->InSertUsers($something);
                         if ($resultInsertUser) {
                             // $sendMail = new ConfigEmail();
@@ -102,6 +102,7 @@ class UploadFile extends Controller
                             $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                             $modelPicture['idStatusPicture'] = 1;
                             $modelPicture['Name'] = $nameNewPicture;
+                            $modelPicture['Title'] = 'Bên nào cũng chất';
                             $modelPicture['NumberLike'] = 0;
                             $modelPicture['DateUp'] = date('Y-m-d h:m:s');
                             $modelPicture['StatusSendEmail'] = 0;
@@ -137,7 +138,7 @@ class UploadFile extends Controller
                     } else {
                         if(!isset($_SESSION['logged_in']))
                         {
-                            $MesError = 'Mail đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
+                            $MesError = 'E-Mail này đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
                             unlink($target_dir . $nameNewPicture);
                             $json = ["message" => $MesError, "status" => 0];
                             echo json_encode($json);
@@ -146,6 +147,7 @@ class UploadFile extends Controller
                         $modelPicture['idUser'] = (int)$resultUser['idUser'];
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;
+                        $modelPicture['Title'] = 'Bên nào cũng chất';
                         $modelPicture['NumberLike'] = 0;
                         $modelPicture['DateUp'] = date('Y-m-d h:m:s');
                         $modelPicture['StatusSendEmail'] = 0;

@@ -12,9 +12,13 @@ use CodeIgniter\Model;
         protected $validationMessages = [];
         protected $skipValidation     = false;
 
-        public function getAllPicture($offset){
+        public function getAllPicture($offset, $idUser = ''){
             $db = \Config\Database::connect();
-            $sql="SELECT pictures.idPictures, pictures.Name, pictures.Title, date_format(pictures.DateUp,'%d-%m-%Y') as DateUp, pictures.NumberLike, users.Name AS userName, users.Email FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE Picturesflg <> 1 OR Picturesflg is Null ORDER BY NumberLike DESC LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
+            $sql="SELECT pictures.idPictures, pictures.Name, pictures.Title, date_format(pictures.DateUp,'%d-%m-%Y') as DateUp, pictures.NumberLike, users.Name AS userName, users.Email FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE (Picturesflg <> 1 OR Picturesflg is Null)";
+            if($idUser != ''){
+                $sql = $sql.' AND pictures.idUser = '.$idUser;
+            }
+            $sql = $sql." ORDER BY NumberLike DESC LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;
@@ -28,9 +32,12 @@ use CodeIgniter\Model;
             return $result;
         }
 
-        public function getAllPictureCount(){
+        public function getAllPictureCount($idUser = ''){
             $db = \Config\Database::connect();
-            $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE Picturesflg <> 1 OR Picturesflg is Null';
+            $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE (Picturesflg <> 1 OR Picturesflg is Null)';
+            if($idUser != ''){
+                $sql = $sql.' AND pictures.idUser = '.$idUser;
+            }
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;

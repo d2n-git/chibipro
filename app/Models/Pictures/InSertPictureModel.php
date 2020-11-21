@@ -21,6 +21,7 @@ class InSertPictureModel extends Model
         $this->idUser = $data['idUser'];
         $this->idStatusPicture = $data['idStatusPicture'];
         $this->Name = $data['Name'];
+        $this->Title = $data['Title'];
         $this->NumberLike = $data['NumberLike'];
         $this->DateUp = $data['DateUp'];
         $this->StatusSendEmail = $data['StatusSendEmail'];
@@ -32,6 +33,7 @@ class InSertPictureModel extends Model
                 'idUser' => $this->idUser,
                 'idStatusPicture' => $this->idStatusPicture,
                 'Name' => $this->Name,
+                'Title' => $this->Title,
                 'NumberLike' => $this->NumberLike,
                 'DateUp' => $this->DateUp,
                 'StatusSendEmail' => $this->StatusSendEmail

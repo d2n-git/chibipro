@@ -35,7 +35,7 @@
             <ul class="list">
               <li>
                 <a class="active" href="#">
-                  <span>Artist : </span><?php echo $pictures->userName?></a>
+                  <span>Artist : </span><?php echo str_replace("*-*-"," ",$pictures->userName)?></a>
               </li>
             </ul>
             <p>

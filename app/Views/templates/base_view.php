@@ -11,7 +11,6 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0" nonce="fEZTlEDb"></script>
     <?php echo view('templates/menu');?>
     <?php echo view($viewchild);?>
-    <?php echo view($usertable);?>
     <?php echo view('templates/footer');?>
     <?php echo view('templates/footerscript');?>
 </body>

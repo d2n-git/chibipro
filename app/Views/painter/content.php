@@ -28,7 +28,7 @@
                                                  <td style="width: 90%;">
                                                      <div>
                                                          <h6>
-                                                             Chủ nhân : <?php echo $value['userName']; ?>
+                                                             Chủ nhân : <?php echo str_replace("*-*-"," ",$value['userName']); ?>
                                                              <br>
                                                              Update : <?php echo $value['DateUp']; ?>
                                                          </h6>

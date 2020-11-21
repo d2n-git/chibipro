@@ -23,6 +23,7 @@ class Home extends BaseController
 				'password'  => '',
 				'email'     => '',
 				'idUser'    => '',
+				'Name'    => '',
 				'Permission' => '',
 				'Gender' => '',
 				'logged_in' => FALSE
