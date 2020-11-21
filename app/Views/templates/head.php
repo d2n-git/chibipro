@@ -35,3 +35,5 @@
     <!-- confirm css -->
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/loading.css">
     <link rel="stylesheet" href="<?php echo base_url();?>/assets/css//image-uploader.css">
+    <!-- forgotPassword css -->
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/forgotPassword.css">

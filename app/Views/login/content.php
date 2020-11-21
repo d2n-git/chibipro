@@ -17,7 +17,7 @@
         <a href="<?php echo base_url();?>/Users/registration" >
         <button  class="btn btn-lg btn-primary btn-block btn-signin" type="button">Registration</button>
         </a>
-        <a href="#" class="forgot-password">
+        <a href="<?php echo base_url();?>/Users/forgotPassword" class="forgot-password">
             Forgot the password?
         </a>
     </div><!-- /card-container -->
