@@ -106,14 +106,14 @@ class UploadFile extends Controller
                             if ($resultInsertPicture) {
                                 $MesError = 'Uploaded Success';
                                 $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
+                                $resultGetUser = $modelInsertUser->GetUser($something['email']);
                                 $session = \Config\Services::session();
-                                $encrypter = new Encryption();
                                 $newdata = [
-                                    'password'  => md5($something['Password'].''.$encrypter->key),
-                                    'email'     => $something['email'],
-                                    'idUser'    => '',
-                                    'Permission' => 2,
-                                    'Gender' => 1,
+                                    'password'  => $resultGetUser['Password'],
+                                    'email'     => $resultGetUser['Email'],
+                                    'idUser'    => $resultGetUser['idUser'],
+                                    'Permission' => $resultGetUser['Permission'],
+                                    'Gender' => $resultGetUser['Gender'],
                                     'logged_in' => TRUE
                                 ];
                                 $session->set($newdata);

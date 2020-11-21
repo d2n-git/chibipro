@@ -26,9 +26,13 @@ class InSertUserModel extends Model
     }
     private function GetData()
     {
-      
-        $encrypter = new Encryption();
-        $Password=$this->Password.''.$encrypter->key;
+        $result = $this->GetUser($this->Email);
+        if(isset($result) && ($result['Password'] == $this->Password)){
+            $Password=$this->Password;
+        } else {
+            $encrypter = new Encryption();
+            $Password=$this->Password.''.$encrypter->key;
+        } 
         $data=
         [
             'Name'=>$this->Name,
@@ -37,7 +41,7 @@ class InSertUserModel extends Model
             'Email'=>$this->Email,
             'Phone'=>$this->Phone,
             'Address'=>$this->Address,
-            'Password'=> md5($Password)
+            'Password'=> $Password
 
         ];
         return $data;

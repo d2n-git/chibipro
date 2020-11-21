@@ -32,7 +32,7 @@
                             $session = \Config\Services::session();
                             ?>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
-                                <a href="<?php echo base_url(); ?>/User/profile" role="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="<?php echo base_url(); ?>/Users/registration?id=<?php echo $_SESSION['idUser']; ?>" role="button" aria-haspopup="true" aria-expanded="false">
                                     <i class="ti-user"></i>
                                 </a>
                                 <a href="<?php echo base_url(); ?>/Users/Login" style="padding: 2px 0px 0px 5px;">Logout</a>

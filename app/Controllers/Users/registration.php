@@ -16,11 +16,13 @@ class registration extends Controller
         $id = $this->request->getGet('id');
         if(!empty($id))
         {
-            $modePicture = new InSertPictureModel();
             $modeUser = new InSertUserModel();
-            $idUser = $modePicture->GetIdUser($id);
-            $data['user'] = $modeUser->GetUserById( $idUser);
-        }else  $data['user'] = ['Email'=> null,'Permission'=> null,'Gender'=> null];
+            $data['user'] = $modeUser->GetUserById($id);
+        }else {
+            $data['user'] = ['firstName'=> null, 'lastName'=> null,
+             'Permission'=> null, 'Gender'=> null, 'Email'=> null, 'Phone'=> null,
+             'Address'=> null, 'Password'=> null, 'idUser'=> null];
+        }
         $data['viewchild'] = './registration/content';
         return view('templates/base_view', $data);
     }
@@ -48,14 +50,14 @@ class registration extends Controller
                         }
                         if ($result) {
                             $alert->alert("User saved Success");
+                            $resultGetUser = $model->GetUser($something['email']);
                             $session = \Config\Services::session();
-                            $encrypter = new Encryption();
-                            $PasswordUpdate=$something['password'].''.$encrypter->key;
                             $newdata = [
-                                'password'  => md5($PasswordUpdate),
-                                'email'     => $something['email'],
-                                'Permission' => $something['Permission'],
-                                'Gender' => $something['Gender'],
+                                'password'  => $resultGetUser['Password'],
+                                'email'     => $resultGetUser['Email'],
+                                'idUser'    => $resultGetUser['idUser'],
+                                'Permission' => $resultGetUser['Permission'],
+                                'Gender' => $resultGetUser['Gender'],
                                 'logged_in' => TRUE
                             ];
                             $session->set($newdata);
