@@ -138,7 +138,7 @@ CREATE TABLE `users` (
   `Name` varchar(45) DEFAULT NULL,
   `Permission` int(11) NOT NULL,
   `Email` varchar(45) NOT NULL,
-  `Phone` int(15) DEFAULT NULL,
+  `Phone` varchar(15) DEFAULT NULL,
   `Address` varchar(200) DEFAULT NULL,
   `Password` varchar(555) NOT NULL,
   `Gender` varchar(10),
@@ -158,6 +158,31 @@ CREATE TABLE `users` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+DROP TABLE IF EXISTS `review`;
+
+CREATE TABLE `review` (
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL,
+  `idPicture` int(11) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `content` varchar(500) NOT NULL,
+  `rate` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `problem` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `statuspicture` VALUES (0, 'Chờ báo giá 0', NULL);
 INSERT INTO `statuspicture` VALUES (1, 'Chờ báo giá 1', NULL);
