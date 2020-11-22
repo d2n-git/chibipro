@@ -124,7 +124,11 @@
              case 'check':
                  var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
                  if (log_in == 1) {
+                    <?php if($_SESSION['Permission'] == 1) {?>
                      window.location.href = "<?php echo base_url(); ?>/Painter/confirm?id=" + id[0] + "";
+                    <?php } else {?>
+                    window.alert("You aren't a painter");
+                    <?php } ?>
                  } else {
                      window.location.assign("<?php echo base_url(); ?>/Users/Login")
                  }
