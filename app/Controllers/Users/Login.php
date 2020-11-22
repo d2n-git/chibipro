@@ -18,7 +18,7 @@ class login extends Controller
     }
     function login()
     {
-        $dataSubmit=$this->request->getVar();
+        $dataSubmit = (array)json_decode( $this->request->getBody());
         if(!empty( $dataSubmit))
         {
             $checkUser=new CheckUser();
@@ -35,7 +35,8 @@ class login extends Controller
                     'logged_in' => TRUE
             ];
             $session->set($newdata);
-            return redirect()->to(base_url());
+            $json = ["message" => "Login successfully !", "status" => true];
+            echo json_encode($json);
             }
             else
             {
@@ -49,12 +50,14 @@ class login extends Controller
                     'logged_in' => FALSE
             ];
             $session->set($newdata);
-            return redirect()->to(base_url('/Users/Login'));
+            $json = ["message" => "Login failed ! user or password incorrect.", "status" => false];
+            echo json_encode($json);
             }
         }
         else
         {
-            return redirect()->to(base_url('/Users/Login'));
+            $json = ["message" => "Input login info please !", "status" => false];
+            echo json_encode($json);
         }
     }
 }
