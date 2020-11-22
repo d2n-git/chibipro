@@ -49,8 +49,14 @@ class UploadFile extends Controller
             }
         }
 
+        //check file upload
+        if($_FILES["images"]["tmp_name"]=="" && $uploadOk == 1){
+            $MesError = "Bạn chưa chọn ảnh để Upload.";
+            $uploadOk = 0;
+        }
+
         // Check if image file is a actual image or fake image
-        if (isset($_POST["submit"])) {
+        if (isset($_POST["submit"]) && $uploadOk == 1) {
             $check = getimagesize($_FILES["images"]["tmp_name"]);
             if ($check === false) {
                 $MesError = "File is not an image.";
@@ -58,19 +64,19 @@ class UploadFile extends Controller
             }
         }
         // Check if file already exists
-        if (file_exists($nameNewPicture)) {
+        if (file_exists($nameNewPicture) && $uploadOk == 1) {
             $MesError = $MesError . "File already exists.";
             $uploadOk = 0;
         }
         // Check file size
-        if ($_FILES["images"]["size"] > 5000000) {
+        if ($_FILES["images"]["size"] > 5000000 && $uploadOk == 1) {
             $MesError = $MesError . "Your file is too large.";
             $uploadOk = 0;
         }
         // Allow certain file formats
         if (
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
+            && $imageFileType != "gif" && $uploadOk == 1
         ) {
             $MesError = $MesError . "Only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
@@ -132,6 +138,7 @@ class UploadFile extends Controller
                             echo json_encode($json);
                         }
                     } else {
+                        $session = \Config\Services::session();
                         if(!isset($_SESSION['logged_in']))
                         {
                             $MesError = 'Mail đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
