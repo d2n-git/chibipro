@@ -11,7 +11,7 @@
             imagesInputName: 'images',
             preloadedInputName: 'preloaded',
             label: '',
-            extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+            extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg','.JPG', '.JPEG', '.PNG', '.GIF', '.SVG'],
             mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
             maxSize: undefined,
             maxFiles: undefined,
