@@ -120,7 +120,7 @@
             </div>
         </div>
         <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" id="submit">
             <?= $pager->makeLinks($page, LIMITPICTURE, $total, 'template_picture'); ?>
         </div>
         </div>
@@ -133,7 +133,7 @@
 <section class="shipping_details section_padding">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-8" id="submit">
+            <div class="col-lg-8">
                 <div class="arrival_tittle">
                     <h2>Upload File</h2>
                 </div>

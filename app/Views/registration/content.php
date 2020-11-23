@@ -1,9 +1,9 @@
 <?php
-    $fullname = [0 => '', 1 => ''];
-    if (!empty($user['Name'])){
-        $fullname = explode('*-*-', $user['Name']);
-    }
-    
+$fullname = [0 => '', 1 => ''];
+if (!empty($user['Name'])) {
+    $fullname = explode('*-*-', $user['Name']);
+}
+
 ?>
 <div class="container register">
     <div class="row">
@@ -27,10 +27,10 @@
                                     <input type="text" class="form-control" required id="firstName" maxlength="20" name="lastName" placeholder="Last Name *" value="<?php echo $fullname[1] ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" required id="pass" name="password" placeholder="Password *" value="" />
+                                    <input type="password" class="form-control" required id="pass" name="password" placeholder="Password *" value="<?php echo $user['Password'] ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="confirmPass" required name="confirmPassword" placeholder="Confirm Password *" value="" />
+                                    <input type="password" class="form-control" id="confirmPass" required name="confirmPassword" placeholder="Confirm Password *" value="<?php echo $user['Password'] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <div class="maxl">
@@ -48,17 +48,17 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <?php
-                                    if (empty($user['Email']))
+                                    if (!isset($user['Email']))
                                         echo  "<input id = 'Email' type='email' class='form-control' required name='email' placeholder='Your Email *' value= '' />";
                                     else
                                         echo  "<input id = 'Email' type='email' class='form-control' required name='email' placeholder='Your Email *' value= '" . $user["Email"] . "' readonly />";
                                     ?>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" minlength="10" maxlength="15" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="<?php echo empty($user['Phone']) ? '' : $user['Phone'] ?>" />
+                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" minlength="10" maxlength="15" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="<?php echo !isset($user['Phone']) ? '' : $user['Phone'] ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" maxlength="200" name="txtAddress" class="form-control" placeholder="Your Address " value="<?php echo empty($user['Address']) ? '' : $user['Address'] ?>" />
+                                    <input type="text" maxlength="200" name="txtAddress" class="form-control" placeholder="Your Address " value="<?php echo !isset($user['Address']) ? '' : $user['Address'] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <div class="maxl">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <?php
-                                if (empty($user['Email']))
+                                if (!isset($user['Email']))
                                     echo  " <input id='btn_Register' type='submit' class='btnRegister' value='Register' name='btnSubmit' />";
                                 else
                                     echo  " <input id='btn_Register' type='submit' class='btnRegister' value='Modify' name='btnSubmit' />";
@@ -97,20 +97,26 @@
             }
         });
         $('#Email').focusout(function() {
-            $.ajax({
-                url: '<?php echo base_url(); ?>/Users/registration/CheckEmailValidate',
-                type: "POST",
-                data: document.getElementById('Email').value,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    let response = JSON.parse(data);
-                    if (!response.status) {
-                        window.alert("Email already exist");
-                        document.getElementById('Email').value = "";
+            <?php if (!isset($user['Email']))  {?>
+                document.getElementById('btn_Register').disabled = true;
+                $.ajax({
+                    url: '<?php echo base_url(); ?>/Users/registration/CheckEmailValidate',
+                    type: "POST",
+                    data: document.getElementById('Email').value,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        let response = JSON.parse(data);
+                        if (!response.status) {
+                            window.alert("Email already exist");
+                            document.getElementById('Email').value = "";
+                            document.getElementById('Email').focus();
+                        } else {
+                            document.getElementById('btn_Register').disabled = false;
+                        }
                     }
-                }
-            });
+                });
+           <?php } ?>
         });
     });
 </script>
