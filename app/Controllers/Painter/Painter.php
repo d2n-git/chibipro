@@ -13,9 +13,9 @@ class Painter extends Controller
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
 		$offset = $page * LIMITPICTURE;
 		$pictureModel = new PictureModel();
-		$pictures = $pictureModel->getAllPicture($offset,'','1,8');
+		$pictures = $pictureModel->getAllPicture($offset,'','8,9');
 		$data['page'] = $page + 1;
-		$data['total'] = count($pictureModel->getAllPictureCount('','1,8'));
+		$data['total'] = count($pictureModel->getAllPictureCount('','8,9'));
 		$data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['viewchild'] = './painter/content';

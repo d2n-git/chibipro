@@ -77,64 +77,60 @@
         </div>
     </div>
 </section>
-    <!-- new arrival part here -->
-    <section class="new_arrival padding-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="arrival_tittle">
-                        <h2>New</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="new_arrival_iner filter-container">
-                        <?php foreach($pictures as $value){
-                        ?>
-                            <div class="single_arrivel_item col-md-3" style="height:400px;">
-                                <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
-                                <div class="hover_text">
-                                    <a href="#"><h3><?php echo str_replace("*-*-"," ",$value['userName'])?></h3></a>
-                                    <div class="rate_icon">
-                                        <a> <i class="fas fa-star"></i> </a>
-                                        <a> <i class="fas fa-star"></i> </a>
-                                        <a> <i class="fas fa-star"></i> </a>
-                                        <a> <i class="fas fa-star"></i> </a>
-                                        <a> <i class="fas fa-star"></i> </a>
-                                    </div>
-                                    <h5>$150</h5>
-                                    <div class="social_icon">
-                                        <a onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
-                                        <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-        <div class="row justify-content-center" id="submit">
-            <?= $pager->makeLinks($page, LIMITPICTURE, $total, 'template_picture'); ?>
-        </div>
-        </div>
-    </section>
 
-
-    <!-- new arrival part end -->
-
-<!-- free shipping here -->
-<section class="shipping_details section_padding">
+<section class="new_arrival padding-5">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="arrival_tittle">
+                    <h2>Hot</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="new_arrival_iner filter-container">
+                    <?php foreach($pictures as $value){
+                    ?>
+                        <div class="single_arrivel_item col-md-3" style="height:400px;">
+                            <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
+                            <div class="hover_text">
+                                <a href="#"><h3><?php echo str_replace("*-*-"," ",$value['userName'])?></h3></a>
+                                <div class="rate_icon">
+                                    <a> <i class="fas fa-star"></i> </a>
+                                    <a> <i class="fas fa-star"></i> </a>
+                                    <a> <i class="fas fa-star"></i> </a>
+                                    <a> <i class="fas fa-star"></i> </a>
+                                    <a> <i class="fas fa-star"></i> </a>
+                                </div>
+                                <h5>$150</h5>
+                                <div class="social_icon">
+                                    <a onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
+                                    <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+    <div class="row justify-content-center" id="submit">
+        <?= $pager->makeLinks($page, LIMITPICTURE, $total, 'template_picture'); ?>
+    </div>
+    </div>
+</section>
+
+<section class="new_arrival padding-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="arrival_tittle" style="margin-bottom: 10px;">
                     <h2>Upload File</h2>
                 </div>
             </div>
@@ -161,7 +157,6 @@
         </Form>
     </div>
 </section>
-<!-- free shipping end -->
 
 <!-- Contact-->
 <section class="new_arrival section_padding" style="background-color: #f4f4f4;">
