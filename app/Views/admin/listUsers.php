@@ -155,38 +155,42 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
-                                    <thead style="background-color:#d0f3fb;">
+                                    <thead style="background-color:#ffc107;">
                                         <tr>
                                             <th>#</th>
                                             <th>UserID</th>
                                             <th>Username</th>
-                                            <th>Email</th>
+                                            <th>E-mail</th>
                                             <th>Password Change</th>
                                             <th>Type</th>
-                                            <th>DateUp</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
+                                            <th>Status</th>
                                             <th>Rank</th>
                                             <th>Total images</th>
                                             <th>Amount</th>
+                                            <th>Logtime</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($pictures as $iKey => $data): ?>
+                                        <?php foreach ($allusers as $iKey => $data): ?>
                                             <tr>
                                                 <th scope="row" class="sz-col-50 text-center"><?php echo $iKey?></th>
                                                 <td id="idUser" class="text-info"><?php echo $data['idUser']?></td>
-                                                <td><?php echo $data['UserName']?></td>
+                                                <td><?php echo $data['Name']?></td>
                                                 <td><?php echo $data['Email']?></td>
-                                                <td id="idPictures"><?php echo $data['idPictures']?></td>
-                                                <td><?php echo $data['PicturesName']?></td>
-                                                <td><?php echo $data['Title']?></td>
-                                                <td><?php echo $data['DateUp']?></td>
-                                                <td><?php echo $data['NumberLike']?></td>
-                                                <td><?php echo $data['idStatusPicture']?></td>
-                                                <td><?php echo $data['StandarPrice']?></td>
-                                                <td><?php echo $data['PriceOfUser']?></td>
+                                                <td><?php echo $data['DatePasschange']?></td>
+                                                <td><?php echo $data['Permission']?></td>
+                                                <td><?php echo $data['Phone']?></td>
+                                                <td><?php echo $data['Address']?></td>
+                                                <td><?php echo $data['Userflg']?></td>
+                                                <td>Gold</td>
+                                                <td>10</td>
+                                                <td>10.000</td>
+                                                <td><?php echo $data['Logtime']?></td>
                                                 <td class="text-center">
-                                                <button class="btn btn-sm btn-outline-info border-0" data-idPictures="<?php echo $data['idPictures']?>" type="button" value="submit" onclick="onclickEdit(this);"
+                                                <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
                                                         title="Edit"><i class="fa fa-edit fa-fw"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
@@ -229,10 +233,9 @@
     function ChangeStatus($_this){
         var $row = $($_this).closest("tr");
         let idUser = $($row).find('#idUser').text();
-        let idPictures = $($row).find('#idPictures').text();
         let Status = $($_this).attr('data-status');
         const data = {
-            idUser, idPictures, Status
+            idUser, Status
         };
         $.ajax({
                 url: '<?php echo base_url();?>/Admin/listUsers/UpdateStatusUserAdmin',
@@ -249,10 +252,10 @@
             });
     }
     function onclickEdit($_this) {
-        let idPictures = $($_this).attr('data-idPictures');
+        let idUser = $($_this).attr('data-idUser');
         var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
         if (log_in == 1) {
-            window.location.assign("<?php echo base_url(); ?>/Admin/listUsers/detailAdmin?id=" + idPictures + "");
+            window.location.assign("<?php echo base_url(); ?>/Admin/listUsers/detailAdmin?id=" + idUser + "");
         } else {
             window.location.assign("<?php echo base_url(); ?>/Users/Login")
         }

@@ -67,5 +67,14 @@ use CodeIgniter\Model;
             $db->close();
             return $results > 0;
         }
+
+        public function GetAllUsers($offset, $username, $email)
+        {
+            $db = \Config\Database::connect();
+            $sql = 'SELECT * FROM users';
+            $result = $db->query($sql)->getResultArray();
+            $db->close();
+            return $result;
+        }
     }
 ?>

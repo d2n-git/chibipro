@@ -2,7 +2,7 @@
 namespace App\Controllers\Admin;
 
 use CodeIgniter\Controller;
-use App\Models\Pictures\InSertPictureModel;
+use App\Models\Users\InSertUserModel;
 use App\Models\Admin\AdminModel;
 use App\Libraries\alert;
 
@@ -31,15 +31,11 @@ class listusers extends Controller
 			$email = '';
 		}
 
-		$pager = \Config\Services::pager();
-		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
-		$offset = $page * LIMITPICTURE;
 		$adminModel = new AdminModel();
-		$pictures = $adminModel->getPictureForAdmin($offset, $username, $email);
-		$data['page'] = $page + 1;
-		$data['total'] = count($adminModel->getAllPictureCountAdmin($username, $email));
-		$data['pager'] = $pager;
-		$data['pictures'] = $pictures;
+		$offset = 0;
+		$allusers = $adminModel->GetAllUsers($offset, $username, $email);
+		$data['total'] = count($adminModel->GetAllUsers('', $username, $email));
+		$data['allusers'] = $allusers;
 		$data['viewchild'] = './admin/listUsers';
 		$data['username'] = $username;
 		$data['email'] = $email;
@@ -77,8 +73,8 @@ class listusers extends Controller
 			return redirect() -> to(base_url('/Users/Login'));
 		}
 		$id = $this->request->getGet('id');
-		$modePicture = new InSertPictureModel();
-		$data['Picture'] = $modePicture->GetPictureById($id);
+		$modeInSertUser = new InSertUserModel();
+		$data['user'] = $modeInSertUser->GetUserById($id);
 		$data['viewchild'] = '/admin/detailUserAdmin';
 		return view('templates/base_view', $data);
 	}

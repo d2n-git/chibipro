@@ -186,4 +186,13 @@ CREATE TABLE `contact` (
 
 INSERT INTO `statuspicture` VALUES (0, 'Chờ báo giá 0', NULL);
 INSERT INTO `statuspicture` VALUES (1, 'Chờ báo giá 1', NULL);
+
+INSERT INTO `users` VALUES (40, 'Chủ*-*-Nhân', 1, 'furusato.d2n@gmail.com', 0, 'STtBJs', '26e8917ff90617d093344705f0704d72', '1', NULL, '2020-11-15 16:11:00', NULL, NULL);
+
+INSERT INTO `pictures` VALUES (36, 40, 8, '1.jpg', '1.jpg', 1, '2020-11-15 04:11:04', 0, 200.00, 0.00, '', '', 'Bên nào cũng chất 1', NULL, NULL, '2020-11-21 00:00:00', '2020-11-15 16:11:04', NULL);
+INSERT INTO `pictures` VALUES (37, 40, 8, '2.jpg', '2.jpg', 0, '2020-11-15 04:11:26', 0, 0.00, 0.00, NULL, NULL, 'Bên nào cũng chất 2', NULL, NULL, '2020-11-15 16:22:26', '2020-11-15 16:22:26', NULL);
+INSERT INTO `pictures` VALUES (38, 40, 8, '3.jpg', '3.jpg', 0, '2020-11-15 04:11:43', 0, 0.00, 0.00, NULL, NULL, 'Bên nào cũng chất 3', NULL, NULL, '2020-11-15 16:24:44', '2020-11-15 16:24:44', NULL);
+INSERT INTO `pictures` VALUES (39, 40, 8, '4.jpg', '4.jpg', 0, '2020-11-15 04:11:29', 0, 0.00, 0.00, NULL, NULL, 'Bên nào cũng chất 4', NULL, NULL, '2020-11-15 16:25:29', '2020-11-15 16:25:29', NULL);
+INSERT INTO `pictures` VALUES (40, 40, 8, '5.jpg', '5.jpg', 3, '2020-11-15 04:11:47', 0, 200.00, 11111.00, '', '', 'Bên nào cũng chất 5', NULL, NULL, '2020-11-21 00:00:00', '2020-11-15 16:28:47', NULL);
+
 -- Dump completed on 2020-10-10 18:20:03
