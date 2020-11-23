@@ -26,7 +26,7 @@
                             </li>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url(); ?>/Users/userpage"><?php echo $_SESSION['Name'] ?></a>
+                                    <a class="nav-link" href="<?php echo base_url(); ?>/Users/userpage" style="font-weight:800; color:blue;"><?php echo $_SESSION['Name'] ?></a>
                                 </li>
                             <?php endif;?>
                         </ul>

@@ -33,7 +33,6 @@
                                                              Update : <?php echo $value['DateUp']; ?>
                                                          </h6>
                                                      </div>
-
                                                  </td>
                                              </tr>
                                          </tbody>
@@ -42,7 +41,7 @@
                              </tr>
                              <tr>
                                  <td style="width: 70%;">
-                                     <img src="<?php echo base_url(); ?>/assets/img/<?php echo $value['Name']; ?>" alt="#">
+                                     <img src="<?php echo base_url(); ?>/assets/img/<?php echo $value['chibiFileName']; ?>" alt="#">
                                  </td>
                                  <td style="width: 30%;">
                                      <img src="<?php echo base_url(); ?>/assets/img/<?php echo $value['Name']; ?>" alt="#">
@@ -51,32 +50,33 @@
                              <tr>
                                  <td>
                                      <table class="table">
-
                                          <body>
                                              <tr>
-                                                 <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png">
-                                                     <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
-                                                 </td>
-                                                 <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png">
-                                                     <span class="iconFooterNumber">5</span>
-                                                 </td>
-                                                 <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png">
-                                                 </td>
-                                                 <td style="width: 20%;">
-                                                     <input id="<?php echo $value['idPictures'] ?>_check" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url() ?>/assets/img/check-in.png">
-                                                 </td>
-                                                 <?php
-                                                 $session = \Config\Services::session();
-                                                 if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
-                                                 {
-                                                     echo " <td style='width: 20%;'>
-                                                             <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png'>
-                                                            </td>";
-                                                 }
-                                                 ?>
+                                                <td style="width: 20%;">
+                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png">
+                                                    <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
+                                                </td>
+                                                <td style="width: 20%;">
+                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png">
+                                                    <span class="iconFooterNumber">5</span>
+                                                </td>
+                                                <td style="width: 20%;">
+                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png">
+                                                </td>
+                                                <?php
+                                                    if(isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '2'))
+                                                    {
+                                                        echo " <td style='width: 20%;'>
+                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png'>
+                                                                </td>";
+                                                    }
+                                                    if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
+                                                    {
+                                                        echo " <td style='width: 20%;'>
+                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png'>
+                                                                </td>";
+                                                    }
+                                                ?>
                                              </tr>
                                          </body>
                                      </table>
@@ -94,9 +94,9 @@
  <script>
      function onclickMe($data) {
          var id = $data.split('_');
+         var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
          switch (id[1]) {
              case 'like':
-                 var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
                  if (log_in == 1) {
                      $.ajax({
                          url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
@@ -122,7 +122,6 @@
                  // code block
                  break;
              case 'check':
-                 var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
                  if (log_in == 1) {
                     <?php if($_SESSION['Permission'] == 1) {?>
                      window.location.href = "<?php echo base_url(); ?>/Painter/confirm?id=" + id[0] + "";
@@ -134,7 +133,6 @@
                  }
                  break;
              case 'edit':
-                 var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
                  if (log_in == 1) {
                      window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
                  } else {

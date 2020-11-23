@@ -99,7 +99,7 @@ class UploadFile extends Controller
                         $something['txtEmpPhone'] = '09-0000-0000';
                         $something['txtAddress'] = '';
                         $something['password'] = $passWord;
-                        $something['Permission'] = 2;
+                        $something['Permission'] = 1; // User thường
                         $something['Gender'] = '';
                         $resultInsertUser = $modelInsertUser->InSertUsers($something);
                         if ($resultInsertUser) {

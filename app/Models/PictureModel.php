@@ -12,11 +12,15 @@ use CodeIgniter\Model;
         protected $validationMessages = [];
         protected $skipValidation     = false;
 
-        public function getAllPicture($offset, $idUser = ''){
+        public function getAllPicture($offset, $idUser = '', $idStatusPicture = ''){
             $db = \Config\Database::connect();
-            $sql="SELECT pictures.idPictures, pictures.Name, pictures.Title, date_format(pictures.DateUp,'%d-%m-%Y') as DateUp, pictures.NumberLike, users.Name AS userName, users.Email FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE (Picturesflg <> 1 OR Picturesflg is Null)";
+            $sql="SELECT idPictures, pictures.Name, (CASE WHEN idStatusPicture >= 8 THEN chibiFileName ELSE 'loading.png' END) AS chibiFileName,
+             pictures.Title, date_format(pictures.DateUp,'%d-%m-%Y') as DateUp, pictures.NumberLike, users.Name AS userName, users.Email FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE (Picturesflg <> 1 OR Picturesflg is Null)";
             if($idUser != ''){
                 $sql = $sql.' AND pictures.idUser = '.$idUser;
+            }
+            if($idStatusPicture != ''){
+                $sql = $sql.' AND pictures.idStatusPicture in ('.$idStatusPicture.')';
             }
             $sql = $sql." ORDER BY NumberLike DESC LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
             $result =  $db->query($sql)->getResultArray();
@@ -32,12 +36,16 @@ use CodeIgniter\Model;
             return $result;
         }
 
-        public function getAllPictureCount($idUser = ''){
+        public function getAllPictureCount($idUser = '', $idStatusPicture = ''){
             $db = \Config\Database::connect();
             $sql='SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE (Picturesflg <> 1 OR Picturesflg is Null)';
             if($idUser != ''){
                 $sql = $sql.' AND pictures.idUser = '.$idUser;
             }
+            if($idStatusPicture != ''){
+                $sql = $sql.' AND pictures.idStatusPicture in ('.$idStatusPicture.')';
+            }
+
             $result =  $db->query($sql)->getResultArray();
             $db->close();
             return $result;
