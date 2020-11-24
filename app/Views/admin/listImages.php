@@ -188,7 +188,7 @@
                                                 <td><?php echo $data['Title']?></td>
                                                 <td><?php echo $data['DateUp']?></td>
                                                 <td><?php echo $data['NumberLike']?></td>
-                                                <td><?php echo $data['idStatusPicture']?></td>
+                                                <td><?php echo $data['Status']?></td>
                                                 <td><?php echo $data['StandarPrice']?></td>
                                                 <td><?php echo $data['PriceOfUser']?></td>
                                                 <td class="text-center">

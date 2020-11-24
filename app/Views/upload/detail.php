@@ -1,5 +1,5 @@
 <style>
-    li {
+li {
   display: inline-block;
 }
 
@@ -9,10 +9,10 @@ input[type="radio"][id^="cb"] {
 
 label {
   border: 1px solid #fff;
-  padding: 10px;
+  padding: 5px;
   display: block;
   position: relative;
-  margin: 10px;
+  margin: 5px;
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -42,7 +42,7 @@ label::before {
 
 label img {
   height: 100px;
-  width: 100px;
+  width: 150px;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
 }
@@ -82,7 +82,7 @@ label img {
                                 <input type="hidden" name="standarprice" id="standarprice" value="200">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                                <h6>Đơn vị:Nghìn Đồng</h6>
+                                <h6>Đơn vị tính: Nghìn Đồng</h6>
                             </div>
                         </div>
                         <div class="row register-form">
@@ -95,20 +95,17 @@ label img {
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Ngày hoàn thành</h6>
-
                             </div>
                             <div class="col-md-9">
                                 <input type="date" id="start" name="dateExpiry" value="<?php echo date('Y-m-d') ?>" min="2020-01-01" max="2030-12-31">
                             </div>
                         </div>
-                        
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
-                                <h6>Chọn hình nền</h6>
+                                <h6 style="padding-top: 10px;">Chọn hình nền</h6>
                             </div>
                             <div class="col-md-9">
                             <ul>
@@ -125,18 +122,17 @@ label img {
                                     <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg_def/4_city.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb5" name="ch1" value="bg5"/>
-                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/bg5.jpg" /></label>
+                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/5_park.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb6" name="ch1" value="bg6"/>
-                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/bg6.jpg" /></label>
+                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/6_autumn.png" /></label>
                                 </li>
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="row register-form margin-10px">
+                        <div class="row register-form">
                             <div class="col-md-3">
-                                <h6>Up hình nền</h6>
+                                <h6 style="padding-top: 10px;">Up hình nền</h6>
                             </div>
                             <div class="col-md-6">
                                 <div class="custom-file">
@@ -146,7 +142,6 @@ label img {
                                 </div>
                             </div>
                         </div>
-
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
                             </div>
@@ -156,7 +151,6 @@ label img {
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Ghi chú</h6>
@@ -165,7 +159,7 @@ label img {
                             <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3"></textarea>
                             </div>
                         </div>
-                        <div class="row register-form margin-10px">
+                        <div class="row register-form">
                             <div class="col-md-6">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
