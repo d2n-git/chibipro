@@ -282,7 +282,7 @@
         let validateExtension = function (file) {
 
             if (plugin.settings.extensions.indexOf(file.name.replace(new RegExp('^.*\\.'), '.')) < 0) {
-                alert(`The file "${file.name}" does not match with the accepted file extensions: "${plugin.settings.extensions.join('", "')}"`);
+                alert(`The file "${file.name}" does not match with the accepted file extensions: .JPG, .JPEG, .PNG, .GIF, .SVG`);
 
                 return false;
             }
@@ -293,7 +293,7 @@
         let validateMIME = function (file) {
 
             if (plugin.settings.mimes.indexOf(file.type) < 0) {
-                alert(`The file "${file.name}" does not match with the accepted mime types: "${plugin.settings.mimes.join('", "')}"`);
+                alert(`The file "${file.name}" does not match with the accepted mime types: .JPG, .JPEG, .PNG, .GIF, .SVG`);
 
                 return false;
             }
