@@ -177,6 +177,7 @@
                 if(datar.status == 1){
                     $('#form1').trigger("reset");
                 }
+                window.location.href = '<?php echo base_url();?>';
             },
             error : function(data) {
                 // do something

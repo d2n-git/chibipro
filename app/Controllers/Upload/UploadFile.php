@@ -24,7 +24,7 @@ class UploadFile extends Controller
     function UpImagine()
     {
         $alert = new alert();
-        $target_dir = "assets/img/";
+        $target_dir = "assets/img/upload/";
         $target_file = $target_dir . basename($_FILES["images"]["name"]);
         $uploadOk = 1;
         $MesError = '';
@@ -85,69 +85,23 @@ class UploadFile extends Controller
         if ($uploadOk == 1) {
             $modelInsertUser = new InSertUserModel();
             try {
-                if (move_uploaded_file($_FILES['images']['tmp_name'], $target_dir . $nameNewPicture)) {
-                    $something = $this->request->getVar();
-                    $resultUser = $modelInsertUser->GetUser($something['email']);
-                    if (empty($resultUser)) {
-                        helper('text');
-                        $passWord = random_string('alnum', 6);
-                        $something['firstName'] = '';
-                        $something['lastName'] = '';
-                        $something['txtEmpPhone'] = '';
-                        $something['txtAddress'] = '';
-                        $something['password'] = $passWord;
-                        $something['Permission'] = 2;
-                        $something['Gender'] = 1;
-                        $resultInsertUser = $modelInsertUser->InSertUsers($something);
-                        if ($resultInsertUser) {
-                            $sendMail = new ConfigEmail();
-                            $sendMail->SendEmail('Password login for Upload Page is below:'.'<br>'.'<br>'.$passWord.'<br>'.'<br>'.'Lest go link : http://chibipro.top/', 'Send Password', $something['email']);
-                            $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
-                            $modelPicture['idStatusPicture'] = 1;
-                            $modelPicture['Name'] = $nameNewPicture;
-                            $modelPicture['NumberLike'] = 0;
-                            $modelPicture['DateUp'] = date('Y-m-d h:m:s');
-                            $modelPicture['StatusSendEmail'] = 0;
-                            $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
-                            if ($resultInsertPicture) {
-                                $MesError = 'Uploaded Success';
-                                $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
-                                $resultGetUser = $modelInsertUser->GetUser($something['email']);
-                                $session = \Config\Services::session();
-                                $newdata = [
-                                    'password'  => $resultGetUser['Password'],
-                                    'email'     => $resultGetUser['Email'],
-                                    'idUser'    => $resultGetUser['idUser'],
-                                    'Permission' => $resultGetUser['Permission'],
-                                    'Gender' => $resultGetUser['Gender'],
-                                    'logged_in' => TRUE
-                                ];
-                                $session->set($newdata);
-                                echo json_encode($json);
-                            } else {
-                                $uploadOk = 0;
-                                $MesError = 'Uploaded Failed';
-                                unlink($target_dir . $nameNewPicture);
-                                $json = ["message" => $MesError, "status" => $uploadOk];
-                                echo json_encode($json);
-                            }
-                        } else {
-                            $MesError = 'Uploaded Failed';
-                            unlink($target_dir . $nameNewPicture);
-                            $json = ["message" => $MesError, "status" => $uploadOk];
-                            echo json_encode($json);
-                        }
-                    } else {
-                        $session = \Config\Services::session();
-                        if(!isset($_SESSION['logged_in']))
-                        {
-                            $MesError = 'Mail đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
-                            unlink($target_dir . $nameNewPicture);
-                            $json = ["message" => $MesError, "status" => 0];
-                            echo json_encode($json);
-                            return;
-                        }
-                        $modelPicture['idUser'] = (int)$resultUser['idUser'];
+                $something = $this->request->getVar();
+                $resultUser = $modelInsertUser->GetUser($something['email']);
+                if (empty($resultUser)) {
+                    helper('text');
+                    $passWord = random_string('alnum', 6);
+                    $something['firstName'] = '';
+                    $something['lastName'] = '';
+                    $something['txtEmpPhone'] = '';
+                    $something['txtAddress'] = '';
+                    $something['password'] = $passWord;
+                    $something['Permission'] = 2;
+                    $something['Gender'] = 1;
+                    $resultInsertUser = $modelInsertUser->InSertUsers($something);
+                    if ($resultInsertUser) {
+                        $sendMail = new ConfigEmail();
+                        $sendMail->SendEmail('Password login for Upload Page is below:'.'<br>'.'<br>'.$passWord.'<br>'.'<br>'.'Lest go link : http://chibipro.top/', 'Send Password', $something['email']);
+                        $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;
                         $modelPicture['NumberLike'] = 0;
@@ -155,15 +109,26 @@ class UploadFile extends Controller
                         $modelPicture['StatusSendEmail'] = 0;
                         $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
                         if ($resultInsertPicture) {
-                            $MesError = 'Uploaded Success';
-                            $json = ["message" => $MesError, "status" => $uploadOk, "id" => $resultInsertPicture];
+                            $target_dir = $target_dir.$modelPicture['idUser'].'/';
+                            if (!file_exists($target_dir)) {
+                                mkdir($target_dir, 0777, true);
+                            }
+                            if (move_uploaded_file($_FILES['images']['tmp_name'], $target_dir . $nameNewPicture)){
+                                $MesError = 'Uploaded Success';
+                                $uploadOk = 1;
+                            }else{
+                                $MesError = 'Uploaded Failed';
+                                $uploadOk = 0;
+                            }
+                            $json = ["message" => $MesError, "status" => $uploadOk,"id" => $resultInsertPicture];
+                            $resultGetUser = $modelInsertUser->GetUser($something['email']);
                             $session = \Config\Services::session();
                             $newdata = [
-                                'password'  => $resultUser['Password'],
-                                'email'     => $resultUser['Email'],
-                                'idUser'    => $resultUser['idUser'],
-                                'Permission' => $resultUser['Permission'],
-                                'Gender' => $resultUser['Gender'],
+                                'password'  => $resultGetUser['Password'],
+                                'email'     => $resultGetUser['Email'],
+                                'idUser'    => $resultGetUser['idUser'],
+                                'Permission' => $resultGetUser['Permission'],
+                                'Gender' => $resultGetUser['Gender'],
                                 'logged_in' => TRUE
                             ];
                             $session->set($newdata);
@@ -175,6 +140,59 @@ class UploadFile extends Controller
                             $json = ["message" => $MesError, "status" => $uploadOk];
                             echo json_encode($json);
                         }
+                    } else {
+                        $MesError = 'Uploaded Failed';
+                        unlink($target_dir . $nameNewPicture);
+                        $json = ["message" => $MesError, "status" => $uploadOk];
+                        echo json_encode($json);
+                    }
+                } else {
+                    $session = \Config\Services::session();
+                    if(!isset($_SESSION['logged_in']))
+                    {
+                        $MesError = 'Mail đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
+                        unlink($target_dir . $nameNewPicture);
+                        $json = ["message" => $MesError, "status" => 0];
+                        echo json_encode($json);
+                        return;
+                    }
+                    $modelPicture['idUser'] = (int)$resultUser['idUser'];
+                    $modelPicture['idStatusPicture'] = 1;
+                    $modelPicture['Name'] = $nameNewPicture;
+                    $modelPicture['NumberLike'] = 0;
+                    $modelPicture['DateUp'] = date('Y-m-d h:m:s');
+                    $modelPicture['StatusSendEmail'] = 0;
+                    $resultInsertPicture = $insertPicture->InSertPicture($modelPicture);
+                    if ($resultInsertPicture) {
+                        $target_dir = $target_dir.$resultUser['idUser'].'/';
+                        if (!file_exists($target_dir)) {
+                            mkdir($target_dir, 0777, true);
+                        }
+                        if (move_uploaded_file($_FILES['images']['tmp_name'], $target_dir . $nameNewPicture)){
+                            $MesError = 'Uploaded Success';
+                            $uploadOk = 1;
+                        }else{
+                            $MesError = 'Uploaded Failed';
+                            $uploadOk = 0;
+                        }
+                        $json = ["message" => $MesError, "status" => $uploadOk, "id" => $resultInsertPicture];
+                        $session = \Config\Services::session();
+                        $newdata = [
+                            'password'  => $resultUser['Password'],
+                            'email'     => $resultUser['Email'],
+                            'idUser'    => $resultUser['idUser'],
+                            'Permission' => $resultUser['Permission'],
+                            'Gender' => $resultUser['Gender'],
+                            'logged_in' => TRUE
+                        ];
+                        $session->set($newdata);
+                        echo json_encode($json);
+                    } else {
+                        $uploadOk = 0;
+                        $MesError = 'Uploaded Failed';
+                        unlink($target_dir . $nameNewPicture);
+                        $json = ["message" => $MesError, "status" => $uploadOk];
+                        echo json_encode($json);
                     }
                 }
             } catch (Exception $e) {
