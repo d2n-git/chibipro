@@ -17,7 +17,7 @@ if (!empty($user['Name'])) {
         <div class="col-md-9 register-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="<?php echo base_url(); ?>/Users/registration/InSertUser" method="post">
+                    <form id="formRegistration" method="post">
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -72,12 +72,11 @@ if (!empty($user['Name'])) {
                                         </label>
                                     </div>
                                 </div>
-                                <?php
-                                if (!isset($user['Email']))
-                                    echo  " <input id='btn_Register' type='submit' class='btnRegister' value='Register' name='btnSubmit' />";
-                                else
-                                    echo  " <input id='btn_Register' type='submit' class='btnRegister' value='Modify' name='btnSubmit' />";
-                                ?>
+                                <?php if (!isset($user['Email'])) { ?>
+                                    <input onclick="clickRegistration()" id="btn_Register" type="button" class="btnRegister" value="Register" name="btnSubmit" />
+                                <?php } else { ?>
+                                    <input onclick="clickRegistration()" id="btn_Register" type="button" class="btnRegister" value="Modify" name="btnSubmit" />
+                                <?php } ?>
                             </div>
                         </div>
                     </form>
@@ -86,9 +85,13 @@ if (!empty($user['Name'])) {
         </div>
     </div>
 </div>
-
+<!-- Hiệu ứng load -->
+<div class="load" >
+	<img src="<?php echo base_url(); ?>/assets/img/loading.gif">
+</div>
 <script>
     $(document).ready(function() {
+        $('.load').fadeOut('fast');
         $('#confirmPass').focusout(function() {
             var valuePassword = document.getElementById("pass").value;
             var valueConfirmPassword = document.getElementById("confirmPass").value;
@@ -97,7 +100,7 @@ if (!empty($user['Name'])) {
             }
         });
         $('#Email').focusout(function() {
-            <?php if (!isset($user['Email']))  {?>
+            <?php if (!isset($user['Email'])) { ?>
                 document.getElementById('btn_Register').disabled = true;
                 $.ajax({
                     url: '<?php echo base_url(); ?>/Users/registration/CheckEmailValidate',
@@ -116,7 +119,53 @@ if (!empty($user['Name'])) {
                         }
                     }
                 });
-           <?php } ?>
+            <?php } ?>
         });
+
     });
+
+    function clickRegistration() {
+        $('.load').fadeIn('fast');
+        var form = document.getElementById("formRegistration");
+        var elements = form.elements;
+        $data = {};
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            if( elements[i].name === 'btnSubmit') {
+                elements[i].disabled = true;
+            } else {
+                elements[i].readOnly = true;
+            }
+            if ((elements[i].name === 'gender' || elements[i].name === 'user')) {
+                if (elements[i].checked)($data[elements[i].name] = elements[i].value);
+            } else {
+                $data[elements[i].name] = elements[i].value;
+            }
+        }
+        $.ajax({
+            url: '<?php echo base_url(); ?>/Users/registration/InSertUser',
+            type: "POST",
+            data: JSON.stringify($data),
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                let response = JSON.parse(data);
+                if (!response.status) {
+                    $('.load').fadeOut('fast');
+                    window.alert(response.message);
+                    for (var i = 0, len = elements.length - 1; i < len; ++i) {
+                        elements[i].readOnly = false;
+                        if ((elements[i].name === 'gender' || elements[i].name === 'user')) {
+                            elements[i].value = elements[i].defaultValue;
+                            elements[i].checked =  elements[i].defaultChecked;
+                        } else {
+                            elements[i].value = "";
+                        }
+                    }
+                    document.getElementById('btn_Register').disabled = false;
+                } else {
+                    window.location.assign("<?php echo base_url(); ?>");
+                }
+            }
+        });
+    };
 </script>

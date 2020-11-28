@@ -29,51 +29,39 @@ class registration extends Controller
 
     public function InSertUser()
     {
-        $something = $this->request->getVar();
-        $alert = new alert();
+        $something = (array)json_decode($this->request->getBody());
         if ($something != NULL) {
-            $this->CheckValidate();
-            if (!$this->validate([])) {
-                $error = $this->validator;
-                if ($error->getErrors() == null) {
-                    if ($something['password'] == $something['confirmPassword']) {
-                        $something['user'] == 'painter' ? $something['Permission'] = 1 : $something['Permission'] = 2;
-                        $something['gender'] == 'female' ? $something['Gender'] = 1 : $something['Gender'] = 2;
-                        $model = new InSertUserModel();
-                        if($something['btnSubmit'] == 'Modify')
-                        {
-                            $result = $model->UpdateUsers($something);
-                        }
-                        else
-                        {
-                            $result = $model->InSertUsers($something);
-                        }
-                        if ($result) {
-                            $alert->alert("User saved Success");
-                            $resultGetUser = $model->GetUser($something['email']);
-                            $session = \Config\Services::session();
-                            $newdata = [
-                                'password'  => $resultGetUser['Password'],
-                                'email'     => $resultGetUser['Email'],
-                                'idUser'    => $resultGetUser['idUser'],
-                                'Permission' => $resultGetUser['Permission'],
-                                'Gender' => $resultGetUser['Gender'],
-                                'logged_in' => TRUE
-                            ];
-                            $session->set($newdata);
-                            return redirect()->to(base_url());
-                        }
-                    } else {
-                        $alert->alert('The two passwords not match');
-                        return redirect()->to('/Users/registration');
-                    }
+            if ($something['password'] == $something['confirmPassword']) {
+                $something['user'] == 'painter' ? $something['Permission'] = 1 : $something['Permission'] = 2;
+                $something['gender'] == 'female' ? $something['Gender'] = 1 : $something['Gender'] = 2;
+                $model = new InSertUserModel();
+                if ($something['btnSubmit'] == 'Modify') {
+                    $result = $model->UpdateUsers($something);
                 } else {
-                    $data['validation'] = $error;
-                    return redirect()->to('/Users/registration');
+                    $result = $model->InSertUsers($something);
                 }
+                if ($result) {
+                    $resultGetUser = $model->GetUser($something['email']);
+                    $session = \Config\Services::session();
+                    $newdata = [
+                        'password'  => $resultGetUser['Password'],
+                        'email'     => $resultGetUser['Email'],
+                        'idUser'    => $resultGetUser['idUser'],
+                        'Permission' => $resultGetUser['Permission'],
+                        'Gender' => $resultGetUser['Gender'],
+                        'logged_in' => TRUE
+                    ];
+                    $session->set($newdata);
+                    $json = ["message" => "Register success", "status" => true];
+                    echo json_encode($json);
+                }
+            } else {
+                $json = ["message" => "The two passwords not match", "status" => false];
+                echo json_encode($json);
             }
         } else {
-            return redirect()->to('/Users/registration');
+            $json = ["message" => "Data is not be empty", "status" => false];
+            echo json_encode($json);
         }
     }
     private function CheckValidate()
