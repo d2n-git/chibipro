@@ -30,8 +30,7 @@
                         
                             <?php 
                             $session = \Config\Services::session();
-                            ?>
-                            <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
+                            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
                                 <a href="<?php echo base_url(); ?>/Users/registration?id=<?php echo $_SESSION['idUser']; ?>" role="button" aria-haspopup="true" aria-expanded="false">
                                     <i class="ti-user"></i>
                                 </a>

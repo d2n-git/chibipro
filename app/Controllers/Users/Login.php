@@ -25,7 +25,6 @@ class login extends Controller
             $result=$checkUser->GetUser($dataSubmit);
             if(!empty($result))
             {
-                $session = \Config\Services::session();
                 $newdata = [
                     'password'  => $result['Password'],
                     'email'     => $result['Email'],
@@ -34,6 +33,7 @@ class login extends Controller
                     'Gender'=> $result['Gender'],
                     'logged_in' => TRUE
             ];
+            $session = \Config\Services::session();
             $session->set($newdata);
             $json = ["message" => "Login successfully !", "status" => true];
             echo json_encode($json);
