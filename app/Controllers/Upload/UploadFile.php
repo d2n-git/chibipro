@@ -35,19 +35,22 @@ class UploadFile extends Controller
 
         $reCaptcha = new ReCaptcha();
         $response = null;
-        if ($this->request->getPost('g-recaptcha-response')) {
-            $response = $reCaptcha->verifyResponse(
-                $this->request->getServer('REMOTE_ADDR'),
-                $this->request->getPost('g-recaptcha-response')
-            );
+        // if ($this->request->getPost('g-recaptcha-response')) {
+        //     $response = $reCaptcha->verifyResponse(
+        //         $this->request->getServer('REMOTE_ADDR'),
+        //         $this->request->getPost('g-recaptcha-response')
+        //     );
 
-            if ($response != null && $response->success) {
-                $uploadOk = 1;
-            } else {
-                $MesError = "Click checkbox robot .";
-                $uploadOk = 0;
-            }
-        }
+        //     if ($response != null && $response->success) {
+        //         $uploadOk = 1;
+        //     } else {
+        //         $MesError = "Click checkbox robot .";
+        //         $uploadOk = 0;
+        //     }
+        // }
+
+        // var_dump($_FILES);
+        // exit;
 
         //check file upload
         if($_FILES["images"]["tmp_name"]=="" && $uploadOk == 1){
@@ -104,6 +107,7 @@ class UploadFile extends Controller
                         $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;
+                        $modelPicture['Title'] = 'Bên nào cũng chất';
                         $modelPicture['NumberLike'] = 0;
                         $modelPicture['DateUp'] = date('Y-m-d h:m:s');
                         $modelPicture['StatusSendEmail'] = 0;
@@ -150,7 +154,7 @@ class UploadFile extends Controller
                     $session = \Config\Services::session();
                     if(!isset($_SESSION['logged_in']))
                     {
-                        $MesError = 'Mail đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
+                        $MesError = 'E-Mail này đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
                         unlink($target_dir . $nameNewPicture);
                         $json = ["message" => $MesError, "status" => 0];
                         echo json_encode($json);

@@ -53,7 +53,6 @@
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Ngày hoàn thành</h6>
-
                             </div>
                             <div class="col-md-9">
                                 <input type="date" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" min="2020-01-01" max="2030-12-31">
@@ -73,7 +72,7 @@
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="note" id="" cols="60" rows="5" class="textAreaStyle"><?php echo $Picture['Note']; ?></textarea>
+                                <textarea name="note" id="" cols="60" rows="3" class="textAreaStyle"><?php echo $Picture['Note']; ?></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">

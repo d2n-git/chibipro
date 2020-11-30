@@ -11,7 +11,7 @@ class CheckUser extends Model
         $encrypter = new Encryption();
         $Password=$data['Password'].''.$encrypter->key;
         $db = \Config\Database::connect();
-        $sql = 'SELECT * FROM users WHERE Email = ? AND Password = ?';
+        $sql = 'SELECT * FROM users WHERE Email = ? AND Password = ? AND (Userflg <> 1 OR Userflg is Null)';
         $result = $db->query($sql, [$data['Email'],md5($Password)])->getRowArray();
         $db->close();
         return $result;

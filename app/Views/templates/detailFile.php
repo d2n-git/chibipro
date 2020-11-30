@@ -3,7 +3,6 @@
         <div class="col-lg-3 col-md-3 detail-left">
             <h4>Thông Tin Đăng Ảnh</h4>
             <img src="<?php echo base_url(); ?>/assets/img/6.jpg" />
-
         </div>
         <div class=" col-lg-9 col-md-9 detail-right">
             <div class="tab-content" id="myTabContent">
@@ -33,17 +32,14 @@
                         <div class="row register-form margin-10px" >
                             <div class="col-md-3">
                                 <h6>Ngày hoàn thành</h6>
-
                             </div>
                             <div class="col-md-9">
                                 <h6>20/10/2020</h6>
-
                             </div>
                         </div>
                         <div class="row register-form">
                             <div class="col-md-3">
                                 <h6>Chọn hình nền</h6>
-
                             </div>
                             <div class="col-md-9">
                                 <table class="table">
@@ -83,7 +79,7 @@
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="form-control" id="" cols="60" rows="5"></textarea>
+                                <textarea name="form-control" id="" cols="60" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px" >

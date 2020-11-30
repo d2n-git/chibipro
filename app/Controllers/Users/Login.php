@@ -29,6 +29,7 @@ class login extends Controller
                     'password'  => $result['Password'],
                     'email'     => $result['Email'],
                     'idUser'    => $result['idUser'],
+                    'Name'      => str_replace("*-*-"," ",$result['Name']),
                     'Permission'=> $result['Permission'],
                     'Gender'=> $result['Gender'],
                     'logged_in' => TRUE
@@ -45,6 +46,7 @@ class login extends Controller
                     'password'  => '',
                     'email'     => '',
                     'idUser'    => '',
+                    'Name'    => '',
                     'Permission'=> '',
                     'Gender'=> '',
                     'logged_in' => FALSE

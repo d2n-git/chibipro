@@ -66,7 +66,8 @@ CREATE TABLE `pictures` (
   `idPictures` int(11) NOT NULL AUTO_INCREMENT,
   `idUser` int(11) NOT NULL,
   `idStatusPicture` int(11) NOT NULL,
-  `Name` varchar(45) NOT NULL,
+  `Name` varchar(200) NOT NULL,
+  `chibiFileName` varchar(200) NOT NULL,
   `NumberLike` int(10) unsigned DEFAULT 0,
   `DateUp` datetime NOT NULL,
   `StatusSendEmail` tinyint(4) DEFAULT 0,
@@ -184,6 +185,23 @@ CREATE TABLE `contact` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `statuspicture` VALUES (0, 'Chờ báo giá 0', NULL);
 INSERT INTO `statuspicture` VALUES (1, 'Chờ báo giá 1', NULL);
+INSERT INTO `statuspicture` VALUES (2, 'Đang đấu giá', NULL);
+INSERT INTO `statuspicture` VALUES (3, 'Commit Giá', NULL);
+INSERT INTO `statuspicture` VALUES (4, 'Đang Vẽ', NULL);
+INSERT INTO `statuspicture` VALUES (5, 'User Reject', NULL);
+INSERT INTO `statuspicture` VALUES (6, 'Painter Reject', NULL);
+INSERT INTO `statuspicture` VALUES (7, 'Admin Reject', NULL);
+INSERT INTO `statuspicture` VALUES (8, 'Public', NULL);
+INSERT INTO `statuspicture` VALUES (9, 'Pending', NULL);
+INSERT INTO `statuspicture` VALUES (10, 'Finish', NULL);
+------
+INSERT INTO `users` VALUES (40, 'AdminD', 0, 'furusato.d2n@gmail.com', 0, '', '26e8917ff90617d093344705f0704d72', '2', NULL, '2020-11-20 10:34:37', NULL, NULL);
+
+INSERT INTO `pictures` VALUES (36, 40, 8, '1.jpg', '1.jpg', 1, '2020-11-15 04:11:04', 0, 200.00, 0.00, '', '', 'Bên nào cũng chất 1', NULL, NULL, '2020-11-21 00:00:00', '2020-11-15 16:11:04', NULL);
+INSERT INTO `pictures` VALUES (37, 40, 8, '2.jpg', '2.jpg', 0, '2020-11-15 04:11:26', 0, 0.00, 0.00, NULL, NULL, 'Bên nào cũng chất 2', NULL, NULL, '2020-11-15 16:22:26', '2020-11-15 16:22:26', NULL);
+INSERT INTO `pictures` VALUES (38, 40, 8, '3.jpg', '3.jpg', 0, '2020-11-15 04:11:43', 0, 0.00, 0.00, NULL, NULL, 'Bên nào cũng chất 3', NULL, NULL, '2020-11-15 16:24:44', '2020-11-15 16:24:44', NULL);
+INSERT INTO `pictures` VALUES (39, 40, 8, '4.jpg', '4.jpg', 0, '2020-11-15 04:11:29', 0, 0.00, 0.00, NULL, NULL, 'Bên nào cũng chất 4', NULL, NULL, '2020-11-15 16:25:29', '2020-11-15 16:25:29', NULL);
+INSERT INTO `pictures` VALUES (40, 40, 8, '5.jpg', '5.jpg', 3, '2020-11-15 04:11:47', 0, 200.00, 11111.00, '', '', 'Bên nào cũng chất 5', NULL, NULL, '2020-11-21 00:00:00', '2020-11-15 16:28:47', NULL);
+
 -- Dump completed on 2020-10-10 18:20:03
