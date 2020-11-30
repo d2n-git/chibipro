@@ -63,11 +63,11 @@ if (!empty($user['Name'])) {
                                 <div class="form-group">
                                     <div class="maxl">
                                         <label class="radio inline">
-                                            <input type="radio" name="user" value="user" <?php $user["Permission"] != 1  ? print "checked" : null ?>>
+                                            <input type="radio" name="user" value="user" <?php $user["Permission"] == 1  ? print "checked" : null ?>>
                                             <span> User </span>
                                         </label>
                                         <label class="radio inline">
-                                            <input type="radio" name="user" value="painter" <?php $user["Permission"] == 1  ? print "checked" : null ?>>
+                                            <input type="radio" name="user" value="painter" <?php $user["Permission"] != 1  ? print "checked" : null ?>>
                                             <span>Painter </span>
                                         </label>
                                     </div>

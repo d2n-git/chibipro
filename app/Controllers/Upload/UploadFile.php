@@ -35,19 +35,19 @@ class UploadFile extends Controller
 
         $reCaptcha = new ReCaptcha();
         $response = null;
-        // if ($this->request->getPost('g-recaptcha-response')) {
-        //     $response = $reCaptcha->verifyResponse(
-        //         $this->request->getServer('REMOTE_ADDR'),
-        //         $this->request->getPost('g-recaptcha-response')
-        //     );
+        if ($this->request->getPost('g-recaptcha-response')) {
+            $response = $reCaptcha->verifyResponse(
+                $this->request->getServer('REMOTE_ADDR'),
+                $this->request->getPost('g-recaptcha-response')
+            );
 
-        //     if ($response != null && $response->success) {
-        //         $uploadOk = 1;
-        //     } else {
-        //         $MesError = "Click checkbox robot .";
-        //         $uploadOk = 0;
-        //     }
-        // }
+            if ($response != null && $response->success) {
+                $uploadOk = 1;
+            } else {
+                $MesError = "Click checkbox robot .";
+                $uploadOk = 0;
+            }
+        }
 
         // var_dump($_FILES);
         // exit;
@@ -98,7 +98,7 @@ class UploadFile extends Controller
                     $something['txtEmpPhone'] = '';
                     $something['txtAddress'] = '';
                     $something['password'] = $passWord;
-                    $something['Permission'] = 2;
+                    $something['Permission'] = 1; // 1: User thường. 2: Painter
                     $something['Gender'] = 1;
                     $resultInsertUser = $modelInsertUser->InSertUsers($something);
                     if ($resultInsertUser) {

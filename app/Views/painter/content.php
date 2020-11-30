@@ -44,7 +44,7 @@
                                      <img src="<?php echo base_url(); ?>/assets/img/<?php echo $value['chibiFileName']; ?>" alt="#">
                                  </td>
                                  <td style="width: 30%;">
-                                     <img src="<?php echo base_url(); ?>/assets/img/<?php echo $value['Name']; ?>" alt="#">
+                                     <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['Name']; ?>" alt="#">
                                  </td>
                              </tr>
                              <tr>

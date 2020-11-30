@@ -22,7 +22,7 @@
                         </div>
                         <div class="row register-form">
                             <div class="col-md-3">
-                                <h6>Giá user yêu cầu</h6>
+                                <h6>Giá User yêu cầu</h6>
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
