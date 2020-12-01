@@ -24,7 +24,7 @@ if (!empty($user['Name'])) {
                                     <input type="text" class="form-control" required id="firstName" maxlength="20" name="firstName" placeholder="First Name *" value="<?php echo $fullname[0] ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" required id="firstName" maxlength="20" name="lastName" placeholder="Last Name *" value="<?php echo $fullname[1] ?>" />
+                                    <input type="text" class="form-control" required id="lastName" maxlength="20" name="lastName" placeholder="Last Name *" value="<?php echo $fullname[1] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" required id="pass" name="password" placeholder="Password *" value="<?php echo $user['Password'] ?>" />
@@ -55,19 +55,19 @@ if (!empty($user['Name'])) {
                                     ?>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" minlength="10" maxlength="15" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="<?php echo !isset($user['Phone']) ? '' : $user['Phone'] ?>" />
+                                    <input type="text" id="txtEmpPhone" onkeyup="this.value=this.value.replace(/[^\d]/,'')" minlength="10" maxlength="15" name="txtEmpPhone" class="form-control" placeholder="Your Phone " value="<?php echo !isset($user['Phone']) ? '' : $user['Phone'] ?>" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" maxlength="200" name="txtAddress" class="form-control" placeholder="Your Address " value="<?php echo !isset($user['Address']) ? '' : $user['Address'] ?>" />
+                                    <input type="text" maxlength="200" id="txtAddress" name="txtAddress" class="form-control" placeholder="Your Address " value="<?php echo !isset($user['Address']) ? '' : $user['Address'] ?>" />
                                 </div>
                                 <div class="form-group">
                                     <div class="maxl">
                                         <label class="radio inline">
-                                            <input type="radio" name="user" value="user" <?php $user["Permission"] == 1  ? print "checked" : null ?>>
+                                            <input type="radio" name="user" value="user" <?php $user["Permission"] != 1  ? print "checked" : null ?>>
                                             <span> User </span>
                                         </label>
                                         <label class="radio inline">
-                                            <input type="radio" name="user" value="painter" <?php $user["Permission"] != 1  ? print "checked" : null ?>>
+                                            <input type="radio" name="user" value="painter" <?php $user["Permission"] == 1  ? print "checked" : null ?>>
                                             <span>Painter </span>
                                         </label>
                                     </div>
@@ -125,11 +125,16 @@ if (!empty($user['Name'])) {
     });
 
     function clickRegistration() {
-        $('.load').fadeIn('fast');
         var form = document.getElementById("formRegistration");
         var elements = form.elements;
         $data = {};
         for (var i = 0, len = elements.length; i < len; ++i) {
+            if(elements[i].validationMessage != "")
+            {
+                window.alert(elements[i].validationMessage);
+                document.getElementById(elements[i].id).focus();
+                return;
+            }
             if( elements[i].name === 'btnSubmit') {
                 elements[i].disabled = true;
             } else {
@@ -141,6 +146,7 @@ if (!empty($user['Name'])) {
                 $data[elements[i].name] = elements[i].value;
             }
         }
+        $('.load').fadeIn('fast');
         $.ajax({
             url: '<?php echo base_url(); ?>/Users/registration/InSertUser',
             type: "POST",
