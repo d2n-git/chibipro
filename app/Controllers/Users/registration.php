@@ -2,13 +2,14 @@
 
 namespace App\Controllers\Users;
 
+use App\Controllers\BaseController;
 use CodeIgniter\Controller;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
 use App\Models\Pictures\InSertPictureModel;
 use Config\Encryption;
 
-class registration extends Controller
+class Registration extends BaseController
 {
 
     public function index()

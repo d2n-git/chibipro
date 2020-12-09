@@ -6,7 +6,7 @@ use App\Models\Pictures\InSertPictureModel;
 use App\Models\Admin\AdminModel;
 use App\Libraries\alert;
 
-class listimages extends Controller
+class Listimages extends Controller
 {
 	function Index()
 	{

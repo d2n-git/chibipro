@@ -1,12 +1,14 @@
 <?php 
 namespace App\Controllers\Users;
+
+use App\Controllers\BaseController;
 use CodeIgniter\Controller;
 use App\Models\Users\CheckUser;
 use App\Models\Users\InSertUserModel;
 use App\Libraries\alert;
 use App\Libraries\ConfigEmail;
 
-class forgotPassword extends Controller
+class ForgotPassword extends BaseController
 {
     function index()
     {

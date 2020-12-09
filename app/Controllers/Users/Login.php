@@ -1,9 +1,11 @@
 <?php 
 namespace App\Controllers\Users;
+
+use App\Controllers\BaseController;
 use CodeIgniter\Controller;
 use App\Models\Users\CheckUser;
 
-class login extends Controller
+class login extends BaseController
 {
     function index()
     {

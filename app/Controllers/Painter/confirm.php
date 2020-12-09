@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\Pictures\InSertPictureModel;
 use App\Models\Confirm\ConfirmModel;
 
-class confirm extends Controller
+class Confirm extends Controller
 {
 	function Index()
 	{

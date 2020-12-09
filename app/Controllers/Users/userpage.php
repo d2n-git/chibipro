@@ -1,13 +1,18 @@
 <?php
 namespace App\Controllers\Users;
 
+use App\Controllers\BaseController;
 use CodeIgniter\Controller;
 use App\Models\PictureModel;
 use App\Libraries\alert;
 
-class userpage extends Controller
+class Userpage extends BaseController
 {
-    function Index()
+    public function __construct()
+    {
+        
+    }
+    public function index()
     {
         $session = \Config\Services::session();
         if(!isset($_SESSION['idUser']))

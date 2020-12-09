@@ -6,7 +6,7 @@ use App\Models\Users\InSertUserModel;
 use App\Models\Admin\AdminModel;
 use App\Libraries\alert;
 
-class listusers extends Controller
+class Listusers extends Controller
 {
 	function Index()
 	{
