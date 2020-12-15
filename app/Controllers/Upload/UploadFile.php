@@ -163,6 +163,7 @@ class UploadFile extends Controller
                     $modelPicture['idUser'] = (int)$resultUser['idUser'];
                     $modelPicture['idStatusPicture'] = 1;
                     $modelPicture['Name'] = $nameNewPicture;
+                    $modelPicture['Title'] = 'Bên nào cũng chất';
                     $modelPicture['NumberLike'] = 0;
                     $modelPicture['DateUp'] = date('Y-m-d h:m:s');
                     $modelPicture['StatusSendEmail'] = 0;

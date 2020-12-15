@@ -95,7 +95,7 @@
                     <?php foreach($pictures as $value){
                     ?>
                         <div class="single_arrivel_item col-md-3" style="height:400px;">
-                            <img src="<?php echo base_url();?>/assets/img/<?php echo $value['Name'];?>" alt="#">
+                            <img src="<?php echo base_url();?>/assets/img/upload/<?php echo  $value['idUser'].'/'.$value['chibiFileName'];?>" alt="#">
                             <div class="hover_text">
                                 <a href="#"><h3><?php echo str_replace("*-*-"," ",$value['userName'])?></h3></a>
                                 <div class="rate_icon">
@@ -189,23 +189,23 @@
             <div class="col-lg-12">
                 <div class="instagram_photo_iner">
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/1.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/2.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/3.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/4.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                     <div class="single_instgram_photo">
-                        <img src="<?php echo base_url(); ?>/assets/img/picture/1.jpg" alt="">
+                        <img src="<?php echo base_url(); ?>/assets/img/5.jpg" alt="">
                         <a href="#"><i class="ti-instagram"></i></a>
                     </div>
                 </div>
