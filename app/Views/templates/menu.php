@@ -1,5 +1,9 @@
 <?php 
     $session = \Config\Services::session();
+    $directoryURI = $_SERVER['REQUEST_URI'];
+    $path = parse_url($directoryURI, PHP_URL_PATH);
+    $components = explode('/', $path);
+    $first_part = $components[count($components) - 1];
 ?>
 <header class="main_menu home_menu">
     <div class="container-fluid">
@@ -13,25 +17,25 @@
                     <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url(); ?>">Home</a>
+                                <a class="nav-link <?php if($first_part == '') echo "active"?>" href="<?php echo base_url(); ?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/News">New</a>
+                                <a class="nav-link <?php if($first_part == 'News') echo "active"?>" href="<?php echo base_url(); ?>/News">New</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo base_url(); ?>/Contact">Contact</a>
+                                <a class="nav-link <?php if($first_part == 'Contact') echo "active"?>" href="<?php echo base_url(); ?>/Contact">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo base_url(); ?>/#submit">ChibiPro +</a>
                             </li>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url(); ?>/Users/userpage" style="font-weight:800; color:blue;">My Chibi</a>
+                                    <a class="nav-link <?php if($first_part == 'userpage') echo "active"?>" href="<?php echo base_url(); ?>/Users/userpage" style="font-weight:800; color:blue;">My Chibi</a>
                                 </li>
                             <?php endif;?>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['Permission'] == '2') :?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo base_url(); ?>/Users/userpage" style="font-weight:800; color:green;">Painter</a>
+                                    <a class="nav-link <?php if($first_part == 'userpage') echo "active"?>" href="<?php echo base_url(); ?>/Users/userpage" style="font-weight:800; color:green;">Painter</a>
                                 </li>
                             <?php endif;?>
                         </ul>
