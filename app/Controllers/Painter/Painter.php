@@ -9,16 +9,22 @@ class Painter extends Controller
 {
 	function Index()
 	{
-		$pager = \Config\Services::pager();
+		$session = \Config\Services::session();
+		if(!isset($_SESSION['idUser']))
+		{
+			return redirect() -> to(base_url('/Users/Login'));
+		}else{
+			$idUser = $_SESSION['idUser'];
+		}
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
 		$offset = $page * LIMITPICTURE;
 		$pictureModel = new PictureModel();
-		$pictures = $pictureModel->getAllPicture($offset,'','8,9');
+		$pictures = $pictureModel->getAllPicture($offset, $idUser, '1,2,3,5,6,7,8');
 		$data['page'] = $page + 1;
-		$data['total'] = count($pictureModel->getAllPictureCount('','8,9'));
+		$data['total'] = count($pictureModel->getAllPictureCount($idUser));
 		$data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['viewchild'] = './painter/content';
 		return view('templates/base_view', $data);
-    }
+	}
 }

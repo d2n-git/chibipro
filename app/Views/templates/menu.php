@@ -35,7 +35,7 @@
                             <?php endif;?>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['Permission'] == '2') :?>
                                 <li class="nav-item">
-                                    <a class="nav-link <?php if($first_part == 'userpage') echo "active"?>" href="<?php echo base_url(); ?>/Users/userpage" style="font-weight:800; color:green;">Painter</a>
+                                    <a class="nav-link <?php if($first_part == 'userpage') echo "active"?>" href="<?php echo base_url(); ?>/Painter/Painter" style="font-weight:800; color:green;">Painter</a>
                                 </li>
                             <?php endif;?>
                         </ul>
