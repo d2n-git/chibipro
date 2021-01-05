@@ -30,8 +30,8 @@ class Userpage extends BaseController
         $data['total'] = count($pictureModel->getAllPictureCount($idUser));
         $data['pager'] = $pager;
         $data['pictures'] = $pictures;
-        $data['viewchild'] = './painter/content';
-        $data['usertable'] = './painter/usertable';
+        $data['viewchild'] = './user/content';
+        $data['usertable'] = './user/usertable';
         return view('templates/base_view', $data);
     }
 }

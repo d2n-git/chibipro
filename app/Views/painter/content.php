@@ -67,7 +67,7 @@
                                                     if(isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '2'))
                                                     {
                                                         echo " <td style='width: 20%;'>
-                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png'>
+                                                                <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png'>
                                                                 </td>";
                                                     }
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
@@ -123,7 +123,7 @@
                  break;
              case 'check':
                  if (log_in == 1) {
-                    <?php if($_SESSION['Permission'] == 1) {?>
+                    <?php if($_SESSION['Permission'] == 2) {?>
                      window.location.href = "<?php echo base_url(); ?>/Painter/confirm?id=" + id[0] + "";
                     <?php } else {?>
                     window.alert("You aren't a painter");
