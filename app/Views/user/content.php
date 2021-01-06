@@ -53,22 +53,27 @@
                                          <body>
                                              <tr>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png">
+                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích">
                                                     <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
                                                 </td>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png">
+                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment">
                                                     <span class="iconFooterNumber">5</span>
                                                 </td>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png">
+                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ">
                                                 </td>
                                                 <?php
-                                                    if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
-                                                    {
-                                                        echo " <td style='width: 20%;'>
-                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png'>
-                                                                </td>";
+                                                    if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
+                                                        if($show_flg == 'News'){
+                                                            echo " <td style='width: 20%;'>
+                                                                    <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting'>
+                                                                    </td>";
+                                                        }else{
+                                                            echo " <td style='width: 20%;'>
+                                                                    <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa'>
+                                                                    </td>";
+                                                        }
                                                     }
                                                 ?>
                                              </tr>
