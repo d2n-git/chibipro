@@ -10,9 +10,9 @@
                          <tbody>
                              <tr>
                                  <td>
-                                     <h1>
-                                         Title : <?php echo $value['Title']; ?>
-                                     </h1>
+                                     <h2 style="color: #17544c;">
+                                         <?php echo $value['Title']; ?>
+                                     </h2>
                                  </td>
                              </tr>
                              <tr>

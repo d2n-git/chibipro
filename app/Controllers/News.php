@@ -1,11 +1,11 @@
 <?php
-namespace App\Controllers\Painter;
+namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\PictureModel;
 use App\Libraries\alert;
 
-class Painter extends Controller
+class News extends Controller
 {
 	function Index()
 	{
@@ -19,12 +19,12 @@ class Painter extends Controller
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
 		$offset = $page * LIMITPICTURE;
 		$pictureModel = new PictureModel();
-		$pictures = $pictureModel->getAllPicture($offset, '', '1,2,3,4');
+		$pictures = $pictureModel->getAllPicture($offset, '', '8');
 		$data['page'] = $page + 1;
 		$data['total'] = count($pictureModel->getAllPictureCount());
 		$data['pager'] = $pager;
 		$data['pictures'] = $pictures;
-		$data['viewchild'] = './painter/content';
+		$data['viewchild'] = './user/content';
 		return view('templates/base_view', $data);
 	}
 }

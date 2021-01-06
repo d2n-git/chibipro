@@ -10,27 +10,20 @@
                          <tbody>
                              <tr>
                                  <td>
-                                     <h1>
-                                         Title : <?php echo $value['Title']; ?>
-                                     </h1>
-                                 </td>
-                             </tr>
-                             <tr>
-                                 <td>
                                      <table class="table">
                                          <tbody>
                                              <tr>
                                                  <td style="width: 10%;">
                                                      <p class="iconTitle">
-                                                         <img src="<?php echo base_url(); ?>/assets/img/title.png">
+                                                         <img src="<?php echo base_url(); ?>/assets/img/paint.jpg">
                                                      </p>
                                                  </td>
                                                  <td style="width: 90%;">
                                                      <div>
                                                          <h6>
-                                                             Chủ nhân : <?php echo str_replace("*-*-"," ",$value['userName']); ?>
+                                                             Giá Yêu cầu : 200K 
                                                              <br>
-                                                             Update : <?php echo $value['DateUp']; ?>
+                                                             Ngày giao : <?php echo $value['DateUp']; ?>
                                                          </h6>
                                                      </div>
                                                  </td>
@@ -41,10 +34,26 @@
                              </tr>
                              <tr>
                                  <td style="width: 70%;">
-                                     <img src="<?php echo base_url(); ?>/assets/img/<?php echo $value['chibiFileName']; ?>" alt="#">
+                                    <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['Name']; ?>" alt="#">
                                  </td>
                                  <td style="width: 30%;">
-                                     <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['Name']; ?>" alt="#">
+                                    <div class="card">
+                                        <h6>
+                                            Giá Vẽ 1 : 220K 
+                                            <br>
+                                            Ngày giao : <?php echo $value['DateUp']; ?>
+                                        </h6>
+                                        <h6>
+                                            Giá Vẽ 2 : 210K 
+                                            <br>
+                                            Ngày giao : <?php echo $value['DateUp']; ?>
+                                        </h6>
+                                        <h6>
+                                            Giá Vẽ 3 : 200K 
+                                            <br>
+                                            Ngày giao : <?php echo $value['DateUp']; ?>
+                                        </h6>
+                                    </div>
                                  </td>
                              </tr>
                              <tr>
