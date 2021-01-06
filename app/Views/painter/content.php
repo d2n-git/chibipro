@@ -124,7 +124,7 @@
              case 'check':
                  if (log_in == 1) {
                     <?php if($_SESSION['Permission'] == 2) {?>
-                     window.location.href = "<?php echo base_url(); ?>/Painter/confirm?id=" + id[0] + "";
+                     window.location.href = "<?php echo base_url(); ?>/Painter/Confirm?id=" + id[0] + "";
                     <?php } else {?>
                     window.alert("You aren't a painter");
                     <?php } ?>
