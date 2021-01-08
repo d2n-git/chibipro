@@ -65,7 +65,7 @@
                                                 </td>
                                                 <?php
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
-                                                        if($show_flg == 'News'){
+                                                        if($show_flg == 'News' || ($show_flg == 'MyChibi' && !empty(in_array($value['idStatusPicture'], [8,9])))){
                                                             echo " <td style='width: 20%;'>
                                                                     <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting'>
                                                                     </td>";
