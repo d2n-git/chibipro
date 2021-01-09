@@ -35,11 +35,11 @@
                             <?php endif;?>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['Permission'] == '2') :?>
                                 <li class="nav-item">
-                                    <a class="nav-link <?php if($first_part == 'Userpage') echo "active"?>" href="<?php echo base_url(); ?>/Painter/Painter" style="font-weight:800; color:green;">Painter</a>
+                                    <a class="nav-link <?php if($first_part == 'Painter') echo "active"?>" href="<?php echo base_url(); ?>/Painter/Painter" style="font-weight:800; color:green;">Painter</a>
                                 </li>
                             <?php endif;?>
                         </ul>
-                    </div>
+                    </div>  
                     <div class="hearer_icon d-flex">
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
                                 <a href="<?php echo base_url(); ?>/Users/registration?id=<?php echo $_SESSION['idUser']; ?>" role="button" aria-haspopup="true" aria-expanded="false">
