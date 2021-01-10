@@ -133,7 +133,7 @@
                  break;
              case 'edit':
                  if (log_in == 1) {
-                     window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
+                     window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "");
                  } else {
                      window.location.assign("<?php echo base_url(); ?>/Users/Login")
                  }

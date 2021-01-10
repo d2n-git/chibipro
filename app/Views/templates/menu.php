@@ -20,7 +20,7 @@
                                 <a class="nav-link <?php if($first_part == '') echo "active"?>" href="<?php echo base_url(); ?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php if($first_part == 'News') echo "active"?>" href="<?php echo base_url(); ?>/News">New</a>
+                                <a class="nav-link <?php if($first_part == 'News' || $first_part == 'setting') echo "active"?>" href="<?php echo base_url(); ?>/News">New</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?php if($first_part == 'Contact') echo "active"?>" href="<?php echo base_url(); ?>/Contact">Contact</a>
