@@ -67,7 +67,7 @@
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
                                                         if($show_flg == 'News' || ($show_flg == 'MyChibi' && !empty(in_array($value['idStatusPicture'], [8,9])))){
                                                             echo " <td style='width: 20%;'>
-                                                                    <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting'>
+                                                                    <input id='".$value['idPictures']."_setting' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting'>
                                                                     </td>";
                                                         }else{
                                                             echo " <td style='width: 20%;'>
@@ -133,11 +133,18 @@
                  break;
              case 'edit':
                  if (log_in == 1) {
-                     window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "");
+                    window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
                  } else {
                      window.location.assign("<?php echo base_url(); ?>/Users/Login")
                  }
                  break;
+            case 'setting':
+                if (log_in == 1) {
+                     window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "");
+                 } else {
+                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                 }
+                break;
              default:
                  // code block
          }

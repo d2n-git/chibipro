@@ -62,4 +62,13 @@ class ConfirmModel extends Model
         $db->close();
         return $results['idUser']; 
     }
+
+    public function GetConfirmById($id)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT * FROM confirmofpainter WHERE idPicture = ?';
+        $results = $db->query($sql,[$id])->getRowArray();
+        $db->close();
+        return $results; 
+    }
 }

@@ -61,6 +61,19 @@ label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
+} 
+
+.btnOk{
+    float: left;
+    /* margin-top: 2%; */
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    color: #fff;
+    font-weight: 600;
+    width: 120px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 </style>
 <div class="container confirm">
@@ -72,7 +85,7 @@ label img {
         <div class=" col-lg-9 col-md-9 confirm-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="<?php echo base_url(); ?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px;" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px;" enctype="multipart/form-data" id="form1">
                         <div class="row register-form">
                             <div class="col-md-3">
                                 <h6>Giá tiêu chuẩn</h6>
@@ -95,6 +108,24 @@ label img {
                                 </div>
                             </div>
                         </div>
+                        <?php if(isset($Confirm)): ?>
+                        <div class="row register-form" style="margin-top: 5px;">
+                            <div class="col-md-3">
+                                <h6 style="color:red;">Báo giá của Painter</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row" style="margin-left: 0px;">
+                                    <div class="col-md-4">
+                                        <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Confirm['Price']?>" disabled style="color:red;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input class="btnOk" type="button" value="ĐỒNG Ý" name="btnSubmit" style="background-color: #33cc33;"/>
+                                        <input class="btnOk" type="button" value="HỦY" name="btnSubmit" style="background-color: #ccccb3;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Ngày hoàn thành</h6>
@@ -160,17 +191,38 @@ label img {
                             </div>
                         </div>
                         <div class="row register-form">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
+                                <input id="btn_confirm" type="button" class="btnFinish" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px;  width: 140px; background-color: #ffa31a;" onclick="deleteIamge('0');"/>
                                 <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px;"/>
                             </div>
                         </div>
+                        <input type="hidden" name="type" id="type" value="0">
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #f1f1f1;">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <span id="message-error">Bạn có chắc muốn xóa ảnh này ?</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-secondary" style="background-color: red;" onclick="deleteIamge('1')">Xóa</button>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
     $(document).ready(function() {
@@ -189,4 +241,16 @@ label img {
             $(this).val(result == 0 ? '' : result);
         });
     });
+
+    function deleteIamge(type){
+      switch(type){
+        case '0':
+          $('#messageModal').modal('show');
+          break;
+        case '1':
+          $("#type").val('1');
+          $("#form1").submit();
+          break;
+      }
+    }
 </script>

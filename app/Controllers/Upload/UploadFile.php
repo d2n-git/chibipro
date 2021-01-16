@@ -13,6 +13,7 @@ use Config\Encryption;
 use Exception;
 use App\Models\PictureModel;
 use App\Controllers\Home;
+use App\Models\Confirm\ConfirmModel;
 
 class UploadFile extends Controller
 {
@@ -219,7 +220,9 @@ class UploadFile extends Controller
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
         $id = $this->request->getGet('id');
         $modePicture = new InSertPictureModel();
+        $modelConfirm = new ConfirmModel();
         $data['Picture'] = $modePicture->GetPictureById($id);
+        $data['Confirm'] = $modelConfirm->GetConfirmById($id);
         $data['viewchild'] = '/upload/detail';
         return view('templates/base_view', $data);
     }
@@ -268,14 +271,24 @@ class UploadFile extends Controller
             }
             move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture);
         }
-        $param['idPicture']=$this->request->getGet('id');
-        $param['standarprice'] = $this->request->getPost('standarprice');
-        $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : str_replace(",", "", $this->request->getPost('priceofuser'));
-        $param['dateExpiry'] = $this->request->getPost('dateExpiry');
-        $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"] != "" ? $nameNewPicture : $this->request->getPost('ch1');
-        $param['message'] = $this->request->getPost('message');
-        $modePicture = new PictureModel();
-        $result = $modePicture->updatePictures($param);
-        return redirect()->to(base_url());
+        $type = $this->request->getPost('type');
+        $id = $this->request->getGet('id');
+        if($type == '1'){ 
+            $modePicture = new InSertPictureModel();
+			$param['idPictures']=$id;
+			$param['Picturesflg'] = '1';
+            $modePicture->UpdatePicture($param);
+            return redirect() -> to(base_url('/Users/Userpage'));
+		}else{
+            $param['idPicture']=$this->request->getGet('id');
+            $param['standarprice'] = $this->request->getPost('standarprice');
+            $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : str_replace(",", "", $this->request->getPost('priceofuser'));
+            $param['dateExpiry'] = $this->request->getPost('dateExpiry');
+            $param['backgroundid'] = $_FILES["fileToUpload"]["tmp_name"] != "" ? $nameNewPicture : $this->request->getPost('ch1');
+            $param['message'] = $this->request->getPost('message');
+            $modePicture = new PictureModel();
+            $result = $modePicture->updatePictures($param);
+            return redirect()->to(base_url());
+        }
     }
 }
