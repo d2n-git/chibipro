@@ -14,7 +14,7 @@ use CodeIgniter\Model;
 
         public function getAllPicture($offset, $idUser = '', $idStatusPicture = ''){
             $db = \Config\Database::connect();
-            $sql="SELECT idPictures, pictures.Name, pictures.idUser, (CASE WHEN idStatusPicture >= 8 THEN chibiFileName ELSE 'loading.png' END) AS chibiFileName,
+            $sql="SELECT idPictures, pictures.Name, pictures.idUser, (CASE WHEN idStatusPicture >= 8 THEN chibiFileName ELSE 'loading.png' END) AS chibiFileName, idStatusPicture,
              pictures.Title, date_format(pictures.DateUp,'%d-%m-%Y') as DateUp, pictures.NumberLike, users.Name AS userName, users.Email FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE (Picturesflg <> 1 OR Picturesflg is Null)";
             if($idUser != ''){
                 $sql = $sql.' AND pictures.idUser = '.$idUser;

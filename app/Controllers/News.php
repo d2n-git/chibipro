@@ -63,7 +63,7 @@ class News extends Controller
 			if($this->request->getPost('mode') == '0'){
 				$param['idStatusPicture'] = '8';
 			}else{
-				$param['idStatusPicture'] = '7';
+				$param['idStatusPicture'] = '9';
 			}
 			$modePicture->UpdatePicture($param);
 		}

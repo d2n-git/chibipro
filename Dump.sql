@@ -193,7 +193,18 @@ INSERT INTO `statuspicture` VALUES (5, 'User Reject', NULL);
 INSERT INTO `statuspicture` VALUES (6, 'Painter Reject', NULL);
 INSERT INTO `statuspicture` VALUES (7, 'Admin Reject', NULL);
 INSERT INTO `statuspicture` VALUES (8, 'Public', NULL);
-INSERT INTO `statuspicture` VALUES (9, 'Pending', NULL);
+INSERT INTO `statuspicture` VALUES (9, 'Private', NULL);
 INSERT INTO `statuspicture` VALUES (10, 'Finish', NULL);
 INSERT INTO `users` VALUES (40, 'AdminD', 0, 'furusato.d2n@gmail.com', 0, '', '26e8917ff90617d093344705f0704d72', '2', NULL, '2020-11-20 10:34:37', NULL, NULL);
--- Dump completed on 2020-10-10 18:20:03
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
+  `idPicture` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `type` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `created` datetime(0) NULL DEFAULT NULL,
+  `created_by` int(11) UNSIGNED NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
