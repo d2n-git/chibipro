@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 confirm-left">
             <h4>Thông Tin Đăng Ảnh</h4>
-            <img src="<?php echo base_url(); ?>/assets/img/<?php echo $Picture['Name']; ?>" />
+            <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" />
             <button type="button" class="btnDownload">Download</button>
         </div>
         <div class=" col-lg-9 col-md-9 confirm-right">
