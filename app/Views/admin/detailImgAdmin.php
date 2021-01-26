@@ -67,7 +67,7 @@ label img {
     <div class="row">
         <div class="col-lg-3 col-md-3 confirm-left">
             <h4>Thông Tin Đăng Ảnh</h4>
-            <img src="<?php echo base_url(); ?>/assets/img/<?php echo $Picture['Name']; ?>" />
+            <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" />
         </div>
         <div class=" col-lg-9 col-md-9 confirm-right">
             <div class="tab-content" id="myTabContent">
@@ -78,7 +78,13 @@ label img {
                                 <h6>User Name</h6>
                             </div>
                             <div class="col-md-3">
-                                <h6>User Name</h6>
+                                <h6><?php echo str_replace("*-*-"," ",$Picture['userName']); ?></h6>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>idPictures</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><?php echo $Picture['idPictures'] ?></h6>
                             </div>
                         </div>
                         <div class="row register-form">
@@ -106,16 +112,16 @@ label img {
                                 <h6>Giá User yêu cầu</h6>
                             </div>
                             <div class="col-md-2">
-                                <div class="col-md-12">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10">
+                                <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Picture['PriceOfUser'] ?>">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <h6>Giá Painter</h6>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2" style="padding-left: 0px; padding-right: 0px;">
                                 <div class="col-md-12">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Picture['PriceOfUser'] ?>">
                                 </div>
                             </div>
                         </div>
@@ -153,15 +159,32 @@ label img {
                                     <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg_def/4_city.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb5" name="ch1" value="bg5"/>
-                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/bg5.jpg" /></label>
+                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/5_park.png" /></label>
                                 </li>
                                 <li><input type="radio" id="cb6" name="ch1" value="bg6"/>
-                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/bg6.jpg" /></label>
+                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/6_autumn.png" /></label>
                                 </li>
                                 </ul>
                             </div>
                         </div>
-
+                        <div class="row register-form">
+                            <div class="col-md-3">
+                                <h6>Status</h6>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="col-md-12">
+                                    <input class="form-control single-input" name="status" id="status" type="text" autocomplete="off" maxlength="2" value="<?php echo $Picture['idStatusPicture'] ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>Flat</h6>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="col-md-12">
+                                    <input class="form-control single-input" name="pflat" id="pflat" type="text" autocomplete="off" maxlength="1" value="<?php echo $Picture['idPictures'] ?>">
+                                </div>
+                            </div>
+                        </div>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
                                 <h6>Up hình nền</h6>

@@ -6,10 +6,10 @@
     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Admin/listimages" class="nav-link">Upload List</a>
+    <a href="/Admin/Listimages" class="nav-link">Upload List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Admin/listusers" class="nav-link">User List</a>
+    <a href="/Admin/Listusers" class="nav-link">User List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
     <a href="#" class="nav-link">Summary</a>
@@ -120,7 +120,7 @@
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="/Admin/listusers" method="POST">
+                    <form action="/Admin/Listusers" method="POST">
                         <div class="row">
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-3">

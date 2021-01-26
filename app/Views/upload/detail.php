@@ -91,16 +91,16 @@ label img {
                                 <h6>Giá tiêu chuẩn</h6>
                             </div>
                             <div class="col-md-3">
-                                <h6>200</h6>
+                                <h6>200K</h6>
                                 <input type="hidden" name="standarprice" id="standarprice" value="200">
                             </div>
-                            <div class="col-md-6" style="text-align: right;">
+                            <!-- <div class="col-md-6" style="text-align: right;">
                                 <h6>Đơn vị tính: Nghìn Đồng</h6>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row register-form">
                             <div class="col-md-3">
-                                <h6>Giá User yêu cầu</h6>
+                                <h6>Giá yêu cầu</h6>
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
@@ -194,8 +194,8 @@ label img {
                             <div class="col-md-3">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                                <input id="btn_confirm" type="button" class="btnFinish" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px;  width: 140px; background-color: #ffa31a;" onclick="deleteIamge('0');"/>
-                                <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px;"/>
+                                <input id="btn_delete" type="button" class="btnFinish" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px; background-color: #ffa31a;" onclick="deleteIamge('0');"/>
+                                <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>
                         <input type="hidden" name="type" id="type" value="0">

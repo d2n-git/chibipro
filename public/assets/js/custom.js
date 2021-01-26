@@ -1,8 +1,6 @@
 (function ($) {
   "use strict";
 
-
-
   $('.popup-youtube, .popup-vimeo').magnificPopup({
     // disableOn: 700,
     type: 'iframe',
@@ -254,8 +252,6 @@
 
 inputNumber($('.input-number'));
 
-
-
   setInterval(function () {
     makeTimer();
   }, 1000);
@@ -277,10 +273,7 @@ inputNumber($('.input-number'));
 
  $('.controls').on('click', function(){
   $(this).addClass('active').siblings().removeClass('active');
- }); 
-
-
-
+ });
 }(jQuery));
 
   //* Format number

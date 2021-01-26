@@ -27,10 +27,11 @@ use CodeIgniter\Model;
             return $result;
         }
 
-        public function getPictureById($id){
+        public function getPictureByIdAdmin($id)
+        {
             $db = \Config\Database::connect();
-            $sql="SELECT pictures.idPictures, pictures.Name, users.Name AS userName, pictures.MaxPrice, pictures.Title FROM pictures INNER JOIN users ON pictures.idUser = users.idUser WHERE pictures.idPictures = " . $id;
-            $result = $db->query($sql)->getFirstRow();
+            $sql="SELECT pt.NumberLike, pt.idPictures, idStatusPicture, pt.Name, pt.chibiFileName, date_format(cp.DateExpiry,'%Y-%m-%d') as DateExpiry, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, cp.Price, pt.ExtraDetail, cp.Note, pt.idUser, pt.Title, pt.Note, pt.Picturesflg FROM pictures pt left join confirmofpainter cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
+            $result = $db->query($sql,[$id])->getRowArray();
             $db->close();
             return $result;
         }
