@@ -275,11 +275,21 @@ class UploadFile extends Controller
         $id = $this->request->getGet('id');
         if($type == '1'){ 
             $modePicture = new InSertPictureModel();
-			$param['idPictures']=$id;
-			$param['Picturesflg'] = '1';
+            $param['idPictures']=$id;
+            $param['Picturesflg'] = '1';
             $modePicture->UpdatePicture($param);
             return redirect() -> to(base_url('/Users/Userpage'));
-		}else{
+        }
+        else if($type == '2'){
+            $modePicture = new InSertPictureModel();
+            $status = $this->request->getPost('status');
+            $param['idPictures']=$id;
+            $param['idStatusPicture'] = $status;
+            $modePicture->UpdatePicture($param);
+            $json = ["message" => "Success!"];
+            echo json_encode($json); 
+        }
+        else{
             $param['idPicture']=$this->request->getGet('id');
             $param['standarprice'] = $this->request->getPost('standarprice');
             $param['priceofuser'] = $this->request->getPost('priceofuser') == "" ? 0 : str_replace(",", "", $this->request->getPost('priceofuser'));
@@ -288,6 +298,13 @@ class UploadFile extends Controller
             $param['message'] = $this->request->getPost('message');
             $modePicture = new PictureModel();
             $result = $modePicture->updatePictures($param);
+            $session = \Config\Services::session();
+            $idUser = $_SESSION['idUser'];
+            $idUser = $_SESSION['idUser'];
+            $newdata = [
+                'numberMyChibi' => count($modePicture->getAllPictureCount($idUser))
+            ];
+            $session->set($newdata);
             return redirect()->to(base_url());
         }
     }

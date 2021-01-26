@@ -109,7 +109,7 @@ label img {
                             </div>
                         </div>
                         <?php if(isset($Confirm)): ?>
-                        <div class="row register-form" style="margin-top: 5px;">
+                        <div class="row register-form" style="margin-top: 5px;" id="areaPainter">
                             <div class="col-md-3">
                                 <h6 style="color:red;">Báo giá của Painter</h6>
                             </div>
@@ -119,8 +119,8 @@ label img {
                                         <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Confirm['Price']?>" disabled style="color:red;">
                                     </div>
                                     <div class="col-md-8">
-                                        <input class="btnOk" type="button" value="ĐỒNG Ý" name="btnSubmit" style="background-color: #33cc33;"/>
-                                        <input class="btnOk" type="button" value="HỦY" name="btnSubmit" style="background-color: #ccccb3;"/>
+                                        <input class="btnOk" type="button" value="ĐỒNG Ý" name="btnSubmit" style="background-color: #33cc33;" onclick="updateStatus('3')" id="btnOk2"/>
+                                        <input class="btnOk" type="button" value="HỦY" name="btnSubmit" style="background-color: #ccccb3;" onclick="updateStatus('1')" id="btnCancel"/>
                                     </div>
                                 </div>
                             </div>
@@ -252,5 +252,30 @@ label img {
           $("#form1").submit();
           break;
       }
+    }
+
+    function updateStatus(status){
+        let type = '2'
+        const data = {
+            status,type
+        };
+        $.ajax({
+                url: '<?php echo base_url();?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>',
+                type : "post",
+                dataType:'json',
+                data : data,
+                success : function(data) {
+                    alert(data.message);
+                    if(status == '1'){
+                        $('#areaPainter').hide();
+                    }else if(status == '3'){
+                        $('#btnOk2').hide();
+                        $('#btnCancel').hide();
+                    }
+                },
+                error : function(data) {
+                    // do something
+                }
+            });
     }
 </script>

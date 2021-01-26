@@ -29,12 +29,15 @@
                                 <a class="nav-link" href="<?php echo base_url(); ?>/#submit">ChibiPro +</a>
                             </li>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
-                                <li class="nav-item">
+                                <li class="nav-item" style="position: relative !important;">
                                     <a class="nav-link <?php if($first_part == 'Userpage') echo "active"?>" href="<?php echo base_url(); ?>/Users/Userpage" style="font-weight:800; color:blue;">My Chibi</a>
+                                    <?php if (isset($_SESSION['numberMyChibi'])) :?>
+                                        <span style="background-color: red; color: white; width: 24px; padding: 0px; height: 25px; text-align: center; position: absolute; top: 5px; right: 0; display:block;"><?php echo $_SESSION['numberMyChibi']?></span>
+                                    <?php endif;?>
                                 </li>
                             <?php endif;?>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && $_SESSION['Permission'] == '2') :?>
-                                <li class="nav-item">
+                                <li class="nav-item" style="position: relative;">
                                     <a class="nav-link <?php if($first_part == 'Painter') echo "active"?>" href="<?php echo base_url(); ?>/Painter/Painter" style="font-weight:800; color:green;">Painter</a>
                                 </li>
                             <?php endif;?>

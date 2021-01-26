@@ -29,6 +29,14 @@ class Home extends BaseController
 				'logged_in' => FALSE
 			];
 			$session->set($newdata);
+
+			
+		}else{
+			$idUser = $_SESSION['idUser'];
+			$newdata = [
+				'numberMyChibi' => count($pictureModel->getAllPictureCount($idUser))
+			];
+			$session->set($newdata);
 		}
 		return view('templates/base_view',$data);
 	}
