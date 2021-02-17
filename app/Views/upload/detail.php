@@ -140,22 +140,22 @@ label img {
                             </div>
                             <div class="col-md-9">
                             <ul>
-                                <li><input type="radio" id="cb1" name="ch1" value="bg1"/>
+                                <li><input type="radio" id="cb1" name="ch1" value="bg1" <?php if($Picture['BackgroundPicture'] == 'bg1') echo 'checked'?>/>
                                     <label for="cb1"><img src="<?php echo base_url(); ?>/assets/img/bg_def/1_cau-vang.png" /></label>
                                 </li>
-                                <li><input type="radio" id="cb2" name="ch1" value="bg2"/>
+                                <li><input type="radio" id="cb2" name="ch1" value="bg2" <?php if($Picture['BackgroundPicture'] == 'bg2') echo 'checked'?>/>
                                     <label for="cb2"><img src="<?php echo base_url(); ?>/assets/img/bg_def/2_sea.png" /></label>
                                 </li>
-                                <li><input type="radio" id="cb3" name="ch1" value="bg3"/>
+                                <li><input type="radio" id="cb3" name="ch1" value="bg3" <?php if($Picture['BackgroundPicture'] == 'bg3') echo 'checked'?>/>
                                     <label for="cb3"><img src="<?php echo base_url(); ?>/assets/img/bg_def/3_chua.png" /></label>
                                 </li>
-                                <li><input type="radio" id="cb4" name="ch1" value="bg4"/>
+                                <li><input type="radio" id="cb4" name="ch1" value="bg4" <?php if($Picture['BackgroundPicture'] == 'bg4') echo 'checked'?>/>
                                     <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg_def/4_city.png" /></label>
                                 </li>
-                                <li><input type="radio" id="cb5" name="ch1" value="bg5"/>
+                                <li><input type="radio" id="cb5" name="ch1" value="bg5" <?php if($Picture['BackgroundPicture'] == 'bg5') echo 'checked'?>/>
                                     <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/5_park.png" /></label>
                                 </li>
-                                <li><input type="radio" id="cb6" name="ch1" value="bg6"/>
+                                <li><input type="radio" id="cb6" name="ch1" value="bg6" <?php if($Picture['BackgroundPicture'] == 'bg6') echo 'checked'?>/>
                                     <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/6_autumn.png" /></label>
                                 </li>
                                 </ul>

@@ -51,7 +51,7 @@ class InSertPictureModel extends Model
     public function GetPictureById($id)
     {
         $db = \Config\Database::connect();
-        $sql="SELECT pt.NumberLike,pt.idPictures, pt.Name, date_format(cp.DateExpiry,'%Y-%m-%d') as DateExpiry, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, cp.Price, pt.ExtraDetail, cp.Note, pt.idUser, pt.Title, pt.Note FROM pictures pt left join confirmofpainter cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
+        $sql="SELECT pt.NumberLike,pt.idPictures, pt.Name, date_format(cp.DateExpiry,'%Y-%m-%d') as DateExpiry, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, cp.Price, pt.ExtraDetail, cp.Note, pt.idUser, pt.Title, pt.Note, pt.BackgroundPicture FROM pictures pt left join confirmofpainter cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
         $results = $db->query($sql,[$id])->getRowArray();
         $db->close();
         return $results; 
