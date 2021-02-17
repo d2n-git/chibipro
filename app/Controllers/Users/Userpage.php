@@ -33,6 +33,7 @@ class Userpage extends BaseController
         $data['show_flg'] = 'MyChibi';
         $data['viewchild'] = './user/content';
         $data['usertable'] = './user/usertable';
+        $data['type'] = '1';
         return view('templates/base_view', $data);
     }
 }

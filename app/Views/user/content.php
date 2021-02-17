@@ -140,7 +140,7 @@
                  break;
             case 'setting':
                 if (log_in == 1) {
-                     window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "");
+                     window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "&type=<?php echo $type;?>");
                  } else {
                      window.location.assign("<?php echo base_url(); ?>/Users/Login")
                  }

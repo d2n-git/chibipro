@@ -23,9 +23,10 @@ class News extends Controller
 		$pictures = $pictureModel->getAllPicture($offset, '', '8');
 		$data['page'] = $page + 1;
 		$data['total'] = count($pictureModel->getAllPictureCount());
-		$data['pager'] = $pager;
+		// $data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['show_flg'] = 'News';
+		$data['type'] = '0';
 		$data['viewchild'] = './user/content';
 		return view('templates/base_view', $data);
 	}

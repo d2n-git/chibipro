@@ -2,6 +2,8 @@
     $session = \Config\Services::session();
     $directoryURI = $_SERVER['REQUEST_URI'];
     $path = parse_url($directoryURI, PHP_URL_PATH);
+    $url_components = parse_url($directoryURI);
+    parse_str($url_components['query'], $params);
     $components = explode('/', $path);
     $first_part = $components[count($components) - 1];
 ?>
@@ -20,7 +22,7 @@
                                 <a class="nav-link <?php if($first_part == '') echo "active"?>" href="<?php echo base_url(); ?>">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?php if($first_part == 'News' || $first_part == 'setting') echo "active"?>" href="<?php echo base_url(); ?>/News">New</a>
+                                <a class="nav-link <?php if($first_part == 'News' || (isset($params['type']) && $params['type'] == '0')) echo "active"?>" href="<?php echo base_url(); ?>/News">New</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?php if($first_part == 'Contact') echo "active"?>" href="<?php echo base_url(); ?>/Contact">Contact</a>
@@ -30,7 +32,7 @@
                             </li>
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
                                 <li class="nav-item" style="position: relative !important;">
-                                    <a class="nav-link <?php if($first_part == 'Userpage') echo "active"?>" href="<?php echo base_url(); ?>/Users/Userpage" style="font-weight:800; color:blue;">My Chibi</a>
+                                    <a class="nav-link <?php if($first_part == 'Userpage' || (isset($params['type']) && $params['type'] == "1")) echo "active"?>" href="<?php echo base_url(); ?>/Users/Userpage" style="font-weight:800; color:blue;">My Chibi</a>
                                     <?php if (isset($_SESSION['numberMyChibi'])) :?>
                                         <span style="background-color: red; color: white; width: 24px; padding: 0px; height: 25px; text-align: center; position: absolute; top: 5px; right: 0; display:block;"><?php echo $_SESSION['numberMyChibi']?></span>
                                     <?php endif;?>
