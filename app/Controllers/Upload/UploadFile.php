@@ -263,8 +263,10 @@ class UploadFile extends Controller
 
     function updatePictures(){
         $param = array();
+        $session = \Config\Services::session();
+        $idUser = $_SESSION['idUser'];
         if($_FILES["fileToUpload"]["tmp_name"]!=""){
-            $target_dir = "assets/img/";
+            $target_dir = "assets/img/upload/".$idUser.'/';
             $nameNewPicture =  $this->request->getGet('id'). '_' . basename($_FILES["fileToUpload"]["name"]);
             if (file_exists($nameNewPicture)) {
                 $nameNewPicture =  $this->request->getGet('id'). '_' . $nameNewPicture;
@@ -298,9 +300,6 @@ class UploadFile extends Controller
             $param['message'] = $this->request->getPost('message');
             $modePicture = new PictureModel();
             $result = $modePicture->updatePictures($param);
-            $session = \Config\Services::session();
-            $idUser = $_SESSION['idUser'];
-            $idUser = $_SESSION['idUser'];
             $newdata = [
                 'numberMyChibi' => count($modePicture->getAllPictureCount($idUser))
             ];
