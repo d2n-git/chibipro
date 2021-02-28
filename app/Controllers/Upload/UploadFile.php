@@ -153,7 +153,7 @@ class UploadFile extends Controller
                     }
                 } else {
                     $session = \Config\Services::session();
-                    if(!isset($_SESSION['logged_in']))
+                    if(isset($_SESSION['logged_in']) && !$_SESSION['logged_in'])
                     {
                         $MesError = 'E-Mail này đã được sử dụng. Bạn phải đăng nhập mới tiếp tục tải ảnh';
                         unlink($target_dir . $nameNewPicture);
