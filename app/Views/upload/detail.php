@@ -104,7 +104,7 @@ label img {
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value = "<?php echo $Picture['PriceOfUser']?>">
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@ label img {
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-8">
-                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3"></textarea>
+                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3"><?php echo $Picture['Note']?></textarea>
                             </div>
                         </div>
                         <div class="row register-form">
