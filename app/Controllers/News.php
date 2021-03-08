@@ -26,7 +26,7 @@ class News extends Controller
 		// $data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['show_flg'] = 'News';
-		$data['type'] = '0';
+		$data['itype'] = '0';  // ???
 		$data['viewchild'] = './user/content';
 		return view('templates/base_view', $data);
 	}
@@ -54,10 +54,11 @@ class News extends Controller
 		}
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
 		$id = $this->request->getGet('id');
-		$type = $this->request->getPost('type');
+		$itype = $this->request->getPost('itype');
 		$param = array();
 		$modePicture = new InSertPictureModel();
-		if($type == '0'){
+		// $itype = 0 :
+		if($itype == '0'){
 			$param['idPictures']=$id;
 			$param['Title'] = $this->request->getPost('title');
 			$param['Note'] = $this->request->getPost('message');
@@ -68,7 +69,7 @@ class News extends Controller
 			}
 			$modePicture->UpdatePicture($param);
 		}
-		else if($type == '1'){ 
+		else if($itype == '1'){ 
 			$param['idPictures']=$id;
 			$param['Picturesflg'] = '1';
 			$modePicture->UpdatePicture($param);

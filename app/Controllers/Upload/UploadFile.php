@@ -20,7 +20,7 @@ class UploadFile extends Controller
     function index()
     {
          $data['viewchild'] = './templates/detailFile';
-         return view('templates/base_view', $data);  
+         return view('templates/base_view', $data);
     }
     function UpImagine()
     {
@@ -213,11 +213,11 @@ class UploadFile extends Controller
 
     function detail(){
         $session = \Config\Services::session();
-		if(!isset($_SESSION['logged_in']))
-		{
-			return redirect() -> to(base_url('/Users/Login'));
-		}
-		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
+        if(!isset($_SESSION['logged_in']))
+        {
+            return redirect() -> to(base_url('/Users/Login'));
+        }
+        else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
         $id = $this->request->getGet('id');
         $modePicture = new InSertPictureModel();
         $modelConfirm = new ConfirmModel();
@@ -273,16 +273,16 @@ class UploadFile extends Controller
             }
             move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_dir . $nameNewPicture);
         }
-        $type = $this->request->getPost('type');
+        $itype = $this->request->getPost('itype');
         $id = $this->request->getGet('id');
-        if($type == '1'){ 
+        if($itype == '1'){ 
             $modePicture = new InSertPictureModel();
             $param['idPictures']=$id;
             $param['Picturesflg'] = '1';
             $modePicture->UpdatePicture($param);
             return redirect() -> to(base_url('/Users/Userpage'));
         }
-        else if($type == '2'){
+        else if($itype == '2'){
             $modePicture = new InSertPictureModel();
             $status = $this->request->getPost('status');
             $param['idPictures']=$id;
@@ -304,7 +304,7 @@ class UploadFile extends Controller
                 'numberMyChibi' => count($modePicture->getAllPictureCount($idUser))
             ];
             $session->set($newdata);
-            return redirect()->to(base_url());
+            return redirect()->to(base_url('/Users/Userpage'));
         }
     }
 }

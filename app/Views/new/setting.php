@@ -106,7 +106,7 @@ label img {
                                 <input id="btn_confirm1" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>
-                        <input type="hidden" name="type" id="type" value="0">
+                        <input type="hidden" name="itype" id="itype" value="0">
                     </form>
                 </div>
             </div>
@@ -150,13 +150,13 @@ label img {
         });
     });
 
-    function deleteIamge(type){
-      switch(type){
+    function deleteIamge(itype){
+      switch(itype){
         case '0':
           $('#messageModal').modal('show');
           break;
         case '1':
-          $("#type").val('1');
+          $("#itype").val('1');
           $("#form1").submit();
           break;
       }
