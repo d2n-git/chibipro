@@ -202,8 +202,8 @@ label img {
                             <div class="col-md-3">
                             </div>
                             <div class="col-md-9">
-                                <div class=" col-12 col-md-6" style="margin-top: 10px;" hidden id="areaupload">
-                                        <img id="blah" />
+                                <div class="col-12 col-md-6" style="padding-top: 0px;color: #6f6862;" id="ibgImage" <?php if($Picture['BackgroundPicture'] == '') echo 'hidden'?>>
+                                    <?php echo $Picture['BackgroundPicture']?>
                                 </div>
                             </div>
                         </div>
