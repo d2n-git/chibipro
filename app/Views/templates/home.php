@@ -2,17 +2,20 @@
     <div class="row" style="margin-left: 0px;margin-right: 0px;">
         <div class="col-lg-3 container-fluid">
             <div class="card bg-gradient-primary">
-                <div class="fb-post" data-href="" data-show-text="true" data-width="">
+                <div>
+                    <a href="<?php echo base_url(); ?>/#submit" style="color: #174975;">Tạo hình Chibipro theo phong cách của riêng mình.</a>
                 </div>
             </div>
 
             <div class="card bg-gradient-primary">
-                <div class="">
+                <div>
+                    <a href="<?php echo base_url(); ?>/#submit" style="color: #754717;">Tạo hình Album ảnh cưới theo phong cách Chibipro.</a>
                 </div>
             </div>
 
             <div class="card bg-gradient-primary">
-                <div class="">
+                <div>
+                    <a href="<?php echo base_url(); ?>/News" style="color: #2b7330;">Cuộc chiến của những ảnh Chibipro siêu cá tính.</a>
                 </div>
             </div>
         </div>
