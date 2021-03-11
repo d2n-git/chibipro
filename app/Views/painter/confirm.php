@@ -93,6 +93,14 @@
                         </div>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
+                                <h6>Ngày Yêu cầu</h6>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="date" style="background-color:#e9ecef" id="endRequire" name="dateExpiryReq" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" readonly>
+                            </div>
+                        </div>
+                        <div class="row register-form margin-10px">
+                            <div class="col-md-3">
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
@@ -101,19 +109,19 @@
                         </div>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
-                                <h6>Chi tiết phụ</h6>
+                                <h6>Ghi chú của User</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="form-control" id="" cols="60" rows="2" class="textAreaStyle" readonly><?php echo $Picture['ExtraDetail']; ?>
-                                </textarea>
+                                <textarea style="background-color:#e9ecef" name="note" id="" cols="60" rows="3" class="textAreaStyle" readonly><?php echo $Picture['ExtraDetail']; ?></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
-                                <h6>Ghi chú</h6>
+                                <h6>Ghi chú của Painter</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="note" id="" cols="60" rows="3" class="textAreaStyle"><?php echo $Picture['Note']; ?></textarea>
+                                <textarea name="form-control" id="" cols="60" rows="3" class="textAreaStyle"><?php echo $Picture['Note']; ?>
+                                </textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">

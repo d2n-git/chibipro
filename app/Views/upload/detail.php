@@ -108,7 +108,7 @@ label img {
                                 </div>
                             </div>
                         </div>
-                        <?php if(isset($Confirm)): ?>
+                        <?php if(isset($Confirm) && isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '0')): ?>
                         <div class="row register-form" style="margin-top: 5px;" id="areaPainter">
                             <div class="col-md-3">
                                 <h6 style="color:red;">Báo giá của Painter</h6>
