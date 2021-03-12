@@ -17,8 +17,9 @@ class Confirm extends Controller
 		}
 		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
 		$id = $this->request->getGet('id');
+		$idPainter = $_SESSION['idUser'];
 		$modePicture = new InSertPictureModel();
-		$data['Picture'] = $modePicture->GetPictureById($id);
+		$data['Picture'] = $modePicture->GetConfirmPainter($id, $idPainter);
 		$data['viewchild'] = './painter/confirm';
 		return view('templates/base_view', $data);
 	}
@@ -30,13 +31,20 @@ class Confirm extends Controller
 		$insertConfirm = new ConfirmModel();
 		$modelConfirm['idPicture'] = (int)$something['id'];
 		$modelConfirm['Price'] = (int)$something['price'];
-		$modelConfirm['DateExpiry'] = $something['dateExpiry'];
+		$modelConfirm['DateExpiry'] = $something['dateExpiryPainter'];
 		$modelConfirm['DateApprove'] = date('Y-m-d h:m:s');
 		$modelConfirm['idPainter'] = $idUser;
-		$modelConfirm['Note'] = $something['note'];
+		$modelConfirm['Note'] = $something['note_painter'];
 		$resultInsertPicture = $insertConfirm->InSertConfirm($modelConfirm);
 		if ($resultInsertPicture)
 		{
+			//Update status for Picture
+			$param = array();
+			$modePicture = new InSertPictureModel();
+			$param['idPictures'] = (int)$something['id'];
+			$param['idStatusPicture'] = '3';
+			$modePicture->UpdatePicture($param);
+
 			return redirect()->to(base_url("/Painter/Painter"));
 		}
 	}

@@ -51,11 +51,22 @@ class InSertPictureModel extends Model
     public function GetPictureById($id)
     {
         $db = \Config\Database::connect();
-        $sql="SELECT pt.NumberLike,pt.idPictures, pt.Name, date_format(cp.DateExpiry,'%Y-%m-%d') as DateExpiry, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, cp.Price, pt.ExtraDetail, cp.Note, pt.idUser, pt.Title, pt.Note, pt.BackgroundPicture FROM pictures pt left join confirmofpainter cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
+        $sql="SELECT pt.NumberLike,pt.idPictures, pt.Name, date_format(pt.DateExpiry,'%Y-%m-%d') as DateExpiry, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, pt.ExtraDetail, pt.idUser, pt.Title, pt.Note, pt.BackgroundPicture FROM pictures pt WHERE idPictures = ?";
         $results = $db->query($sql,[$id])->getRowArray();
         $db->close();
         return $results; 
     }
+    public function GetConfirmPainter($idPictures, $idPainter)
+    {
+        $db = \Config\Database::connect();
+        $sql="SELECT pt.NumberLike, pt.idPictures, pt.Name, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, pt.ExtraDetail, pt.idUser, pt.Title, pt.Note, pt.BackgroundPicture, date_format(pt.DateExpiry,'%Y-%m-%d') as dateExpiryReq,
+                     date_format(cp.DateExpiry,'%Y-%m-%d') as DateExpiry, cp.Price, cp.Note as Note_Painter
+              FROM pictures pt left join (select * from confirmofpainter where idPainter = ? order by idConfirmOfPainter DESC limit 1) cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
+        $results = $db->query($sql,[$idPainter, $idPictures])->getRowArray();
+        $db->close();
+        return $results; 
+    }
+
     public function GetIdUser($id)
     {
         $db = \Config\Database::connect();

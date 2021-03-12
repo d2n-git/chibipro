@@ -131,7 +131,7 @@ label img {
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="date" id="start" name="dateExpiry" value="<?php echo date('Y-m-d') ?>" min="2020-01-01" max="2030-12-31">
+                                <input type="date" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -198,7 +198,7 @@ label img {
                                 <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>
-                        <input type="hidden" name="type" id="type" value="0">
+                        <input type="hidden" name="itype" id="itype" value="0">
                     </form>
                 </div>
             </div>
@@ -242,26 +242,26 @@ label img {
         });
     });
 
-    function deleteIamge(type){
-      switch(type){
+    function deleteIamge(itype){
+      switch(itype){
         case '0':
           $('#messageModal').modal('show');
           break;
         case '1':
-          $("#type").val('1');
+          $("#itype").val('1');
           $("#form1").submit();
           break;
       }
     }
 
     function updateStatus(status){
-        let type = '2'
+        let itype = '2'
         const data = {
-            status,type
+            status,itype
         };
         $.ajax({
                 url: '<?php echo base_url();?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>',
-                type : "post",
+                itype : "post",
                 dataType:'json',
                 data : data,
                 success : function(data) {
