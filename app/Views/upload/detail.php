@@ -98,33 +98,34 @@ label img {
                                 <h6>Đơn vị tính: Nghìn Đồng</h6>
                             </div> -->
                         </div>
-                        <div class="row register-form">
-                            <div class="col-md-3">
-                                <h6>Giá yêu cầu</h6>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="col-md-4">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value = "<?php echo $Picture['PriceOfUser']?>">
+                        <?php if(isset($Confirm) && $Picture['idStatusPicture']=='3'): ?>
+                            <div class="row register-form" style="margin-top: 5px;" id="areaPainter">
+                                <div class="col-md-3">
+                                    <h6 style="color:red;">Báo giá của Painter</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="row" style="margin-left: 0px;">
+                                        <div class="col-md-4">
+                                            <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Confirm['Price']?>" disabled style="color:red;">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input class="btnOk" type="button" value="ĐỒNG Ý" name="btnSubmit" style="background-color: #228a22;" onclick="updateStatus('4')" id="btnAccept"/>
+                                            <input class="btnOk" type="button" value="HỦY" name="btnSubmit" style="background-color: #79796a;" onclick="updateStatus('1')" id="btnCancel"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php if(isset($Confirm) && isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '0')): ?>
-                        <div class="row register-form" style="margin-top: 5px;" id="areaPainter">
-                            <div class="col-md-3">
-                                <h6 style="color:red;">Báo giá của Painter</h6>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="row" style="margin-left: 0px;">
+                        <?php else: ?>
+                            <div class="row register-form">
+                                <div class="col-md-3">
+                                    <h6>Giá yêu cầu</h6>
+                                </div>
+                                <div class="col-md-9">
                                     <div class="col-md-4">
-                                        <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Confirm['Price']?>" disabled style="color:red;">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input class="btnOk" type="button" value="ĐỒNG Ý" name="btnSubmit" style="background-color: #33cc33;" onclick="updateStatus('3')" id="btnOk2"/>
-                                        <input class="btnOk" type="button" value="HỦY" name="btnSubmit" style="background-color: #ccccb3;" onclick="updateStatus('1')" id="btnCancel"/>
+                                        <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value = "<?php echo $Picture['PriceOfUser']?>">
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3">
@@ -190,12 +191,23 @@ label img {
                             <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3"><?php echo $Picture['Note']?></textarea>
                             </div>
                         </div>
+                        <?php if ($Picture['idStatusPicture']=='3'): ?>
+                            <div class="row register-form margin-10px" id="txtStatus">
+                                <div class="col-md-3">
+                                    <h6>Trạng thái</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="badge-success d-inline-block px-4 rounded-sm text-white"> Hình của bạn đã được Painter báo giá vẽ. Nếu đồng ý hãy bấm nút ĐỒNG Ý để được vẽ hình Chibi</div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
                         <div class="row register-form">
                             <div class="col-md-3">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
                                 <input id="btn_delete" type="button" class="btnFinish" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px; background-color: #ffa31a;" onclick="deleteIamge('0');"/>
-                                <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
+                                <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>
                         <input type="hidden" name="itype" id="itype" value="0">
@@ -257,20 +269,21 @@ label img {
     function updateStatus(status){
         let itype = '2'
         const data = {
-            status,itype
+            status, itype
         };
         $.ajax({
                 url: '<?php echo base_url();?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>',
-                itype : "post",
+                type : "post",
                 dataType:'json',
                 data : data,
                 success : function(data) {
                     alert(data.message);
                     if(status == '1'){
                         $('#areaPainter').hide();
-                    }else if(status == '3'){
-                        $('#btnOk2').hide();
+                    }else if(status == '4'){
+                        $('#btnAccept').hide();
                         $('#btnCancel').hide();
+                        $('#txtStatus').hide();
                     }
                 },
                 error : function(data) {

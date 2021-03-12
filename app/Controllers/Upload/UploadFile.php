@@ -288,7 +288,7 @@ class UploadFile extends Controller
             $param['idPictures']=$id;
             $param['idStatusPicture'] = $status;
             $modePicture->UpdatePicture($param);
-            $json = ["message" => "Success!"];
+            $json = ["message" => "Yêu cầu đã được cập nhật thành công!"];
             echo json_encode($json); 
         }
         else{
