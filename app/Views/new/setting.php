@@ -86,8 +86,8 @@ label img {
                                 <h6>Chế độ</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="radio" name="mode" value="0" checked> Public
-                                <input type="radio" name="mode" value="1" style="margin-left: 10px;"> Riêng tư
+                                <input type="radio" name="mode" value="0" <?php if($Picture['idStatusPicture'] == '8') echo 'checked';?>> Public
+                                <input type="radio" name="mode" value="1" style="margin-left: 10px;" <?php if($Picture['idStatusPicture'] == '9') echo 'checked';?>> Riêng tư
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
