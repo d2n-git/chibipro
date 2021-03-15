@@ -38,36 +38,44 @@ class ConfirmModel extends Model
             ];
         return $data;
     }
-    public function GetMaxIdPictures()
-    {
-        $db = \Config\Database::connect();
-        $sql='SELECT IFNULL(MAX(idPictures), 0) AS MaxId FROM pictures' ;
-        $results = $db->query($sql)->getRowArray();
-        $db->close();
-        return $results['MaxId'] + 1;
-    }
-    public function GetPictureById($id)
-    {
-        $db = \Config\Database::connect();
-        $sql='SELECT * FROM pictures WHERE idPictures = ?';
-        $results = $db->query($sql,[$id])->getRowArray();
-        $db->close();
-        return $results; 
-    }
-    public function GetIdUser($id)
-    {
-        $db = \Config\Database::connect();
-        $sql='SELECT * FROM pictures WHERE idPictures = ?';
-        $results = $db->query($sql,[$id])->getRowArray();
-        $db->close();
-        return $results['idUser']; 
-    }
+    // public function GetMaxIdPictures()
+    // {
+    //     $db = \Config\Database::connect();
+    //     $sql='SELECT IFNULL(MAX(idPictures), 0) AS MaxId FROM pictures' ;
+    //     $results = $db->query($sql)->getRowArray();
+    //     $db->close();
+    //     return $results['MaxId'] + 1;
+    // }
+    // public function GetPictureById($id)
+    // {
+    //     $db = \Config\Database::connect();
+    //     $sql='SELECT * FROM pictures WHERE idPictures = ?';
+    //     $results = $db->query($sql,[$id])->getRowArray();
+    //     $db->close();
+    //     return $results; 
+    // }
+    // public function GetIdUser($id)
+    // {
+    //     $db = \Config\Database::connect();
+    //     $sql='SELECT * FROM pictures WHERE idPictures = ?';
+    //     $results = $db->query($sql,[$id])->getRowArray();
+    //     $db->close();
+    //     return $results['idUser']; 
+    // }
 
     public function GetConfirmById($id)
     {
         $db = \Config\Database::connect();
         $sql='SELECT * FROM confirmofpainter WHERE idPicture = ?';
         $results = $db->query($sql,[$id])->getRowArray();
+        $db->close();
+        return $results; 
+    }
+    public function GetConfirm($idPictures, $idPainter, $Confirflg = Null)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT idPicture, idPainter, Price, DATE_FORMAT(DateExpiry, "%Y-%m-%d") as DateExpiry, Note FROM confirmofpainter WHERE idPicture = ? AND idPainter = ? ORDER BY idConfirmOfPainter DESC';
+        $results = $db->query($sql,[$idPictures, $idPainter])->getResultArray();
         $db->close();
         return $results; 
     }

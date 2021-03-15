@@ -33,26 +33,19 @@
                                  </td>
                              </tr>
                              <tr>
-                                 <td style="width: 70%;">
+                                 <td style="width: 60%;">
                                     <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['Name']; ?>" alt="#">
                                  </td>
-                                 <td style="width: 30%;">
-                                    <div class="card">
-                                        <h6>
-                                            Giá Vẽ 1 : 220K 
-                                            <br>
-                                            Ngày giao : <?php echo $value['DateUp']; ?>
-                                        </h6>
-                                        <h6>
-                                            Giá Vẽ 2 : 210K 
-                                            <br>
-                                            Ngày giao : <?php echo $value['DateUp']; ?>
-                                        </h6>
-                                        <h6>
-                                            Giá Vẽ 3 : 200K 
-                                            <br>
-                                            Ngày giao : <?php echo $value['DateUp']; ?>
-                                        </h6>
+                                 <td style="width: 40%;">
+                                    <div class="card" style="min-height: 150px;">
+                                        <?php if ($value['Confirm_info'] !== null) :?>
+                                            <?php for ($i = 0; $i < count($value['Confirm_info']); $i++): ?>
+                                                <h6>
+                                                    Giá Vẽ <?php echo $i + 1;?>: <?php echo $value['Confirm_info'][$i]['idPainter'].'_'.$value['Confirm_info'][$i]['DateExpiry'].'_'.$value['Confirm_info'][$i]['Price'];?>
+                                                    <br>
+                                                </h6>
+                                            <?php endfor ?>
+                                        <?php endif; ?>
                                     </div>
                                  </td>
                              </tr>
