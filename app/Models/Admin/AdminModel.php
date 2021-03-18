@@ -15,7 +15,7 @@ use CodeIgniter\Model;
         public function getPictureForAdmin($offset, $username, $email){
             $db = \Config\Database::connect();
             $sql="SELECT users.idUser, users.Name as UserName, users.Email, 
-                         pictures.idPictures, pictures.Name as PicturesName, pictures.Title, pictures.DateUp, pictures.NumberLike, pictures.idStatusPicture as Status, StandarPrice, PriceOfUser
+                         pictures.idPictures, pictures.Name as PicturesName, pictures.chibiFileName, pictures.Title, pictures.DateUp, pictures.NumberLike, pictures.idStatusPicture as Status, StandarPrice, PriceOfUser
                     FROM pictures 
                     INNER JOIN users 
                     ON pictures.idUser = users.idUser 
@@ -36,13 +36,13 @@ use CodeIgniter\Model;
             return $result;
         }
 
-        public function getAllPictureCountAdmin($username, $email){
+        public function getPictureCountAdmin($username, $email){
             $db = \Config\Database::connect();
-            $sql="SELECT * FROM pictures INNER JOIN users ON pictures.idUser = users.idUser
+            $sql="SELECT count(*) as count FROM pictures INNER JOIN users ON pictures.idUser = users.idUser
                     WHERE users.Name like '%$username%' AND users.Email like '%$email%' ";
-            $result = $db->query($sql)->getResultArray();
+            $result = $db->query($sql)->getRowArray();
             $db->close();
-            return $result;
+            return $result['count'];
         }
 
         public function updateNumberLikeAdmin($idPicture){
@@ -69,13 +69,40 @@ use CodeIgniter\Model;
             return $results > 0;
         }
 
-        public function GetAllUsers($offset, $username, $email)
+        public function getUsersAdmin($offset, $username, $email)
         {
             $db = \Config\Database::connect();
-            $sql = 'SELECT * FROM users';
+            $sql = "SELECT * FROM users WHERE Name like '%$username%' AND Email like '%$email%'";
             $result = $db->query($sql)->getResultArray();
             $db->close();
             return $result;
+        }
+
+        public function getUsersCountAdmin($username, $email)
+        {
+            $db = \Config\Database::connect();
+            $sql = "SELECT count(*) FROM users WHERE Name like '%$username%' AND Email like '%$email%'";
+            $result = $db->query($sql)->getRowArray();
+            $db->close();
+            return $result['count'];
+        }
+
+        public function getListContact($offset, $username, $email)
+        {
+            $db = \Config\Database::connect();
+            $sql="SELECT * FROM contact con WHERE con.name like '%$username%' AND con.email like '%$email%' ";
+            $result = $db->query($sql)->getResultArray();
+            $db->close();
+            return $result;
+        }
+
+        public function getContactCountAdmin($username, $email)
+        {
+            $db = \Config\Database::connect();
+            $sql="SELECT count(*) as count FROM contact con WHERE con.name like '%$username%' AND con.email like '%$email%' ";
+            $result = $db->query($sql)->getRowArray();
+            $db->close();
+            return $result['count'];
         }
     }
 ?>

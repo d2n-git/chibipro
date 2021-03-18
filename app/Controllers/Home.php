@@ -24,12 +24,12 @@ class Home extends BaseController
 				'email'     => '',
 				'idUser'    => '',
 				'Name'    => '',
+				'Phone'    => '',
 				'Permission' => '',
 				'Gender' => '',
 				'logged_in' => FALSE
 			];
 			$session->set($newdata);
-
 			
 		}else{
 			$idUser = $_SESSION['idUser'];

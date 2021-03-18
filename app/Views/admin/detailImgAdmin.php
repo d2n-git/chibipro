@@ -177,7 +177,7 @@ label img {
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <h6>Flat</h6>
+                                <h6>Flag</h6>
                             </div>
                             <div class="col-md-2">
                                 <div class="col-md-12">
@@ -213,7 +213,7 @@ label img {
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-8">
-                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3"></textarea>
+                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3" maxlength="300"></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">

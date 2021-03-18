@@ -188,7 +188,7 @@ label img {
                                 <h6>Ghi chú</h6>
                             </div>
                             <div class="col-md-8">
-                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3"><?php echo $Picture['Note']?></textarea>
+                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3" maxlength="300"><?php echo $Picture['Note']?></textarea>
                             </div>
                         </div>
                         <?php if ($Picture['idStatusPicture']=='3'): ?>

@@ -33,6 +33,7 @@ class login extends BaseController
                     'idUser'    => $result['idUser'],
                     'Name'      => str_replace("*-*-"," ",$result['Name']),
                     'Permission'=> $result['Permission'],
+                    'Phone'=> $result['Phone'],
                     'Gender'=> $result['Gender'],
                     'logged_in' => TRUE
             ];
@@ -50,6 +51,7 @@ class login extends BaseController
                     'idUser'    => '',
                     'Name'    => '',
                     'Permission'=> '',
+                    'Phone'=> '',
                     'Gender'=> '',
                     'logged_in' => FALSE
             ];

@@ -117,13 +117,13 @@
   <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">User List</h1>
+                    <h1 class="page-header">Contact List</h1>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="/Admin/Listusers" method="POST">
+                    <form action="/Admin/Admin/listContact" method="POST">
                         <div class="row">
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-3">
@@ -158,50 +158,38 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
-                                    <thead style="background-color:#ffc107;">
+                                    <thead style="background-color:#07afff;">
                                         <tr>
                                             <th>#</th>
                                             <th>UserID</th>
                                             <th>Username</th>
                                             <th>E-mail</th>
-                                            <th>Password Change</th>
-                                            <th>Type</th>
-                                            <th>Phone</th>
-                                            <th>Address</th>
-                                            <th>Status</th>
-                                            <th>Rank</th>
-                                            <th>Total images</th>
-                                            <th>Amount</th>
+                                            <th>Message</th>
+                                            <th>Problem</th>
                                             <th>Logtime</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($allusers as $iKey => $data): ?>
+                                        <?php foreach ($contacts as $iKey => $data): ?>
                                             <tr>
                                                 <th scope="row" class="sz-col-50 text-center"><?php echo $iKey?></th>
                                                 <td id="idUser" class="text-info"><?php echo $data['idUser']?></td>
-                                                <td><?php echo $data['Name']?></td>
-                                                <td><?php echo $data['Email']?></td>
-                                                <td><?php echo $data['DatePasschange']?></td>
-                                                <td><?php echo $data['Permission']?></td>
-                                                <td><?php echo $data['Phone']?></td>
-                                                <td><?php echo $data['Address']?></td>
-                                                <td><?php echo $data['Userflg']?></td>
-                                                <td>Gold</td>
-                                                <td>10</td>
-                                                <td>10.000</td>
-                                                <td><?php echo $data['Logtime']?></td>
+                                                <td style="max-width:150px; word-wrap:break-word;"><?php echo $data['name']?></td>
+                                                <td style="max-width:150px; word-wrap:break-word;"><?php echo $data['email']?></td>
+                                                <td style="max-width:550px; word-wrap:break-word;"><?php echo $data['message']?></td>
+                                                <td><?php echo $data['problem']?></td>
+                                                <td><?php echo $data['timestamp']?></td>
                                                 <td class="text-center">
-                                                <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
-                                                        title="Edit"><i class="fa fa-edit fa-fw"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                        title="Lock"><i class="fa fa-lock fa-fw"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                        title="Delete"><i class="fa fa-trash fa-fw"></i>
-                                                </button>
+                                                    <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
+                                                            title="Edit"><i class="fa fa-edit fa-fw"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                            title="Lock"><i class="fa fa-lock fa-fw"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                            title="Delete"><i class="fa fa-trash fa-fw"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                             <?php endforeach; ?>

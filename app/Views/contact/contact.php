@@ -1,4 +1,3 @@
- <!--================Home Banner Area =================-->
   <!-- breadcrumb start-->
   <section class="breadcrumb breadcrumb_bg">
       <div class="container">
@@ -67,30 +66,30 @@
               <div class="col-12">
                 <div class="form-group">
                 <label for="exampleInputEmail1">Nội dung</label>
-                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="5"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nội dung'"
-                    placeholder='Nội dung'></textarea>
+                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="5" maxlength="450"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nhập Nội dung'"
+                    placeholder='Nhập Nội dung'></textarea>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                 <label for="exampleInputEmail1">Điện thoại</label>
                   <input class="form-control single-input" name="phone" id="phone" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Điện thoại'" placeholder='Điện thoại'  maxlength="12">
+                    onblur="this.placeholder = 'Điện thoại'" placeholder='Điện thoại' maxlength="12">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
                   <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Email'" placeholder='Email' >
+                    onblur="this.placeholder = 'Email'" placeholder='Email' maxlength="50">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
                 <label for="exampleInputEmail1">Họ tên</label>
                   <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Họ tên'" placeholder='Họ tên' >
+                    onblur="this.placeholder = 'Họ tên'" placeholder='Họ tên' maxlength="120">
                 </div>
               </div>
               <div class="col-12">
@@ -122,7 +121,7 @@
                     </div>
               </div>
             </div>
-                    
+
             </div>
             <div class="form-group mt-3">
               <input type="button" class="btn btn-primary " value="&nbsp;&nbsp;&nbsp;Gửi&nbsp;&nbsp;&nbsp;" onclick="sendContact();"/>
@@ -157,6 +156,21 @@
 </div>
 
   <script>
+    $(document).ready(() => {
+      //Set info nếu đang Login
+      var email = '<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? $_SESSION['email'] : "" ?>';
+      if (email == ""){
+          $('#email').prop('readonly', false);
+          $('#email').val('');
+          $('#name').val('');
+          $('#phone').val('');
+      }else{
+          $('#email').val(email);
+          $('#email').prop('readonly', true);
+          $('#name').val('<?php echo $_SESSION['Name'] ?>');
+          $('#phone').val('<?php echo $_SESSION['Phone'] ?>');
+      }
+    })
     function sendContact(){
       let name = $('#name').val();
       let email = $('#email').val();

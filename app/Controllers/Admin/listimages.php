@@ -37,7 +37,7 @@ class Listimages extends Controller
 		$adminModel = new AdminModel();
 		$pictures = $adminModel->getPictureForAdmin($offset, $username, $email);
 		$data['page'] = $page + 1;
-		$data['total'] = count($adminModel->getAllPictureCountAdmin($username, $email));
+		$data['total'] = $adminModel->getPictureCountAdmin($username, $email);
 		$data['pager'] = $pager;
 		$data['pictures'] = $pictures;
 		$data['viewchild'] = './admin/listImages';
@@ -46,7 +46,7 @@ class Listimages extends Controller
 		return view('templates/base_view', $data);
 	}
 
-	public function UpdateStatusPictureAdmin(){
+	public function updateStatusPictureAdmin(){
 		$session = \Config\Services::session();
 		if(!isset($_SESSION['logged_in']))
 		{

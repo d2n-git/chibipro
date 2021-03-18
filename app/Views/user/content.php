@@ -22,7 +22,7 @@
                                              <tr>
                                                  <td style="width: 10%;">
                                                      <p class="iconTitle">
-                                                         <img src="<?php echo base_url(); ?>/assets/img/title.png">
+                                                        <img src="<?php echo base_url(); if($value['idStatusPicture'] == '8'){echo '/assets/img/title.png';}else{echo '/assets/img/title_private.jpg';}?>">
                                                      </p>
                                                  </td>
                                                  <td style="width: 90%;">

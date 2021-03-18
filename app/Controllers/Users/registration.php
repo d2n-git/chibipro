@@ -49,6 +49,7 @@ class Registration extends BaseController
                         'email'     => $resultGetUser['Email'],
                         'idUser'    => $resultGetUser['idUser'],
                         'Permission' => $resultGetUser['Permission'],
+                        'Phone' => $resultGetUser['Phone'],
                         'Gender' => $resultGetUser['Gender'],
                         'logged_in' => TRUE
                     ];

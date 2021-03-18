@@ -33,8 +33,8 @@ class Listusers extends Controller
 
 		$adminModel = new AdminModel();
 		$offset = 0;
-		$allusers = $adminModel->GetAllUsers($offset, $username, $email);
-		$data['total'] = count($adminModel->GetAllUsers('', $username, $email));
+		$allusers = $adminModel->getUsersAdmin($offset, $username, $email);
+		$data['total'] = $adminModel->getUsersCountAdmin($username, $email);
 		$data['allusers'] = $allusers;
 		$data['viewchild'] = './admin/listUsers';
 		$data['username'] = $username;

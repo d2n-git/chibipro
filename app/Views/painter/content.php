@@ -38,13 +38,17 @@
                                  </td>
                                  <td style="width: 40%;">
                                     <div class="card" style="min-height: 150px;">
-                                        <?php if ($value['Confirm_info'] !== null) :?>
+                                        <?php if ($value['Confirm_info'] !== null && $value['idStatusPicture'] !='4') :?>
                                             <?php for ($i = 0; $i < count($value['Confirm_info']); $i++): ?>
                                                 <h6>
                                                     Giá Vẽ <?php echo $i + 1;?>: <?php echo $value['Confirm_info'][$i]['idPainter'].'_'.$value['Confirm_info'][$i]['DateExpiry'].'_'.$value['Confirm_info'][$i]['Price'];?>
                                                     <br>
                                                 </h6>
                                             <?php endfor ?>
+                                        <?php else : ?>
+                                            <h4 style="color: #3e75af;">
+                                                Hình đang được vẽ Chibipro
+                                            </h4>
                                         <?php endif; ?>
                                     </div>
                                  </td>
@@ -68,9 +72,15 @@
                                                 <?php
                                                     if(isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '2'))
                                                     {
-                                                        echo " <td style='width: 20%;'>
-                                                                <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png' title='Báo giá vẽ'>
-                                                                </td>";
+                                                        if($value['idStatusPicture'] =='4'){
+                                                            echo " <td style='width: 20%;'>
+                                                            <input id='".$value['idPictures']."_upchibi' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/up_chibi.png' title='Up Hình Chibi lên'>
+                                                            </td>";
+                                                        }else{
+                                                            echo " <td style='width: 20%;'>
+                                                            <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png' title='Báo giá vẽ'>
+                                                            </td>";
+                                                        }
                                                     }
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
                                                     {

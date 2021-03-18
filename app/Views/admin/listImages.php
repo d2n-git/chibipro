@@ -3,16 +3,19 @@
 <!-- Left navbar links -->
 <ul class="navbar-nav">
     <li class="nav-item">
-    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Admin/Listimages" class="nav-link">Upload List</a>
+        <a href="/Admin/Listimages" class="nav-link">Upload List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-    <a href="/Admin/Listusers" class="nav-link">User List</a>
+        <a href="/Admin/Listusers" class="nav-link">User List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-    <a href="#" class="nav-link">Summary</a>
+        <a href="/Admin/Admin/ListContact" class="nav-link">Contact List</a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Summary</a>
     </li>
 </ul>
 <!-- Right navbar links -->
@@ -114,7 +117,7 @@
   <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">List Upload</h1>
+                    <h1 class="page-header">Picture List</h1>
                 </div>
             </div>
             
@@ -164,8 +167,10 @@
                                             <th>UserID</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>PicturesID</th>
-                                            <th>Pictures Name</th>
+                                            <th>PictureID</th>
+                                            <th>PictureName</th>
+                                            <th>PictureUp</th>
+                                            <th>Chibipro</th>
                                             <th>Title</th>
                                             <th>DateUp</th>
                                             <th>NumberLike</th>
@@ -184,7 +189,9 @@
                                                 <td><?php echo $data['UserName']?></td>
                                                 <td><?php echo $data['Email']?></td>
                                                 <td id="idPictures"><?php echo $data['idPictures']?></td>
-                                                <td><?php echo $data['PicturesName']?></td>
+                                                <td style="max-width:300px; word-wrap:break-word;"><?php echo $data['PicturesName']?></td>
+                                                <td><img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $data['idUser'].'/'.$data['PicturesName']; ?>" alt="" border=3 height=100 width=100/></td>
+                                                <td><img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $data['idUser'].'/'.$data['chibiFileName']; ?>" alt="" border=3 height=100 width=100/></td>
                                                 <td><?php echo $data['Title']?></td>
                                                 <td><?php echo $data['DateUp']?></td>
                                                 <td><?php echo $data['NumberLike']?></td>
@@ -241,7 +248,7 @@
             idUser, idPictures, Status
         };
         $.ajax({
-                url: '<?php echo base_url();?>/Admin/Listimages/UpdateStatusPictureAdmin',
+                url: '<?php echo base_url();?>/Admin/Listimages/updateStatusPictureAdmin',
                 type : "post",
                 dataType:'json',
                 data : data,
