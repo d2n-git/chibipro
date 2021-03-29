@@ -15,7 +15,7 @@
                                              <tr>
                                                  <td style="width: 10%;">
                                                      <p class="iconTitle">
-                                                         <img src="<?php echo base_url(); ?>/assets/img/paint.jpg">
+                                                         <img src="<?php echo base_url(); ?>/assets/img/paint.gif">
                                                      </p>
                                                  </td>
                                                  <td style="width: 90%;">
