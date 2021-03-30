@@ -47,18 +47,31 @@
                     </div>  
                     <div class="hearer_icon d-flex">
                             <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) :?>
-                                <a href="<?php echo base_url(); ?>/Users/registration?id=<?php echo $_SESSION['idUser']; ?>" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <i class="ti-user"></i>
-                                </a>
-                                <a href="<?php echo base_url(); ?>/Users/Login" style="padding: 0px 0px 0px 5px;">Logout</a>
+                                <?php echo $_SESSION['Name'];?>
+                                <div class="dropdown">
+                                    <a href="#" id="navbarDropdown_3"
+                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="ti-user"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2" >
+                                        <a class="dropdown-item" href="#" > <i class="ti-shopping-cart" style="margin-left: -10px !important; margin-right: 5px; background-color: #1e7e34; font-size: 18px; border-radius: 50%; padding: 5px; color: white;"></i> Lịch sử đơn hàng</a>
+                                        <a class="dropdown-item" href="#" ><i class="ti-ticket" style="margin-left: -10px !important; margin-right: 5px; background-color: #007bff; font-size: 18px; border-radius: 50%; padding: 5px; color: white;"></i>Ví Voucher</a>
+                                        <a class="dropdown-item" href="<?php echo base_url(); ?>/Users/registration?id=<?php echo $_SESSION['idUser']; ?>" ><i class="ti-user" style="margin-left: -10px !important; margin-right: 5px; background-color: #ffc107; font-size: 18px; border-radius: 50%; padding: 5px; color: white;"></i>Cập nhật tài khoản</a>
+                                        <a class="dropdown-item" href="<?php echo base_url(); ?>/Users/Login" ><i class="ti-power-off" style="margin-left: -10px !important; margin-right: 5px; background-color: #6c757d; font-size: 20px; border-radius: 50%; padding: 5px; color: white;"></i>Đăng xuất</a>
+                                    </div>
+                                </div>
+                                <a href="#" style="padding: 0px 0px 0px 5px; margin-left: 40px;">&nbsp;</a>
                             <?php else : ?>
-                                <a href="<?php echo base_url(); ?>/Users/Login" role="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="<?php echo base_url(); ?>/Users/Login" >
                                     <i class="ti-user"></i>
                                 </a>
                                 <a href="<?php echo base_url(); ?>/Users/Login" style="padding: 0px 0px 0px 5px;">Login</a>
                             <?php endif;?>
+                            
                         <!-- <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a> -->
                     </div>
+
+                    
                 </nav>
             </div>
         </div>

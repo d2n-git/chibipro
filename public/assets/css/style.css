@@ -2315,16 +2315,23 @@ ul {
   transform: scale(1, 0);
   display: block;
   border: 0px solid transparent;
-  background-color: #2f7dfc;
+  background-color: white;
 }
 
 /* line 164, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
 .dropdown .dropdown-menu .dropdown-item {
   font-size: 14px;
   padding: 8px 20px !important;
-  color: #fff !important;
-  background-color: #2f7dfc;
+  color: #000 !important;
+  background-color: white;
   text-transform: capitalize;
+  height: 40px;
+  border-top: 1px solid black;
+  
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1 !important;
 }
 
 /* line 175, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_menu.scss */
@@ -8392,4 +8399,8 @@ img.zoom-img {
 
 .active {
   background-color: #f1f1f1;
+}
+
+.icon-menu{
+  margin-left: -10px !important; margin-right: 5px; background-color: cadetblue; font-size: 20px; border-radius: 50%; padding: 5px;
 }
