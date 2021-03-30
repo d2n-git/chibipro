@@ -206,7 +206,7 @@ label img {
                             <div class="col-md-3">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                                <input id="btn_delete" type="button" class="btnFinish" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px; background-color: #ffa31a;" onclick="deleteIamge('0');"/>
+                                <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px;" onclick="deleteIamge('0');"/>
                                 <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>
@@ -221,7 +221,7 @@ label img {
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f1f1f1;">
-        <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Xóa Ảnh</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -230,8 +230,8 @@ label img {
       <span id="message-error">Bạn có chắc muốn xóa ảnh này ?</span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-secondary" style="background-color: red;" onclick="deleteIamge('1')">Xóa</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 20px;">Hủy</button>
+        <button type="button" class="btn btn-danger" onclick="deleteIamge('1')">Xóa</button>
       </div>
     </div>
   </div>

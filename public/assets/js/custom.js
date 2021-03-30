@@ -308,3 +308,38 @@ inputNumber($('.input-number'));
   function isBlank(str) {
       return !str || /^\s*$/.test(str);
   }
+  
+  function getImgHover(data) {
+    var id = data.split('_');
+    switch (id[1]) {
+        case 'like':
+          return 'like_h.png';
+          case 'comment':
+            return 'comment_h.png';
+          case 'return':
+            return 'return_h.png';
+          case 'check':
+            return 'check-in_h.png';
+          case 'edit':
+            return 'edit_h.png';
+          case 'setting':
+            return 'setting_h.png';
+    }
+  }
+function getImgUnhover(data) {
+    var id = data.split('_');
+    switch (id[1]) {
+      case 'like':
+        return 'like.png';
+      case 'comment':
+        return 'comment.png';
+      case 'return':
+        return 'return.png';
+      case 'check':
+        return 'check-in.png';
+      case 'edit':
+        return 'edit.png';
+      case 'setting':
+        return 'setting.png';
+    }
+  }

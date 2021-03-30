@@ -53,25 +53,25 @@
                                          <body>
                                              <tr>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích">
+                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                     <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
                                                 </td>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment">
+                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                     <span class="iconFooterNumber">5</span>
                                                 </td>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ">
+                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                 </td>
                                                 <?php
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
                                                         if($show_flg == 'News' || ($show_flg == 'MyChibi' && ($value['idStatusPicture'] == '8' || $value['idStatusPicture'] == '9'))){
                                                             echo " <td style='width: 20%;'>
-                                                                    <input id='".$value['idPictures']."_setting' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting'>
+                                                                    <input id='".$value['idPictures']."_setting' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
                                                                     </td>";
                                                         }else{
                                                             echo " <td style='width: 20%;'>
-                                                                    <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa'>
+                                                                    <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
                                                                     </td>";
                                                         }
                                                     }
@@ -91,62 +91,70 @@
      </div>
  </section>
  <script>
-     function onclickMe($data) {
-         var id = $data.split('_');
-         var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
-         switch (id[1]) {
-             case 'like':
-                 if (log_in == 1) {
-                     $.ajax({
-                         url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
-                         type: "POST",
-                         data: id[0],
-                         contentType: false,
-                         processData: false,
-                         success: function(data) {
-                             let response = JSON.parse(data);
-                             if (response.message == 'success') {
-                                 document.getElementById(response.response.idPictures + '_Numberlike').innerText = response.response.NumberLike;
-                             }
-                         }
-                     });
-                 } else {
-                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                 }
-                 break;
-             case 'comment':
-                 // code block
-                 break;
-             case 'return':
-                 // code block
-                 break;
-             case 'check':
-                 if (log_in == 1) {
-                    <?php if($_SESSION['Permission'] == 2) {?>
-                     window.location.href = "<?php echo base_url(); ?>/Painter/Confirm?id=" + id[0] + "";
-                    <?php } else {?>
-                    window.alert("You aren't a painter");
-                    <?php } ?>
-                 } else {
-                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                 }
-                 break;
-             case 'edit':
-                 if (log_in == 1) {
-                    window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
-                 } else {
-                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                 }
-                 break;
-            case 'setting':
+    function onclickMe($data) {
+        var id = $data.split('_');
+        var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
+        switch (id[1]) {
+            case 'like':
                 if (log_in == 1) {
-                     window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "&type=<?php echo $type;?>");
-                 } else {
-                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                 }
+                    $.ajax({
+                        url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
+                        type: "POST",
+                        data: id[0],
+                        contentType: false,
+                        processData: false,
+                        success: function(data) {
+                            let response = JSON.parse(data);
+                            if (response.message == 'success') {
+                                document.getElementById(response.response.idPictures + '_Numberlike').innerText = response.response.NumberLike;
+                            }
+                        }
+                    });
+                } else {
+                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                }
                 break;
-             default:
-                 // code block
-         }
-     };
+            case 'comment':
+                // code block
+                break;
+            case 'return':
+                // code block
+                break;
+            case 'check':
+                if (log_in == 1) {
+                <?php if($_SESSION['Permission'] == 2) {?>
+                    window.location.href = "<?php echo base_url(); ?>/Painter/Confirm?id=" + id[0] + "";
+                <?php } else {?>
+                window.alert("You aren't a painter");
+                <?php } ?>
+                } else {
+                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                }
+                break;
+            case 'edit':
+                if (log_in == 1) {
+                window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
+                } else {
+                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                }
+                break;
+        case 'setting':
+            if (log_in == 1) {
+                    window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "&type=<?php echo $type;?>");
+                } else {
+                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                }
+            break;
+            default:
+                // code block
+        }
+    };
+    function iconHover(data) {
+        var iconImg = getImgHover(data);
+        $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+    }
+    function iconUnhover(data) {
+        var iconImg = getImgUnhover(data);
+        $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+    }
  </script>

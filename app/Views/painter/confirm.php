@@ -124,10 +124,10 @@
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                                <input id="btn_confirm" type="submit" class="btnFinish" value="OK" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
+                                <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>
                     </form>

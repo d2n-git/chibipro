@@ -103,13 +103,25 @@
     height: 70px;
     width: 140px;
 }
+.btnDelete{
+    float: left;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #ffa31a;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
 .btnFinish{
     float: left;
     margin-top: 10%;
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #0062cc;
+    background: #0063ccdc;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -130,4 +142,47 @@
     align-content:center; 
     overflow:auto; 
     border:1px outset #000000;
+}
+.btnDelete:hover,
+.btnDelete:focus,
+.btnDelete:active,
+.btnDelete.active,
+.open .dropdown-toggle.btnDelete {
+    color: #ffffff;
+    background-color: #bd5112;
+    border-color: #bd5112;
+}
+
+.btnFinish:hover,
+.btnFinish:focus,
+.btnFinish:active,
+.btnFinish.active,
+.open .dropdown-toggle.btnFinish {
+    color: #ffffff;
+    background-color: #0062cc;
+    border-color: #0062cc;
+}
+.btnFinish:active,
+.btnFinish.active,
+.open .dropdown-toggle.btnFinish {
+    background-image: none;
+}
+
+.btnFinish.disabled,
+.btnFinish[disabled],
+fieldset[disabled] .btnFinish,
+.btnFinish.disabled:hover,
+.btnFinish[disabled]:hover,
+fieldset[disabled] .btnFinish:hover,
+.btnFinish.disabled:focus,
+.btnFinish[disabled]:focus,
+fieldset[disabled] .btnFinish:focus,
+.btnFinish.disabled:active,
+.btnFinish[disabled]:active,
+fieldset[disabled] .btnFinish:active,
+.btnFinish.disabled.active,
+.btnFinish[disabled].active,
+fieldset[disabled] .btnFinish.active {
+    background-color: #d9534f;
+    border-color: #d43f3a;
 }
