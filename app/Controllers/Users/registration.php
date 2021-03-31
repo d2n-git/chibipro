@@ -36,7 +36,7 @@ class Registration extends BaseController
                 $something['user'] == 'painter' ? $something['Permission'] = 2 : $something['Permission'] = 1;
                 $something['gender'] == 'female' ? $something['Gender'] = 1 : $something['Gender'] = 2;
                 $model = new InSertUserModel();
-                if ($something['btnSubmit'] == 'Modify') {
+                if ($something['btnSubmit'] == 'Modify' || $something['btnSubmit'] == 'Lưu lại') {
                     $result = $model->UpdateUsers($something);
                 } else {
                     $result = $model->InSertUsers($something);
@@ -45,6 +45,7 @@ class Registration extends BaseController
                     $resultGetUser = $model->GetUser($something['email']);
                     $session = \Config\Services::session();
                     $newdata = [
+                        'Name'  => str_replace("*-*-","",$resultGetUser['Name']),
                         'password'  => $resultGetUser['Password'],
                         'email'     => $resultGetUser['Email'],
                         'idUser'    => $resultGetUser['idUser'],

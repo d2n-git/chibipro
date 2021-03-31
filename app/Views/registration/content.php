@@ -11,12 +11,12 @@ if (!empty($user['Name'])) {
             <img src="<?php echo base_url(); ?>/assets/img/logo_registration.png" alt="" />
             <h3>Welcome</h3>
             <form method="POST" action="/Users/Login">
-                <input type="submit" name="" value="Login" /><br />
+                <input type="submit" class="btnLogin" name="" value="Login" /><br />
             </form>
         </div>
         <div class="col-md-9 register-right">
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="tab-pane fade show active register-right" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <form id="formRegistration" method="post">
                         <div class="row register-form">
                             <div class="col-md-6">
@@ -36,7 +36,7 @@ if (!empty($user['Name'])) {
                                     <div class="maxl">
                                         <label class="radio inline">
                                             <input type="radio" name="gender" value="male" <?php $user["Gender"] != 1  ? print "checked" : null ?>>
-                                            <span> Male </span>
+                                            <span style="padding-right:20px;"> Male </span>
                                         </label>
                                         <label class="radio inline">
                                             <input type="radio" name="gender" value="female" <?php $user["Gender"] == 1  ? print "checked" : null ?>>
@@ -64,7 +64,7 @@ if (!empty($user['Name'])) {
                                     <div class="maxl">
                                         <label class="radio inline">
                                             <input type="radio" name="user" value="user" <?php $user["Permission"] != 1  ? print "checked" : null ?>>
-                                            <span> User </span>
+                                            <span style="padding-right:20px;"> User </span>
                                         </label>
                                         <label class="radio inline">
                                             <input type="radio" name="user" value="painter" <?php $user["Permission"] == 1  ? print "checked" : null ?>>
@@ -73,9 +73,9 @@ if (!empty($user['Name'])) {
                                     </div>
                                 </div>
                                 <?php if (!isset($user['Email'])) { ?>
-                                    <input onclick="clickRegistration()" id="btn_Register" type="button" class="btnRegister" value="Register" name="btnSubmit" />
+                                    <input onclick="clickRegistration()" id="btn_Register" type="button" class="btnRegister" value="Đăng ký" name="btnSubmit" />
                                 <?php } else { ?>
-                                    <input onclick="clickRegistration()" id="btn_Register" type="button" class="btnRegister" value="Modify" name="btnSubmit" />
+                                    <input onclick="clickRegistration()" id="btn_Register" type="button" class="btnRegister" value="Lưu lại" name="btnSubmit" />
                                 <?php } ?>
                             </div>
                         </div>

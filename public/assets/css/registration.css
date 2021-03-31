@@ -55,11 +55,29 @@
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #0062cc;
+    background: #0063ccdc;
     color: #fff;
     font-weight: 600;
     width: 50%;
     cursor: pointer;
+}
+.btnRegister:hover,
+.btnRegister:focus,
+.btnRegister:active,
+.btnRegister.active,
+.open .dropdown-toggle.btnRegister {
+    color: #ffffff;
+    background-color: #0062cc;
+    border-color: #0062cc;
+}
+.btnLogin:hover,
+.btnLogin:focus,
+.btnLogin:active,
+.btnLogin.active,
+.open .dropdown-toggle.btnLogin {
+    color: #ffffff;
+    background-color: #b65fd8;
+    border-color: #0062cc;
 }
 .register .nav-tabs{
     margin-top: 3%;
