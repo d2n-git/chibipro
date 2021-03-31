@@ -35,7 +35,13 @@ class Confirm extends Controller
 		$modelConfirm['DateApprove'] = date('Y-m-d h:m:s');
 		$modelConfirm['idPainter'] = $idUser;
 		$modelConfirm['Note'] = $something['note_painter'];
-		$resultInsertPicture = $insertConfirm->InSertConfirm($modelConfirm);
+		//Check exist
+		$chk_exist = $insertConfirm->GetConfirm($modelConfirm['idPicture'], $idUser);
+		if(count($chk_exist) == 0){
+			$resultInsertPicture = $insertConfirm->InSertConfirm($modelConfirm);
+		} else {
+			$resultInsertPicture = $insertConfirm->UpdateConfirm($modelConfirm);
+		}
 		if ($resultInsertPicture)
 		{
 			//Update status for Picture

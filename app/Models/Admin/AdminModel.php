@@ -20,8 +20,7 @@ use CodeIgniter\Model;
                     INNER JOIN users 
                     ON pictures.idUser = users.idUser 
                     WHERE users.Name like '%$username%' AND users.Email like '%$email%' 
-                    ORDER BY idUser DESC 
-                    LIMIT " . LIMITPICTURE . " OFFSET " .$offset;
+                    ORDER BY idUser DESC";
             $result = $db->query($sql)->getResultArray();
             $db->close();
             return $result;
@@ -60,10 +59,16 @@ use CodeIgniter\Model;
             $db->close();
             return $result > 0;
         }
-
+        public function delPictureAdmin($param){
+            $db = \Config\Database::connect();
+            $sql="UPDATE pictures SET Picturesflg = 1 "." WHERE idPictures = ". $param['idPictures'] ." AND idUser = " . $param['idUser'];
+            $result = $db->query($sql)->connID->affected_rows;
+            $db->close();
+            return $result > 0;
+        }
         public function updateSttImgAdmin($param){
             $db = \Config\Database::connect();
-            $sql="UPDATE pictures SET Picturesflg = ".$param['Status']." WHERE idPictures = ". $param['idPictures'] ." AND idUser = " . $param['idUser'];
+            $sql="UPDATE pictures SET idStatusPicture = ".$param['Status']." WHERE idPictures = ". $param['idPictures'] ." AND idUser = " . $param['idUser'];
             $result = $db->query($sql)->connID->affected_rows;
             $db->close();
             return $results > 0;

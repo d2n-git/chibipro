@@ -46,25 +46,6 @@ class Admin extends Controller
 		return view('templates/base_view', $data);
 	}
 
-	public function updateStatusPicturesAdmin(){
-		$session = \Config\Services::session();
-		if(!isset($_SESSION['logged_in']))
-		{
-			return redirect() -> to(base_url('/Users/Login'));
-		}
-		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
-		if(isset($_SESSION['Permission']) && $_SESSION['Permission'] != '0'){
-			return redirect() -> to(base_url('/Users/Login'));
-		}
-		$requestDt = $this->request->getPost();
-		if(!empty($requestDt)){
-			$adminModel = new AdminModel();
-			$result = $adminModel->updateSttImgAdmin($requestDt);
-			$json = ["message" => $result ? "Update Status Image Completed." : "error", "status" => $result ? 1 : 0 ];
-			echo json_encode($json);
-		}
-	}
-
 	function detailAdmin()
 	{
 		$session = \Config\Services::session();

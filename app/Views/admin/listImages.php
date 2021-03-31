@@ -171,10 +171,10 @@
                                             <th>PictureName</th>
                                             <th>PictureUp</th>
                                             <th>Chibipro</th>
+                                            <th style="background: #efff00;">Status</th>
                                             <th>Title</th>
                                             <th>DateUp</th>
                                             <th>NumberLike</th>
-                                            <th>Status</th>
                                             <th>StandarPrice</th>
                                             <th>PriceOfUser</th>
                                             <th>Action</th>
@@ -192,20 +192,32 @@
                                                 <td style="max-width:300px; word-wrap:break-word;"><?php echo $data['PicturesName']?></td>
                                                 <td><img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $data['idUser'].'/'.$data['PicturesName']; ?>" alt="" border=3 height=100 width=100/></td>
                                                 <td><img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $data['idUser'].'/'.$data['chibiFileName']; ?>" alt="" border=3 height=100 width=100/></td>
+                                                <td><?php echo $data['Status']?></td>
                                                 <td><?php echo $data['Title']?></td>
                                                 <td><?php echo $data['DateUp']?></td>
                                                 <td><?php echo $data['NumberLike']?></td>
-                                                <td><?php echo $data['Status']?></td>
                                                 <td><?php echo $data['StandarPrice']?></td>
                                                 <td><?php echo $data['PriceOfUser']?></td>
                                                 <td class="text-center">
                                                 <button class="btn btn-sm btn-outline-info border-0" data-idPictures="<?php echo $data['idPictures']?>" type="button" value="submit" onclick="onclickEdit(this);"
                                                         title="Edit"><i class="fa fa-edit fa-fw"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 2"><i class="fa fa-fw">2</i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="3" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 3"><i class="fa fa-fw">3</i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="4" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 4"><i class="fa fa-fw">4</i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="5" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 5"><i class="fa fa-fw">5</i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-warning border-0" data-status="10" type="button" value="submit" onclick="ChangeStatus(this);"
                                                         title="Lock"><i class="fa fa-lock fa-fw"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                <button class="btn btn-sm btn-outline-danger border-0" type="button" value="submit" onclick="DeleteImg(this);"
                                                         title="Delete"><i class="fa fa-trash fa-fw"></i>
                                                 </button>
                                                 </td>
@@ -249,6 +261,27 @@
         };
         $.ajax({
                 url: '<?php echo base_url();?>/Admin/Listimages/updateStatusPictureAdmin',
+                type : "post",
+                dataType:'json',
+                data : data,
+                success : function(data) {
+                    alert(data.message);
+                    location.reload();
+                },
+                error : function(data) {
+                    // do something
+                }
+            });
+    }
+    function DeleteImg($_this){
+        var $row = $($_this).closest("tr");
+        let idUser = $($row).find('#idUser').text();
+        let idPictures = $($row).find('#idPictures').text();
+        const data = {
+            idUser, idPictures
+        };
+        $.ajax({
+                url: '<?php echo base_url();?>/Admin/Listimages/deletePictureAdmin',
                 type : "post",
                 dataType:'json',
                 data : data,

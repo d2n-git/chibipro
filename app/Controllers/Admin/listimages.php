@@ -65,6 +65,22 @@ class Listimages extends Controller
 		}
 	}
 
+	public function deletePictureAdmin(){
+		$session = \Config\Services::session();
+		if(!isset($_SESSION['logged_in']))
+		{
+			return redirect() -> to(base_url('/Users/Login'));
+		}
+		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
+		if(isset($_SESSION['Permission']) && $_SESSION['Permission'] != '0'){
+			return redirect() -> to(base_url('/Users/Login'));
+		}
+		$requestDt = $this->request->getPost();
+		$adminModel = new AdminModel();
+		$result = $adminModel->delPictureAdmin($requestDt);
+		$json = ["message" => $result ? "Delete Image Completed." : "error", "status" => $result ? 1 : 0 ];
+		echo json_encode($json);
+	}
 	function detailAdmin()
 	{
 		$session = \Config\Services::session();

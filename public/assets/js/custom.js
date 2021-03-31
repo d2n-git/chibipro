@@ -324,9 +324,13 @@ inputNumber($('.input-number'));
             return 'edit_h.png';
           case 'setting':
             return 'setting_h.png';
+          case 'upchibi':
+            return 'up_chibi_h.png';
+          default:
+            return 'loading.gif';
     }
   }
-function getImgUnhover(data) {
+  function getImgUnhover(data) {
     var id = data.split('_');
     switch (id[1]) {
       case 'like':
@@ -341,5 +345,9 @@ function getImgUnhover(data) {
         return 'edit.png';
       case 'setting':
         return 'setting.png';
+      case 'upchibi':
+        return 'up_chibi.png';
+      default:
+        return 'loading.gif';
     }
   }

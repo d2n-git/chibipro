@@ -59,33 +59,33 @@
                                          <body>
                                              <tr>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích">
+                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                     <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
                                                 </td>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment">
+                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                     <span class="iconFooterNumber">5</span>
                                                 </td>
                                                 <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ">
+                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                 </td>
                                                 <?php
                                                     if(isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '2'))
                                                     {
                                                         if($value['idStatusPicture'] =='4'){
                                                             echo " <td style='width: 20%;'>
-                                                            <input id='".$value['idPictures']."_upchibi' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/up_chibi.png' title='Up Hình Chibi lên'>
+                                                            <input id='".$value['idPictures']."_upchibi' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/up_chibi.png' title='Up Hình Chibi lên' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
                                                             </td>";
                                                         }else{
                                                             echo " <td style='width: 20%;'>
-                                                            <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png' title='Báo giá vẽ'>
+                                                            <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png' title='Báo giá vẽ' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
                                                             </td>";
                                                         }
                                                     }
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email']))
                                                     {
                                                         echo " <td style='width: 20%;'>
-                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa'>
+                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
                                                                 </td>";
                                                     }
                                                 ?>
@@ -155,4 +155,12 @@
                  // code block
          }
      };
+     function iconHover(data) {
+        var iconImg = getImgHover(data);
+        $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+    }
+    function iconUnhover(data) {
+        var iconImg = getImgUnhover(data);
+        $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+    }
  </script>

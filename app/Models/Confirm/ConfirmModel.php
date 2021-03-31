@@ -79,4 +79,11 @@ class ConfirmModel extends Model
         $db->close();
         return $results; 
     }
+    public function UpdateConfirm($data)
+    {
+        $db = \Config\Database::connect(); 
+        $results = $db->table('confirmofpainter')->where('idPicture',$data['idPicture'],'idPainter',$data['idPainter'])->update($data);
+        $db->close();
+        return $results;
+    }
 }
