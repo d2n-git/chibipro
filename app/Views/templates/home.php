@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-        <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine"  method="POST" enctype="multipart/form-data" onsubmit="submitUpload(this);">
+        <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine" method="POST" enctype="multipart/form-data" onsubmit="submitUpload(this);">
             <div class="mt-10 col-12 col-md-6">
                 <div class="input-images"></div>
             </div>
@@ -237,7 +237,7 @@
 </div>
 <!-- Hiệu ứng load -->
 <div class="load" >
-	<img src="<?php echo base_url(); ?>/assets/img/loading.gif">
+    <img src="<?php echo base_url(); ?>/assets/img/loading.gif">
 </div>
 <!--::subscribe_area part end::-->
 <script>
@@ -257,7 +257,6 @@
             $('#email').prop('readonly', true);
         }
     })
-
 
     function submitUpload(e){
         $('.load').fadeIn('fast');

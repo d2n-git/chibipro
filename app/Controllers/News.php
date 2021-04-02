@@ -11,7 +11,7 @@ class News extends Controller
 	public function Index()
 	{
 		$session = \Config\Services::session();
-		if(!isset($_SESSION['idUser']))
+		if(!isset($_SESSION['idUser']) || $_SESSION['idUser'] == '')
 		{
 			return redirect() -> to(base_url('/Users/Login'));
 		}else{

@@ -280,49 +280,33 @@
         };
 
         let validateExtension = function (file) {
-
             if (plugin.settings.extensions.indexOf(file.name.replace(new RegExp('^.*\\.'), '.')) < 0) {
                 alert(`The file "${file.name}" does not match with the accepted file extensions: .JPG, .JPEG, .PNG, .GIF, .SVG`);
-
                 return false;
             }
-
             return true;
         };
-
         let validateMIME = function (file) {
-
             if (plugin.settings.mimes.indexOf(file.type) < 0) {
                 alert(`The file "${file.name}" does not match with the accepted mime types: .JPG, .JPEG, .PNG, .GIF, .SVG`);
-
                 return false;
             }
-
             return true;
         };
-
         let validateMaxSize = function (file) {
-
             if (file.size > plugin.settings.maxSize) {
                 alert(`The file "${file.name}" exceeds the maximum size of ${plugin.settings.maxSize / 1024 / 1024}Mb`);
-
                 return false;
             }
-
             return true;
-
         };
 
         let validateMaxFiles = function (index, file) {
-
             if ((index + dataTransfer.items.length + plugin.settings.preloaded.length) >= plugin.settings.maxFiles) {
                 alert(`The file "${file.name}" could not be added because the limit of ${plugin.settings.maxFiles} files was reached`);
-
                 return false;
             }
-
             return true;
-
         };
 
         let setPreview = function ($container, files) {

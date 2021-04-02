@@ -151,6 +151,17 @@
                      window.location.assign("<?php echo base_url(); ?>/Users/Login")
                  }
                  break;
+            case 'upchibi':
+                 if (log_in == 1) {
+                    <?php if($_SESSION['Permission'] == 2) {?>
+                     window.location.href = "<?php echo base_url(); ?>/Painter/Painter/Chibi?id=" + id[0] + "";
+                    <?php } else {?>
+                    window.alert("You aren't a painter");
+                    <?php } ?>
+                 } else {
+                     window.location.assign("<?php echo base_url(); ?>/Users/Login")
+                 }
+                 break;
              default:
                  // code block
          }

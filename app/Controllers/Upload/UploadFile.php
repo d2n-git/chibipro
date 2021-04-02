@@ -74,7 +74,7 @@ class UploadFile extends Controller
         }
         // Check file size
         if ($_FILES["images"]["size"] > 5000000 && $uploadOk == 1) {
-            $MesError = $MesError . "Your file is too large.";
+            $MesError = $MesError . "File Upload có dung lượng vượt quá 5Mb.";
             $uploadOk = 0;
         }
         // Allow certain file formats

@@ -213,3 +213,5 @@ ALTER TABLE `contact` MODIFY `id` INT AUTO_INCREMENT;
 ALTER TABLE `comment` ADD PRIMARY KEY (`id`);
 ALTER TABLE `comment` MODIFY `id` INT AUTO_INCREMENT;
 ALTER TABLE `contact` ADD COLUMN `idUser` int(11) DEFAULT NULL AFTER `id`;
+
+ALTER TABLE `users` ADD COLUMN `painter_request` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Permission`;

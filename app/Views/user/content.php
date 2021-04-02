@@ -1,4 +1,3 @@
- <!-- feature_part start-->
  <section class="feature_part pt-4">
      <div class="container-fluid p-lg-0 overflow-hidden">
          <?php foreach ($pictures as $value) { ?>
@@ -10,9 +9,7 @@
                          <tbody>
                              <tr>
                                  <td>
-                                     <h2 style="color: #17544c;">
-                                         <?php echo $value['Title']; ?>
-                                     </h2>
+                                     <h2 style="color: #17544c;"><?php echo $value['Title']; ?></h2>
                                  </td>
                              </tr>
                              <tr>

@@ -15,7 +15,7 @@ class Userpage extends BaseController
     public function index()
     {
         $session = \Config\Services::session();
-        if(!isset($_SESSION['idUser']))
+        if(!isset($_SESSION['idUser']) || $_SESSION['idUser'] == '')
         {
             return redirect() -> to(base_url('/Users/Login'));
         }else{
@@ -31,7 +31,11 @@ class Userpage extends BaseController
         $data['pager'] = $pager;
         $data['pictures'] = $pictures;
         $data['show_flg'] = 'MyChibi';
-        $data['viewchild'] = './user/content';
+        if(count($pictures) == 0){
+            $data['viewchild'] = './user/no_content';
+        }else{
+            $data['viewchild'] = './user/content';
+        }
         $data['usertable'] = './user/usertable';
         $data['itype'] = '1';
         return view('templates/base_view', $data);

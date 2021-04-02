@@ -56,7 +56,7 @@ class login extends BaseController
                     'logged_in' => FALSE
             ];
             $session->set($newdata);
-            $json = ["message" => "Login failed ! user or password incorrect.", "status" => false];
+            $json = ["message" => "Login failed! Email address or Password incorrect.", "status" => false, "iEmail" => $dataSubmit['Email']];
             echo json_encode($json);
             }
         }

@@ -45,7 +45,6 @@
                         window.location.assign("<?php echo base_url(); ?>")
                     } else {
                         window.alert(response.message);
-                        document.getElementById('inputEmail').value = "";
                         document.getElementById('inputPassword').value = "";
                     }
                 }
