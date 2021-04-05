@@ -11,12 +11,6 @@ class News extends Controller
 	public function Index()
 	{
 		$session = \Config\Services::session();
-		if(!isset($_SESSION['idUser']) || $_SESSION['idUser'] == '')
-		{
-			return redirect() -> to(base_url('/Users/Login'));
-		}else{
-			$idUser = $_SESSION['idUser'];
-		}
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
 		$offset = $page * LIMITPICTURE;
 		$pictureModel = new PictureModel();
