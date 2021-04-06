@@ -21,29 +21,29 @@
             <div class="row">
             <div class="col-12">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Họ tên</label>
-                  <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
+                <label for="username">Họ tên</label>
+                  <input class="form-control" name="username" id="username" type="text" onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Họ tên'" placeholder='Họ tên' value="<?php echo $user['Name']?>">
                 </div>
               </div>
               
               <div class="col-sm-6">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Điện thoại</label>
+                <label for="phone">Điện thoại</label>
                   <input class="form-control single-input" name="phone" id="phone" type="text" onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Điện thoại'" placeholder='Điện thoại'  maxlength="12" value="<?php echo $user['Phone']?>">
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
+                <label for="email">Email</label>
                   <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Email'" placeholder='Email' readonly value="<?php echo $user['Email']?>">
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Địa chỉ</label>
+                <label for="address">Địa chỉ</label>
                 <input class="form-control" name="address" id="address" type="text" onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Địa chỉ'" placeholder='Địa chỉ' value="<?php echo $user['Address']?>">
                 </div>
@@ -93,18 +93,18 @@
 </div>
     <script>
     $(document).ready(() => {
-        $('.load').delay(500).fadeOut('fast'); 
+      $('.load').delay(500).fadeOut('fast'); 
     })
     function sendProfile(){
-        $('.load').fadeIn('fast');
-        var element = document.getElementsByName('gender');
-      let name = $('#name').val();
+      $('.load').fadeIn('fast');
+      var element = document.getElementsByName('gender');
+      let username = $('#username').val();
       let email = $('#email').val();
       let phone = $('#phone').val();
       let address = $('#address').val();
       let gender = element[0].checked ? 2 : 1;
       const data = {
-         name,email,phone,address,gender
+        username,email,phone,address,gender
       };
       $.ajax({
             url: '<?php echo base_url();?>/User/updateProfile',

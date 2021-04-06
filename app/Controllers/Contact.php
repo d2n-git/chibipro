@@ -10,13 +10,14 @@ class Contact extends BaseController{
     
     public function index(){
         $data['viewchild'] = 'contact/contact';
-		return view('templates/base_view',$data);
+        return view('templates/base_view',$data);
     }
 
     public function submitContact(){
-        if($this->request->getPost('name')){
+        $something = $this->request->getPost();
+        if($something['username'] != '' && $something['phone'] != '' && $something['email'] != '' && $something['message'] != '' ){
             $contact = new ContactModel();
-            $result = $contact->InsertContact($this->request->getPost());
+            $result = $contact->InsertContact($something);
             $json = ["message" => $result ? "Thank you!" : "error", "status" => $result ? 1 : 0 ];
             echo json_encode($json);
         }

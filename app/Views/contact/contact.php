@@ -62,39 +62,40 @@
       <div class="row">
         <div class="col-lg-8">
           <form class="form-contact contact_form" action="contact_process.php" method="post" id="form1">
+            <input type="hidden" name="idUser" id="idUser" value="">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Nội dung</label>
+                <label for="message">Nội dung</label>
                   <textarea class="form-control w-100" name="message" id="message" cols="30" rows="5" maxlength="450"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nhập Nội dung'"
-                    placeholder='Nhập Nội dung'></textarea>
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nhập Nội dung *'"
+                    placeholder='Nhập Nội dung *' required ></textarea>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Điện thoại</label>
+                <label for="phone">Điện thoại</label>
                   <input class="form-control single-input" name="phone" id="phone" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Điện thoại'" placeholder='Điện thoại' maxlength="12">
+                    onblur="this.placeholder = 'Điện thoại *'" placeholder='Điện thoại *' maxlength="12" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
+                <label for="email">Email</label>
                   <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Email'" placeholder='Email' maxlength="50">
+                    onblur="this.placeholder = 'Email *'" placeholder='Email *' maxlength="50" required>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Họ tên</label>
-                  <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
-                    onblur="this.placeholder = 'Họ tên'" placeholder='Họ tên' maxlength="120">
+                <label for="username">Họ tên</label>
+                  <input class="form-control" name="username" id="username" type="text" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Họ tên *'" placeholder='Họ tên *' maxlength="120" required>
                 </div>
               </div>
               <div class="col-12">
               <div class="form-group">
-              <label for="exampleInputEmail1">Về vấn đề</label>
+              <label for="problem">Về vấn đề</label>
               <br/>
                     <div class="form-check-inline border border-light rounded area-radio">
                     <label class="form-check-label mar-5">
@@ -162,23 +163,36 @@
       if (email == ""){
           $('#email').prop('readonly', false);
           $('#email').val('');
-          $('#name').val('');
+          $('#username').val('');
           $('#phone').val('');
+          $('#idUser').val('');
       }else{
           $('#email').val(email);
           $('#email').prop('readonly', true);
-          $('#name').val('<?php echo $_SESSION['Name'] ?>');
+          $('#username').val('<?php echo $_SESSION['Name'] ?>');
           $('#phone').val('<?php echo $_SESSION['Phone'] ?>');
+          $('#idUser').val('<?php echo $_SESSION['idUser'] ?>');
       }
     })
     function sendContact(){
-      let name = $('#name').val();
+      var form = document.getElementById("form1");
+      var elements = form.elements;
+      for (var i = 0, len = elements.length; i < len; ++i) {
+        if(elements[i].validationMessage != "")
+        {
+          window.alert(elements[i].validationMessage);
+          document.getElementById(elements[i].id).focus();
+          return;
+        }
+      }
+      let username = $('#username').val();
+      let idUser = $('#idUser').val();
       let email = $('#email').val();
       let phone = $('#phone').val();
       let message = $('#message').val();
       let problem = $("input[name='problem']:checked").val();
       const data = {
-        problem ,name,email,phone,message
+        problem,username,email,phone,message,idUser
       };
       $.ajax({
             url: '<?php echo base_url();?>/Contact/submitContact',

@@ -29,9 +29,9 @@ class User extends BaseController{
             $this->session->destroy();
             return redirect()->to(base_url());
         }
-        if($this->request->getPost('name')){
+        if($this->request->getPost('username')){
             $user = new InSertUserModel();
-            $result = $user->updateUser($this->request->getPost());
+            $result = $user->UpdateProfile($this->request->getPost());
             $json = ["message" => $result ? "Success!" : "Fail", "status" => $result ? 1 : 0 ];
             echo json_encode($json);
         }

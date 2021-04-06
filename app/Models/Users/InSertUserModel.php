@@ -5,7 +5,7 @@ use Config\Encryption;
 class InSertUserModel extends Model
 {
 
-    private  $Name, $Permission, $Gender, $Email, $Phone, $Address, $Password;
+    private  $Name, $Permission, $Gender, $Email, $Phone, $Address, $Password, $Painter_request;
     public function InSertUsers($data)
     {
         $this->SetData($data);
@@ -23,6 +23,7 @@ class InSertUserModel extends Model
         $this->Phone=$data['txtEmpPhone'];
         $this->Address=$data['txtAddress'];
         $this->Password=$data['password'];
+        $this->Painter_request=$data['Painter_request'];
     }
     private function GetData()
     {
@@ -41,7 +42,8 @@ class InSertUserModel extends Model
             'Email'=>$this->Email,
             'Phone'=>$this->Phone,
             'Address'=>$this->Address,
-            'Password'=> $Password
+            'Password'=> $Password,
+            'Painter_request'=>$this->Painter_request,
 
         ];
         return $data;
@@ -79,15 +81,24 @@ class InSertUserModel extends Model
         $db->close();
         return $results;
     }
-    public function updateUser($param){
+    public function UpdateProfile($param){
         $data =[
-            "Name" => $param['name'],
+            "Name" => $param['username'],
             "Phone" => $param['phone'],
             'Address'=>$param['address'],
             'Gender'=>$param['gender']
         ];
         $db = \Config\Database::connect(); 
         $results = $db->table('users')->where('Email',$param['email'])->update($data);
+        $db->close();
+        return $results;
+    }
+    public function UpdatePassword($param){
+        $encrypter = new Encryption();
+        $param['password'] = md5($param['password'].''.$encrypter->key);
+        $param['DatePasschange'] = date('Y-m-d h:m:s');
+        $db = \Config\Database::connect(); 
+        $results = $db->table('users')->where('Email',$param['email'])->update($param);
         $db->close();
         return $results;
     }

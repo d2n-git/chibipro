@@ -58,7 +58,6 @@
                                 <h6><?php echo $Picture['StandarPrice']; ?></h6>
                             </div>
                             <div class="col-md-6" style="text-align: right;">
-                                <h6>Đơn vị:Nghìn Đồng</h6>
                             </div>
                         </div>
                         <div class="row register-form">

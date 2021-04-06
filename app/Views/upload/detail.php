@@ -91,7 +91,7 @@ label img {
                                 <h6>Giá tiêu chuẩn</h6>
                             </div>
                             <div class="col-md-3">
-                                <h6>200K</h6>
+                                <h6>50 CBs</h6>
                                 <input type="hidden" name="standarprice" id="standarprice" value="200">
                             </div>
                             <!-- <div class="col-md-6" style="text-align: right;">
