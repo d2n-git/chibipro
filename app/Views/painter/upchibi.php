@@ -167,7 +167,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 20px;">Hủy</button>
-        <button type="button" class="btn btn-danger" onclick="finishPaint('1')">OK</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finishPaint('1')">OK</button>
       </div>
     </div>
   </div>

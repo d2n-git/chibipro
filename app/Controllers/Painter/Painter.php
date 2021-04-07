@@ -128,7 +128,7 @@ class Painter extends Controller
 				$modelPicture['ExtraDetail'] = $something['note_painter'];
 				$resultInsertPicture = $insertPicture->UpdatePicture($modelPicture);
 				$json = ["message" => 'Uploaded Success', "status" => $uploadOk];
-				return redirect()->to(base_url('/Painter/Painter'));
+				echo json_encode($json);
 			} catch (Exception $e) {
 				$json = ["message" => $MesError, "status" => $uploadOk];
 				echo json_encode($json);
