@@ -214,4 +214,6 @@ ALTER TABLE `comment` ADD PRIMARY KEY (`id`);
 ALTER TABLE `comment` MODIFY `id` INT AUTO_INCREMENT;
 ALTER TABLE `contact` ADD COLUMN `idUser` int(11) DEFAULT NULL AFTER `id`;
 
-ALTER TABLE `users` ADD COLUMN `painter_request` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Permission`;
+ALTER TABLE `users` ADD COLUMN `Painter_request` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Permission`;
+ALTER TABLE `pictures` ADD COLUMN `NumberHeart` int(10) UNSIGNED NULL DEFAULT 0 AFTER `NumberLike`;
+ALTER TABLE `pictures` ADD COLUMN `NumberShare` int(10) UNSIGNED NULL DEFAULT 0 AFTER `NumberLike`;

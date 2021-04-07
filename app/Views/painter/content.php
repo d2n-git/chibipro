@@ -131,7 +131,12 @@
                  // code block
                  break;
              case 'return':
-                 // code block
+                 var NWin = window.open($(this).prop('http://www.facebook.com/sharer/sharer.php?'), '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+                if (window.focus)
+                {
+                NWin.focus();
+                }
+                return false;
                  break;
              case 'check':
                  if (log_in == 1) {

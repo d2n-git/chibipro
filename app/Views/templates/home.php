@@ -108,9 +108,9 @@
                                     <a> <i class="fas fa-star"></i> </a>
                                     <a> <i class="fas fa-star"></i> </a>
                                 </div>
-                                <h5>$150</h5>
+                                <h5>150 CBs</h5>
                                 <div class="social_icon">
-                                    <a onclick="likeImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
+                                    <a onclick="heartImage(<?php echo $value['idPictures']?>);"><i class="ti-heart"></i></a>
                                     <a href="<?php echo base_url();?>/detail/index/<?php echo $value['idPictures']?>"><i class="ti-bag"></i></a>
                                 </div>
                             </div>

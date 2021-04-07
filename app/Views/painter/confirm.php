@@ -12,7 +12,9 @@
     <div class="row">
         <div class="col-lg-3 col-md-3 confirm-left">
             <h4>Thông Tin Đăng Ảnh</h4>
-            <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" />
+            <div data-thumb="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>">
+              <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" data-action="zoom"/>
+            </div>
             <a href="#" data-href="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" class="btn btn-success btnDownload" downloadname="<?php echo $Picture['Name']; ?>" onclick='forceDownload(this)'> 
                 Download
             </a>
@@ -40,9 +42,9 @@
                                 echo '6_autumn.png';
                                 break;
                         }
-                        ?>" />
+                        ?>" data-action="zoom"/>
                 <?php else: ?>
-                    <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['BackgroundPicture']; ?>" />
+                    <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['BackgroundPicture']; ?>" data-action="zoom"/>
                 <?php endif; ?>
             <?php endif; ?>
         </div>

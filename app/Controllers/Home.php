@@ -48,5 +48,11 @@ class Home extends BaseController
 		$json = ["message" => $result ? "Thank you!" : "error"];
 		echo json_encode($json);
 	}
-
+	public function heartImage(){
+		$pictureModel = new PictureModel();
+		$id = $this->request->getPost('idPicture');
+		$result = $pictureModel->updateNumberHeart($id);
+		$json = ["message" => $result ? "Thank you!" : "error"];
+		echo json_encode($json);
+	}
 }

@@ -20,7 +20,7 @@ class User extends BaseController{
         $user = new CheckUser();
         $data['viewchild'] = 'user/profile';
         $data['user'] = $user->getUserByEmail($_SESSION['email']);
-		return view('templates/base_view',$data);
+        return view('templates/base_view',$data);
     }
 
     public function updateProfile(){

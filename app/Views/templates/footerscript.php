@@ -63,4 +63,22 @@
     });
     }
 
+    function heartImage(idPicture){
+        let data = {
+            idPicture : idPicture
+        }
+        $.ajax({
+            url : "<?php echo base_url(); ?>/Home/heartImage",
+            type : "post",
+            dataType:'json',
+            data : data,
+            success : function(data) {
+                alert(data.message);
+            },
+            error : function(data) {
+                // do something
+        }
+    });
+    }
+
     </script>
