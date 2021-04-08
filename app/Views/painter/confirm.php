@@ -15,7 +15,7 @@
             <div data-thumb="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>">
               <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" data-action="zoom"/>
             </div>
-            <a href="#" data-href="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" class="btn btn-success btnDownload" downloadname="<?php echo $Picture['Name']; ?>" onclick='forceDownload(this)'> 
+            <a href="#" data-href="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['Name']; ?>" class="btn btn-success btnDownload" downloadname="<?php echo $Picture['idPictures']; ?>_Capture.png" onclick="forceDownload(this);$('#background').click();"> 
                 Download
             </a>
             <?php if($Picture['BackgroundPicture'] != null) :?>
@@ -43,8 +43,33 @@
                                 break;
                         }
                         ?>" data-action="zoom"/>
+                        <a href="#" data-href="<?php echo base_url(); ?>/assets/img/bg_def/<?php
+                        switch ($Picture['BackgroundPicture']){
+                            case 'bg1':
+                                echo '1_cau-vang.png';
+                                break;
+                            case 'bg2':
+                                echo '2_sea.png';
+                                break;
+                            case 'bg3':
+                                echo '3_chua.png';
+                                break;
+                            case 'bg4':
+                                echo '4_city.png';
+                                break;
+                            case 'bg5':
+                                echo '5_park.png';
+                                break;
+                            case 'bg6':
+                                echo '6_autumn.png';
+                                break;
+                        }
+                        ?>" class="btn btn-success btnDownload" downloadname="<?php echo $Picture['idPictures']; ?>_Capture_Background.png" onclick='forceDownload(this)' hidden id="background"> 
+                        </a>
                 <?php else: ?>
                     <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['BackgroundPicture']; ?>" data-action="zoom"/>
+                    <a href="#" data-href="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['BackgroundPicture']; ?>" class="btn btn-success btnDownload" downloadname="<?php echo $Picture['idPictures']; ?>_Capture_Background.png" onclick="forceDownload(this);" id="background" hidden> 
+                    </a>
                 <?php endif; ?>
             <?php endif; ?>
         </div>
