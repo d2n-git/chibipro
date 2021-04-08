@@ -32,7 +32,7 @@
                                                             </h6>
                                                         <?php else: ?>
                                                             <h6>
-                                                                Báo giá vẽ : <?php echo $value['PriceofUser']; ?>
+                                                                Báo giá vẽ : <?php if($value['price'] == 0){echo 'Đang cập nhật';}else{echo $value['price'];}?>
                                                                 <br>
                                                                 Update : <?php echo $value['DateUp']; ?>
                                                             </h6>

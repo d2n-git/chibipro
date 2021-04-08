@@ -217,3 +217,4 @@ ALTER TABLE `contact` ADD COLUMN `idUser` int(11) DEFAULT NULL AFTER `id`;
 ALTER TABLE `users` ADD COLUMN `Painter_request` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Permission`;
 ALTER TABLE `pictures` ADD COLUMN `NumberHeart` int(10) UNSIGNED NULL DEFAULT 0 AFTER `NumberLike`;
 ALTER TABLE `pictures` ADD COLUMN `NumberShare` int(10) UNSIGNED NULL DEFAULT 0 AFTER `NumberLike`;
+ALTER TABLE `pictures` ADD COLUMN `idPrice` int(10) UNSIGNED NULL DEFAULT 0 AFTER `PriceofUser`;

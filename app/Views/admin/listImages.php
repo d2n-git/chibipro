@@ -6,13 +6,13 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="/Admin/Listimages" class="nav-link">Upload List</a>
+        <a href="<?php echo base_url();?>/Admin/Listimages" class="nav-link">Upload List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="/Admin/Listusers" class="nav-link">User List</a>
+        <a href="<?php echo base_url();?>/Admin/Listusers" class="nav-link">User List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="/Admin/Admin/ListContact" class="nav-link">Contact List</a>
+        <a href="<?php echo base_url();?>/Admin/Admin/ListContact" class="nav-link">Contact List</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Summary</a>
@@ -123,7 +123,7 @@
             
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="/Admin/Listimages" method="POST">
+                    <form action="<?php echo base_url();?>/Admin/Listimages" method="POST">
                         <div class="row">
                             <div class="form-group col-md-1"></div>
                             <div class="form-group col-md-3">
@@ -161,9 +161,7 @@
                                     <thead style="background-color:#d0f3fb;">
                                         <tr>
                                             <th>#</th>
-                                            <th>
-                                                <input type="checkbox" id="select_all" />
-                                            </th>
+                                            <th><input type="checkbox" id="select_all" /></th>
                                             <th>UserID</th>
                                             <th>Username</th>
                                             <th>Email</th>
@@ -214,6 +212,15 @@
                                                 <button class="btn btn-sm btn-outline-primary border-0" data-status="5" type="button" value="submit" onclick="ChangeStatus(this);"
                                                         title="Up Status 5"><i class="fa fa-fw">5</i>
                                                 </button>
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="7" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 7"><i class="fa fa-fw">7</i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="8" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 8"><i class="fa fa-fw">8</i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-primary border-0" data-status="9" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                        title="Up Status 9"><i class="fa fa-fw">9</i>
+                                                </button>
                                                 <button class="btn btn-sm btn-outline-warning border-0" data-status="10" type="button" value="submit" onclick="ChangeStatus(this);"
                                                         title="Lock"><i class="fa fa-lock fa-fw"></i>
                                                 </button>
@@ -230,18 +237,12 @@
                             <ul class="pagination pull-right">
                                 <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a>
                                 </li>
-                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a>
-                                </li>
+                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a></li>
+                                <li class="paginate_button" aria-controls="dataTables-example" tabindex="0"><a href="#">2</a></li>
+                                <li class="paginate_button" aria-controls="dataTables-example" tabindex="0"><a href="#">3</a></li>
+                                <li class="paginate_button" aria-controls="dataTables-example" tabindex="0"><a href="#">4</a></li>
+                                <li class="paginate_button" aria-controls="dataTables-example" tabindex="0"><a href="#">5</a></li>
+                                <li class="paginate_button" aria-controls="dataTables-example" tabindex="0"><a href="#">6</a></li>
                                 <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a>
                                 </li>
                             </ul>

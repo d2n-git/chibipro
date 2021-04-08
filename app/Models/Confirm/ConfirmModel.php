@@ -79,6 +79,14 @@ class ConfirmModel extends Model
         $db->close();
         return $results; 
     }
+    public function GetPrice($idPictures, $idPainter, $Confirflg = Null)
+    {
+        $db = \Config\Database::connect();
+        $sql='SELECT IFNULL(MIN(Price), 0) AS Price FROM confirmofpainter WHERE idPicture = ?' ;
+        $results = $db->query($sql,[$idPictures])->getRowArray();
+        $db->close();
+        return $results['Price'];
+    }
     public function UpdateConfirm($data)
     {
         $db = \Config\Database::connect(); 

@@ -63,18 +63,6 @@ label img {
   z-index: -1;
 } 
 
-.btnOk{
-    float: left;
-    /* margin-top: 2%; */
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    color: #fff;
-    font-weight: 600;
-    width: 120px;
-    cursor: pointer;
-    margin-left: 10px;
-}
 </style>
 <div class="container confirm">
     <div class="row">
@@ -109,8 +97,8 @@ label img {
                                             <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Confirm['Price']?>" disabled style="color:red;">
                                         </div>
                                         <div class="col-md-8">
-                                            <input class="btnOk" type="button" value="ĐỒNG Ý" name="btnSubmit" style="background-color: #228a22;" onclick="updateStatus('4')" id="btnAccept"/>
-                                            <input class="btnOk" type="button" value="HỦY" name="btnSubmit" style="background-color: #79796a;" onclick="updateStatus('1')" id="btnCancel"/>
+                                            <input class="btnAccept" type="button" value="ĐỒNG Ý" name="btnAccept" id="btnAccept" onclick="updateStatus('4')" />
+                                            <input class="btnCancel" type="button" value="HỦY" name="btnCancel" id="btnCancel" onclick="updateStatus('5')" />
                                         </div>
                                     </div>
                                 </div>
@@ -240,16 +228,25 @@ label img {
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <?php if ($Picture['idStatusPicture']=='3'): ?>
+                        <?php if ($Picture['idStatusPicture']=='3') { ?>
                             <div class="row register-form margin-10px" id="txtStatus">
                                 <div class="col-md-3">
                                     <h6>Trạng thái</h6>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="badge-success d-inline-block px-4 rounded-sm text-white"> Hình của bạn đã được Painter báo giá vẽ. Nếu đồng ý hãy bấm nút ĐỒNG Ý để được vẽ hình Chibi</div>
+                                    <div class="badge-success d-inline-block px-4 rounded-sm text-white"> Hình của bạn đã được Painter báo giá vẽ. </br>Nếu đồng ý hãy bấm nút ĐỒNG Ý để được vẽ hình Chibi</div>
                                 </div>
                             </div>
-                        <?php else: ?>
+                        <?php }else if(in_array($Picture['idStatusPicture'],['4','7'])) { ?>
+                            <div class="row register-form margin-10px" id="txtStatus">
+                                <div class="col-md-3">
+                                    <h6>Trạng thái</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="badge-info d-inline-block px-4 rounded-sm text-white"> Hình của bạn đang được vẽ Chibi.</div>
+                                </div>
+                            </div>
+                        <?php }else { ?>
                             <div class="row register-form">
                                 <div class="col-md-3">
                                 </div>
@@ -258,7 +255,7 @@ label img {
                                     <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                                 </div>
                             </div>
-                        <?php endif; ?>
+                        <?php } ?>
                         <input type="hidden" name="itype" id="itype" value="0">
                     </form>
                 </div>
@@ -327,13 +324,7 @@ label img {
                 data : data,
                 success : function(data) {
                     alert(data.message);
-                    if(status == '1'){
-                        $('#areaPainter').hide();
-                    }else if(status == '4'){
-                        $('#btnAccept').hide();
-                        $('#btnCancel').hide();
-                        $('#txtStatus').hide();
-                    }
+                    location.reload();
                 },
                 error : function(data) {
                     // do something

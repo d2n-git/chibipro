@@ -222,6 +222,9 @@ class UploadFile extends Controller
         $modePicture = new InSertPictureModel();
         $modelConfirm = new ConfirmModel();
         $data['Picture'] = $modePicture->GetPictureById($id);
+        if(in_array($data['idStatusPicture'],['8','9','10'])){
+            return redirect() -> to(base_url(''));
+        }
         $data['Confirm'] = $modelConfirm->GetConfirmById($id);
         $data['viewchild'] = '/upload/detail';
         return view('templates/base_view', $data);

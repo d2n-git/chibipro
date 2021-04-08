@@ -113,9 +113,11 @@
                                 <img id="blah" />
                             </div>
                             <div class="col-md-1"></div>
-                            <div class="col-md-3">
-                                <img id="oldChibi" src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['chibiFileName']; ?>" data-action="zoom"/>
-                            </div>
+                            <?php if ($Picture['chibiFileName']!=''): ?>
+                                <div class="col-md-3">
+                                    <img id="oldChibi" src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['chibiFileName']; ?>" data-action="zoom"/>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div hidden>
                             <input type="hidden" name="idPictures" id="idPictures" value="<?php echo $Picture['idPictures'];?>">
@@ -125,7 +127,7 @@
                         <div class="row register-form margin-10px">
                             <div class="col-md-3"></div>
                             <div class="col-md-6" style="text-align: right;">
-                                <input id="btn_finish" type="button" class="btnDelete" value="Hoàn thành" name="btn_finish" style="margin-bottom:10px; margin-right:10px; width:140px;" onclick="finishPaint('0');"/>
+                                <input id="btn_finish" type="button" class="btnDelete" value="Hoàn thành" name="btn_finish" style="margin-bottom:10px; margin-right:20px; width:140px;" onclick="finishPaint('0');"/>
                                 <input id="btn_submit" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom:10px; width:140px;"/>
                             </div>
                         </div>

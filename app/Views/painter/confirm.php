@@ -149,12 +149,34 @@
                                 <textarea name="note_painter" id="note_painter" cols="60" rows="3" class="textAreaStyle"><?php echo $Picture['Note_Painter']; ?></textarea>
                             </div>
                         </div>
+                        <?php if ($Picture['idStatusPicture']=='3'){ ?>
+                            <div class="row register-form margin-10px" id="txtStatus">
+                                <div class="col-md-3">
+                                    <h6>Trạng thái</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="badge-success d-inline-block px-4 rounded-sm text-white"> Đang chờ User đồng ý</div>
+                                </div>
+                            </div>
+                        <?php } elseif($Picture['idStatusPicture']=='5'){ ?>
+                            <div class="row register-form margin-10px" id="txtStatus">
+                                <div class="col-md-3">
+                                    <h6>Trạng thái</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="badge-warning d-inline-block px-4 rounded-sm text-danger"> User đã Hủy báo giá</div>
+                                </div>
+                            </div>
+                        <?php }?>
                         <div class="row register-form margin-10px">
                             <div class="col-md-5">
                             </div>
                             <div class="col-md-6" style="text-align: right;">
                                 <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
+                        </div>
+                        <div hidden>
+                            <input type="hidden" name="picStatus" id="picStatus" value="<?php echo $Picture['idStatusPicture'];?>">
                         </div>
                     </form>
                 </div>

@@ -15,7 +15,7 @@ class Confirm extends Controller
 		{
 			return redirect() -> to(base_url('/Users/Login'));
 		}
-		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
+		else if (!$_SESSION['logged_in'] || $_SESSION['Permission'] == '1') return redirect() -> to(base_url(''));
 		$id = $this->request->getGet('id');
 		$idPainter = $_SESSION['idUser'];
 		$modePicture = new InSertPictureModel();
@@ -28,6 +28,9 @@ class Confirm extends Controller
 		$something = $this->request->getVar();
 		$session = \Config\Services::session();
 		$idUser = $_SESSION['idUser'];
+		if(in_array($something['picStatus'],['4','7','8','9','10'])){
+			return redirect() -> to(base_url(''));
+		}
 		$insertConfirm = new ConfirmModel();
 		$modelConfirm['idPicture'] = (int)$something['id'];
 		$modelConfirm['Price'] = (int)$something['price'];
@@ -42,16 +45,14 @@ class Confirm extends Controller
 		} else {
 			$resultInsertPicture = $insertConfirm->UpdateConfirm($modelConfirm);
 		}
-		if ($resultInsertPicture)
-		{
+		if ($resultInsertPicture && $something['picStatus'] != '5'){
 			//Update status for Picture
 			$param = array();
 			$modePicture = new InSertPictureModel();
 			$param['idPictures'] = (int)$something['id'];
 			$param['idStatusPicture'] = '3';
 			$modePicture->UpdatePicture($param);
-
-			return redirect()->to(base_url("/Painter/Painter"));
 		}
+		return redirect()->to(base_url("/Painter/Painter"));
 	}
 }

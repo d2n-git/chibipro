@@ -103,6 +103,32 @@
     height: 70px;
     width: 140px;
 }
+.btnAccept{
+    float: left;
+    /* margin-top: 2%; */
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #228a22;
+    color: #fff;
+    font-weight: 600;
+    width: 120px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.btnCancel{
+    float: left;
+    /* margin-top: 2%; */
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #79796a;
+    color: #fff;
+    font-weight: 600;
+    width: 120px;
+    cursor: pointer;
+    margin-left: 10px;
+}
 .btnDelete{
     float: left;
     margin-top: 10%;
@@ -151,6 +177,24 @@
     color: #ffffff;
     background-color: #bd5112;
     border-color: #bd5112;
+}
+.btnAccept:hover,
+.btnAccept:focus,
+.btnAccept:active,
+.btnAccept.active,
+.open .dropdown-toggle.btnAccept {
+    color: #ffffff;
+    background-color: #125812;
+    border-color: #125812;
+}
+.btnCancel:hover,
+.btnCancel:focus,
+.btnCancel:active,
+.btnCancel.active,
+.open .dropdown-toggle.btnCancel {
+    color: #ffffff;
+    background-color: #535347;
+    border-color: #535347;
 }
 
 .btnFinish:hover,

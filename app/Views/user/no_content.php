@@ -1,7 +1,7 @@
 <div class="on-content">
     <header><img src="logo.svg" alt="" class="logo"></header>
     <div class="main-body">
-        <div><img src="maintenance.png" alt="" class="img-mainten"></div>
+        <div></div>
         <h1>BẠN CHƯA CÓ HÌNH CHIBI NÀO ĐỂ HIỂN THỊ</h1>
         <p><br>HÃY UP HÌNH ĐỂ ĐƯỢC TẠO ẢNH CHIBI NHƯ MONG MUỐN NHÉ<br>
             </p>
