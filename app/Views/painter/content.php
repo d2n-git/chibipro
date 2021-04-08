@@ -21,9 +21,9 @@
                                                  <td style="width: 90%;">
                                                      <div>
                                                          <h6>
-                                                             Giá Yêu cầu : 200K 
+                                                             Giá Yêu cầu : <?php echo $value['PriceofUser']; ?>
                                                              <br>
-                                                             Ngày giao : <?php echo $value['DateUp']; ?>
+                                                             Ngày giao : <?php echo $value['DateExpiry']; ?>
                                                          </h6>
                                                      </div>
                                                  </td>
@@ -58,17 +58,6 @@
                                      <table class="table">
                                          <body>
                                              <tr>
-                                                <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                    <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
-                                                </td>
-                                                <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                    <span class="iconFooterNumber">5</span>
-                                                </td>
-                                                <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                </td>
                                                 <?php
                                                     if(isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '2'))
                                                     {

@@ -185,8 +185,8 @@ CREATE TABLE `contact` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `statuspicture` VALUES (1, 'Chờ báo giá 1', NULL);
-INSERT INTO `statuspicture` VALUES (2, 'Đang đấu giá', NULL);
+INSERT INTO `statuspicture` VALUES (1, 'New', NULL);
+INSERT INTO `statuspicture` VALUES (2, 'Chờ báo giá 1', NULL);
 INSERT INTO `statuspicture` VALUES (3, 'Commit Giá', NULL);
 INSERT INTO `statuspicture` VALUES (4, 'Đang Vẽ', NULL);
 INSERT INTO `statuspicture` VALUES (5, 'User Reject', NULL);

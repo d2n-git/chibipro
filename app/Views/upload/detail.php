@@ -132,65 +132,114 @@ label img {
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="date" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
+                                <?php if ($Picture['idStatusPicture']=='3'): ?>
+                                    <input type="date" style="background-color:#e9ecef" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
+                                <?php else: ?>
+                                    <input type="date" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <div class="row register-form margin-10px">
-                            <div class="col-md-3">
-                                <h6 style="padding-top: 10px;">Chọn hình nền</h6>
-                            </div>
-                            <div class="col-md-9">
-                            <ul>
-                                <li><input type="radio" id="cb1" name="ch1" value="bg1" <?php if($Picture['BackgroundPicture'] == 'bg1') echo 'checked'?>/>
-                                    <label for="cb1"><img src="<?php echo base_url(); ?>/assets/img/bg_def/1_cau-vang.png" /></label>
-                                </li>
-                                <li><input type="radio" id="cb2" name="ch1" value="bg2" <?php if($Picture['BackgroundPicture'] == 'bg2') echo 'checked'?>/>
-                                    <label for="cb2"><img src="<?php echo base_url(); ?>/assets/img/bg_def/2_sea.png" /></label>
-                                </li>
-                                <li><input type="radio" id="cb3" name="ch1" value="bg3" <?php if($Picture['BackgroundPicture'] == 'bg3') echo 'checked'?>/>
-                                    <label for="cb3"><img src="<?php echo base_url(); ?>/assets/img/bg_def/3_chua.png" /></label>
-                                </li>
-                                <li><input type="radio" id="cb4" name="ch1" value="bg4" <?php if($Picture['BackgroundPicture'] == 'bg4') echo 'checked'?>/>
-                                    <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg_def/4_city.png" /></label>
-                                </li>
-                                <li><input type="radio" id="cb5" name="ch1" value="bg5" <?php if($Picture['BackgroundPicture'] == 'bg5') echo 'checked'?>/>
-                                    <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/5_park.png" /></label>
-                                </li>
-                                <li><input type="radio" id="cb6" name="ch1" value="bg6" <?php if($Picture['BackgroundPicture'] == 'bg6') echo 'checked'?>/>
-                                    <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/6_autumn.png" /></label>
-                                </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row register-form">
-                            <div class="col-md-3">
-                                <h6 style="padding-top: 10px;">Up hình nền</h6>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
-                                    aria-describedby="inputGroupFileAddon01" class="single-input" onchange="readURL(this);">
-                                    <label class="custom-file-label" for="inputGroupFile01" >Choose file</label>
+
+                        <?php if ($Picture['idStatusPicture']=='3'): ?>
+                            <div class="row register-form">
+                                <div class="col-md-3">
+                                    <h6 style="padding-top: 10px;">Hình nền</h6>
+                                </div>
+                                <div class="col-md-3 margin-10px" >
+                                <?php if(in_array($Picture['BackgroundPicture'],['bg1','bg2','bg3','bg4','bg5','bg6'])):?>
+                                    <img src="<?php echo base_url(); ?>/assets/img/bg_def/<?php
+                                        switch ($Picture['BackgroundPicture']){
+                                            case 'bg1':
+                                                echo '1_cau-vang.png';
+                                                break;
+                                            case 'bg2':
+                                                echo '2_sea.png';
+                                                break;
+                                            case 'bg3':
+                                                echo '3_chua.png';
+                                                break;
+                                            case 'bg4':
+                                                echo '4_city.png';
+                                                break;
+                                            case 'bg5':
+                                                echo '5_park.png';
+                                                break;
+                                            case 'bg6':
+                                                echo '6_autumn.png';
+                                                break;
+                                        }
+                                        ?>" data-action="zoom"/>
+                                <?php else: ?>
+                                    <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['BackgroundPicture']; ?>" data-action="zoom"/>
+                                <?php endif; ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row register-form margin-10px">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-9">
-                                <div class="col-12 col-md-6" style="padding-top: 0px;color: #6f6862;" id="ibgImage" <?php if($Picture['BackgroundPicture'] == '') echo 'hidden'?>>
-                                    <?php echo $Picture['BackgroundPicture']?>
+                            <div class="row register-form margin-10px">
+                                <div class="col-md-3">
+                                    <h6>Ghi chú</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3" maxlength="300" readonly><?php echo $Picture['Note']?></textarea>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row register-form margin-10px">
-                            <div class="col-md-3">
-                                <h6>Ghi chú</h6>
+                        <?php else: ?>
+                            <div class="row register-form margin-10px">
+                                <div class="col-md-3">
+                                    <h6 style="padding-top: 10px;">Chọn hình nền</h6>
+                                </div>
+                                <div class="col-md-9">
+                                <ul>
+                                    <li><input type="radio" id="cb1" name="ch1" value="bg1" <?php if($Picture['BackgroundPicture'] == 'bg1') echo 'checked'?>/>
+                                        <label for="cb1"><img src="<?php echo base_url(); ?>/assets/img/bg_def/1_cau-vang.png" /></label>
+                                    </li>
+                                    <li><input type="radio" id="cb2" name="ch1" value="bg2" <?php if($Picture['BackgroundPicture'] == 'bg2') echo 'checked'?>/>
+                                        <label for="cb2"><img src="<?php echo base_url(); ?>/assets/img/bg_def/2_sea.png" /></label>
+                                    </li>
+                                    <li><input type="radio" id="cb3" name="ch1" value="bg3" <?php if($Picture['BackgroundPicture'] == 'bg3') echo 'checked'?>/>
+                                        <label for="cb3"><img src="<?php echo base_url(); ?>/assets/img/bg_def/3_chua.png" /></label>
+                                    </li>
+                                    <li><input type="radio" id="cb4" name="ch1" value="bg4" <?php if($Picture['BackgroundPicture'] == 'bg4') echo 'checked'?>/>
+                                        <label for="cb4"><img src="<?php echo base_url(); ?>/assets/img/bg_def/4_city.png" /></label>
+                                    </li>
+                                    <li><input type="radio" id="cb5" name="ch1" value="bg5" <?php if($Picture['BackgroundPicture'] == 'bg5') echo 'checked'?>/>
+                                        <label for="cb5"><img src="<?php echo base_url(); ?>/assets/img/bg_def/5_park.png" /></label>
+                                    </li>
+                                    <li><input type="radio" id="cb6" name="ch1" value="bg6" <?php if($Picture['BackgroundPicture'] == 'bg6') echo 'checked'?>/>
+                                        <label for="cb6"><img src="<?php echo base_url(); ?>/assets/img/bg_def/6_autumn.png" /></label>
+                                    </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                            <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3" maxlength="300"><?php echo $Picture['Note']?></textarea>
+                            <div class="row register-form">
+                                <div class="col-md-3">
+                                    <h6 style="padding-top: 10px;">Up hình nền</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
+                                        aria-describedby="inputGroupFileAddon01" class="single-input" onchange="readURL(this);">
+                                        <label class="custom-file-label" for="inputGroupFile01" >Choose file</label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row register-form margin-10px">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="col-12 col-md-6" style="padding-top: 0px;color: #6f6862;" id="ibgImage" <?php if($Picture['BackgroundPicture'] == '') echo 'hidden'?>>
+                                        <?php echo $Picture['BackgroundPicture']?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row register-form margin-10px">
+                                <div class="col-md-3">
+                                    <h6>Ghi chú</h6>
+                                </div>
+                                <div class="col-md-8">
+                                <textarea class="form-control w-100" name="message" id="message" cols="10" rows="3" maxlength="300"><?php echo $Picture['Note']?></textarea>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                         <?php if ($Picture['idStatusPicture']=='3'): ?>
                             <div class="row register-form margin-10px" id="txtStatus">
                                 <div class="col-md-3">
@@ -200,16 +249,16 @@ label img {
                                     <div class="badge-success d-inline-block px-4 rounded-sm text-white"> Hình của bạn đã được Painter báo giá vẽ. Nếu đồng ý hãy bấm nút ĐỒNG Ý để được vẽ hình Chibi</div>
                                 </div>
                             </div>
+                        <?php else: ?>
+                            <div class="row register-form">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-6" style="text-align: right;">
+                                    <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px;" onclick="deleteIamge('0');"/>
+                                    <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
+                                </div>
+                            </div>
                         <?php endif; ?>
-
-                        <div class="row register-form">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-6" style="text-align: right;">
-                                <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px;" onclick="deleteIamge('0');"/>
-                                <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
-                            </div>
-                        </div>
                         <input type="hidden" name="itype" id="itype" value="0">
                     </form>
                 </div>

@@ -21,7 +21,7 @@ class Painter extends Controller
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
 		$offset = $page * LIMITPICTURE;
 		$pictureModel = new PictureModel();
-		$pictures = $pictureModel->getAllPicture($offset, '', '1,2,3,4');
+		$pictures = $pictureModel->getAllPicture($offset, '', '2,3,4');
 
 		//Get thông tin báo giá của Painter theo từng Picture
 		$getConfirm = new ConfirmModel();

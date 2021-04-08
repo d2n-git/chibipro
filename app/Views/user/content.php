@@ -24,11 +24,19 @@
                                                  </td>
                                                  <td style="width: 90%;">
                                                      <div>
-                                                         <h6>
-                                                             Chủ nhân : <?php echo str_replace("*-*-"," ",$value['userName']); ?>
-                                                             <br>
-                                                             Update : <?php echo $value['DateUp']; ?>
-                                                         </h6>
+                                                         <?php if($show_flg == 'News') :?>
+                                                            <h6>
+                                                                Chủ nhân : <?php echo str_replace("*-*-"," ",$value['userName']); ?>
+                                                                <br>
+                                                                Update : <?php echo $value['DateUp']; ?>
+                                                            </h6>
+                                                        <?php else: ?>
+                                                            <h6>
+                                                                Báo giá vẽ : <?php echo $value['PriceofUser']; ?>
+                                                                <br>
+                                                                Update : <?php echo $value['DateUp']; ?>
+                                                            </h6>
+                                                        <?php endif; ?>
                                                      </div>
                                                  </td>
                                              </tr>
@@ -49,17 +57,19 @@
                                      <table class="table">
                                          <body>
                                              <tr>
-                                                <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                    <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
-                                                </td>
-                                                <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                    <span class="iconFooterNumber">5</span>
-                                                </td>
-                                                <td style="width: 20%;">
-                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                </td>
+                                                <?php if($show_flg == 'News') :?>
+                                                    <td style="width: 20%;">
+                                                        <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
+                                                        <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
+                                                    </td>
+                                                    <td style="width: 20%;">
+                                                        <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
+                                                        <span class="iconFooterNumber">5</span>
+                                                    </td>
+                                                    <td style="width: 20%;">
+                                                        <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
+                                                    </td>
+                                                <?php endif; ?>
                                                 <?php
                                                     if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
                                                         if($show_flg == 'News' || ($show_flg == 'MyChibi' && ($value['idStatusPicture'] == '8' || $value['idStatusPicture'] == '9'))){
