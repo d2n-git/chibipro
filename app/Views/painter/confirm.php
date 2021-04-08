@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <input size="10" type="number" id="firstName" class="form-control " name="price" placeholder="Price" value="<?php echo $Picture['Price']; ?>" />
+                                    <input size="10" type="number" id="firstName" class="form-control" name="price" placeholder="Price" value="<?php echo $Picture['Price']; ?>" />
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,9 @@
                                 <h6>Ngày User Yêu cầu</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="date" style="background-color:#e9ecef" id="dateExpiryReq" name="dateExpiryReq" value="<?php echo ($Picture['dateExpiryReq'] ?? date("d/m/Y")); ?>" readonly>
+                                <div class="col-md-4">
+                                    <input type="date" style="background-color:#e9ecef" id="dateExpiryReq" class="form-control" name="dateExpiryReq" value="<?php echo ($Picture['dateExpiryReq'] ?? date("d/m/Y")); ?>" readonly>
+                                </div>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -130,7 +132,9 @@
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="date" id="dateExpiryPainter" name="dateExpiryPainter" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" min="2020-01-01" max="2030-12-31">
+                                <div class="col-md-4">
+                                    <input type="date" id="dateExpiryPainter" class="form-control" name="dateExpiryPainter" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" min="2020-01-01" max="2030-12-31">
+                                </div>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -138,7 +142,7 @@
                                 <h6>Ghi chú của User</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea style="background-color:#e9ecef" name="note_user" id="note_user" cols="60" rows="3" class="textAreaStyle" readonly><?php echo $Picture['Note']; ?></textarea>
+                                <textarea style="background-color:#e9ecef" name="note_user" id="note_user" cols="50" rows="3" class="form-control" readonly><?php echo $Picture['Note']; ?></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -146,7 +150,7 @@
                                 <h6>Ghi chú của Painter</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="note_painter" id="note_painter" cols="60" rows="3" class="textAreaStyle"><?php echo $Picture['Note_Painter']; ?></textarea>
+                                <textarea name="note_painter" id="note_painter" cols="60" rows="3" class="form-control"><?php echo $Picture['Note_Painter']; ?></textarea>
                             </div>
                         </div>
                         <?php if ($Picture['idStatusPicture']=='3'){ ?>

@@ -75,7 +75,9 @@
                                 <h6>Ngày User Yêu cầu</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="date" style="background-color:#e9ecef" id="dateExpiryReq" name="dateExpiryReq" value="<?php echo ($Picture['dateExpiryReq'] ?? date("d/m/Y")); ?>" readonly>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" style="background-color:#e9ecef" id="dateExpiryReq" name="dateExpiryReq" value="<?php echo ($Picture['dateExpiryReq'] ?? date("d/m/Y")); ?>" readonly>
+                            </div>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -83,7 +85,9 @@
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
-                                <input type="date" style="background-color:#e9ecef" id="dateExpiryPainter" name="dateExpiryPainter" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" style="background-color:#e9ecef" id="dateExpiryPainter" name="dateExpiryPainter" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
+                            </div>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -91,7 +95,7 @@
                                 <h6>Ghi chú của User</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea style="background-color:#e9ecef" name="note_user" id="note_user" cols="60" rows="3" class="textAreaStyle" readonly><?php echo $Picture['Note']; ?></textarea>
+                                <textarea style="background-color:#e9ecef" name="note_user" id="note_user" cols="60" rows="3" class="form-control" readonly><?php echo $Picture['Note']; ?></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -99,7 +103,7 @@
                                 <h6>Ghi chú của Painter</h6>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="note_painter" id="note_painter" cols="60" rows="3" class="textAreaStyle"><?php echo $Picture['ExtraDetail']; ?></textarea>
+                                <textarea name="note_painter" id="note_painter" cols="60" rows="3" class="form-control"><?php echo $Picture['ExtraDetail']; ?></textarea>
                             </div>
                         </div>
                         <div class="row register-form margin-10px">
@@ -115,7 +119,7 @@
                             <div class="col-md-1"></div>
                             <?php if ($Picture['chibiFileName']!=''): ?>
                                 <div class="col-md-3">
-                                    <img id="oldChibi" src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['chibiFileName']; ?>" data-action="zoom"/>
+                                    <img id="" src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $Picture['idUser'].'/'.$Picture['chibiFileName']; ?>" data-action="zoom"/>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -123,6 +127,7 @@
                             <input type="hidden" name="idPictures" id="idPictures" value="<?php echo $Picture['idPictures'];?>">
                             <input type="hidden" name="idUser" id="idUser" value="<?php echo $Picture['idUser'];?>">
                             <input type="hidden" name="itype" id="itype" value="">
+                            <input type="hidden" name="oldChibiName" id="oldChibiName" value="<?php echo $Picture['chibiFileName'];?>">
                         </div>
                         <div class="row register-form margin-10px">
                             <div class="col-md-3"></div>

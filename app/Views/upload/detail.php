@@ -120,11 +120,13 @@ label img {
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
+                            <div class="col-md-4">
                                 <?php if ($Picture['idStatusPicture']=='3'): ?>
-                                    <input type="date" style="background-color:#e9ecef" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
+                                    <input type="date" class="form-control"style="background-color:#e9ecef" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
                                 <?php else: ?>
-                                    <input type="date" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
+                                    <input type="date" class="form-control" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
                                 <?php endif; ?>
+                            </div>
                             </div>
                         </div>
 
@@ -202,7 +204,7 @@ label img {
                                 <div class="col-md-3">
                                     <h6 style="padding-top: 10px;">Up hình nền</h6>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-7">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="fileToUpload" name="fileToUpload"
                                         aria-describedby="inputGroupFileAddon01" class="single-input" onchange="readURL(this);">
@@ -251,7 +253,7 @@ label img {
                                 <div class="col-md-3">
                                 </div>
                                 <div class="col-md-6" style="text-align: right;">
-                                    <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px;" onclick="deleteIamge('0');"/>
+                                    <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 20px; width: 140px;" onclick="deleteIamge('0');"/>
                                     <input id="btn_confirm" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                                 </div>
                             </div>
