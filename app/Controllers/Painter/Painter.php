@@ -44,11 +44,14 @@ class Painter extends Controller
 		{
 			return redirect() -> to(base_url('/Users/Login'));
 		}
-		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
+		else if (!$_SESSION['logged_in'] || $_SESSION['Permission'] =='1') return redirect() -> to(base_url(''));
 		$id = $this->request->getGet('id');
 		$idPainter = $_SESSION['idUser'];
 		$modePicture = new InSertPictureModel();
 		$data['Picture'] = $modePicture->GetConfirmPainter($id, $idPainter);
+		if(in_array($data['Picture']['idStatusPicture'],['1','5','7','8','9','10'])){
+			return redirect() -> to(base_url(''));
+		}
 		$data['viewchild'] = './painter/upchibi';
 		return view('templates/base_view', $data);
 	}
@@ -60,6 +63,7 @@ class Painter extends Controller
 		{
 			return redirect() -> to(base_url('/Users/Login'));
 		}
+		else if (!$_SESSION['logged_in'] || $_SESSION['Permission'] =='1') return redirect() -> to(base_url(''));
 		$alert = new alert();
 		$target_dir = "assets/img/upload/";
 		$target_file = $target_dir . basename($_FILES["images"]["name"]);

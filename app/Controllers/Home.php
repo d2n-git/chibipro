@@ -33,9 +33,15 @@ class Home extends BaseController
 			
 		}else{
 			$idUser = $_SESSION['idUser'];
-			$newdata = [
-				'numberMyChibi' => count($pictureModel->getAllPictureCount($idUser))
-			];
+			if($idUser != ''){
+				$newdata = [
+					'numberMyChibi' => count($pictureModel->getAllPictureCount($idUser))
+				];
+			}else{
+				$newdata = [
+					'numberMyChibi' => ''
+				];
+			}
 			$session->set($newdata);
 		}
 		return view('templates/base_view',$data);

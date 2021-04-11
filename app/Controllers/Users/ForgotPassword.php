@@ -29,8 +29,8 @@ class ForgotPassword extends BaseController
             $resultUpdate = $model->UpdatePassword($result);
             if ($resultUpdate) {
                 $sendMail = new ConfigEmail();
-                $sendMail->SendEmail('Password login for Upload Page is below:' . '<br>' . '<br>' . $Password . '<br>' . '<br>' . 'Lest go link : http://chibipro.top/', 'Send Password', $result['email']);
-                $json = ["message" => "Reset successfully password", "status" => true];
+                $sendMail->SendEmail('Password login for Chibipro Page is below:' . '<br>' . '<br>' . $Password . '<br>' . '<br>' . 'Let\'s go link : http://chibipro.top/', 'Send Password', $result['email']);
+                $json = ["message" => "Reset successfully password.", "status" => true];
                 echo json_encode($json);
             } else {
                 $json = ["message" => "Reset failed password", "status" => false];

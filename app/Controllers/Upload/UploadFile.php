@@ -104,7 +104,7 @@ class UploadFile extends Controller
                     $resultInsertUser = $modelInsertUser->InSertUsers($something);
                     if ($resultInsertUser) {
                         $sendMail = new ConfigEmail();
-                        $sendMail->SendEmail('Password login for Upload Page is below:'.'<br>'.'<br>'.$passWord.'<br>'.'<br>'.'Lest go link : http://chibipro.top/', 'Send Password', $something['email']);
+                        $sendMail->SendEmail('Password login for Chibipro Page is below:'.'<br>'.'<br>'.$passWord.'<br>'.'<br>'.'Let\'s go link : http://chibipro.top/', 'Send Password', $something['email']);
                         $modelPicture['idUser'] = (int)$modelInsertUser->GetMaxIdUser();
                         $modelPicture['idStatusPicture'] = 1;
                         $modelPicture['Name'] = $nameNewPicture;
@@ -222,7 +222,10 @@ class UploadFile extends Controller
         $modePicture = new InSertPictureModel();
         $modelConfirm = new ConfirmModel();
         $data['Picture'] = $modePicture->GetPictureById($id);
-        if(in_array($data['idStatusPicture'],['8','9','10'])){
+        if(in_array($data['Picture']['idStatusPicture'],['8','9','10'])){
+            return redirect() -> to(base_url(''));
+        }
+        if($data['Picture']['idUser'] != $_SESSION['idUser']){
             return redirect() -> to(base_url(''));
         }
         $data['Confirm'] = $modelConfirm->GetConfirmById($id);

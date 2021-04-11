@@ -73,7 +73,7 @@ label img {
         <div class=" col-lg-9 col-md-9 confirm-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="<?php echo base_url(); ?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px;" enctype="multipart/form-data" id="form1">
+                    <form action="<?php echo base_url(); ?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>" method="post" style="margin-top: 10px; margin-bottom: 10px;" enctype="multipart/form-data" id="form1">
                         <div class="row register-form">
                             <div class="col-md-3">
                                 <h6>Giá tiêu chuẩn</h6>

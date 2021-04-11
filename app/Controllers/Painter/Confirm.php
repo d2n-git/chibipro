@@ -20,6 +20,9 @@ class Confirm extends Controller
 		$idPainter = $_SESSION['idUser'];
 		$modePicture = new InSertPictureModel();
 		$data['Picture'] = $modePicture->GetConfirmPainter($id, $idPainter);
+		if(in_array($data['Picture']['idStatusPicture'],['1','4','7','8','9','10'])){
+			return redirect() -> to(base_url(''));
+		}
 		$data['viewchild'] = './painter/confirm';
 		return view('templates/base_view', $data);
 	}
@@ -28,7 +31,7 @@ class Confirm extends Controller
 		$something = $this->request->getVar();
 		$session = \Config\Services::session();
 		$idUser = $_SESSION['idUser'];
-		if(in_array($something['picStatus'],['4','7','8','9','10'])){
+		if(in_array($something['picStatus'],['1','4','7','8','9','10'])){
 			return redirect() -> to(base_url(''));
 		}
 		$insertConfirm = new ConfirmModel();
