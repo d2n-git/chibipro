@@ -14,7 +14,7 @@ use CodeIgniter\Model;
 
         public function getAllPicture($offset, $idUser = '', $idStatusPicture = ''){
             $db = \Config\Database::connect();
-            $sql="SELECT idPictures, pictures.Name, pictures.idUser, (CASE WHEN idStatusPicture >= 8 THEN chibiFileName ELSE 'loading.png' END) AS chibiFileName, idStatusPicture,
+            $sql="SELECT idPictures, pictures.Name, pictures.idUser, pictures.idPainter, (CASE WHEN idStatusPicture >= 8 THEN chibiFileName ELSE 'loading.png' END) AS chibiFileName, idStatusPicture,
                 pictures.Title, date_format(pictures.DateUp,'%d-%m-%Y') as DateUp, date_format(pictures.DateExpiry,'%d-%m-%Y') as DateExpiry, pictures.NumberLike, pictures.PriceofUser, BackgroundPicture, 
                 users.Name AS userName, users.Email 
                 FROM pictures 

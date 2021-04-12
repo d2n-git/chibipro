@@ -1,167 +1,184 @@
- <section class="feature_part pt-4">
-     <div class="container-fluid p-lg-0 overflow-hidden">
-         <?php foreach ($pictures as $value) { ?>
-             <div class="row align-items-center justify-content-between">
-                 <div class="col-lg-2 col-sm-2">
-                 </div>
-                 <div class="col-lg-8 col-sm-8">
-                     <table class="table">
-                         <tbody>
-                             <tr>
-                                 <td>
-                                     <h2 style="color: #17544c;"><?php echo $value['Title']; ?></h2>
-                                 </td>
-                             </tr>
-                             <tr>
-                                 <td>
-                                     <table class="table">
-                                         <tbody>
-                                             <tr>
-                                                 <td style="width: 10%;">
-                                                     <p class="iconTitle">
-                                                        <img src="<?php echo base_url(); if($value['idStatusPicture'] == '8'){echo '/assets/img/title.png';}else{echo '/assets/img/title_private.jpg';}?>">
-                                                     </p>
-                                                 </td>
-                                                 <td style="width: 90%;">
-                                                     <div>
-                                                         <?php if($show_flg == 'News') :?>
-                                                            <h6>
-                                                                Chủ nhân : <?php echo str_replace("*-*-"," ",$value['userName']); ?>
-                                                                <br>
-                                                                Update : <?php echo $value['DateUp']; ?>
-                                                            </h6>
-                                                        <?php else: ?>
-                                                            <h6>
-                                                                Báo giá vẽ : <?php if($value['price'] == 0){echo 'Đang cập nhật';}else{echo $value['price'];}?>
-                                                                <br>
-                                                                Update : <?php echo $value['DateUp']; ?>
-                                                            </h6>
-                                                        <?php endif; ?>
-                                                     </div>
-                                                 </td>
-                                             </tr>
-                                         </tbody>
-                                     </table>
-                                 </td>
-                             </tr>
-                             <tr>
-                                 <td style="width: 70%;">
-                                     <img src="<?php echo base_url(); ?>/assets/img/<?php if($value['idStatusPicture'] >= 8){echo 'upload/'.$value['idUser'].'/'.$value['chibiFileName'];}else{echo $value['chibiFileName'];} ?>" alt="#">
-                                 </td>
-                                 <td style="width: 30%;">
-                                     <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['Name']; ?>" alt="#">
-                                 </td>
-                             </tr>
-                             <tr>
-                                 <td>
-                                     <table class="table">
-                                         <body>
-                                             <tr>
-                                                <?php if($show_flg == 'News') :?>
-                                                    <td style="width: 20%;">
-                                                        <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                        <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
-                                                    </td>
-                                                    <td style="width: 20%;">
-                                                        <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                        <span class="iconFooterNumber">5</span>
-                                                    </td>
-                                                    <td style="width: 20%;">
-                                                        <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
-                                                    </td>
-                                                <?php endif; ?>
-                                                <?php
-                                                    if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
-                                                        if($show_flg == 'News' || ($show_flg == 'MyChibi' && ($value['idStatusPicture'] == '8' || $value['idStatusPicture'] == '9'))){
-                                                            echo " <td style='width: 20%;'>
-                                                                    <input id='".$value['idPictures']."_setting' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
-                                                                    </td>";
-                                                        }else{
-                                                            echo " <td style='width: 20%;'>
-                                                                    <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
-                                                                    </td>";
-                                                        }
+<style>
+.choosedfilter{display:block;overflow:hidden;background:#fff;margin:-10px 0 10px 0;clear:both}
+.choosedfilter a{display:inline-block;vertical-align:text-bottom;padding:6px;background:#288ad6;font-size:12px;color:#fff;border-radius:4px;margin-right:5px}
+</style>
+
+<section class="feature_part pt-4">
+    <?php if($show_flg == 'News') :?>
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <div class="choosedfilter">
+                    <a href="#" onclick="RemoveFilter(this)">Filter para <i class="ti-close"></i></a>
+                    <a href="#" onclick="RemoveFilter(this)">Filter para <i class="ti-close"></i></a>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</section>
+<section class="feature_part pt-4">
+    <div class="container-fluid p-lg-0 overflow-hidden">
+        <?php foreach ($pictures as $value) { ?>
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-2 col-sm-2">
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 style="color: #17544c;"><?php echo $value['Title']; ?></h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 10%;">
+                                                    <p class="iconTitle">
+                                                    <img src="<?php echo base_url(); if($value['idStatusPicture'] == '8'){echo '/assets/img/title.png';}else{echo '/assets/img/title_private.jpg';}?>">
+                                                    </p>
+                                                </td>
+                                                <td style="width: 90%;">
+                                                    <div>
+                                                        <?php if($show_flg == 'News') :?>
+                                                        <h6>
+                                                            Chủ nhân : <?php echo str_replace("*-*-"," ",$value['userName']); ?>
+                                                            <br>
+                                                            Update : <?php echo $value['DateUp']; ?>
+                                                        </h6>
+                                                    <?php else: ?>
+                                                        <h6>
+                                                            Báo giá vẽ : <?php if($value['price'] == 0){echo 'Đang cập nhật';}else{echo floatval($value['price']);}?>
+                                                            <br>
+                                                            Update : <?php echo $value['DateUp']; ?>
+                                                        </h6>
+                                                    <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 70%;">
+                                    <img src="<?php echo base_url(); ?>/assets/img/<?php if($value['idStatusPicture'] >= 8){echo 'upload/'.$value['idUser'].'/'.$value['chibiFileName'];}else{echo $value['chibiFileName'];} ?>" alt="#">
+                                </td>
+                                <td style="width: 30%;">
+                                    <img src="<?php echo base_url(); ?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['Name']; ?>" alt="#">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table class="table">
+                                        <body>
+                                            <tr>
+                                            <?php if($show_flg == 'News') :?>
+                                                <td style="width: 20%;">
+                                                    <input id="<?php echo $value['idPictures'] ?>_like" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/like.png" title="Thích" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
+                                                    <span class="iconFooterNumber" id="<?php echo $value['idPictures'] ?>_Numberlike"><?php echo $value['NumberLike'] ?></span>
+                                                </td>
+                                                <td style="width: 20%;">
+                                                    <input id="<?php echo $value['idPictures'] ?>_comment" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/comment.png" title="Comment" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
+                                                    <span class="iconFooterNumber">5</span>
+                                                </td>
+                                                <td style="width: 20%;">
+                                                    <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
+                                                </td>
+                                            <?php endif; ?>
+                                            <?php
+                                                if(isset($_SESSION['email']) && ($_SESSION['email'] == $value['Email'])){
+                                                    if($show_flg == 'News' || ($show_flg == 'MyChibi' && ($value['idStatusPicture'] == '8' || $value['idStatusPicture'] == '9'))){
+                                                        echo " <td style='width: 20%;'>
+                                                                <input id='".$value['idPictures']."_setting' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/setting.png' title='Setting' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
+                                                                </td>";
+                                                    }else{
+                                                        echo " <td style='width: 20%;'>
+                                                                <input id='".$value['idPictures']."_edit' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/edit.png' title='Chỉnh sửa' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
+                                                                </td>";
                                                     }
-                                                ?>
-                                             </tr>
-                                         </body>
-                                     </table>
-                                 </td>
-                             </tr>
-                         </tbody>
-                     </table>
-                 </div>
-                 <div class="col-lg-2 col-sm-2">
-                 </div>
-             </div>
-         <?php } ?>
-     </div>
- </section>
- <script>
-    function onclickMe($data) {
-        var id = $data.split('_');
-        var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
-        switch (id[1]) {
-            case 'like':
-                if (log_in == 1) {
-                    $.ajax({
-                        url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
-                        type: "POST",
-                        data: id[0],
-                        contentType: false,
-                        processData: false,
-                        success: function(data) {
-                            let response = JSON.parse(data);
-                            if (response.message == 'success') {
-                                document.getElementById(response.response.idPictures + '_Numberlike').innerText = response.response.NumberLike;
-                            }
-                        }
-                    });
-                } else {
-                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                }
-                break;
-            case 'comment':
-                // code block
-                break;
-            case 'return':
-                // code block
-                break;
-            case 'check':
-                if (log_in == 1) {
-                <?php if($_SESSION['Permission'] == 2) {?>
-                    window.location.href = "<?php echo base_url(); ?>/Painter/Confirm?id=" + id[0] + "";
-                <?php } else {?>
-                window.alert("You aren't a painter");
-                <?php } ?>
-                } else {
-                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                }
-                break;
-            case 'edit':
-                if (log_in == 1) {
-                window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
-                } else {
-                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                }
-                break;
-        case 'setting':
+                                                }
+                                            ?>
+                                            </tr>
+                                        </body>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-2 col-sm-2">
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</section>
+<script>
+function onclickMe($data) {
+    var id = $data.split('_');
+    var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
+    switch (id[1]) {
+        case 'like':
             if (log_in == 1) {
-                    window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "&type=<?php echo $type;?>");
-                } else {
-                    window.location.assign("<?php echo base_url(); ?>/Users/Login")
-                }
+                $.ajax({
+                    url: '<?php echo base_url(); ?>/Upload/UploadFile/LikeImagine',
+                    type: "POST",
+                    data: id[0],
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        let response = JSON.parse(data);
+                        if (response.message == 'success') {
+                            document.getElementById(response.response.idPictures + '_Numberlike').innerText = response.response.NumberLike;
+                        }
+                    }
+                });
+            } else {
+                window.location.assign("<?php echo base_url(); ?>/Users/Login")
+            }
             break;
-            default:
-                // code block
-        }
-    };
-    function iconHover(data) {
-        var iconImg = getImgHover(data);
-        $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+        case 'comment':
+            // code block
+            break;
+        case 'return':
+            // code block
+            break;
+        case 'check':
+            if (log_in == 1) {
+            <?php if($_SESSION['Permission'] == 2) {?>
+                window.location.href = "<?php echo base_url(); ?>/Painter/Confirm?id=" + id[0] + "";
+            <?php } else {?>
+            window.alert("You aren't a painter");
+            <?php } ?>
+            } else {
+                window.location.assign("<?php echo base_url(); ?>/Users/Login")
+            }
+            break;
+        case 'edit':
+            if (log_in == 1) {
+            window.location.assign("<?php echo base_url(); ?>/Upload/UploadFile/detail?id=" + id[0] + "");
+            } else {
+                window.location.assign("<?php echo base_url(); ?>/Users/Login")
+            }
+            break;
+    case 'setting':
+        if (log_in == 1) {
+                window.location.assign("<?php echo base_url(); ?>/News/setting?id=" + id[0] + "&type=<?php echo $type;?>");
+            } else {
+                window.location.assign("<?php echo base_url(); ?>/Users/Login")
+            }
+        break;
+        default:
+            // code block
     }
-    function iconUnhover(data) {
-        var iconImg = getImgUnhover(data);
-        $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
-    }
- </script>
+};
+function iconHover(data) {
+    var iconImg = getImgHover(data);
+    $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+}
+function iconUnhover(data) {
+    var iconImg = getImgUnhover(data);
+    $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+}
+</script>

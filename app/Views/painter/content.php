@@ -21,9 +21,9 @@
                                                  <td style="width: 90%;">
                                                      <div>
                                                          <h6>
-                                                             Giá Yêu cầu : <?php echo $value['PriceofUser']; ?>
+                                                             Giá Yêu cầu : <?php echo floatval($value['PriceofUser']); ?>
                                                              <br>
-                                                             Ngày giao : <?php echo $value['DateExpiry']; ?>
+                                                             Ngày giao : <?php echo floatval($value['DateExpiry']); ?>
                                                          </h6>
                                                      </div>
                                                  </td>
@@ -41,7 +41,7 @@
                                         <?php if ($value['Confirm_info'] !== null && $value['idStatusPicture'] !='4') :?>
                                             <?php for ($i = 0; $i < count($value['Confirm_info']); $i++): ?>
                                                 <h6>
-                                                    Giá Vẽ <?php echo $i + 1;?>: <?php echo $value['Confirm_info'][$i]['idPainter'].'_'.$value['Confirm_info'][$i]['DateExpiry'].'_'.$value['Confirm_info'][$i]['Price'];?>
+                                                    Giá Vẽ <?php echo $i + 1;?>: <?php echo $value['Confirm_info'][$i]['idPainter'].'_'.$value['Confirm_info'][$i]['DateExpiry'].'_'.floatval($value['Confirm_info'][$i]['Price']);?>
                                                     <br>
                                                 </h6>
                                             <?php endfor ?>
@@ -62,9 +62,11 @@
                                                     if(isset($_SESSION['Permission']) && ($_SESSION['Permission'] == '2'))
                                                     {
                                                         if($value['idStatusPicture'] =='4'){
-                                                            echo " <td style='width: 20%;'>
-                                                            <input id='".$value['idPictures']."_upchibi' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/up_chibi.png' title='Up Hình Chibi lên' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
-                                                            </td>";
+                                                            if($value['MyPaint']){
+                                                                echo " <td style='width: 20%;'>
+                                                                <input id='".$value['idPictures']."_upchibi' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/up_chibi.png' title='Up Hình Chibi lên' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>
+                                                                </td>";
+                                                            }
                                                         }else{
                                                             echo " <td style='width: 20%;'>
                                                             <input id='".$value['idPictures']."_check' onclick='onclickMe(this.id)' class='iconFooter' type='image' src='".base_url()."/assets/img/check-in.png' title='Báo giá vẽ' onmouseover='iconHover(this.id)' onmouseout='iconUnhover(this.id)'>

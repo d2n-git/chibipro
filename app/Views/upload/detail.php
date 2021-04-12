@@ -62,7 +62,6 @@ label img {
   box-shadow: 0 0 5px #333;
   z-index: -1;
 } 
-
 </style>
 <div class="container confirm">
     <div class="row">
@@ -94,7 +93,7 @@ label img {
                                 <div class="col-md-9">
                                     <div class="row" style="margin-left: 0px;">
                                         <div class="col-md-4">
-                                            <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Confirm['Price']?>" disabled style="color:red;">
+                                            <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo floatval($Confirm['Price'])?>" disabled style="color:red;">
                                         </div>
                                         <div class="col-md-8">
                                             <input class="btnAccept" type="button" value="ĐỒNG Ý" name="btnAccept" id="btnAccept" onclick="updateStatus('4')" />
@@ -102,6 +101,7 @@ label img {
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="idPainter" id="idPainter" value="<?php echo $Confirm['idPainter']?>">
                             </div>
                         <?php else: ?>
                             <div class="row register-form">
@@ -109,9 +109,11 @@ label img {
                                     <h6>Giá yêu cầu</h6>
                                 </div>
                                 <div class="col-md-9">
+                                <div class="row" style="margin-left: 0px;">
                                     <div class="col-md-4">
-                                        <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value = "<?php echo $Picture['PriceOfUser']?>">
+                                        <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value = "<?php echo floatval($Picture['PriceOfUser'])?>">
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -120,12 +122,14 @@ label img {
                                 <h6>Ngày hoàn thành</h6>
                             </div>
                             <div class="col-md-9">
-                            <div class="col-md-4">
-                                <?php if ($Picture['idStatusPicture']=='3'): ?>
-                                    <input type="date" class="form-control"style="background-color:#e9ecef" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
-                                <?php else: ?>
-                                    <input type="date" class="form-control" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
-                                <?php endif; ?>
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="col-md-4">
+                                    <?php if ($Picture['idStatusPicture']=='3'): ?>
+                                        <input type="date" class="form-control"style="background-color:#e9ecef" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
+                                    <?php else: ?>
+                                        <input type="date" class="form-control" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
+                                    <?php endif; ?>
+                                </div>
                             </div>
                             </div>
                         </div>
@@ -259,6 +263,7 @@ label img {
                             </div>
                         <?php } ?>
                         <input type="hidden" name="itype" id="itype" value="0">
+                        <input type="hidden" name="idPrice" id="idPrice" value="0">
                     </form>
                 </div>
             </div>
@@ -315,9 +320,11 @@ label img {
     }
 
     function updateStatus(status){
-        let itype = '2'
+        let itype = '2';
+        let idPrice = $('#idPrice').val();
+        let idPainter = $('#idPainter').val();
         const data = {
-            status, itype
+            status, itype, idPrice, idPainter
         };
         $.ajax({
                 url: '<?php echo base_url();?>/Upload/UploadFile/updatePictures?id=<?php echo $Picture['idPictures']; ?>',

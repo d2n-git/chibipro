@@ -293,8 +293,10 @@ class UploadFile extends Controller
             $status = $this->request->getPost('status');
             $param['idPictures']=$id;
             $param['idStatusPicture'] = $status;
+            $param['idPrice'] = $this->request->getPost('idPrice');
+            $param['idPainter'] = $this->request->getPost('idPainter');
             $modePicture->UpdatePicture($param);
-            $json = ["message" => "Yêu cầu đã được cập nhật thành công!"];
+            $json = ["message" => "Yêu cầu đã được cập nhật thành công."];
             echo json_encode($json); 
         }
         else{

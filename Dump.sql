@@ -218,3 +218,4 @@ ALTER TABLE `users` ADD COLUMN `Painter_request` varchar(1) CHARACTER SET utf8mb
 ALTER TABLE `pictures` ADD COLUMN `NumberHeart` int(10) UNSIGNED NULL DEFAULT 0 AFTER `NumberLike`;
 ALTER TABLE `pictures` ADD COLUMN `NumberShare` int(10) UNSIGNED NULL DEFAULT 0 AFTER `NumberLike`;
 ALTER TABLE `pictures` ADD COLUMN `idPrice` int(10) UNSIGNED NULL DEFAULT 0 AFTER `PriceofUser`;
+ALTER TABLE `pictures` ADD COLUMN `idPainter` int(10) UNSIGNED NULL DEFAULT 0 AFTER `idPrice`;

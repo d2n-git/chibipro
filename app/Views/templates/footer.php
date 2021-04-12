@@ -3,31 +3,29 @@
             <div class="row justify-content-between">
                 <div class="col-sm-6 col-lg-2">
                     <div class="single_footer_part">
-                        <h4>Category</h4>
+                        <h4>Home</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-2">
                     <div class="single_footer_part">
-                        <h4>Company</h4>
+                        <h4>Entertainment</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="single_footer_part">
-                        <h4>Address</h4>
+                        <h4>Contact</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="single_footer_part">
-                        <h4>Newsletter</h4>
+                        <h4>New</h4>
                         <div id="mc_embed_signup">
                             <form target="_blank"
-                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                action=""
                                 method="get" class="subscribe_form relative mail_part">
-                                <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                    class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = ' Email Address '">
+                                <input type="input" name="isearch" id="isearch">
                                 <button type="submit" name="submit" id="newsletter-submit"
-                                    class="email_icon newsletter-submit button-contactForm">subscribe</button>
+                                    class="email_icon newsletter-submit button-contactForm">Search</button>
                                 <div class="mt-10 info"></div>
                             </form>
                         </div>

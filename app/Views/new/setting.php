@@ -101,8 +101,8 @@ label img {
                         <div class="row register-form">
                             <div class="col-md-3">
                             </div>
-                            <div class="col-md-9" >
-                                <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 10px; width: 140px;" onclick="deleteIamge('0');"/>
+                            <div class="col-md-6" >
+                                <input id="btn_delete" type="button" class="btnDelete" value="Xóa ảnh" name="btnDelete" style="margin-bottom: 10px; margin-right: 20px; width: 140px;" onclick="deleteIamge('0');"/>
                                 <input id="btn_submit" type="submit" class="btnFinish" value="Lưu lại" name="btnSubmit" style="margin-bottom: 10px; width: 140px;"/>
                             </div>
                         </div>

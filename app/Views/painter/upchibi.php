@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <h6><?php echo $Picture['PriceOfUser']; ?></h6>
+                                    <h6><?php echo floatval($Picture['PriceOfUser']); ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <h6><?php echo $Picture['Price']; ?></h6>
+                                    <h6><?php echo floatval($Picture['Price']); ?></h6>
                                 </div>
                             </div>
                         </div>

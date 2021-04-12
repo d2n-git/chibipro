@@ -82,7 +82,7 @@
                                 <h6>Giá tiêu chuẩn</h6>
                             </div>
                             <div class="col-md-3">
-                                <h6><?php echo $Picture['StandarPrice']; ?></h6>
+                                <h6><?php echo floatval($Picture['StandarPrice']); ?></h6>
                             </div>
                             <div class="col-md-6" style="text-align: right;">
                             </div>
@@ -93,7 +93,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <h6><?php echo $Picture['PriceOfUser']; ?></h6>
+                                    <h6><?php echo floatval($Picture['PriceOfUser']); ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <h6><?php echo $Picture['MaxPrice']; ?></h6>
+                                    <h6><?php echo floatval($Picture['MaxPrice']); ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="col-md-4">
-                                    <input size="10" type="number" id="firstName" class="form-control" name="price" placeholder="Price" value="<?php echo $Picture['Price']; ?>" />
+                                    <input size="10" type="number" id="firstName" class="form-control" name="price" placeholder="Price" value="<?php echo floatval($Picture['Price']); ?>" />
                                 </div>
                             </div>
                         </div>
@@ -190,11 +190,11 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#confirmPass').focusout(function() {
-            var valuePassword = document.getElementById("pass").value;
-            var valueConfirmPassword = document.getElementById("confirmPass").value;
-            if (valuePassword !== valueConfirmPassword) {
-                window.alert("The two passwords not match");
+        $('#dateExpiryPainter').focusout(function() {
+            var dateUserRequire = document.getElementById("dateExpiryReq").value;
+            var datePainter = document.getElementById("dateExpiryPainter").value;
+            if (dateUserRequire < datePainter) {
+                window.alert("Nhập ngày hoàn thành chưa đúng");
             }
         });
     });

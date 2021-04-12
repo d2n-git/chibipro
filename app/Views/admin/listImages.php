@@ -194,8 +194,8 @@
                                                 <td><?php echo $data['Title']?></td>
                                                 <td><?php echo $data['DateUp']?></td>
                                                 <td><?php echo $data['NumberLike']?></td>
-                                                <td><?php echo $data['StandarPrice']?></td>
-                                                <td><?php echo $data['PriceOfUser']?></td>
+                                                <td><?php echo floatval($data['StandarPrice'])?></td>
+                                                <td><?php echo floatval($data['PriceOfUser'])?></td>
                                                 <td class="text-center">
                                                 <button class="btn btn-sm btn-outline-info border-0" data-idPictures="<?php echo $data['idPictures']?>" type="button" value="submit" onclick="onclickEdit(this);"
                                                         title="Edit"><i class="fa fa-edit fa-fw"></i>

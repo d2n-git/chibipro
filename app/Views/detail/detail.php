@@ -37,7 +37,7 @@
           </p>
           <div class="card_area">
             <div class="add_to_cart">
-                <a href="#" class="btn_3">BOOK</a>
+                <a href="#" class="btn_3">ADD TO FAVORITE</a>
                 <a href="#" class="like_us" onclick="heartImage(<?php echo $pictures->idPictures?>);"> <i class="ti-heart"></i> </a>
             </div>
             <div class="social_icon">

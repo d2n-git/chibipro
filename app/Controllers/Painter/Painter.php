@@ -28,6 +28,11 @@ class Painter extends Controller
 		foreach ($pictures as $key => $pic) {
 			$data_get = $getConfirm->GetConfirm($pic['idPictures'], $idUser);
 			$pictures[$key]['Confirm_info'] = $data_get;
+			if($pic['idPainter'] == $idUser){
+				$pictures[$key]['MyPaint'] = TRUE;
+			}else{
+				$pictures[$key]['MyPaint'] = FALSE;
+			}
 		}
 
 		$data['page'] = $page + 1;

@@ -112,7 +112,7 @@ label img {
                             </div>
                             <div class="col-md-2">
                                 <div class="col-md-12" style="padding-left: 0px; padding-right: 0px;">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Picture['PriceOfUser'] ?>">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo floatval($Picture['PriceOfUser']) ?>">
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -120,7 +120,7 @@ label img {
                             </div>
                             <div class="col-md-2" style="padding-left: 0px; padding-right: 0px;">
                                 <div class="col-md-12">
-                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo $Picture['PriceOfUser'] ?>">
+                                    <input class="form-control single-input" name="priceofuser" id="priceofuser" type="text" autocomplete="off" maxlength="10" value="<?php echo floatval($Picture['PriceOfUser']) ?>">
                                 </div>
                             </div>
                         </div>

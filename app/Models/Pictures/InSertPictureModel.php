@@ -61,8 +61,8 @@ class InSertPictureModel extends Model
         $db = \Config\Database::connect();
         $sql="SELECT pt.NumberLike, pt.idPictures, pt.Name, pt.chibiFileName, pt.StandarPrice, pt.PriceOfUser, pt.MaxPrice, pt.ExtraDetail, pt.idUser, pt.Title, pt.Note, pt.BackgroundPicture, date_format(pt.DateExpiry,'%Y-%m-%d') as dateExpiryReq, pt.idStatusPicture,
                      date_format(cp.DateExpiry,'%Y-%m-%d') as DateExpiry, cp.Price, cp.Note as Note_Painter
-              FROM pictures pt left join (select * from confirmofpainter where idPainter = ? order by idConfirmOfPainter DESC limit 1) cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
-        $results = $db->query($sql,[$idPainter, $idPictures])->getRowArray();
+              FROM pictures pt left join (select * from confirmofpainter where idPainter = ? and idPicture = ? order by idConfirmOfPainter DESC limit 1) cp ON pt.idPictures = cp.idPicture WHERE idPictures = ? group by pt.idPictures";
+        $results = $db->query($sql,[$idPainter, $idPictures, $idPictures])->getRowArray();
         $db->close();
         return $results; 
     }
