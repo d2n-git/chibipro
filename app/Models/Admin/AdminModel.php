@@ -15,7 +15,7 @@ use CodeIgniter\Model;
         public function getPictureForAdmin($offset, $username, $email){
             $db = \Config\Database::connect();
             $sql="SELECT users.idUser, users.Name as UserName, users.Email, 
-                         pictures.idPictures, pictures.Name as PicturesName, pictures.chibiFileName, pictures.Title, pictures.DateUp, pictures.NumberLike, pictures.idStatusPicture as Status, StandarPrice, PriceOfUser
+                         pictures.idPictures, pictures.Name as PicturesName, pictures.chibiFileName, pictures.Title, pictures.DateUp, pictures.NumberLike, pictures.idStatusPicture as Status, StandarPrice, PriceOfUser, BackgroundPicture
                     FROM pictures 
                     INNER JOIN users 
                     ON pictures.idUser = users.idUser 
@@ -73,11 +73,31 @@ use CodeIgniter\Model;
             $db->close();
             return $results > 0;
         }
-
+        public function updateUserflgAdmin($param){
+            $db = \Config\Database::connect();
+            $sql="UPDATE users SET Userflg = ".$param['Userflg']." WHERE idUser = ". $param['idUser'];
+            $result = $db->query($sql)->connID->affected_rows;
+            $db->close();
+            return $results > 0;
+        }
+        public function updatePermissionAdmin($param){
+            $db = \Config\Database::connect();
+            if($param['para'] == 'Painter'){
+                $sql="UPDATE users SET Permission = '2', Painter_request = Null WHERE idUser = ". $param['idUser'];
+            }elseif($param['para'] == 'User'){
+                $sql="UPDATE users SET Permission = '1' WHERE idUser = ". $param['idUser'];
+            }
+            $result = $db->query($sql)->connID->affected_rows;
+            $db->close();
+            return $results > 0;
+        }
         public function getUsersAdmin($offset, $username, $email)
         {
             $db = \Config\Database::connect();
-            $sql = "SELECT * FROM users WHERE Name like '%$username%' AND Email like '%$email%'";
+            $sql = "SELECT users.*, count_img FROM users 
+                    LEFT JOIN (SELECT idUser, count(*) as count_img FROM pictures GROUP BY idUser) cnt
+                    ON cnt.idUser = users.idUser
+                    WHERE users.Name like '%$username%' AND users.Email like '%$email%'";
             $result = $db->query($sql)->getResultArray();
             $db->close();
             return $result;

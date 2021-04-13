@@ -36,6 +36,9 @@ class News extends Controller
 		$id = $this->request->getGet('id');
 		$modePicture = new InSertPictureModel();
 		$data['Picture'] = $modePicture->GetPictureById($id);
+		if(!in_array($data['Picture']['idStatusPicture'],['8','9'])){
+			return redirect() -> to(base_url());
+		}
 		$data['viewchild'] = '/new/setting';
 		return view('templates/base_view', $data);
 	}

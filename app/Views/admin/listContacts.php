@@ -114,113 +114,113 @@
 </nav>
 <!-- /.navbar -->
  <!--================Addmin layout Area =================-->
-  <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Contact List</h1>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-12">
-                    <form action="<?php echo base_url();?>/Admin/Admin/ListContact" method="POST">
-                        <div class="row">
-                            <div class="form-group col-md-1"></div>
-                            <div class="form-group col-md-3">
-                                <label class="sr-only" for="username">Username</label>
-                                <div class="input-group">
-                                    <div class=""><i class="fa fa-user fa-fw"></i></div>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $username ?>">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label class="sr-only" for="email">Email</label>
-                                <div class="input-group">
-                                    <div class=""><i class="fa fa-envelope fa-fw"></i></div>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email ?>">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <button type="submit" class="btn btn-info pull-right"><i class="fa fa-search fa-fw"></i>Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div id="page-wrapper">
+    <div>
+        <div class="col-lg-12">
+            <h1 class="page-header">Contact List</h1>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="col-lg-12">
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead style="background-color:#07afff;">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>UserID</th>
-                                            <th>Username</th>
-                                            <th>E-mail</th>
-                                            <th>Message</th>
-                                            <th>Problem</th>
-                                            <th>Logtime</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($contacts as $iKey => $data): ?>
-                                            <tr>
-                                                <th scope="row" class="sz-col-50 text-center"><?php echo $iKey?></th>
-                                                <td id="idUser" class="text-info"><?php echo $data['idUser']?></td>
-                                                <td style="max-width:150px; word-wrap:break-word;"><?php echo $data['name']?></td>
-                                                <td style="max-width:150px; word-wrap:break-word;"><?php echo $data['email']?></td>
-                                                <td style="max-width:550px; word-wrap:break-word;"><?php echo $data['message']?></td>
-                                                <td><?php echo $data['problem']?></td>
-                                                <td><?php echo $data['timestamp']?></td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
-                                                            title="Edit"><i class="fa fa-edit fa-fw"></i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                            title="Lock"><i class="fa fa-lock fa-fw"></i>
-                                                    </button>
-                                                    <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                            title="Delete"><i class="fa fa-trash fa-fw"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                            <ul class="pagination pull-right">
-                                <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a>
-                                </li>
-                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a>
-                                </li>
-                                <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a>
-                                </li>
-                            </ul>
+    <div>
+        <div class="col-lg-12">
+            <form action="<?php echo base_url();?>/Admin/Admin/ListContact" method="POST">
+                <div class="row">
+                    <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-3">
+                        <label class="sr-only" for="username">Username</label>
+                        <div class="input-group">
+                            <div class=""><i class="fa fa-user fa-fw"></i></div>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $username ?>">
                         </div>
                     </div>
+                    <div class="form-group col-md-3">
+                        <label class="sr-only" for="email">Email</label>
+                        <div class="input-group">
+                            <div class=""><i class="fa fa-envelope fa-fw"></i></div>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email ?>">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-info pull-right"><i class="fa fa-search fa-fw"></i>Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="col-lg-12">
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead style="background-color:#07afff;">
+                                <tr>
+                                    <th>#</th>
+                                    <th>UserID</th>
+                                    <th>Username</th>
+                                    <th>E-mail</th>
+                                    <th>Message</th>
+                                    <th>Problem</th>
+                                    <th>Logtime</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($contacts as $iKey => $data): ?>
+                                    <tr>
+                                        <th scope="row" class="sz-col-50 text-center"><?php echo ($iKey + 1);?></th>
+                                        <td id="idUser" class="text-info"><?php echo $data['idUser']?></td>
+                                        <td style="max-width:150px; word-wrap:break-word;"><?php echo $data['name']?></td>
+                                        <td style="max-width:150px; word-wrap:break-word;"><?php echo $data['email']?></td>
+                                        <td style="max-width:550px; word-wrap:break-word;"><?php echo $data['message']?></td>
+                                        <td><?php echo $data['problem']?></td>
+                                        <td><?php echo $data['timestamp']?></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
+                                                    title="Edit"><i class="fa fa-edit fa-fw"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                    title="Lock"><i class="fa fa-lock fa-fw"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                    title="Delete"><i class="fa fa-trash fa-fw"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                    <ul class="pagination pull-right">
+                        <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a>
+                        </li>
+                        <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a>
+                        </li>
+                        <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-  <script>
+    </div>
+</div>
+<script>
     function ChangeStatus($_this){
         var $row = $($_this).closest("tr");
         let idUser = $($row).find('#idUser').text();
@@ -251,4 +251,4 @@
             window.location.assign("<?php echo base_url(); ?>/Users/Login")
         }
     };
-  </script>
+</script>

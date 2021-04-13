@@ -42,7 +42,7 @@ class Listusers extends Controller
 		return view('templates/base_view', $data);
 	}
 
-	public function UpdateStatusUserAdmin(){
+	public function UpdateUserflgAdmin(){
 		$session = \Config\Services::session();
 		if(!isset($_SESSION['logged_in']))
 		{
@@ -55,8 +55,27 @@ class Listusers extends Controller
 		$requestDt = $this->request->getPost();
 		if(!empty($requestDt)){
 			$adminModel = new AdminModel();
-			$result = $adminModel->updateSttImgAdmin($requestDt);
-			$json = ["message" => $result ? "Update Status Image Completed." : "error", "status" => $result ? 1 : 0 ];
+			$result = $adminModel->updateUserflgAdmin($requestDt);
+			$json = ["message" => $result ? "Update Userflg Completed." : "error", "status" => $result ? 1 : 0 ];
+			echo json_encode($json);
+		}
+	}
+
+	public function ChangePermissionAdmin(){
+		$session = \Config\Services::session();
+		if(!isset($_SESSION['logged_in']))
+		{
+			return redirect() -> to(base_url('/Users/Login'));
+		}
+		else if (!$_SESSION['logged_in']) return redirect() -> to(base_url('/Users/Login'));
+		if(isset($_SESSION['Permission']) && $_SESSION['Permission'] != '0'){
+			return redirect() -> to(base_url('/Users/Login'));
+		}
+		$requestDt = $this->request->getPost();
+		if(!empty($requestDt)){
+			$adminModel = new AdminModel();
+			$result = $adminModel->updatePermissionAdmin($requestDt);
+			$json = ["message" => $result ? "Update Permission Completed." : "error", "status" => $result ? 1 : 0 ];
 			echo json_encode($json);
 		}
 	}

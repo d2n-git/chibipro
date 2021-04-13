@@ -114,134 +114,167 @@
 </nav>
 <!-- /.navbar -->
  <!--================Addmin layout Area =================-->
-  <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">User List</h1>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-12">
-                    <form action="<?php echo base_url();?>/Admin/Listusers" method="POST">
-                        <div class="row">
-                            <div class="form-group col-md-1"></div>
-                            <div class="form-group col-md-3">
-                                <label class="sr-only" for="username">Username</label>
-                                <div class="input-group">
-                                    <div class=""><i class="fa fa-user fa-fw"></i></div>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $username ?>">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label class="sr-only" for="email">Email</label>
-                                <div class="input-group">
-                                    <div class=""><i class="fa fa-envelope fa-fw"></i></div>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email ?>">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <button type="submit" class="btn btn-info pull-right"><i class="fa fa-search fa-fw"></i>Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div id="page-wrapper">
+    <div>
+        <div class="col-lg-12">
+            <h1 class="page-header">User List</h1>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="col-lg-12">
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead style="background-color:#ffc107;">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>UserID</th>
-                                            <th>Username</th>
-                                            <th>E-mail</th>
-                                            <th>Password Change</th>
-                                            <th>Type</th>
-                                            <th>Phone</th>
-                                            <th>Address</th>
-                                            <th>Status</th>
-                                            <th>Rank</th>
-                                            <th>Total images</th>
-                                            <th>Amount</th>
-                                            <th>Logtime</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($allusers as $iKey => $data): ?>
-                                            <tr>
-                                                <th scope="row" class="sz-col-50 text-center"><?php echo $iKey?></th>
-                                                <td id="idUser" class="text-info"><?php echo $data['idUser']?></td>
-                                                <td><?php echo $data['Name']?></td>
-                                                <td><?php echo $data['Email']?></td>
-                                                <td><?php echo $data['DatePasschange']?></td>
-                                                <td><?php echo $data['Permission']?></td>
-                                                <td><?php echo $data['Phone']?></td>
-                                                <td><?php echo $data['Address']?></td>
-                                                <td><?php echo $data['Userflg']?></td>
-                                                <td>Gold</td>
-                                                <td>10</td>
-                                                <td>10.000</td>
-                                                <td><?php echo $data['Logtime']?></td>
-                                                <td class="text-center">
-                                                <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
-                                                        title="Edit"><i class="fa fa-edit fa-fw"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-warning border-0" data-status="2" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                        title="Lock"><i class="fa fa-lock fa-fw"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-outline-danger border-0" data-status="1" type="button" value="submit" onclick="ChangeStatus(this);"
-                                                        title="Delete"><i class="fa fa-trash fa-fw"></i>
-                                                </button>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                            <ul class="pagination pull-right">
-                                <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a>
-                                </li>
-                                <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a>
-                                </li>
-                                <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a>
-                                </li>
-                            </ul>
+    <div>
+        <div class="col-lg-12">
+            <form action="<?php echo base_url();?>/Admin/Listusers" method="POST">
+                <div class="row">
+                    <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-3">
+                        <label class="sr-only" for="username">Username</label>
+                        <div class="input-group">
+                            <div class=""><i class="fa fa-user fa-fw"></i></div>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo $username ?>">
                         </div>
                     </div>
+                    <div class="form-group col-md-3">
+                        <label class="sr-only" for="email">Email</label>
+                        <div class="input-group">
+                            <div class=""><i class="fa fa-envelope fa-fw"></i></div>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $email ?>">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-info pull-right"><i class="fa fa-search fa-fw"></i>Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="col-lg-12">
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead style="background-color:#ffc107;">
+                                <tr>
+                                    <th>#</th>
+                                    <th>UserID</th>
+                                    <th>Username</th>
+                                    <th>E-mail</th>
+                                    <th>Password Change</th>
+                                    <th>Type</th>
+                                    <th>Painter Req</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Userflg</th>
+                                    <th>Rank</th>
+                                    <th>Total Imgs</th>
+                                    <th>Amount</th>
+                                    <th>Logtime</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($allusers as $iKey => $data): ?>
+                                    <tr>
+                                        <th scope="row" class="sz-col-50 text-center"><?php echo ($iKey + 1);?></th>
+                                        <td id="idUser" class="text-info text-center"><?php echo $data['idUser']?></td>
+                                        <td><?php echo $data['Name']?></td>
+                                        <td><?php echo $data['Email']?></td>
+                                        <td><?php echo $data['DatePasschange']?></td>
+                                        <td><?php if($data['Permission'] == 0){echo 'Admin';}elseif($data['Permission'] == 2){echo 'Painter';}$data['Permission']?></td>
+                                        <td class="text-center"><?php echo $data['Painter_request']?></td>
+                                        <td><?php echo $data['Phone']?></td>
+                                        <td><?php echo $data['Address']?></td>
+                                        <td class="text-center"><?php echo $data['Userflg']?></td>
+                                        <td>Gold</td>
+                                        <td class="text-right" style="padding-right:5px;"><?php echo $data['count_img']?></td>
+                                        <td>10.000</td>
+                                        <td><?php echo $data['Logtime']?></td>
+                                        <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-info border-0" data-idUser="<?php echo $data['idUser']?>" type="button" value="submit" onclick="onclickEdit(this);"
+                                                title="Edit"><i class="fa fa-edit fa-fw"></i>
+                                        </button>
+                                        <?php if ($data['Painter_request']=='1') { ?>
+                                            <button class="btn btn-sm btn-outline-warning border-0" data-para="Painter" type="button" value="submit" onclick="ChangePermission(this);"
+                                                    title="Set to Painter"><i class="fa fa-unlock fa-fw"></i>
+                                            </button>
+                                        <?php }else if($data['Permission']=='2') { ?>
+                                            <button class="btn btn-sm btn-outline-primary border-0" data-para="User" type="button" value="submit" onclick="ChangePermission(this);"
+                                                title="Set to User"><i class="fa fa-unlock fa-fw"></i>
+                                            </button>
+                                        <?php }else { ?>
+                                            <button class="btn btn-sm btn-outline-secondary border-0" data-para="User" type="button" value="submit" onclick="ChangePermission(this);"
+                                                title="" disabled><i class="fa fa-lock fa-fw"></i>
+                                            </button>
+                                        <?php } ?>
+                                        <button class="btn btn-sm btn-outline-danger border-0" data-para="1" type="button" value="submit" onclick="ChangeStatus(this);"
+                                                title="Delete"><i class="fa fa-trash fa-fw"></i>
+                                        </button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                    <ul class="pagination pull-right">
+                        <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous"><a href="#">Previous</a>
+                        </li>
+                        <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0"><a href="#">1</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">2</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">3</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">4</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">5</a>
+                        </li>
+                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0"><a href="#">6</a>
+                        </li>
+                        <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next"><a href="#">Next</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-  <script>
+    </div>
+</div>
+<script>
     function ChangeStatus($_this){
         var $row = $($_this).closest("tr");
         let idUser = $($row).find('#idUser').text();
-        let Status = $($_this).attr('data-status');
+        let Userflg = $($_this).attr('data-para');
         const data = {
-            idUser, Status
+            idUser, Userflg
         };
         $.ajax({
-                url: '<?php echo base_url();?>/Admin/listUsers/UpdateStatusUserAdmin',
+                url: '<?php echo base_url();?>/Admin/ListUsers/UpdateUserflgAdmin',
+                type : "post",
+                dataType:'json',
+                data : data,
+                success : function(data) {
+                    alert(data.message);
+                    location.reload();
+                },
+                error : function(data) {
+                    // do something
+                }
+            });
+    }
+    function ChangePermission($_this){
+        var $row = $($_this).closest("tr");
+        let idUser = $($row).find('#idUser').text();
+        let para = $($_this).attr('data-para');
+        const data = {
+            idUser, para
+        };
+        $.ajax({
+                url: '<?php echo base_url();?>/Admin/ListUsers/ChangePermissionAdmin',
                 type : "post",
                 dataType:'json',
                 data : data,
@@ -258,9 +291,9 @@
         let idUser = $($_this).attr('data-idUser');
         var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
         if (log_in == 1) {
-            window.location.assign("<?php echo base_url(); ?>/Admin/listUsers/detailAdmin?id=" + idUser + "");
+            window.location.assign("<?php echo base_url(); ?>/Admin/ListUsers/detailAdmin?id=" + idUser + "");
         } else {
             window.location.assign("<?php echo base_url(); ?>/Users/Login")
         }
     };
-  </script>
+</script>
