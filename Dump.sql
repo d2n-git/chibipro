@@ -221,4 +221,4 @@ ALTER TABLE `pictures` ADD COLUMN `idPrice` int(10) UNSIGNED NULL DEFAULT 0 AFTE
 ALTER TABLE `pictures` ADD COLUMN `idPainter` int(10) UNSIGNED NULL DEFAULT 0 AFTER `idPrice`;
 
 -- 13/04/2021 Add Avata field
-ALTER TABLE `users` ADD COLUMN `Avata` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Email`;
+ALTER TABLE `users` ADD COLUMN `Avatar` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `Email`;
