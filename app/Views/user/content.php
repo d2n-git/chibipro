@@ -1,6 +1,51 @@
 <style>
-.choosedfilter{display:block;overflow:hidden;background:#fff;margin:-10px 0 10px 0;clear:both}
-.choosedfilter a{display:inline-block;vertical-align:text-bottom;padding:6px;background:#288ad6;font-size:12px;color:#fff;border-radius:4px;margin-right:5px}
+.choosedfilter {
+    display:block;
+    overflow:hidden;
+    background:#fff;
+    margin:-10px 0 10px 0;
+    clear:both
+}
+.choosedfilter a{
+    display:inline-block;
+    vertical-align:text-bottom;
+    padding:6px;
+    background:#288ad6;
+    font-size:12px;
+    color:#fff;
+    border-radius:4px;
+    margin-right:5px
+}
+.bdge {
+    height: 21px;
+    background-color: orange;
+    color: #fff;
+    font-size: 11px;
+    padding: 8px;
+    border-radius: 4px;
+    line-height: 3px
+}
+
+.comments {
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer
+}
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-top: 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block
+}
+.hit-voting:hover {
+    color: blue
+}
+.hit-voting {
+    cursor: pointer
+}
+
 </style>
 
 <section class="feature_part pt-4">
@@ -114,6 +159,62 @@
         <?php } ?>
     </div>
 </section>
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="d-flex justify-content-center row">
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row align-items-center text-left comment-top border-bottom px-4" style="background-color: #f1f1f1;">
+                        <div class="profile-image"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/<?php if($value['idStatusPicture'] >= 8){echo 'upload/'.$value['idUser'].'/'.$value['chibiFileName'];}else{echo $value['chibiFileName'];} ?>" width="70"></div>
+                        <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"><i class="fa fa-sort-up fa-2x hit-voting"></i><span>127</span><i class="fa fa-sort-down fa-2x hit-voting"></i></div>
+                        <div class="d-flex flex-column ml-3">
+                            <div class="d-flex flex-row post-title">
+                                <h5><?php echo $value['Title']; ?></h5>
+                            </div>
+                            <div class="d-flex flex-row align-items-center align-content-center post-title"><span class="bdge mr-1">Cbp</span><span class="mr-2 comments">13 comments&nbsp;</span><span class="mr-2 dot"></span><span>6 hours ago</span></div>
+                        </div>
+                    </div>
+                    <div class="coment-bottom bg-white px-4">
+                        <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="<?php echo base_url(); ?>/assets/img/user_avatar/00/avatar.png?>" width="38"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div>
+                        <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">Corey oates</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">4 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span><span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">Samoya Johns</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">5 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</span></div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">15</span><span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">Makhaya andrew</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">10 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm"><span>Nunc sed id semper risus in hendrerit gravida rutrum. Non odio euismod lacinia at quis risus sed. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Enim facilisis gravida neque convallis a. In mollis nunc sed id. Adipiscing elit pellentesque habitant morbi tristique senectus et netus. Ultrices mi tempus imperdiet nulla malesuada pellentesque.</span></div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">25</span><span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 function onclickMe($data) {
     var id = $data.split('_');
@@ -139,7 +240,11 @@ function onclickMe($data) {
             }
             break;
         case 'comment':
-            // code block
+            if (log_in == 1) {
+                $('#commentModal').modal('show');
+            } else {
+                window.location.assign("<?php echo base_url(); ?>/Users/Login")
+            }
             break;
         case 'return':
             // code block

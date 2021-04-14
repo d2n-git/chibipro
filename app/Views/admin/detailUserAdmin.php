@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-3">
             <h4>Ảnh đại diện</h4>
-            <img src="<?php echo base_url(); ?>/assets/img/user_avata/<?php echo $user['idUser'].'/'.$user['Avata']; ?>" />
+            <img src="<?php echo base_url(); ?>/assets/img/user_avatar/<?php echo $user['idUser'].'/'.$user['Avata']; ?>" />
         </div>
         <div class="col-lg-9 col-md-9 register-right">
             <div class="tab-content" id="myTabContent">

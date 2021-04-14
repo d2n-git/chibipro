@@ -146,7 +146,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <span id="message-error"></span>
+        <span id="message-error"></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
