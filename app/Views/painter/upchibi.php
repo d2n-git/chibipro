@@ -49,7 +49,7 @@
         <div class=" col-lg-9 col-md-9 confirm-right">
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form id="form1" action="<?php echo base_url(); ?>/Painter/Painter/uploadChibi" method="post" enctype="multipart/form-data" onsubmit="submitUpload(this);" style="margin-top:10px;">
+                    <form id="form1" action="" method="post" enctype="multipart/form-data" onsubmit="return submitUpload(this);" style="margin-top:10px;">
                         <div class="row register-form">
                             <div class="col-md-3">
                                 <h6>Giá User yêu cầu</h6>
@@ -244,6 +244,8 @@
                     $('#form1').trigger("reset");
                     $('#areaupload').attr('hidden',true);
                     window.location.href = '<?php echo base_url();?>' + '/Painter/Painter';
+                }else{
+
                 }
             }
         });
