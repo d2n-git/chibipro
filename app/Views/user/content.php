@@ -47,6 +47,11 @@
 }
 
 </style>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+
+
+<!-- Your share button code -->
 
 <section class="feature_part pt-4">
     <?php if($show_flg == 'News') :?>
@@ -129,6 +134,7 @@
                                                     <span class="iconFooterNumber">5</span>
                                                 </td>
                                                 <td style="width: 20%;">
+                                                    <!-- <div class="fb-share-button" data-href="http://chibipro.top/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fchibipro.top%2F&amp&&description=Chibiprocc;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div> -->
                                                     <input id="<?php echo $value['idPictures'] ?>_return" onclick="onclickMe(this.id)" class="iconFooter" type="image" src="<?php echo base_url(); ?>/assets/img/return.png" title="Chia sẽ" onmouseover="iconHover(this.id)" onmouseout="iconUnhover(this.id)">
                                                 </td>
                                             <?php endif; ?>
@@ -248,6 +254,21 @@ function onclickMe($data) {
             break;
         case 'return':
             // code block
+            // FB.ui(
+            // {
+            //     method: 'share',
+            //     href: 'http://chibipro.top/',
+            // },
+            // // callback
+            // function(response) {
+            //     if (response && !response.error_message) {
+            //     alert('Posting completed.');
+            //     } else {
+            //     alert('Error while posting.');
+            //     }
+            // }
+            // );
+            window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fchibipro.top%2F&amp&&description=Chibiprocc;src=sdkpreparse','facebook-share-dialog',"width=626, height=436")
             break;
         case 'check':
             if (log_in == 1) {
