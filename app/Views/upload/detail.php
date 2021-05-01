@@ -124,7 +124,7 @@ label img {
                             <div class="col-md-9">
                             <div class="row" style="margin-left: 0px;">
                                 <div class="col-md-4">
-                                    <?php if ($Picture['idStatusPicture']=='3'): ?>
+                                    <?php if (isset($Confirm) && $Picture['idStatusPicture']=='3'): ?>
                                         <input type="date" class="form-control"style="background-color:#e9ecef" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ??  date("Y-m-d")); ?>" readonly>
                                     <?php else: ?>
                                         <input type="date" class="form-control" id="start" name="dateExpiry" value="<?php echo ($Picture['DateExpiry'] ?? date("d/m/Y")); ?>" min="<?php echo date("d/m/Y"); ?>" max="2030-12-31">
@@ -134,7 +134,7 @@ label img {
                             </div>
                         </div>
 
-                        <?php if ($Picture['idStatusPicture']=='3'): ?>
+                        <?php if (isset($Confirm) && $Picture['idStatusPicture']=='3'): ?>
                             <div class="row register-form">
                                 <div class="col-md-3">
                                     <h6 style="padding-top: 10px;">Hình nền</h6>
@@ -234,7 +234,7 @@ label img {
                                 </div>
                             </div>
                         <?php endif; ?>
-                        <?php if ($Picture['idStatusPicture']=='3') { ?>
+                        <?php if (isset($Confirm) && $Picture['idStatusPicture']=='3') { ?>
                             <div class="row register-form margin-10px" id="txtStatus">
                                 <div class="col-md-3">
                                     <h6>Trạng thái</h6>
@@ -243,13 +243,22 @@ label img {
                                     <div class="badge-success d-inline-block px-4 rounded-sm text-white"> Hình của bạn đã được Painter báo giá vẽ. </br>Nếu đồng ý hãy bấm nút ĐỒNG Ý để được vẽ hình Chibi</div>
                                 </div>
                             </div>
-                        <?php }else if(in_array($Picture['idStatusPicture'],['4','7'])) { ?>
+                        <?php }else if(in_array($Picture['idStatusPicture'],['4'])) { ?>
                             <div class="row register-form margin-10px" id="txtStatus">
                                 <div class="col-md-3">
                                     <h6>Trạng thái</h6>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="badge-info d-inline-block px-4 rounded-sm text-white"> Hình của bạn đang được vẽ Chibi.</div>
+                                </div>
+                            </div>
+                        <?php }else if(in_array($Picture['idStatusPicture'],['7'])) { ?>
+                            <div class="row register-form margin-10px" id="txtStatus">
+                                <div class="col-md-3">
+                                    <h6>Trạng thái</h6>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="badge-info d-inline-block px-4 rounded-sm text-white"> Hình của bạn đã được vẽ xong. </br> Đang được upload lên</div>
                                 </div>
                             </div>
                         <?php }else { ?>

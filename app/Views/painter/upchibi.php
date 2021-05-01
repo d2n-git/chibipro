@@ -240,6 +240,7 @@
                 $('.load').fadeOut('fast');
                 $('#message-error').html(response.message);
                 $('#messageModal').modal('show');
+                $("#itype").val('');
                 if(response.status == 1){
                     $('#form1').trigger("reset");
                     $('#areaupload').attr('hidden',true);

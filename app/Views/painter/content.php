@@ -23,7 +23,7 @@
                                                          <h6>
                                                              Giá Yêu cầu : <?php echo floatval($value['PriceofUser']); ?>
                                                              <br>
-                                                             Ngày giao : <?php echo floatval($value['DateExpiry']); ?>
+                                                             Ngày giao : <?php echo $value['DateExpiry'] ?>
                                                          </h6>
                                                      </div>
                                                  </td>

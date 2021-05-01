@@ -82,33 +82,35 @@ class Painter extends Controller
 		// exit;
 
 		//check file upload
-		if($_FILES["images"]["tmp_name"]=="" && $uploadOk == 1 && $something['itype'] == "end"){
+		if($_FILES["images"]["tmp_name"]=="" && $uploadOk == 1 && $something['itype'] == "end" && $something['oldChibiName'] == ''){
 			$MesError = "Bạn chưa chọn ảnh để Upload.";
 			$uploadOk = 0;
 		}
 
-		// Check if image file is a actual image or fake image
-		if (isset($_POST["submit"]) && $uploadOk == 1 && $_FILES["images"]["tmp_name"]!="") {
-			$check = getimagesize($_FILES["images"]["tmp_name"]);
-			if ($check === false) {
-				$MesError = "File is not an image.";
+		if($_FILES["images"]["tmp_name"] !=""){
+			// Check if image file is a actual image or fake image
+			if (isset($_POST["submit"]) && $uploadOk == 1) {
+				$check = getimagesize($_FILES["images"]["tmp_name"]);
+				if ($check === false) {
+					$MesError = "File is not an image.";
+					$uploadOk = 0;
+				}
+			}
+			// Check if file already exists
+			if (file_exists($chibiFileName) && $uploadOk == 1) {
+				$MesError = $MesError . "File already exists.";
 				$uploadOk = 0;
 			}
-		}
-		// Check if file already exists
-		if (file_exists($chibiFileName) && $uploadOk == 1 && $_FILES["images"]["tmp_name"]!="") {
-			$MesError = $MesError . "File already exists.";
-			$uploadOk = 0;
-		}
-		// Check file size
-		if ($_FILES["images"]["size"] > 5000000 && $uploadOk == 1 && $_FILES["images"]["tmp_name"]!="") {
-			$MesError = $MesError . "File Upload có dung lượng vượt quá 5Mb.";
-			$uploadOk = 0;
-		}
-		// Allow certain file formats
-		if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $uploadOk == 1 && $_FILES["images"]["tmp_name"]!="") {
-			$MesError = $MesError . "Only JPG, JPEG, PNG & GIF files are allowed.";
-			$uploadOk = 0;
+			// Check file size
+			if ($_FILES["images"]["size"] > 5000000 && $uploadOk == 1) {
+				$MesError = $MesError . "File Upload có dung lượng vượt quá 5Mb.";
+				$uploadOk = 0;
+			}
+			// Allow certain file formats
+			if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" && $uploadOk == 1) {
+				$MesError = $MesError . "Only JPG, JPEG, PNG & GIF files are allowed.";
+				$uploadOk = 0;
+			}
 		}
 		// Check if $uploadOk is set to 0 by an error
 		if ($uploadOk == 1) {

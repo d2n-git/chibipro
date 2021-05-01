@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `likes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `likes` (
-  `idlikes` int(11) NOT NULL,
+  `idlikes` int(11) NOT NULL AUTO_INCREMENT,
   `idPicture` varchar(45) DEFAULT NULL,
   `idUser` varchar(45) DEFAULT NULL,
   `Likesflg` varchar(1) DEFAULT NULL,
