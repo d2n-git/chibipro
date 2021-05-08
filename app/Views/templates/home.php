@@ -140,7 +140,21 @@
         </div>
         <Form id="form1" action="<?php echo base_url();?>/Upload/UploadFile/UpImagine" method="POST" enctype="multipart/form-data" onsubmit="submitUpload(this);">
             <div class="mt-10 col-12 col-md-6">
-                <div class="input-images"></div>
+                <!-- <div class="input-images"></div> -->
+                <div class="images_edit">
+                    <div class="device_img_container_edit" hidden>
+                        <div class="overlay_del_img" >
+                            <i class="far fa-trash-alt del_img icon-delete" onclick="deleteIamge();"  aria-hidden="true"></i>
+                        </div>
+                        <img id="img-upload" src="" class="main_image1" style="width: 100%; height: 100%;"/>
+                    </div>
+                    <div class="device_img_container_add">
+                        <a class="icon">
+                            <i class="fa fa-plus add_img" style="color: rgb(165, 165, 165);" onclick="changeImage()"></i>
+                        </a>
+                    </div>
+                </div>
+                <input id="upload-image" class="choose_image hidden"  hidden type="file" onchange="img_pathUrl(event)" accept="image/x-png,image/gif,image/jpeg" name="images">
             </div>
             <div class=" col-12 col-md-6" style="margin-top: 10px;" hidden id="areaupload">
                     <img id="blah" />
@@ -283,5 +297,24 @@
             }
         });
         return false;
+    }
+
+    function changeImage(){
+        $(`#upload-image`).trigger("click");
+    }
+
+    function deleteIamge(){
+        $('#img-upload').attr("src","");
+        $('.device_img_container_add').removeAttr('hidden');
+        $('.device_img_container_edit').attr("hidden",true);
+        $('#upload-image').val("");
+    }
+
+    function img_pathUrl(input) {
+        input = input.target
+        let url = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
+        $('#img-upload').attr("src",url);
+        $('.device_img_container_add').attr("hidden",true);
+        $('.device_img_container_edit').removeAttr('hidden');
     }
 </script>
