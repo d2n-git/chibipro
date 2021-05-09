@@ -4,6 +4,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\PictureModel;
 use App\Libraries\alert;
+use App\Models\CommentModel;
 use App\Models\Pictures\InSertPictureModel;
 
 class News extends Controller
@@ -73,6 +74,41 @@ class News extends Controller
 		}
 		return redirect() -> to(base_url('/News'));
 	}
+
+	public function getCommemt(){
+		$id = $this->request->getGet('id');
+		$modePicture = new InSertPictureModel();
+		$modelComment = new CommentModel();
+		$resultComment = $modelComment->getCommemtByIdPicture($id);
+		$resultPicture = $modePicture->GetPictureById($id);
+		$response = [
+			"comments"=>$resultComment,
+			"total"=> count($resultComment),
+			"picture" => $resultPicture
+		];
+		echo json_encode($response);
+	}
+
+	public function postCommemt(){
+		$session = \Config\Services::session();
+		$idPicture = $this->request->getPost('idPicture');
+		$text = $this->request->getPost('text');
+		$param = [
+			'idPicture' => $idPicture,
+			'idUser' =>  $_SESSION['idUser'],
+			'comment' => $text,
+		];
+		$modelComment = new CommentModel();
+		$resultComment = $modelComment->insertComment($param);
+		if($resultComment > 0){
+			$res = $modelComment->getCommemtById($resultComment);
+			$json = ["status" => 200,"message" => "OK", "comment" => $res];
+		}else{
+			$json = ["status" => 999,"message" => "Fail"];
+		}
+		echo json_encode($json);
+	}
+
 
 
 }

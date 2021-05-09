@@ -165,54 +165,29 @@
         <?php } ?>
     </div>
 </section>
-<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="z-index: 9999;">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="d-flex justify-content-center row">
                 <div class="d-flex flex-column">
                     <div class="d-flex flex-row align-items-center text-left comment-top border-bottom px-4" style="background-color: #f1f1f1;">
-                        <div class="profile-image"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/<?php if($value['idStatusPicture'] >= 8){echo 'upload/'.$value['idUser'].'/'.$value['chibiFileName'];}else{echo $value['chibiFileName'];} ?>" width="70"></div>
-                        <div class="d-flex flex-column-reverse flex-grow-0 align-items-center votings ml-1"><i class="fa fa-sort-up fa-2x hit-voting"></i><span>127</span><i class="fa fa-sort-down fa-2x hit-voting"></i></div>
+                        <div class="profile-image"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/<?php if($value['idStatusPicture'] >= 8){echo 'upload/'.$value['idUser'].'/'.$value['chibiFileName'];}else{echo $value['chibiFileName'];} ?>" width="70" id="image_comment" onerror="this.src='<?php echo base_url(); ?>/assets/img/noimage.png'"></div>
                         <div class="d-flex flex-column ml-3">
                             <div class="d-flex flex-row post-title">
-                                <h5><?php echo $value['Title']; ?></h5>
+                                <h5 id="title_comment">Title</h5>
                             </div>
-                            <div class="d-flex flex-row align-items-center align-content-center post-title"><span class="bdge mr-1">Cbp</span><span class="mr-2 comments">13 comments&nbsp;</span><span class="mr-2 dot"></span><span>6 hours ago</span></div>
+                            <div class="d-flex flex-row align-items-center align-content-center post-title"><span class="bdge mr-1">Cbp</span><span class="mr-2 comments" id="total_comment">13 comments&nbsp;</span></div>
                         </div>
                     </div>
                     <div class="coment-bottom bg-white px-4">
-                        <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="<?php echo base_url(); ?>/assets/img/user_avatar/00/avatar.png?>" width="38"><input type="text" class="form-control mr-3" placeholder="Add comment"><button class="btn btn-primary" type="button">Comment</button></div>
-                        <div class="commented-section mt-2">
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">4 hours ago</span>
-                            </div>
-                            <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span><span class="dot ml-2"></span>
-                                    <h6 class="ml-2 mt-1">Reply</h6>
+                        <input type="hidden" id="idPicture">
+                        <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="<?php echo base_url(); ?>/assets/img/user_avatar/00/avatar.png?>" width="38"><input type="text" class="form-control mr-3" placeholder="Add comment" id="comment_text"><button class="btn btn-primary" type="button" onclick="comment()" >Comment</button></div>
+                        <div id="content-comment" style="max-height: 500px !important; overflow-y: auto;">
+                            <div class="commented-section mt-2" style="min-width: 800px !important;">
+                                <div class="d-flex flex-row align-items-center commented-user">
+                                    <h5 class="mr-2">Corey oates</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">4 hours ago</span>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="commented-section mt-2">
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Samoya Johns</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">5 hours ago</span>
-                            </div>
-                            <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">15</span><span class="dot ml-2"></span>
-                                    <h6 class="ml-2 mt-1">Reply</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="commented-section mt-2">
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Makhaya andrew</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">10 hours ago</span>
-                            </div>
-                            <div class="comment-text-sm"><span>Nunc sed id semper risus in hendrerit gravida rutrum. Non odio euismod lacinia at quis risus sed. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Enim facilisis gravida neque convallis a. In mollis nunc sed id. Adipiscing elit pellentesque habitant morbi tristique senectus et netus. Ultrices mi tempus imperdiet nulla malesuada pellentesque.</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">25</span><span class="dot ml-2"></span>
-                                    <h6 class="ml-2 mt-1">Reply</h6>
-                                </div>
+                                <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
                             </div>
                         </div>
                     </div>
@@ -221,7 +196,32 @@
         </div>
     </div>
 </div>
+<div class="load" >
+    <img src="<?php echo base_url(); ?>/assets/img/loading.gif">
+</div>
+
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #f1f1f1;">
+        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <span id="message-error"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
+$(document).ready(() => {
+    $('.load').delay(1000).fadeOut('fast'); 
+})
 function onclickMe($data) {
     var id = $data.split('_');
     var log_in = "<?php echo (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ? 1 : 0 ?>";
@@ -247,7 +247,39 @@ function onclickMe($data) {
             break;
         case 'comment':
             if (log_in == 1) {
-                $('#commentModal').modal('show');
+                // $('#commentModal').modal('show');
+                $('.load').fadeIn('fast');
+                $.ajax({
+                    url: '<?php echo base_url(); ?>/News/getCommemt',
+                    type: "GET",
+                    data: {"id" : id[0]},
+                    dataType:'json',
+                    success: function(data) {
+                        $('.load').fadeOut('fast');
+                        $('#title_comment').html(data.picture.Title)
+                        $('#total_comment').html(data.total + ' comments')
+                        let src = "<?php echo base_url(); ?>/assets/img/";
+                        if(data.picture.idStatusPicture >= 8){
+                            src = src + "upload/" + data.picture.idUser + "\/" + data.picture.chibiFileName;
+                        }else{
+                            src = src + data.picture.chibiFileName;
+                        }
+                        $("#image_comment").attr("src",src);
+                        $('#idPicture').val(data.picture.idPictures);
+                        $("#content-comment").html('');
+                        data.comments.forEach(element => {
+                            $("#content-comment").append(`
+                            <div class="commented-section mt-2" style="min-width: 500px !important;">
+                                <div class="d-flex flex-row align-items-center commented-user">
+                                    <h5 class="mr-2">${element.Name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">${element.created}</span>
+                                </div>
+                                <div class="comment-text-sm"><span>${element.comment}</span></div>
+                            </div>
+                            `)
+                        });
+                        $('#commentModal').modal('show');
+                    }
+                });
             } else {
                 window.location.assign("<?php echo base_url(); ?>/Users/Login")
             }
@@ -306,5 +338,33 @@ function iconHover(data) {
 function iconUnhover(data) {
     var iconImg = getImgUnhover(data);
     $('#'+data).attr('src', '<?php echo base_url(); ?>/assets/img/'+iconImg);
+}
+
+function comment(){
+    let idPicture = $('#idPicture').val();
+    let text = $('#comment_text').val();
+    $('.load').fadeIn('fast');
+    $.ajax({
+        url: '<?php echo base_url(); ?>/News/postCommemt',
+        type: "POST",
+        data: {idPicture : idPicture, text},
+        dataType:'json',
+        success: function(data) {
+            $('.load').fadeOut('fast');
+            if(data.status == 200){
+                $("#content-comment").prepend(`
+                <div class="commented-section mt-2" style="min-width: 500px !important;">
+                    <div class="d-flex flex-row align-items-center commented-user">
+                        <h5 class="mr-2">${data.comment.Name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">${data.comment.created}</span>
+                    </div>
+                    <div class="comment-text-sm"><span>${data.comment.comment}</span></div>
+                </div>
+                `)
+            }else{
+                $('#message-error').html("Comment Fail!");
+                $('#messageModal').modal('show');
+            }
+        }
+    });
 }
 </script>
