@@ -13,7 +13,7 @@ class CommentModel extends Model{
     public function getCommemtByIdPicture($idPictures)
     {
         $db = \Config\Database::connect();
-        $sql="SELECT cm.id, cm.idPicture, us.Name, cm.comment, cm.created FROM comment as cm join pictures as pt on cm.idPicture = pt.idPictures join users as us on cm.idUser = us.idUser WHERE cm.idPicture = ? order by cm.created desc";
+        $sql="SELECT cm.id, cm.idPicture, REPLACE(us.Name, '*-*-', ' ') as Name, cm.comment, cm.created FROM comment as cm join pictures as pt on cm.idPicture = pt.idPictures join users as us on cm.idUser = us.idUser WHERE cm.idPicture = ? order by cm.created desc";
         $results = $db->query($sql,[$idPictures])->getResultArray();
         $db->close();
         return $results; 
@@ -35,7 +35,7 @@ class CommentModel extends Model{
     public function getCommemtById($id)
     {
         $db = \Config\Database::connect();
-        $sql="SELECT cm.id, cm.idPicture, us.Name, cm.comment, cm.created FROM comment as cm join users as us on cm.idUser = us.idUser WHERE cm.id = ?";
+        $sql="SELECT cm.id, cm.idPicture, REPLACE(us.Name, '*-*-', ' ') as Name, cm.comment, cm.created FROM comment as cm join users as us on cm.idUser = us.idUser WHERE cm.id = ?";
         $results = $db->query($sql,[$id])->getRowArray();
         $db->close();
         return $results; 

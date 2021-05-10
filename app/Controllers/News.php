@@ -101,12 +101,13 @@ class News extends Controller
 		$modelComment = new CommentModel();
 		$resultComment = $modelComment->insertComment($param);
 		if($resultComment > 0){
-			$res = $modelComment->getCommemtById($resultComment);
-			$json = ["status" => 200,"message" => "OK", "comment" => $res];
-		}else{
-			$json = ["status" => 999,"message" => "Fail"];
+			$res = $modelComment->getCommemtByIdPicture($idPicture);
+			$response = [
+				"comments"=>$res,
+				"total"=> count($res)
+			];
 		}
-		echo json_encode($json);
+		echo json_encode($response);
 	}
 
 

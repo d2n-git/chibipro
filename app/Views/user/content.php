@@ -170,7 +170,7 @@
         <div class="modal-content">
             <div class="d-flex justify-content-center row">
                 <div class="d-flex flex-column">
-                    <div class="d-flex flex-row align-items-center text-left comment-top border-bottom px-4" style="background-color: #f1f1f1;">
+                    <div class="d-flex flex-row align-items-center text-left comment-top border-bottom px-4" style="background-color: #f1f1f1; padding-top: 5px;padding-bottom: 5px;">
                         <div class="profile-image"><img class="rounded-circle" src="<?php echo base_url(); ?>/assets/img/<?php if($value['idStatusPicture'] >= 8){echo 'upload/'.$value['idUser'].'/'.$value['chibiFileName'];}else{echo $value['chibiFileName'];} ?>" width="70" id="image_comment" onerror="this.src='<?php echo base_url(); ?>/assets/img/noimage.png'"></div>
                         <div class="d-flex flex-column ml-3">
                             <div class="d-flex flex-row post-title">
@@ -187,7 +187,7 @@
                                 <div class="d-flex flex-row align-items-center commented-user">
                                     <h5 class="mr-2">Corey oates</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">4 hours ago</span>
                                 </div>
-                                <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div>
+                                <div class="comment-text-sm"><span>add text</span></div>
                             </div>
                         </div>
                     </div>
@@ -247,7 +247,6 @@ function onclickMe($data) {
             break;
         case 'comment':
             if (log_in == 1) {
-                // $('#commentModal').modal('show');
                 $('.load').fadeIn('fast');
                 $.ajax({
                     url: '<?php echo base_url(); ?>/News/getCommemt',
@@ -257,7 +256,7 @@ function onclickMe($data) {
                     success: function(data) {
                         $('.load').fadeOut('fast');
                         $('#title_comment').html(data.picture.Title)
-                        $('#total_comment').html(data.total + ' comments')
+                        $('#total_comment').html(data.total + ' comments ')
                         let src = "<?php echo base_url(); ?>/assets/img/";
                         if(data.picture.idStatusPicture >= 8){
                             src = src + "upload/" + data.picture.idUser + "\/" + data.picture.chibiFileName;
@@ -275,6 +274,11 @@ function onclickMe($data) {
                                 </div>
                                 <div class="comment-text-sm"><span>${element.comment}</span></div>
                             </div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">25</span><span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
                             `)
                         });
                         $('#commentModal').modal('show');
@@ -285,21 +289,6 @@ function onclickMe($data) {
             }
             break;
         case 'return':
-            // code block
-            // FB.ui(
-            // {
-            //     method: 'share',
-            //     href: 'http://chibipro.top/',
-            // },
-            // // callback
-            // function(response) {
-            //     if (response && !response.error_message) {
-            //     alert('Posting completed.');
-            //     } else {
-            //     alert('Error while posting.');
-            //     }
-            // }
-            // );
             window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fchibipro.top%2F&amp&&description=Chibiprocc;src=sdkpreparse','facebook-share-dialog',"width=626, height=436")
             break;
         case 'check':
@@ -350,20 +339,26 @@ function comment(){
         data: {idPicture : idPicture, text},
         dataType:'json',
         success: function(data) {
-            $('.load').fadeOut('fast');
-            if(data.status == 200){
-                $("#content-comment").prepend(`
+        $('.load').fadeOut('fast');
+            $('#total_comment').html(data.total + ' comments' + '<h5></h5><span class="dot mb-1"></span>')
+            $("#content-comment").html('');
+            data.comments.forEach(element => {
+                $("#content-comment").append(`
                 <div class="commented-section mt-2" style="min-width: 500px !important;">
                     <div class="d-flex flex-row align-items-center commented-user">
-                        <h5 class="mr-2">${data.comment.Name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">${data.comment.created}</span>
+                        <h5 class="mr-2">${element.Name}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">${element.created}</span>
                     </div>
-                    <div class="comment-text-sm"><span>${data.comment.comment}</span></div>
+                    <div class="comment-text-sm"><span>${element.comment}</span></div>
+                </div>
+                <div class="reply-section">
+                    <div class="d-flex flex-row align-items-center voting-icons"><i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">25</span><span class="dot ml-2"></span>
+                        <h6 class="ml-2 mt-1">Reply</h6>
+                    </div>
                 </div>
                 `)
-            }else{
-                $('#message-error').html("Comment Fail!");
-                $('#messageModal').modal('show');
-            }
+            });
+            $('#comment_text').val('');
+            $('#commentModal').modal('show');
         }
     });
 }
