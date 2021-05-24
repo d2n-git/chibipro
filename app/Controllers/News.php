@@ -13,9 +13,10 @@ class News extends Controller
 	{
 		$session = \Config\Services::session();
 		$page = $this->request->getGet('page') ? $this->request->getGet('page') - 1 : 0;
+		$filter['idUser'] = $this->request->getGet('idUser');
 		$offset = $page * LIMITPICTURE;
 		$pictureModel = new PictureModel();
-		$pictures = $pictureModel->getAllPicture($offset, '', '8');
+		$pictures = $pictureModel->getAllPicture($offset, '', '8', $filter);
 		$data['page'] = $page + 1;
 		$data['total'] = count($pictureModel->getAllPictureCount());
 		// $data['pager'] = $pager;

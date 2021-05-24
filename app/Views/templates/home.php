@@ -100,7 +100,7 @@
                         <div class="single_arrivel_item col-md-3" style="height:400px;">
                             <img src="<?php echo base_url();?>/assets/img/upload/<?php echo $value['idUser'].'/'.$value['chibiFileName'];?>" alt="#">
                             <div class="hover_text">
-                                <a href="<?php echo base_url();?>/News"><h3><?php echo str_replace("*-*-"," ",$value['userName'])?></h3></a>
+                                <a href="<?php echo base_url();?>/News?idUser=<?php echo $value['idUser'];?>"><h3><?php echo str_replace("*-*-"," ",$value['userName'])?></h3></a>
                                 <div class="rate_icon">
                                     <a> <i class="fas fa-star"></i> </a>
                                     <a> <i class="fas fa-star"></i> </a>

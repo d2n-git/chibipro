@@ -58,8 +58,8 @@
         <div class="search_input" id="search_input_box">
             <div class="container">
                 <div class="choosedfilter">
-                    <a href="#" onclick="RemoveFilter(this)">Filter para <i class="ti-close"></i></a>
-                    <a href="#" onclick="RemoveFilter(this)">Filter para <i class="ti-close"></i></a>
+                    <a href="#" onclick="RemoveFilter(this)">Filter para1 <i class="ti-close"></i></a>
+                    <a href="#" onclick="RemoveFilter(this)">Filter para2 <i class="ti-close"></i></a>
                 </div>
             </div>
         </div>
